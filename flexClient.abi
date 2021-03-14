@@ -1,0 +1,92 @@
+{
+  "ABI version": 2,
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "constructor",
+    "inputs": [
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"trading_pair_code", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "setStockCfg",
+    "inputs": [
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"trading_pair_deploy", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" }
+    ], "name":"tons_cfg", "type":"tuple" },
+    { "name":"stock", "type":"address" },
+    { "name":"notify_addr", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "deployTradingPair",
+    "inputs": [
+    { "name":"stock_addr", "type":"address" },
+    { "name":"tip3_root", "type":"address" },
+    { "name":"deploy_min_value", "type":"uint128" },
+    { "name":"deploy_value", "type":"uint128" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "deployPriceWithSell",
+    "inputs": [
+    { "name":"args", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "deployPriceWithBuy",
+    "inputs": [
+    { "name":"args", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "cancelSellOrder",
+    "inputs": [
+    { "name":"args", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "cancelBuyOrder",
+    "inputs": [
+    { "name":"args", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "getOwner",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"uint256" }
+    ]
+  }
+  ],
+  "events": [
+  ]
+}

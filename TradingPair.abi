@@ -1,0 +1,37 @@
+{
+  "ABI version": 2,
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"bool" }
+    ]
+  },
+  {
+    "name": "getStockAddr",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "getTip3Root",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  }
+  ],
+  "events": [
+  ]
+}
