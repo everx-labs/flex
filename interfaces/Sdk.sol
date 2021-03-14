@@ -31,15 +31,11 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
 //query
-struct AccAddr {
-    address id;
-}
 struct AccData {
     address id;
     TvmCell data;
 }
-function getAccountsByHash(uint32 answerId, string codeHash) external returns (AccAddr[] accounts);
-function getAccountsDataByHash(uint32 answerId, string codeHash) external returns (AccData[] accDatas);
+function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) external returns (AccData[] accDatas);
 }
 
 
@@ -141,15 +137,10 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).naclKeypairFromSecret(answerId, secret);
 	}
-
-	function getAccountsByHash(uint32 answerId, string codeHash) public pure {
-		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).getAccountsByHash(answerId, codeHash);
- 	}
 	
-	function getAccountsDataByHash(uint32 answerId, string codeHash) public pure {
+	function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).getAccountsDataByHash(answerId, codeHash);
+		ISdk(addr).getAccountsDataByHash(answerId, codeHash, gt);
  	}
 }
 
@@ -184,6 +175,5 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
 //query
-function getAccountsByHash(uint32 answerId, string codeHash) external override returns (AccAddr[] accounts) {}
-function getAccountsDataByHash(uint32 answerId, string codeHash) external override returns (AccData[] accDatas) {}
+function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) external override returns (AccData[] accDatas) {}
 }
