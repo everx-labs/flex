@@ -1,0 +1,107 @@
+{
+  "ABI version": 2,
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "transfer",
+    "inputs": [
+    { "name":"dest", "type":"address" },
+    { "name":"tokens", "type":"uint128" },
+    { "name":"return_ownership", "type":"bool" },
+    { "name":"answer_addr", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "getBalance_InternalOwner",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"uint128" }
+    ]
+  },
+  {
+    "name": "accept",
+    "inputs": [
+    { "name":"tokens", "type":"uint128" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "internalTransfer",
+    "inputs": [
+    { "name":"tokens", "type":"uint128" },
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"my_owner_addr", "type":"uint256" },
+    { "name":"answer_addr", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "destroy",
+    "inputs": [
+    { "name":"dest", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "lendOwnership",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"std_dest", "type":"uint256" },
+    { "name":"lend_balance", "type":"uint128" },
+    { "name":"lend_finish_time", "type":"uint32" },
+    { "name":"deploy_init_cl", "type":"cell" },
+    { "name":"payload", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"bool" }
+    ],
+    "id": "0x40"
+  },
+  {
+    "name": "returnOwnership",
+    "inputs": [
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"name", "type":"bytes" },
+    { "name":"symbol", "type":"bytes" },
+    { "name":"decimals", "type":"uint8" },
+    { "name":"balance", "type":"uint128" },
+    { "name":"root_public_key", "type":"uint256" },
+    { "name":"wallet_public_key", "type":"uint256" },
+    { "name":"root_address", "type":"address" },
+    { "name":"owner_address", "type":"address" },
+    { "components":[
+      { "name":"owner", "type":"address" },
+      { "name":"lend_balance", "type":"uint128" },
+      { "name":"lend_finish_time", "type":"uint32" }
+    ], "name":"lend_ownership", "type":"tuple" },
+    { "name":"code", "type":"cell" },
+    { "components":[
+      { "name":"spender", "type":"address" },
+      { "name":"remainingTokens", "type":"uint128" }
+    ], "name":"allowance", "type":"tuple" },
+    { "name":"workchain_id", "type":"int8" }
+    ]
+  }
+  ],
+  "events": [
+  ]
+}
