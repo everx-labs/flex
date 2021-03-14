@@ -4,37 +4,33 @@
 
 ## TL;TR
 
+Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
+
+    tondev sol compile <debotName>.sol
+
 ### TIP3 DeBot
 
-[`tipe3Debot`](https://github.com/tonlabs/flex/blob/main/tip3Debot/tip3Debot.sol) - DeBot that helps manage TIP3 tokens: create new TIP3 token, grant TIP3 tokens to TIP3 wallets.
+[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/tip3Debot/tip3Debot.sol) - DeBot that helps manage TIP3 tokens: create new TIP3 token, grant TIP3 tokens to TIP3 wallets.
 
-Compile DeBot using [`tondev`](https://github.com/tonlabs/tondev) tool:
+DeBot is deployed to devnet. Run:
 
-    tondev sol compile tip3Debot.sol
-    
-    tonos-cli debot --url <network> debot fetch 0:81c12c2f4514124536aafea59db7df0262d3af877b4477afe6514bbc5bc9f317
-    
-<network> - `net.ton.dev`, `main.ton.dev`
+    tonos-cli debot --url net.ton.dev debot fetch 0:81c12c2f4514124536aafea59db7df0262d3af877b4477afe6514bbc5bc9f317
 
 ### Flex DeBot
 
-Use this DeBot to try Flex on Denvet: 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
+Use this DeBot to try Flex on Devnet: 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
 Because of some experimental features of SDK required to run Flex DeBots, you will need a version of tonos-cli not less than 0.8.3. You can compile it from: https://github.com/tonlabs/tonos-cli/tree/sdk-dev
 
 DeBot is deployed to devnet. Run:
 
-    tonos-cli debot --url <network> debot fetch 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
-
-<network> - `net.ton.dev` 
-
-
+    tonos-cli debot --url net.ton.dev debot fetch 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
 
 ## Problem
 The biggest problem with decentralized exchanges is its speed of execution, lack of advanced trading strategies ability and complex management. Here we propose a decentralized trading engine and order book with low latency and guaranteed trade execution. It is flexible — allowing extendable strategies, extremely fast — providing immediate execution and settlement of an order and both decentralized and distributed. This allows Flex to perform at par with Free TON blockchain performance. For example an average execution across 128 threads will by 0.08 seconds at roughly 80,000 trading pairs messages per second throughput for one shardchain. It will take just 15 workchains to beat Binance performance and 150 workchains to compete with BATS exchange. Usage of DeBots make it super easy to add simple or advanced user interfaces.
 
 Flex is a decentralized and distributed limit order book (DLOB) which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via distributed smart contract model. Many have tried this approach before and failed (EtherDelta, DDEX, Radar Relay, etc.). Up until now the problem of creating an order book on chain were: the slow speed of execution and the possibility of front-running orders. Some are trying to solve this by moving to the fastest possible blockchain. But just having a fast blockchain is not enough because usually order books are pretty large and complex which takes time to operate on. Flex distributed atomic contracts solves this problem distributing the load on the order book down to single price of a single pair.
 
-### How orders are filled on CLOB? 
+### How orders are filled on CLOB?
 
 The most common algorithm used is Price/Time priority, aka FIFO: all orders at the same price level are filled according to time priority; the first order at a price level is the first order matched.
 
@@ -42,7 +38,7 @@ Up until now there was a problem implementing this algorithm on a blockchain bec
 
 #### CLOB are hard to implement on a blockchain because:
 
-The size of the state needed by an order book to represent the set of outstanding orders (e.g., passive liquidity) is large and extremely costly in the smart contract environment, where users must pay for space and compute power utilized. 
+The size of the state needed by an order book to represent the set of outstanding orders (e.g., passive liquidity) is large and extremely costly in the smart contract environment, where users must pay for space and compute power utilized.
 
 [G. Wood et al., “Ethereum: A secure decentralised generalised transaction ledger,”
 Ethereum project yellow paper, vol. 151, no. 2014, pp. 1–32, 2014.]
@@ -56,7 +52,7 @@ Finance, vol. 8, no. 1, pp. 41–57, 2008]
 
 ## How does FLEX solves this
 
-Flex achieves distribution and speed by distributing the logic among many atomic smart contracts, while simultaneously distributing search logic into user computers. All Order Book contracts addresses are deterministically calculated: the Trading Pair and its Price order contracts. 
+Flex achieves distribution and speed by distributing the logic among many atomic smart contracts, while simultaneously distributing search logic into user computers. All Order Book contracts addresses are deterministically calculated: the Trading Pair and its Price order contracts.
 
 For instance TON- XTIP3 will resolve a Root of TON-XTIP3 trading pair. User then can calculate an address of a particular Price Contract by entering a Price. Code Hash=$TON-TIP3 Data=1.2 will calculate an address of a contract that currently trades a TON-TIP3 pair at 1.2 TON per 1 TIP3 token.
 
@@ -76,7 +72,7 @@ If an order "Good till cancelled" can not be executed in one transaction it shou
 Many strategies are possible but are not yet implemented:
 If the contract for the order price exists the user can send a message with **Immediate or cancel (IOC)** order which will be executed immediately even partially or canceled if the trade can not be performed.
 
-**Fill or kill (FOK)** will cancel the order if a full order amount is not available. 
+**Fill or kill (FOK)** will cancel the order if a full order amount is not available.
 
 **Good-til-cancelled (GTC)** can be created in which case the order will stay in the contract until it is fulfilled by a counterparty (if any).
 
@@ -162,7 +158,7 @@ __interface IStock {
 
   [[external, noaccept]]
   void setPriceCode(cell code);
-  
+
   // ========== getters ==========
 
   // means setPairCode/setPriceCode executed
