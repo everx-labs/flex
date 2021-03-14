@@ -196,9 +196,9 @@ __interface IStock {
 
 ## TODO
 
-TIP3 to TIP3 exchange
-Multiple orders automation
-More strategies, stop order
+TIP3 to TIP3 exchange 
+Multiple orders automation 
+More strategies, stop order 
 
 
 ## One more thing
