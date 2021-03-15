@@ -50,9 +50,9 @@ several different order types (such as icebergs, good-till-cancel, and stop-limi
 between bid–ask spread, impact and volatility in order-driven markets,” Quantitative
 Finance, vol. 8, no. 1, pp. 41–57, 2008]
 
-## How does FLEX solves this
+## How does FLEX solve this
 
-Flex achieves distribution and speed by distributing the logic among many atomic smart contracts, while simultaneously distributing search logic into user computers. All Order Book contracts addresses are deterministically calculated: the Trading Pair and its Price order contracts.
+Flex achieves load balancing and speed of execution by distributing the logic among many atomic smart contracts, while simultaneously transfering search and decision logic to user computers. All Order Book contracts addresses are deterministically calculated: the Trading Pair and its Price order contracts.
 
 For instance TON- XTIP3 will resolve a Root of TON-XTIP3 trading pair. User then can calculate an address of a particular Price Contract by entering a Price. Code Hash=$TON-TIP3 Data=1.2 will calculate an address of a contract that currently trades a TON-TIP3 pair at 1.2 TON per 1 TIP3 token.
 
@@ -83,6 +83,8 @@ User can discover price and perform some conditional strategies either on a clie
 User client can retrieve all messages for a trading pair contract and sort them by time to find the latest trades of that pair. Successful trade transactions should emit a message so it could be found later.
 
 Instead of a client software an automatic execution could be programmed with a **paid subscription method** of an $Asset contract. The contract may send a message to other contracts that are subscribed to it once any trade is executed. Such service is payable by contracts subscribed to it to the owner of the Order payable upon Contract termination. The subscribed contract can then perform automatic strategies based on this information, connect Automated Market Maker smart contracts or Liquidity Pools.
+
+The following order types will be added shortly:
 
 **A market order** could be filled if User client software will search for latest transactions in the pair contracts to sell 10,000 TONs. When finding a deployed contract with best price starting from the latest executed user client software can retrieve the offered amount and send the Currency to this contract. Sending TONs to such contract will immediately execute the trade with the contract asset price for the sent amount.
 
@@ -197,7 +199,9 @@ __interface IStock {
 ## TODO
 
 TIP3 to TIP3 exchange 
+
 Multiple orders automation 
+
 More strategies, stop order 
 
 
