@@ -2,6 +2,16 @@
 
 *please note that the current implementation is an MVP, it was not properly tested, it misses many features and is generally a **work in progress — You should not use it for real trading!!!**
 
+This is Flex:
+
+<img src="./flash2.svg" height="56" width="56">
+
+And this is Flex too:
+
+<img src="./flash3.svg" height="56" width="56">
+
+(we thank Ivan Kotelnikov for a picture of his dog!)
+
 ## TL;TR
 
 Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
