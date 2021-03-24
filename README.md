@@ -215,6 +215,3 @@ Multiple orders automation
 More strategies, stop order 
 
 
-## One more thing
-
-Please come to the next community stream...
