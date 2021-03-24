@@ -10,7 +10,7 @@ And this is Flex too:
 
 <img src="./flash3.svg" height="56" width="56">
 
-(we thank Ivan Kotelnikov for a picture of his dog!)
+(we thank Ivan @eternalflow for a picture of his dog!)
 
 ## TL;TR
 
