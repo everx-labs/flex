@@ -16,7 +16,9 @@ And this is Flex too:
 
 Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
 
-    tondev sol compile <debotName>.sol
+```bash
+tondev sol compile <debotName>.sol
+```
 
 ### TIP3 DeBot
 
@@ -24,17 +26,24 @@ Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
 
 DeBot is deployed to devnet. Run:
 
-    tonos-cli debot --url net.ton.dev debot fetch 0:81c12c2f4514124536aafea59db7df0262d3af877b4477afe6514bbc5bc9f317
-
+```
+tonos-cli --url net.ton.dev debot fetch 0:c3ce4ec1dde824b580985795c805e2f41f30aa7ff70207f3a99ca184871f7d86
+```
 ### Flex DeBot
 
-Use this DeBot to try Flex on Devnet: 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
-Because of some experimental features of SDK required to run Flex DeBots, you will need a version of tonos-cli not less than 0.8.3. You can compile it from: https://github.com/tonlabs/tonos-cli/tree/sdk-dev
+Use this DeBot to try Flex on Devnet: 0:523b97117c39eb78135add94bae6d821d9da58125ba6c67bb8355af66acdcee6
+
+#### Prerequisites: 
+
+tonos-cli >= 0.8.3. You can compile or download it from: https://github.com/tonlabs/tonos-cli/ or install:
+```
+tondev tonos-cli install
+```
 
 DeBot is deployed to devnet. Run:
-
-    tonos-cli debot --url net.ton.dev debot fetch 0:31d4992e6eeab5061e9fc0545b2cbba17b4142ea50e6c993184ee10fa85edef5
-
+```bash
+tonos-cli --url net.ton.dev debot fetch 0:523b97117c39eb78135add94bae6d821d9da58125ba6c67bb8355af66acdcee6
+```
 ## Problem
 The biggest problem with decentralized exchanges is its speed of execution, lack of advanced trading strategies ability and complex management. Here we propose a decentralized trading engine and order book with low latency and guaranteed trade execution. It is flexible — allowing extendable strategies, extremely fast — providing immediate execution and settlement of an order and both decentralized and distributed. This allows Flex to perform at par with Free TON blockchain performance. For example an average execution across 128 threads will by 0.08 seconds at roughly 80,000 trading pairs messages per second throughput for one shardchain. It will take just 15 workchains to beat Binance performance and 150 workchains to compete with BATS exchange. Usage of DeBots make it super easy to add simple or advanced user interfaces.
 
