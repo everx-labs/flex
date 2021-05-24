@@ -6,8 +6,9 @@
 #include <tvm/smart_switcher.hpp>
 #include <tvm/small_dict_map.hpp>
 #include <tvm/contract_handle.hpp>
-#include <tvm/queue.hpp>
+#include <tvm/big_queue.hpp>
 #include <tvm/string.hpp>
+#include <tvm/numeric_limits.hpp>
 
 #include "Flex.hpp"
 #include "PriceCommon.hpp"
@@ -17,40 +18,46 @@ namespace tvm { namespace schema {
 
 using ITONTokenWalletPtr = handle<ITONTokenWallet>;
 
-struct SellArgs {
+struct RationalPrice {
+  uint128 numerator() const { return num; }
+  uint128 denominator() const { return denum; }
+  uint128 num;
+  uint128 denum;
+};
+using price_t = RationalPrice;
+
+struct PayloadArgs {
+  bool_t sell;
   uint128 amount;
-  addr_std_fixed receive_wallet;
+  addr_std_fixed receive_tip3_wallet;
+  addr_std_fixed client_addr;
 };
 
-struct OrderInfo {
+struct OrderInfoXchg {
   uint128 original_amount;
   uint128 amount;
   uint128 account; // native funds from client to pay for processing
-  addr_std_fixed tip3_wallet;
+  addr_std_fixed tip3_wallet_provide;
+  addr_std_fixed tip3_wallet_receive;
   addr_std_fixed client_addr;
   uint32 order_finish_time;
 };
-using OrderInfoWithIdx = std::pair<unsigned, OrderInfo>;
+using OrderInfoXchgWithIdx = std::pair<unsigned, OrderInfoXchg>;
 
-struct DetailsInfo {
-  uint128 price;
+struct DetailsInfoXchg {
+  uint128 price_num;
+  uint128 price_denum;
   uint128 min_amount;
   uint128 sell_amount;
   uint128 buy_amount;
 };
 
-// usage from debot:
-// co_await tip3.tail_call<OrderRet>(price_addr, gr).lendOwnership(...)
-
-__interface IPrice {
+__interface IPriceXchg {
 
   [[internal, noaccept, answer_id]]
   OrderRet onTip3LendOwnership(
     uint128 balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
     cell payload, address answer_addr) = 201;
-
-  [[internal, noaccept, answer_id]]
-  OrderRet buyTip3(uint128 amount, address receive_tip3, uint32 order_finish_time) = 202;
 
   [[internal, noaccept]]
   void processQueue() = 203;
@@ -63,10 +70,10 @@ __interface IPrice {
   [[internal, noaccept]]
   void cancelBuy() = 205;
 };
-using IPricePtr = handle<IPrice>;
+using IPriceXchgPtr = handle<IPriceXchg>;
 
-struct DPrice {
-  uint128 price_;
+struct DPriceXchg {
+  price_t price_;
   uint128 sells_amount_;
   uint128 buys_amount_;
   addr_std_fixed flex_;
@@ -79,18 +86,19 @@ struct DPrice {
 
   TonsConfig tons_cfg_;
   cell tip3_code_;
-  Tip3Config tip3cfg_;
+  Tip3Config major_tip3cfg_;
+  Tip3Config minor_tip3cfg_;
 
-  queue<OrderInfo> sells_;
-  queue<OrderInfo> buys_;
+  big_queue<OrderInfoXchg> sells_;
+  big_queue<OrderInfoXchg> buys_;
 };
 
-__interface EPrice {
+__interface EPriceXchg {
 };
 
 __always_inline
-std::pair<StateInit, uint256> prepare_price_state_init_and_addr(DPrice price_data, cell price_code) {
-  cell price_data_cl = prepare_persistent_data<IPrice, void, DPrice>({}, price_data);
+std::pair<StateInit, uint256> prepare_price_xchg_state_init_and_addr(DPriceXchg price_data, cell price_code) {
+  cell price_data_cl = prepare_persistent_data<IPriceXchg, void, DPriceXchg>({}, price_data);
   StateInit price_init {
     /*split_depth*/{}, /*special*/{},
     price_code, price_data_cl, /*library*/{}

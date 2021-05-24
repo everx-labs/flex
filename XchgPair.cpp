@@ -1,4 +1,4 @@
-#include "TradingPair.hpp"
+#include "XchgPair.hpp"
 #include <tvm/contract.hpp>
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
@@ -7,7 +7,7 @@
 using namespace tvm;
 using namespace schema;
 
-class TradingPair final : public smart_interface<ITradingPair>, public DTradingPair {
+class XchgPair final : public smart_interface<IXchgPair>, public DXchgPair {
 public:
   struct error_code : tvm::error_code {
     static constexpr unsigned not_enough_tons = 101;
@@ -28,12 +28,17 @@ public:
   }
 
   __always_inline
-  address getTip3Root() {
-    return tip3_root_;
+  address getTip3MajorRoot() {
+    return tip3_major_root_;
+  }
+
+  __always_inline
+  address getTip3MinorRoot() {
+    return tip3_minor_root_;
   }
 
   // =============== Support functions ==================
-  DEFAULT_SUPPORT_FUNCTIONS(ITradingPair, void)
+  DEFAULT_SUPPORT_FUNCTIONS(IXchgPair, void)
 
   // default processing of unknown messages
   __always_inline static int _fallback(cell /*msg*/, slice /*msg_body*/) {
@@ -41,8 +46,7 @@ public:
   }
 };
 
-DEFINE_JSON_ABI(ITradingPair, DTradingPair, ETradingPair);
+DEFINE_JSON_ABI(IXchgPair, DXchgPair, EXchgPair);
 
 // ----------------------------- Main entry functions ---------------------- //
-MAIN_ENTRY_FUNCTIONS_NO_REPLAY(TradingPair, ITradingPair, DTradingPair)
-
+MAIN_ENTRY_FUNCTIONS_NO_REPLAY(XchgPair, IXchgPair, DXchgPair)

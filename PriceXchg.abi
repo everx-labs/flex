@@ -25,21 +25,6 @@
     "id": "0xc9"
   },
   {
-    "name": "buyTip3",
-    "inputs": [
-    { "name":"_answer_id", "type":"uint32" },
-    { "name":"amount", "type":"uint128" },
-    { "name":"receive_tip3", "type":"address" },
-    { "name":"order_finish_time", "type":"uint32" }
-    ],
-    "outputs": [
-    { "name":"err_code", "type":"uint32" },
-    { "name":"processed", "type":"uint128" },
-    { "name":"enqueued", "type":"uint128" }
-    ],
-    "id": "0xca"
-  },
-  {
     "name": "processQueue",
     "inputs": [
     ],

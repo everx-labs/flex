@@ -10,13 +10,14 @@
     "name": "constructor",
     "inputs": [
     { "name":"pubkey", "type":"uint256" },
-    { "name":"trading_pair_code", "type":"cell" }
+    { "name":"trading_pair_code", "type":"cell" },
+    { "name":"xchg_pair_code", "type":"cell" }
     ],
     "outputs": [
     ]
   },
   {
-    "name": "setStockCfg",
+    "name": "setFLeXCfg",
     "inputs": [
     { "components":[
       { "name":"transfer_tip3", "type":"uint128" },
@@ -26,7 +27,7 @@
       { "name":"process_queue", "type":"uint128" },
       { "name":"send_notify", "type":"uint128" }
     ], "name":"tons_cfg", "type":"tuple" },
-    { "name":"stock", "type":"address" },
+    { "name":"flex", "type":"address" },
     { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
@@ -35,8 +36,19 @@
   {
     "name": "deployTradingPair",
     "inputs": [
-    { "name":"stock_addr", "type":"address" },
     { "name":"tip3_root", "type":"address" },
+    { "name":"deploy_min_value", "type":"uint128" },
+    { "name":"deploy_value", "type":"uint128" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "deployXchgPair",
+    "inputs": [
+    { "name":"tip3_major_root", "type":"address" },
+    { "name":"tip3_minor_root", "type":"address" },
     { "name":"deploy_min_value", "type":"uint128" },
     { "name":"deploy_value", "type":"uint128" }
     ],
@@ -63,6 +75,15 @@
     ]
   },
   {
+    "name": "deployPriceXchg",
+    "inputs": [
+    { "name":"args_cl", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
     "name": "cancelSellOrder",
     "inputs": [
     { "name":"args", "type":"cell" }
@@ -79,11 +100,37 @@
     ]
   },
   {
+    "name": "cancelXchgOrder",
+    "inputs": [
+    { "name":"args", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "transfer",
+    "inputs": [
+    { "name":"dest", "type":"address" },
+    { "name":"value", "type":"uint128" },
+    { "name":"bounce", "type":"bool" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
     "name": "getOwner",
     "inputs": [
     ],
     "outputs": [
     { "name":"value0", "type":"uint256" }
+    ]
+  },
+  {
+    "name": "getFLeX",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
     ]
   }
   ],
