@@ -32,7 +32,23 @@
     ]
   },
   {
+    "name": "setXchgPairCode",
+    "inputs": [
+    { "name":"code", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
     "name": "setPriceCode",
+    "inputs": [
+    { "name":"code", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "setXchgPriceCode",
     "inputs": [
     { "name":"code", "type":"cell" }
     ],
@@ -69,6 +85,14 @@
     ]
   },
   {
+    "name": "getXchgPairCode",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"cell" }
+    ]
+  },
+  {
     "name": "getSellPriceCode",
     "inputs": [
     { "name":"tip3_addr", "type":"address" }
@@ -91,6 +115,16 @@
     "name": "getSellTradingPair",
     "inputs": [
     { "name":"tip3_root", "type":"address" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "getXchgTradingPair",
+    "inputs": [
+    { "name":"tip3_major_root", "type":"address" },
+    { "name":"tip3_minor_root", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }

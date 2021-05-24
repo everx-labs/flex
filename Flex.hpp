@@ -17,18 +17,22 @@ struct TonsConfig {
   // .. to send answer message from Price
   uint128 order_answer;
   // ... to process processQueue function
+  //  (also is used for buyTip3/onTip3LendOwnership/cancelSell/cancelBuy estimations)
   uint128 process_queue;
-  // ... to send notification about completed deal (IStockNotify)
+  // ... to send notification about completed deal (IFLeXNotify)
   uint128 send_notify;
 };
 
-__interface IStockNotify {
+__interface IFLeXNotify {
   [[internal, noaccept]]
   void onDealCompleted(address tip3root, uint128 price, uint128 amount);
+  [[internal, noaccept]]
+  void onXchgDealCompleted(address tip3root_sell, address tip3root_buy,
+                           uint128 price_num, uint128 price_denum, uint128 amount);
 };
-using IStockNotifyPtr = handle<IStockNotify>;
+using IFLeXNotifyPtr = handle<IFLeXNotify>;
 
-__interface IStock {
+__interface IFLeX {
 
   [[external, dyn_chain_parse]]
   void constructor(uint256 deployer_pubkey,
@@ -42,8 +46,14 @@ __interface IStock {
   void setPairCode(cell code);
 
   [[external, noaccept]]
+  void setXchgPairCode(cell code);
+
+  [[external, noaccept]]
   void setPriceCode(cell code);
-  
+
+  [[external, noaccept]]
+  void setXchgPriceCode(cell code);
+
   // ========== getters ==========
 
   // means setPairCode/setPriceCode executed
@@ -56,6 +66,9 @@ __interface IStock {
   [[getter]]
   cell getTradingPairCode();
 
+  [[getter]]
+  cell getXchgPairCode();
+
   [[getter, dyn_chain_parse]]
   cell getSellPriceCode(address tip3_addr);
 
@@ -64,6 +77,9 @@ __interface IStock {
 
   [[getter, dyn_chain_parse]]
   address getSellTradingPair(address tip3_root);
+
+  [[getter, dyn_chain_parse]]
+  address getXchgTradingPair(address tip3_major_root, address tip3_minor_root);
 
   [[getter]]
   uint128 getMinAmount();
@@ -74,19 +90,21 @@ __interface IStock {
   [[getter]]
   address getNotifyAddr();
 };
-using IStockPtr = handle<IStock>;
+using IFLeXPtr = handle<IFLeX>;
 
-struct DStock {
+struct DFLeX {
   uint256 deployer_pubkey_;
   TonsConfig tons_cfg_;
   std::optional<cell> pair_code_;
+  std::optional<cell> xchg_pair_code_;
   std::optional<cell> price_code_;
+  std::optional<cell> xchg_price_code_;
   uint128 min_amount_; // minimum amount to buy/sell
   uint8 deals_limit_; // deals limit in one processing in Price
   address notify_addr_;
 };
 
-__interface EStock {
+__interface EFLeX {
 };
 
 }} // namespace tvm::schema

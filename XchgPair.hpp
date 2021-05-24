@@ -2,13 +2,12 @@
 
 #include <tvm/schema/message.hpp>
 
-#include <tvm/replay_attack_protection/timestamp.hpp>
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
 
 namespace tvm { namespace schema {
 
-__interface ITradingPair {
+__interface IXchgPair {
 
   [[internal, noaccept, answer_id]]
   bool_t onDeploy();
@@ -17,24 +16,30 @@ __interface ITradingPair {
   [[getter]]
   address getFLeXAddr();
 
+  // address of major tip3 token root
   [[getter]]
-  address getTip3Root();
-};
-using ITradingPairPtr = handle<ITradingPair>;
+  address getTip3MajorRoot();
 
-struct DTradingPair {
+  // address of minor tip3 token root
+  [[getter]]
+  address getTip3MinorRoot();
+};
+using IXchgPairPtr = handle<IXchgPair>;
+
+struct DXchgPair {
   address flex_addr_;
-  address tip3_root_;
+  address tip3_major_root_;
+  address tip3_minor_root_;
   uint128 deploy_value_; // required minimum value to deploy TradingPair
 };
 
-__interface ETradingPair {
+__interface EXchgPair {
 };
 
-// Prepare Trading Pair StateInit structure and expected contract address (hash from StateInit)
+// Prepare Exchange Pair StateInit structure and expected contract address (hash from StateInit)
 inline
-std::pair<StateInit, uint256> prepare_trading_pair_state_init_and_addr(DTradingPair pair_data, cell pair_code) {
-  cell pair_data_cl = prepare_persistent_data<ITradingPair, void, DTradingPair>({}, pair_data);
+std::pair<StateInit, uint256> prepare_xchg_pair_state_init_and_addr(DXchgPair pair_data, cell pair_code) {
+  cell pair_data_cl = prepare_persistent_data<IXchgPair, void, DXchgPair>({}, pair_data);
   StateInit pair_init {
     /*split_depth*/{}, /*special*/{},
     pair_code, pair_data_cl, /*library*/{}

@@ -1,4 +1,4 @@
-#include "Price.hpp"
+#include "PriceXchg.hpp"
 #include <tvm/contract.hpp>
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
@@ -6,6 +6,10 @@
 
 using namespace tvm;
 using namespace schema;
+
+// Contract for trading price for tip3/tip3 exchange
+// First tip3 in pair is major and terms "sell", "buy", amount are related to the first tip3 in pair
+// Second tip3 is called "minor"
 
 static constexpr unsigned ok = 0;
 struct ec : tvm::error_code {
@@ -29,55 +33,68 @@ bool is_active_time(uint32 order_finish_time) {
   return tvm_now() + safe_delay_period < order_finish_time.get();
 }
 
+// calculate cost (amount of minor tip3 to match the "amount" of major tip3)
 __always_inline
-std::optional<uint128> calc_cost(uint128 amount, uint128 price) {
-  unsigned tons_cost = amount.get() * price.get();
-  if (tons_cost >> 128)
+std::optional<uint128> minor_cost(uint128 amount, price_t price) {
+  unsigned cost = __builtin_tvm_muldivr(amount.get(), price.numerator().get(), price.denominator().get());
+  if (cost >> 128)
     return {};
-  return uint128(tons_cost);
+  return uint128{cost};
 }
 
+// class for processing orders queues and performing deals
 class dealer {
 public:
   // returns (sell_out_of_tons, buy_out_of_tons, deal_amount)
   __always_inline
-  std::tuple<bool, bool, uint128> make_deal(OrderInfo& sell, OrderInfo& buy) {
+  std::tuple<bool, bool, uint128> make_deal(OrderInfoXchg& sell, OrderInfoXchg& buy) {
     auto deal_amount = std::min(sell.amount, buy.amount);
+
     bool_t last_tip3_sell{sell.amount == deal_amount};
-    sell.amount -= deal_amount;
-    buy.amount -= deal_amount;
-    auto cost = calc_cost(deal_amount, price_);
+    bool_t last_tip3_buy{buy.amount == deal_amount};
+
+    auto buy_payment = minor_cost(deal_amount, price_);
+    // it is unlikely here, because (amount * price) calculation is performed before for initial order
+    // so just removing both orders from queues with 'out_of_tons' reason
+    if (!buy_payment)
+      return {true, true, uint128(0)};
 
     // Smaller pays for tip3 transfer
     //  (if seller provides big sell order, he will not pay for each small transfer)
-    uint128 sell_costs{0};
-    uint128 buy_costs = *cost;
+    uint128 sell_ton_costs{0};
+    uint128 buy_ton_costs{0};
+    uint128 transaction_costs = tons_cfg_.transfer_tip3 * 2 + tons_cfg_.send_notify;
     if (last_tip3_sell)
-      sell_costs += (tons_cfg_.transfer_tip3 + tons_cfg_.send_notify);
+      sell_ton_costs += transaction_costs;
     else
-      buy_costs += (tons_cfg_.transfer_tip3 + tons_cfg_.send_notify);
+      buy_ton_costs += transaction_costs;
 
-    bool sell_out_of_tons = (sell.account < sell_costs);
-    bool buy_out_of_tons = (buy.account < buy_costs);
+    bool sell_out_of_tons = (sell.account < sell_ton_costs);
+    bool buy_out_of_tons = (buy.account < buy_ton_costs);
     if (sell_out_of_tons || buy_out_of_tons)
       return {sell_out_of_tons, buy_out_of_tons, uint128(0)};
-    sell.account -= sell_costs;
-    buy.account -= buy_costs;
 
-    ITONTokenWalletPtr(sell.tip3_wallet)(Grams(tons_cfg_.transfer_tip3.get()), IGNORE_ACTION_ERRORS).
-      transfer(buy.tip3_wallet, deal_amount, last_tip3_sell, sell.tip3_wallet);
-    tvm_transfer(sell.client_addr, cost->get(), /*bounce*/true);
+    sell.amount -= deal_amount;
+    buy.amount -= deal_amount;
+
+    sell.account -= sell_ton_costs;
+    buy.account -= buy_ton_costs;
+
+    ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get()), IGNORE_ACTION_ERRORS).
+      transfer(buy.tip3_wallet_receive, deal_amount, last_tip3_sell, sell.tip3_wallet_provide);
+    ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get()), IGNORE_ACTION_ERRORS).
+      transfer(sell.tip3_wallet_receive, *buy_payment, last_tip3_buy, buy.tip3_wallet_provide);
 
     notify_addr_(Grams(tons_cfg_.send_notify.get()), IGNORE_ACTION_ERRORS).
-      onDealCompleted(tip3root_, price_, deal_amount);
+      onXchgDealCompleted(tip3root_sell_, tip3root_buy_, price_.numerator(), price_.denominator(), deal_amount);
 
     return {false, false, deal_amount};
   }
 
   __attribute__((noinline))
-  static std::tuple<std::optional<OrderInfoWithIdx>, queue<OrderInfo>, uint128>
-  extract_active_order(std::optional<OrderInfoWithIdx> cur_order,
-                       queue<OrderInfo> orders, uint128 all_amount, bool_t sell) {
+  static std::tuple<std::optional<OrderInfoXchgWithIdx>, big_queue<OrderInfoXchg>, uint128>
+  extract_active_order(std::optional<OrderInfoXchgWithIdx> cur_order,
+                       big_queue<OrderInfoXchg> orders, uint128 all_amount, bool_t sell) {
     if (cur_order)
       return {cur_order, orders, all_amount};
 
@@ -100,8 +117,9 @@ public:
 
   __always_inline
   void process_queue(unsigned sell_idx, unsigned buy_idx) {
-    std::optional<OrderInfoWithIdx> sell_opt;
-    std::optional<OrderInfoWithIdx> buy_opt;
+    std::optional<OrderInfoXchgWithIdx> sell_opt;
+    std::optional<OrderInfoXchgWithIdx> buy_opt;
+
     unsigned deals_count = 0;
     while (true) {
       std::tie(sell_opt, sells_, sells_amount_) =
@@ -116,6 +134,7 @@ public:
 
       bool sell_out_of_tons = false;
       bool buy_out_of_tons = false;
+
       uint128 deal_amount{0};
       // ==== if we hit deals limit ====
       if (++deals_count > deals_limit_) {
@@ -130,7 +149,7 @@ public:
         if (!sell_out_of_tons && !buy_out_of_tons) {
           sell.account -= half_process_queue;
           buy.account -= half_process_queue;
-          IPricePtr(address{tvm_myaddr()})(Grams(tons_cfg_.process_queue.get()), IGNORE_ACTION_ERRORS).
+          IPriceXchgPtr(address{tvm_myaddr()})(Grams(tons_cfg_.process_queue.get()), IGNORE_ACTION_ERRORS).
             processQueue();
           if (sell_idx == sell_idx_cur)
             ret_ = { uint32(ec::deals_limit), sell.original_amount - sell.amount, sell.amount };
@@ -153,7 +172,7 @@ public:
           ret_ = ret;
         if (sell.account > tons_cfg_.return_ownership) {
           sell.account -= tons_cfg_.return_ownership;
-          ITONTokenWalletPtr(sell.tip3_wallet)(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).
+          ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).
             returnOwnership();
           IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get()), IGNORE_ACTION_ERRORS).
             onOrderFinished(ret, bool_t{true});
@@ -165,8 +184,12 @@ public:
         OrderRet ret { uint32(ec::out_of_tons), buy.original_amount - buy.amount, uint128{0} };
         if (buy_idx == buy_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get()), IGNORE_ACTION_ERRORS).
-          onOrderFinished(ret, bool_t{false});
+        if (sell.account > tons_cfg_.return_ownership) {
+          ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).
+            returnOwnership();
+          IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get()), IGNORE_ACTION_ERRORS).
+            onOrderFinished(ret, bool_t{false});
+        }
         buy_opt.reset();
       }
       if (sell_out_of_tons || buy_out_of_tons)
@@ -213,41 +236,43 @@ public:
     }
   }
 
-  address tip3root_;
+  address tip3root_sell_;
+  address tip3root_buy_;
   IFLeXNotifyPtr notify_addr_;
-  uint128 price_;
+  price_t price_;
   unsigned deals_limit_;
   TonsConfig tons_cfg_;
   uint128 sells_amount_;
-  queue<OrderInfo> sells_;
+  big_queue<OrderInfoXchg> sells_;
   uint128 buys_amount_;
-  queue<OrderInfo> buys_;
+  big_queue<OrderInfoXchg> buys_;
   std::optional<OrderRet> ret_;
 };
 
 struct process_ret {
   uint128 sells_amount;
-  queue<OrderInfo> sells_;
+  big_queue<OrderInfoXchg> sells_;
   uint128 buys_amount;
-  queue<OrderInfo> buys_;
+  big_queue<OrderInfoXchg> buys_;
   std::optional<OrderRet> ret_;
 };
 
 __attribute__((noinline))
-process_ret process_queue_impl(address tip3root, IFLeXNotifyPtr notify_addr,
-                               uint128 price, uint8 deals_limit, TonsConfig tons_cfg,
+process_ret process_queue_impl(address tip3root_sell, address tip3root_buy,
+                               IFLeXNotifyPtr notify_addr,
+                               price_t price, uint8 deals_limit, TonsConfig tons_cfg,
                                unsigned sell_idx, unsigned buy_idx,
-                               uint128 sells_amount, queue<OrderInfo> sells,
-                               uint128 buys_amount, queue<OrderInfo> buys) {
-  dealer d{tip3root, notify_addr, price, deals_limit.get(), tons_cfg,
+                               uint128 sells_amount, big_queue<OrderInfoXchg> sells,
+                               uint128 buys_amount, big_queue<OrderInfoXchg> buys) {
+  dealer d{tip3root_sell, tip3root_buy, notify_addr, price, deals_limit.get(), tons_cfg,
            sells_amount, sells, buys_amount, buys, {}};
   d.process_queue(sell_idx, buy_idx);
   return { d.sells_amount_, d.sells_, d.buys_amount_, d.buys_, d.ret_ };
 }
 
 __attribute__((noinline))
-std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
-    queue<OrderInfo> orders, addr_std_fixed client_addr, uint128 all_amount, bool_t sell,
+std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
+    big_queue<OrderInfoXchg> orders, addr_std_fixed client_addr, uint128 all_amount, bool_t sell,
     Grams return_ownership, Grams process_queue, Grams incoming_val) {
   bool is_first = true;
   for (auto it = orders.begin(); it != orders.end();) {
@@ -255,11 +280,10 @@ std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
     auto ord = *it;
     if (ord.client_addr == client_addr) {
       unsigned minus_val = process_queue.get();
-      if (sell) {
-        ITONTokenWalletPtr(ord.tip3_wallet)(return_ownership, IGNORE_ACTION_ERRORS).
-          returnOwnership();
-        minus_val += return_ownership.get();
-      }
+      ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership, IGNORE_ACTION_ERRORS).
+        returnOwnership();
+      minus_val += return_ownership.get();
+
       unsigned plus_val = ord.account.get() + (is_first ? incoming_val.get() : 0);
       is_first = false;
       if (plus_val > minus_val) {
@@ -278,11 +302,11 @@ std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
   return { orders, all_amount };
 }
 
-class Price final : public smart_interface<IPrice>, public DPrice {
+class PriceXchg final : public smart_interface<IPriceXchg>, public DPriceXchg {
 public:
   __always_inline
   OrderRet onTip3LendOwnership(
-      uint128 balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
+      uint128 lend_balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
       cell payload_cl, address answer_addr) {
     auto [tip3_wallet, value] = int_sender_and_value();
     ITONTokenWalletPtr wallet_in(tip3_wallet);
@@ -295,32 +319,45 @@ public:
 
     auto min_value = onTip3LendOwnershipMinValue();
 
-    auto args = parse<SellArgs>(payload_cl.ctos());
+    auto args = parse<PayloadArgs>(payload_cl.ctos());
+    bool_t is_sell = args.sell;
     auto amount = args.amount;
+    auto minor_amount = minor_cost(amount, price_);
     unsigned err = 0;
     if (value.get() < min_value)
       err = ec::not_enough_tons_to_process;
-    else if (!verify_tip3_addr(tip3_wallet, pubkey, internal_owner))
+    else if (is_sell ? !verify_tip3_addr(major_tip3cfg_, tip3_wallet, pubkey, internal_owner) :
+                       !verify_tip3_addr(minor_tip3cfg_, tip3_wallet, pubkey, internal_owner))
       err = ec::unverified_tip3_wallet;
+    else if (!minor_amount)
+      err = ec::too_big_tokens_amount;
     else if (amount < min_amount_)
       err = ec::not_enough_tokens_amount;
-    else if (balance < amount)
-      err = ec::too_big_tokens_amount;
-    else if (!calc_cost(amount, price_))
+    else if (lend_balance < (is_sell ? amount : *minor_amount))
       err = ec::too_big_tokens_amount;
 
     if (err)
-      return on_sell_fail(err, wallet_in);
+      return on_ord_fail(err, wallet_in);
 
     uint128 account = uint128(value.get()) - tons_cfg_.process_queue - tons_cfg_.order_answer;
 
-    OrderInfo sell{amount, amount, account, tip3_wallet, args.receive_wallet, lend_finish_time};
-    sells_.push(sell);
-    sells_amount_ += sell.amount;
+    OrderInfoXchg ord{amount, amount, account, tip3_wallet, args.receive_tip3_wallet, args.client_addr, lend_finish_time};
+    unsigned sell_idx = 0;
+    unsigned buy_idx = 0;
+    if (is_sell) {
+      sells_.push(ord);
+      sells_amount_ += ord.amount;
+      sell_idx = sells_.back_with_idx().first;
+    } else {
+      buys_.push(ord);
+      buys_amount_ += ord.amount;
+      buy_idx = buys_.back_with_idx().first;
+    }
 
     auto [sells_amount, sells, buys_amount, buys, ret] =
-      process_queue_impl(tip3cfg_.root_address, notify_addr_, price_, deals_limit_, tons_cfg_,
-                         sells_.back_with_idx().first, 0,
+      process_queue_impl(major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
+                         notify_addr_, price_, deals_limit_, tons_cfg_,
+                         sell_idx, buy_idx,
                          sells_amount_, sells_, buys_amount_, buys_);
     sells_ = sells;
     buys_ = buys;
@@ -330,39 +367,7 @@ public:
     if (sells_.empty() && buys_.empty())
       suicide(flex_);
     if (ret) return *ret;
-    return { uint32(ok), uint128(0), sell.amount };
-  }
-
-  __always_inline
-  OrderRet buyTip3(uint128 amount, address receive_tip3_wallet, uint32 order_finish_time) {
-    auto [sender, value_gr] = int_sender_and_value();
-    require(amount >= min_amount_, ec::not_enough_tokens_amount);
-    auto cost = calc_cost(amount, price_);
-    require(!!cost, ec::too_big_tokens_amount);
-    require(value_gr.get() > buyTip3MinValue(*cost),
-            ec::not_enough_tons_to_process);
-
-    set_int_return_value(tons_cfg_.order_answer.get());
-    set_int_return_flag(IGNORE_ACTION_ERRORS);
-
-    uint128 account = uint128(value_gr.get()) - tons_cfg_.process_queue - tons_cfg_.order_answer;
-
-    OrderInfo buy{amount, amount, account, receive_tip3_wallet, sender, order_finish_time};
-    buys_.push(buy);
-    buys_amount_ += buy.amount;
-
-    auto [sells_amount, sells, buys_amount, buys, ret] =
-      process_queue_impl(tip3cfg_.root_address, notify_addr_, price_, deals_limit_, tons_cfg_,
-                         0, buys_.back_with_idx().first,
-                         sells_amount_, sells_, buys_amount_, buys_);
-    sells_ = sells;
-    buys_ = buys;
-    sells_amount_ = sells_amount;
-    buys_amount_ = buys_amount;
-    if (sells_.empty() && buys_.empty())
-      suicide(flex_);
-    if (ret) return *ret;
-    return { uint32(ok), uint128(0), buy.amount };
+    return { uint32(ok), uint128(0), ord.amount };
   }
 
   __always_inline
@@ -370,7 +375,8 @@ public:
     if (sells_.empty() || buys_.empty())
       return;
     auto [sells_amount, sells, buys_amount, buys, ret] =
-      process_queue_impl(tip3cfg_.root_address, notify_addr_, price_, deals_limit_, tons_cfg_, 0, 0,
+      process_queue_impl(major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
+                         notify_addr_, price_, deals_limit_, tons_cfg_, 0, 0,
                          sells_amount_, sells_, buys_amount_, buys_);
     sells_ = sells;
     buys_ = buys;
@@ -412,13 +418,18 @@ public:
 
   // ========== getters ==========
   __always_inline
-  DetailsInfo getDetails() {
-    return { getPrice(), getMinimumAmount(), getSellAmount(), getBuyAmount() };
+  DetailsInfoXchg getDetails() {
+    return { getPriceNum(), getPriceDenum(), getMinimumAmount(), getSellAmount(), getBuyAmount() };
   }
 
   __always_inline
-  uint128 getPrice() {
-    return price_;
+  uint128 getPriceNum() {
+    return price_.numerator();
+  }
+
+  __always_inline
+  uint128 getPriceDenum() {
+    return price_.denominator();
   }
 
   __always_inline
@@ -432,13 +443,13 @@ public:
   }
 
   __always_inline
-  dict_array<OrderInfo> getSells() {
-    return dict_array<OrderInfo>(sells_.begin(), sells_.end());
+  dict_array<OrderInfoXchg> getSells() {
+    return dict_array<OrderInfoXchg>(sells_.begin(), sells_.end());
   }
 
   __always_inline
-  dict_array<OrderInfo> getBuys() {
-    return dict_array<OrderInfo>(buys_.begin(), buys_.end());
+  dict_array<OrderInfoXchg> getBuys() {
+    return dict_array<OrderInfoXchg>(buys_.begin(), buys_.end());
   }
 
   __always_inline
@@ -456,7 +467,7 @@ public:
     return 0;
   }
   // =============== Support functions ==================
-  DEFAULT_SUPPORT_FUNCTIONS(IPrice, void)
+  DEFAULT_SUPPORT_FUNCTIONS(IPriceXchg, void)
 private:
   __always_inline
   uint128 onTip3LendOwnershipMinValue() const {
@@ -469,30 +480,26 @@ private:
       tons_cfg_.return_ownership + tons_cfg_.order_answer;
   }
   __always_inline
-  uint128 buyTip3MinValue(uint128 buy_cost) const {
-    return buy_cost + tons_cfg_.process_queue + tons_cfg_.transfer_tip3 + tons_cfg_.send_notify +
-      tons_cfg_.order_answer;
-  }
-  __always_inline
-  bool verify_tip3_addr(address tip3_wallet, uint256 wallet_pubkey, uint256 internal_owner) {
-    auto expected_address = expected_wallet_address(wallet_pubkey, internal_owner);
+  bool verify_tip3_addr(Tip3Config cfg,
+                        address tip3_wallet, uint256 wallet_pubkey, uint256 internal_owner) {
+    auto expected_address = expected_wallet_address(cfg, wallet_pubkey, internal_owner);
     return std::get<addr_std>(tip3_wallet()).address == expected_address;
   }
   __always_inline
-  uint256 expected_wallet_address(uint256 wallet_pubkey, uint256 internal_owner) {
+  uint256 expected_wallet_address(Tip3Config cfg, uint256 wallet_pubkey, uint256 internal_owner) {
     std::optional<address> owner_addr;
     if (internal_owner)
       owner_addr = address::make_std(workchain_id_, internal_owner);
     DTONTokenWallet wallet_data {
-      tip3cfg_.name, tip3cfg_.symbol, tip3cfg_.decimals,
-      TokensType(0), tip3cfg_.root_public_key, wallet_pubkey,
-      tip3cfg_.root_address, owner_addr, {}, tip3_code_, {}, workchain_id_
+      cfg.name, cfg.symbol, cfg.decimals,
+      TokensType(0), cfg.root_public_key, wallet_pubkey,
+      cfg.root_address, owner_addr, {}, tip3_code_, {}, workchain_id_
     };
     return prepare_wallet_state_init_and_addr(wallet_data).second;
   }
 
   __always_inline
-  OrderRet on_sell_fail(unsigned ec, ITONTokenWalletPtr wallet_in) {
+  OrderRet on_ord_fail(unsigned ec, ITONTokenWalletPtr wallet_in) {
     auto incoming_value = int_value().get();
     tvm_rawreserve(tvm_balance() - incoming_value, rawreserve_flag::up_to);
     set_int_return_flag(SEND_ALL_GAS);
@@ -501,8 +508,8 @@ private:
   }
 };
 
-DEFINE_JSON_ABI(IPrice, DPrice, EPrice);
+DEFINE_JSON_ABI(IPriceXchg, DPriceXchg, EPriceXchg);
 
 // ----------------------------- Main entry functions ---------------------- //
-MAIN_ENTRY_FUNCTIONS_NO_REPLAY(Price, IPrice, DPrice)
+MAIN_ENTRY_FUNCTIONS_NO_REPLAY(PriceXchg, IPriceXchg, DPriceXchg)
 

@@ -24,7 +24,15 @@
     ]
   },
   {
-    "name": "getTip3Root",
+    "name": "getTip3MajorRoot",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "getTip3MinorRoot",
     "inputs": [
     ],
     "outputs": [
