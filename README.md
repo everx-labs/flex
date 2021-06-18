@@ -5,7 +5,7 @@ Flex is a [FreeTon](https://freeton.org/discover) decentralized and distributed 
 
 
 ## Flex DeBot 
- [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
+ [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/debots/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
  - queue all available pairs
 - queue all price contracts in the pair and display current sell/buy order quantity
 - show current book price
@@ -23,7 +23,7 @@ tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc
 
 ## TIP3 DeBot
 
-[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/tip3Debot/tip3Debot.sol) - [DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps manage TIP3 tokens: 
+[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/debots/tip3Debot/tip3Debot.sol) - [DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps manage TIP3 tokens: 
 - create new TIP3 token, 
 - grant TIP3 tokens to TIP3 wallets.
 
