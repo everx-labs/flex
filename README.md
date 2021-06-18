@@ -1,11 +1,24 @@
 <p align="center"><img src="./screenshots/flash2.svg" height="56" width="56"></p> 
 <h1 align="center">Flash Exchange (FLEX)</h1>
 
-This is Flex:
+Flex is a [FreeTon](https://freeton.org/discover) decentralized and distributed limit order book (DLOB) which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via distributed smart contract model. 
 
-<img src="./screenshots/flash3.svg" height="56" width="56">
 
-*(we thank [@eternalflow](https://github.com/eternalflow) for a picture of his dog!)*
+## Flex DeBot 
+ [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
+ - queue all available pairs
+- queue all price contracts in the pair and display current sell/buy order quantity
+- show current book price
+- create and send **Good-til-cancelled (GTC) order** for a selected token quantity for a selected Price
+Since this will require to have a token wallet and to transfer the ownership of the user wallet to the Price Contract it should do all this just by asking user for a seed phrase or private key once
+- display active user orders
+- withdraw active user orders
+
+DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
+```
+tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc7b4cff6705d44649178d505b6d
+```
+*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
 
 
 ## TIP3 DeBot
@@ -18,22 +31,6 @@ DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli 
 
 ```
 tonos-cli --url net.ton.dev debot fetch 0:186b5095ccbecdcaeead39b25923d233d52df498a07e01cdf0b1141b80dd0251
-```
-*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
-
-## Flex DeBot 
- [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
- - queue all available pairs
-- queue all price contracts in the pair and display current sell/buy order quantity
-- show current book price
-- create and send **Good-til-cancelled (GTC) order** for a selected token quantity for a selected Price
-Since this will require to have a token wallet and to transfer the ownership of the user wallet to the Price Contract it should do all this just by asking user for a seed phrase or private key once
-- display active user orders
-- withdraw active user orders
-
-Use this DeBot to try Flex on [net.ton.dev](https://net.ton.live): 
-```
-tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc7b4cff6705d44649178d505b6d
 ```
 *please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
 
@@ -51,6 +48,12 @@ Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
 ```bash
 tondev sol compile <debotName>.sol
 ```
+
+This is Flex:
+<img src="./screenshots/flash3.svg" height="56" width="56">
+
+
+*(we thank [@eternalflow](https://github.com/eternalflow) for a picture of his dog!)*
 
 ## What Problem Are We Trying to Solve?
 
