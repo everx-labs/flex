@@ -16,7 +16,10 @@ Since this will require to have a token wallet and to transfer the ownership of 
 
 DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
 ```
-tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc7b4cff6705d44649178d505b6d
+tonos-cli --url net.ton.dev debot fetch 0:47abef2c28f6db37ecb3aec7c9e78a48333f131fef46c9b831f153d34df5e25c
+```
+```
+tonos-cli --url rustnet.ton.dev debot fetch 0:65e895d0deb7cd84ead4708956c979388210c8aeb5a1761bacbc7b51c856b53d
 ```
 *please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
 
@@ -30,9 +33,20 @@ tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc
 DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
 
 ```
-tonos-cli --url net.ton.dev debot fetch 0:186b5095ccbecdcaeead39b25923d233d52df498a07e01cdf0b1141b80dd0251
+tonos-cli --url net.ton.dev debot fetch 0:5e11dd18cf73aaf386ac1ebec2c78ea1fd91969e8e1d4a7bcff1eca38c4f0445
+```
+```
+tonos-cli --url rustnet.ton.dev debot fetch 0:186b5095ccbecdcaeead39b25923d233d52df498a07e01cdf0b1141b80dd0251
 ```
 *please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
+
+## AMM Flex DeBot
+```
+tonos-cli --url net.ton.dev debot fetch 0:807f0363a8192c9f18b8f6709ed37b50192b0f94d3f1aeacd577f6b253cbbed1
+```
+```
+tonos-cli --url rustnet.ton.dev debot fetch 0:4ac01ac5f2d71e5e684eaa5ccf44d9eab19c71d0438280a66e087f1b3e9bb5e2
+```
 
 ###Prerequisites: 
 
