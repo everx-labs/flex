@@ -1,0 +1,323 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "setIcon",
+			"inputs": [
+				{"name":"icon","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setFlexAddr",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setFlexHelperDebot",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3Tip3FlexDebot",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3TonFlexDebot",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "start",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onGetFCAddressAndKeys",
+			"inputs": [
+				{"name":"fc","type":"address"},
+				{"name":"pk","type":"uint256"},
+				{"name":"minAmount","type":"uint128"},
+				{"name":"dealsLimit","type":"uint8"},
+				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"},
+				{"name":"tpcode","type":"cell"},
+				{"name":"xchgpcode","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "startMenu",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuTradeTip3ForTon",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuTradeTip3ForTip",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "updateTradingPairs",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onAccountsByHash",
+			"inputs": [
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTradingPairStock",
+			"inputs": [
+				{"name":"tpa","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTradingPairStock",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTradingPairTip3MajorRoot",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3MajorRoot",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTip3MajorRootCodeHash",
+			"inputs": [
+				{"name":"code_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTip3MajorRootSymbol",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3MajorRootSymbol",
+			"inputs": [
+				{"name":"value0","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTradingPairTip3MinorRoot",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3MinorRoot",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTip3MinorRootCodeHash",
+			"inputs": [
+				{"name":"code_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTip3MinorRootSymbol",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3MinorRootSymbol",
+			"inputs": [
+				{"name":"value0","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addAndNextTradingPair",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getNextTP",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "showTip3Menu",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuWithdrawTons",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuUpdateTradigPair",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuDeployTradigPair",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSelectSymbolMenu",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onGetTip3WalletAddress",
+			"inputs": [
+				{"name":"t3w","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotInfo",
+			"id": "0xDEB",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"version","type":"bytes"},
+				{"name":"publisher","type":"bytes"},
+				{"name":"caption","type":"bytes"},
+				{"name":"author","type":"bytes"},
+				{"name":"support","type":"address"},
+				{"name":"hello","type":"bytes"},
+				{"name":"language","type":"bytes"},
+				{"name":"dabi","type":"bytes"},
+				{"name":"icon","type":"bytes"}
+			]
+		},
+		{
+			"name": "getRequiredInterfaces",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"interfaces","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"state","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotOptions",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"options","type":"uint8"},
+				{"name":"debotAbi","type":"bytes"},
+				{"name":"targetAbi","type":"bytes"},
+				{"name":"targetAddr","type":"address"}
+			]
+		},
+		{
+			"name": "setABI",
+			"inputs": [
+				{"name":"dabi","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
