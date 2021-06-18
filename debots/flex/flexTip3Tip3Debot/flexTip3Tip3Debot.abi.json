@@ -1,0 +1,485 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "start",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "tokensToStr",
+			"inputs": [
+				{"name":"tokens","type":"uint128"},
+				{"name":"decimals","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"value0","type":"bytes"}
+			]
+		},
+		{
+			"name": "tradeTip3Tip3",
+			"inputs": [
+				{"name":"fc","type":"address"},
+				{"name":"pk","type":"uint256"},
+				{"name":"minAmount","type":"uint128"},
+				{"name":"dealsLimit","type":"uint8"},
+				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"},
+				{"name":"stock","type":"address"},
+				{"name":"t3major","type":"address"},
+				{"name":"t3minor","type":"address"},
+				{"name":"wt3major","type":"address"},
+				{"name":"wt3minor","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getFCT3WBalances",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getT3WDetails",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getT3WMajorDetails",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setT3WDetails",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getPriceCodeHash",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setPriceCode",
+			"inputs": [
+				{"name":"value0","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setUpdateT3WDetails",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getPricesDataByHash",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onPricesByHash",
+			"inputs": [
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuCancelBuyTip3",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuCancelSellTip3",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onCancelSellTip3",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "cancelSellOrder",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "confirmCancelSellOrder",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSendCancelSellOrder",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSellOrderCancelSuccess",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSellOrderCancelError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuQuickDeal",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getBuyQuickDealAmount",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getSellQuickDealAmount",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuOrderBookUpdate",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuOrderBookBack",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuBuyTip3",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDealAmmount",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDealPrice",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getBuyDealTime",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployPriceWithBuy",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "confirmDeployPriceWithBuy",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSendDeployBuy",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onBuySuccess",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onBuyError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuSellTip3",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getSellDealAmmount",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getSellDealPrice",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getSellDealTime",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployPriceWithSell",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "confirmDeployPriceWithSell",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSendDeploySell",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSellSuccess",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSellError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotInfo",
+			"id": "0xDEB",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"version","type":"bytes"},
+				{"name":"publisher","type":"bytes"},
+				{"name":"key","type":"bytes"},
+				{"name":"author","type":"bytes"},
+				{"name":"support","type":"address"},
+				{"name":"hello","type":"bytes"},
+				{"name":"language","type":"bytes"},
+				{"name":"dabi","type":"bytes"},
+				{"name":"icon","type":"bytes"}
+			]
+		},
+		{
+			"name": "getRequiredInterfaces",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"interfaces","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"state","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotOptions",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"options","type":"uint8"},
+				{"name":"debotAbi","type":"bytes"},
+				{"name":"targetAbi","type":"bytes"},
+				{"name":"targetAddr","type":"address"}
+			]
+		},
+		{
+			"name": "setABI",
+			"inputs": [
+				{"name":"dabi","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

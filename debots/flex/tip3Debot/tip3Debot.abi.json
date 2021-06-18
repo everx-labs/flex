@@ -1,0 +1,566 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "setT3RCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setT3WalletCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "start",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuDeployRoot",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "inputPublicKey",
+			"inputs": [
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuChooseToken",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "startSearching",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onDataResult",
+			"inputs": [
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "printTokenList",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuEnterRootAddress",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setName",
+			"inputs": [
+				{"name":"value0","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setSymbol",
+			"inputs": [
+				{"name":"value0","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep1",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep2",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep3",
+			"inputs": [
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep4",
+			"inputs": [
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep5",
+			"inputs": [
+				{"name":"value","type":"int256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep6",
+			"inputs": [
+				{"name":"value","type":"int256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep7",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep8",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep9",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep9_getBalance",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep10Proxy",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep10",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSuccessDeployed",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onDeployFailed",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep11",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onT3WCSuccess",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onT3WCError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "calcTipWallet",
+			"inputs": [
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuSetTipRoot",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTipRoot",
+			"inputs": [
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkRootExistance",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkRootCodeHash",
+			"inputs": [
+				{"name":"code_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setRootBalance",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTotalSupply",
+			"inputs": [
+				{"name":"value0","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTotalGranted",
+			"inputs": [
+				{"name":"value0","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setDecimals",
+			"inputs": [
+				{"name":"value0","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTokenName",
+			"inputs": [
+				{"name":"value0","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setWalletCodeHash",
+			"inputs": [
+				{"name":"value0","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTokenInfo",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "printTokenDetails",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuGrantTokens",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuCalcAddress",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuEnterAddress",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setAddress",
+			"inputs": [
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setTip3WalletAddress",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setGrantAmount",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkWallet",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "startGrant",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkWalletBalance",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkWalletStatus",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkWalletCodeHash",
+			"inputs": [
+				{"name":"code_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "printWalletBalance",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkWalletExistance",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onDeployWalletSuccess",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onGrantSuccess",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onDeployWalletError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onGrantError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotInfo",
+			"id": "0xDEB",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"version","type":"bytes"},
+				{"name":"publisher","type":"bytes"},
+				{"name":"caption","type":"bytes"},
+				{"name":"author","type":"bytes"},
+				{"name":"support","type":"address"},
+				{"name":"hello","type":"bytes"},
+				{"name":"language","type":"bytes"},
+				{"name":"dabi","type":"bytes"},
+				{"name":"icon","type":"bytes"}
+			]
+		},
+		{
+			"name": "getRequiredInterfaces",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"interfaces","type":"uint256[]"}
+			]
+		},
+		{
+			"name": "tokensToStr",
+			"inputs": [
+				{"name":"tokens","type":"uint128"},
+				{"name":"decimals","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"value0","type":"bytes"}
+			]
+		},
+		{
+			"name": "transfer",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"},
+				{"name":"bounce","type":"bool"},
+				{"name":"flags","type":"uint16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"state","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotOptions",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"options","type":"uint8"},
+				{"name":"debotAbi","type":"bytes"},
+				{"name":"targetAbi","type":"bytes"},
+				{"name":"targetAddr","type":"address"}
+			]
+		},
+		{
+			"name": "setABI",
+			"inputs": [
+				{"name":"dabi","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
