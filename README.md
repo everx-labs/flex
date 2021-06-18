@@ -1,18 +1,50 @@
-# Flash Exchange (FLEX)
-
-*please note that the current implementation is an MVP, it was not properly tested, it misses many features and is generally a **work in progress — You should not use it for real trading!!!**
+<p align="center"><img src="./screenshots/flash2.svg" height="56" width="56"></p> 
+<h1 align="center">Flash Exchange (FLEX)</h1>
 
 This is Flex:
 
-<img src="./flash2.svg" height="56" width="56">
+<img src="./screenshots/flash3.svg" height="56" width="56">
 
-And this is Flex too:
+*(we thank [@eternalflow](https://github.com/eternalflow) for a picture of his dog!)*
 
-<img src="./flash3.svg" height="56" width="56">
 
-(we thank [@eternalflow](https://github.com/eternalflow) for a picture of his dog!)
+## TIP3 DeBot
 
-## TL;TR
+[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/tip3Debot/tip3Debot.sol) - [DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps manage TIP3 tokens: 
+- create new TIP3 token, 
+- grant TIP3 tokens to TIP3 wallets.
+
+DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
+
+```
+tonos-cli --url net.ton.dev debot fetch 0:186b5095ccbecdcaeead39b25923d233d52df498a07e01cdf0b1141b80dd0251
+```
+*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
+
+## Flex DeBot 
+ [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
+ - queue all available pairs
+- queue all price contracts in the pair and display current sell/buy order quantity
+- show current book price
+- create and send **Good-til-cancelled (GTC) order** for a selected token quantity for a selected Price
+Since this will require to have a token wallet and to transfer the ownership of the user wallet to the Price Contract it should do all this just by asking user for a seed phrase or private key once
+- display active user orders
+- withdraw active user orders
+
+Use this DeBot to try Flex on [net.ton.dev](https://net.ton.live): 
+```
+tonos-cli --url net.ton.dev debot fetch 0:97915fa58e63350c5478109bffebb8f9cf5afc7b4cff6705d44649178d505b6d
+```
+*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
+
+###Prerequisites: 
+
+You can run debots in (Surf)[https://ton.surf/main] or latest (tonos-cli)[https://github.com/tonlabs/tonos-cli/].  install:
+```
+tondev tonos-cli install
+```
+
+#### TL;TR
 
 Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
 
@@ -20,42 +52,25 @@ Compile all DeBots using [`tondev`](https://github.com/tonlabs/tondev) tool:
 tondev sol compile <debotName>.sol
 ```
 
-### TIP3 DeBot
+## What problem we solved
 
-[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/tip3Debot/tip3Debot.sol) - DeBot that helps manage TIP3 tokens: create new TIP3 token, grant TIP3 tokens to TIP3 wallets.
-
-DeBot is deployed to devnet. Run:
-
-```
-tonos-cli --url net.ton.dev debot fetch 0:c3ce4ec1dde824b580985795c805e2f41f30aa7ff70207f3a99ca184871f7d86
-```
-### Flex DeBot
-
-Use this DeBot to try Flex on Devnet: 0:523b97117c39eb78135add94bae6d821d9da58125ba6c67bb8355af66acdcee6
-
-#### Prerequisites: 
-
-tonos-cli >= 0.8.3. You can compile or download it from: https://github.com/tonlabs/tonos-cli/ or install:
-```
-tondev tonos-cli install
-```
-
-DeBot is deployed to devnet. Run:
-```bash
-tonos-cli --url net.ton.dev debot fetch 0:523b97117c39eb78135add94bae6d821d9da58125ba6c67bb8355af66acdcee6
-```
-## Problem
 The biggest problem with decentralized exchanges is its speed of execution, lack of advanced trading strategies ability and complex management. Here we propose a decentralized trading engine and order book with low latency and guaranteed trade execution. It is flexible — allowing extendable strategies, extremely fast — providing immediate execution and settlement of an order and both decentralized and distributed. This allows Flex to perform at par with Free TON blockchain performance. For example an average execution across 128 threads will by 0.08 seconds at roughly 80,000 trading pairs messages per second throughput for one shardchain. It will take just 15 workchains to beat Binance performance and 150 workchains to compete with BATS exchange. Usage of DeBots make it super easy to add simple or advanced user interfaces.
 
 Flex is a decentralized and distributed limit order book (DLOB) which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via distributed smart contract model. Many have tried this approach before and failed (EtherDelta, DDEX, Radar Relay, etc.). Up until now the problem of creating an order book on chain were: the slow speed of execution and the possibility of front-running orders. Some are trying to solve this by moving to the fastest possible blockchain. But just having a fast blockchain is not enough because usually order books are pretty large and complex which takes time to operate on. Flex distributed atomic contracts solves this problem distributing the load on the order book down to single price of a single pair.
 
-### How orders are filled on CLOB?
+A central exchanges using CLOB such as NYSE, CBOT, Coinbase, Binance operates in a microsecond time frames.
+
+That is how it looks:
+
+<img src="./screenshots/CLOB.png"/>
+
+## How orders are filled on CLOB?
 
 The most common algorithm used is Price/Time priority, aka FIFO: all orders at the same price level are filled according to time priority; the first order at a price level is the first order matched.
 
 Up until now there was a problem implementing this algorithm on a blockchain because transactions are usually prioritized by miners based on the gas fee they pay, allowing for front running the Time priority. Free TON does not have these problems.
 
-#### CLOB are hard to implement on a blockchain because:
+### CLOB are hard to implement on a blockchain because:
 
 The size of the state needed by an order book to represent the set of outstanding orders (e.g., passive liquidity) is large and extremely costly in the smart contract environment, where users must pay for space and compute power utilized.
 
@@ -78,6 +93,10 @@ For instance TON- XTIP3 will resolve a Root of TON-XTIP3 trading pair. User then
 After performing the calculation of addresses user performs read operation: querying blockchain database with SDK over GraphQL. Since each user only calculates pairs and prices it needs the operation takes microsenconds and one query is almost instantaneous.
 
 Let’s agree that a trading step should not be more than 0.01 (this information will be provided in the pair Root Contract data). User can now calculate a whole order book of this pair by entering all price steps around the target price or ask database for all addresses of that Price contract code hash. After calculating all price step contract addresses a user may try to retrieve all these contracts. If the contract does not exist means there are no orders of that price.
+
+
+<img src="./screenshots/Exchange.png"/>
+
 
 In order to execute a trade user can choose several strategies:
 If the price contract does not exist, a User can create a "Good-til-cancelled (GTC) order" by deploying the $asset pair contract adding the Price as a contract data in the constructor and sending the required amount of money to cover the trade. For example passing a price of $0.55 TIP3 into constructor and sending 10,000 TONs to the contract will create a sell order of 10,000 TONs for $0.55 TIP3 per 1 TON in $TIP3-TON trading pair contract. Sending TIP3 tokens will create a buy order.
@@ -118,6 +137,8 @@ Tip3 ownership is provided with finish time, when ownership will return back to 
 
 To buy tip3 tokens, client should specify tip3 wallet in his ownership by address in `buyTip3` arguments.
 
+<img src="./screenshots/Exchange2.png"/>
+
 ## Implementation
 
 ```cpp
@@ -140,10 +161,10 @@ __interface IPrice {
     cell payload, address answer_addr) = 201;
 
   [[internal, noaccept, answer_id]]
-  OrderRet buyTip3(uint128 amount, address receive_tip3) = 202;
+  OrderRet buyTip3(uint128 amount, address receive_tip3, uint32 order_finish_time) = 202;
 
   // will be called in case of deals limit hit in buy/sell processing
-  [[internal, noaccept]]
+   [[internal, noaccept]]
   void processQueue() = 203;
 
   // will cancel all orders with this sender's receive_wallet
@@ -158,13 +179,10 @@ __interface IPrice {
 // callback for client notification
 __interface IPriceCallback {
   [[internal, noaccept]]
-  void onBuyFinished(OrderRet ret);
-
-  [[internal, noaccept]]
-  void onSellFinished(OrderRet ret);
+  void onOrderFinished(OrderRet ret, bool_t sell);
 };
 
-__interface IStock {
+__interface IFLeX {
 
   [[external, dyn_chain_parse]]
   void constructor(uint256 deployer_pubkey,
@@ -178,7 +196,13 @@ __interface IStock {
   void setPairCode(cell code);
 
   [[external, noaccept]]
+  void setXchgPairCode(cell code);
+
+  [[external, noaccept]]
   void setPriceCode(cell code);
+
+  [[external, noaccept]]
+  void setXchgPriceCode(cell code);
 
   // ========== getters ==========
 
@@ -215,12 +239,14 @@ __interface IStock {
 };
 ```
 
-## TODO
+## TIP3 to TIP3 exchange 
 
-TIP3 to TIP3 exchange 
+https://github.com/tonlabs/flex/blob/main/PriceXchg.hpp
+https://github.com/tonlabs/flex/blob/main/XchgPair.hpp
 
-Multiple orders automation 
+#### STEP3 implementation
+- Multiple orders automation 
 
-More strategies, stop order 
+- More strategies
 
 
