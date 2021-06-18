@@ -1,0 +1,69 @@
+{
+  "ABI version": 2,
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onTip3LendOwnership",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"balance", "type":"uint128" },
+    { "name":"lend_finish_time", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"internal_owner", "type":"uint256" },
+    { "name":"payload", "type":"cell" },
+    { "name":"answer_addr", "type":"address" }
+    ],
+    "outputs": [
+    { "name":"err_code", "type":"uint32" },
+    { "name":"processed", "type":"uint128" },
+    { "name":"enqueued", "type":"uint128" }
+    ],
+    "id": "0xc9"
+  },
+  {
+    "name": "buyTip3",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"amount", "type":"uint128" },
+    { "name":"receive_tip3", "type":"address" },
+    { "name":"order_finish_time", "type":"uint32" }
+    ],
+    "outputs": [
+    { "name":"err_code", "type":"uint32" },
+    { "name":"processed", "type":"uint128" },
+    { "name":"enqueued", "type":"uint128" }
+    ],
+    "id": "0xca"
+  },
+  {
+    "name": "processQueue",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xcb"
+  },
+  {
+    "name": "cancelSell",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xcc"
+  },
+  {
+    "name": "cancelBuy",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xcd"
+  }
+  ],
+  "events": [
+  ]
+}
