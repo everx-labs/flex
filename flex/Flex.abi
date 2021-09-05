@@ -1,5 +1,6 @@
 {
   "ABI version": 2,
+  "version": "2.1.0",
   "header": [
     "pubkey",
     "time",
@@ -16,12 +17,12 @@
     { "name":"order_answer", "type":"uint128" },
     { "name":"process_queue", "type":"uint128" },
     { "name":"send_notify", "type":"uint128" },
-    { "name":"min_amount", "type":"uint128" },
     { "name":"deals_limit", "type":"uint8" },
     { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
-    ]
+    ],
+    "id": "0xa"
   },
   {
     "name": "setPairCode",
@@ -29,7 +30,8 @@
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
-    ]
+    ],
+    "id": "0xb"
   },
   {
     "name": "setXchgPairCode",
@@ -37,7 +39,8 @@
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
-    ]
+    ],
+    "id": "0xc"
   },
   {
     "name": "setPriceCode",
@@ -45,7 +48,8 @@
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
-    ]
+    ],
+    "id": "0xd"
   },
   {
     "name": "setXchgPriceCode",
@@ -53,7 +57,8 @@
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
-    ]
+    ],
+    "id": "0xe"
   },
   {
     "name": "isFullyInitialized",
@@ -61,7 +66,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"bool" }
-    ]
+    ],
+    "id": "0xf"
   },
   {
     "name": "getTonsCfg",
@@ -74,7 +80,8 @@
     { "name":"order_answer", "type":"uint128" },
     { "name":"process_queue", "type":"uint128" },
     { "name":"send_notify", "type":"uint128" }
-    ]
+    ],
+    "id": "0x10"
   },
   {
     "name": "getTradingPairCode",
@@ -82,7 +89,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"cell" }
-    ]
+    ],
+    "id": "0x11"
   },
   {
     "name": "getXchgPairCode",
@@ -90,7 +98,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"cell" }
-    ]
+    ],
+    "id": "0x12"
   },
   {
     "name": "getSellPriceCode",
@@ -99,7 +108,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"cell" }
-    ]
+    ],
+    "id": "0x13"
   },
   {
     "name": "getXchgPriceCode",
@@ -109,7 +119,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"cell" }
-    ]
+    ],
+    "id": "0x14"
   },
   {
     "name": "getSellTradingPair",
@@ -118,7 +129,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
+    ],
+    "id": "0x15"
   },
   {
     "name": "getXchgTradingPair",
@@ -128,15 +140,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
-  },
-  {
-    "name": "getMinAmount",
-    "inputs": [
     ],
-    "outputs": [
-    { "name":"value0", "type":"uint128" }
-    ]
+    "id": "0x16"
   },
   {
     "name": "getDealsLimit",
@@ -144,7 +149,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"uint8" }
-    ]
+    ],
+    "id": "0x17"
   },
   {
     "name": "getNotifyAddr",
@@ -152,8 +158,27 @@
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
+    ],
+    "id": "0x18"
   }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"deployer_pubkey_", "type":"uint256" },
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"trading_pair_deploy", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" }
+    ], "name":"tons_cfg_", "type":"tuple" },
+    { "name":"pair_code_", "type":"optional(cell)" },
+    { "name":"xchg_pair_code_", "type":"optional(cell)" },
+    { "name":"price_code_", "type":"optional(cell)" },
+    { "name":"xchg_price_code_", "type":"optional(cell)" },
+    { "name":"deals_limit_", "type":"uint8" },
+    { "name":"notify_addr_", "type":"address" }
   ],
   "events": [
   ]

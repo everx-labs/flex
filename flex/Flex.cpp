@@ -9,10 +9,7 @@
 using namespace tvm;
 using namespace schema;
 
-static constexpr unsigned TIMESTAMP_DELAY = 1800;
-
-class FLeX final : public smart_interface<IFLeX>, public DFLeX {
-  using replay_protection_t = replay_attack_protection::timestamp<TIMESTAMP_DELAY>;
+class Flex final : public smart_interface<IFlex>, public DFlex {
 public:
   struct error_code : tvm::error_code {
     static constexpr unsigned sender_is_not_deployer        = 100;
@@ -24,9 +21,8 @@ public:
   void constructor(uint256 deployer_pubkey,
       uint128 transfer_tip3, uint128 return_ownership, uint128 trading_pair_deploy,
       uint128 order_answer, uint128 process_queue, uint128 send_notify,
-      uint128 min_amount, uint8 deals_limit, address notify_addr) {
+      uint8 deals_limit, address notify_addr) {
     deployer_pubkey_ = deployer_pubkey;
-    min_amount_ = min_amount;
     deals_limit_ = deals_limit;
     notify_addr_ = notify_addr;
     tons_cfg_ = {
@@ -36,10 +32,10 @@ public:
 
   __always_inline
   void setPairCode(cell code) {
-    require(!isFullyInitialized().get(), error_code::cant_override_code);
+    require(!pair_code_, error_code::cant_override_code);
     require(msg_pubkey() == deployer_pubkey_, error_code::sender_is_not_deployer);
     tvm_accept();
-    require(!pair_code_, error_code::cant_override_code);
+
     // adding flex address to ref#2 in this code cell
     require(code.ctos().srefs() == 2, error_code::unexpected_refs_count_in_code);
     pair_code_ = builder().stslice(code.ctos()).stref(build(address{tvm_myaddr()}).endc()).endc();
@@ -47,10 +43,10 @@ public:
 
   __always_inline
   void setXchgPairCode(cell code) {
-    require(!isFullyInitialized().get(), error_code::cant_override_code);
+    require(!xchg_pair_code_, error_code::cant_override_code);
     require(msg_pubkey() == deployer_pubkey_, error_code::sender_is_not_deployer);
     tvm_accept();
-    require(!xchg_pair_code_, error_code::cant_override_code);
+
     // adding flex address to ref#2 in this code cell
     require(code.ctos().srefs() == 2, error_code::unexpected_refs_count_in_code);
     xchg_pair_code_ = builder().stslice(code.ctos()).stref(build(address{tvm_myaddr()}).endc()).endc();
@@ -58,19 +54,19 @@ public:
 
   __always_inline
   void setPriceCode(cell code) {
-    require(!isFullyInitialized().get(), error_code::cant_override_code);
+    require(!price_code_, error_code::cant_override_code);
     require(msg_pubkey() == deployer_pubkey_, error_code::sender_is_not_deployer);
     tvm_accept();
-    require(!price_code_, error_code::cant_override_code);
+
     price_code_ = code;
   }
 
   __always_inline
   void setXchgPriceCode(cell code) {
-    require(!isFullyInitialized().get(), error_code::cant_override_code);
+    require(!xchg_price_code_, error_code::cant_override_code);
     require(msg_pubkey() == deployer_pubkey_, error_code::sender_is_not_deployer);
     tvm_accept();
-    require(!xchg_price_code_, error_code::cant_override_code);
+
     xchg_price_code_ = code;
   }
 
@@ -115,7 +111,7 @@ public:
     DTradingPair pair_data {
       .flex_addr_ = myaddr,
       .tip3_root_ = tip3_root,
-      .deploy_value_ = tons_cfg_.trading_pair_deploy
+      .min_amount_ = uint128(0)
     };
     auto std_addr = prepare_trading_pair_state_init_and_addr(pair_data, *pair_code_).second;
     auto workchain_id = std::get<addr_std>(myaddr.val()).workchain_id;
@@ -129,16 +125,11 @@ public:
       .flex_addr_ = myaddr,
       .tip3_major_root_ = tip3_major_root,
       .tip3_minor_root_ = tip3_minor_root,
-      .deploy_value_ = tons_cfg_.trading_pair_deploy
+      .min_amount_ = uint128(0)
     };
     auto std_addr = prepare_xchg_pair_state_init_and_addr(pair_data, *xchg_pair_code_).second;
     auto workchain_id = std::get<addr_std>(myaddr.val()).workchain_id;
     return address::make_std(workchain_id, std_addr);
-  }
-
-  __always_inline
-  uint128 getMinAmount() {
-    return min_amount_;
   }
 
   __always_inline
@@ -152,7 +143,7 @@ public:
   }
 
   // =============== Support functions ==================
-  DEFAULT_SUPPORT_FUNCTIONS(IFLeX, replay_protection_t)
+  DEFAULT_SUPPORT_FUNCTIONS(IFlex, flex_replay_protection_t)
 
   // default processing of unknown messages
   __always_inline static int _fallback(cell /*msg*/, slice /*msg_body*/) {
@@ -160,8 +151,8 @@ public:
   }
 };
 
-DEFINE_JSON_ABI(IFLeX, DFLeX, EFLeX);
+DEFINE_JSON_ABI(IFlex, DFlex, EFlex);
 
 // ----------------------------- Main entry functions ---------------------- //
-DEFAULT_MAIN_ENTRY_FUNCTIONS(FLeX, IFLeX, DFLeX, TIMESTAMP_DELAY)
+DEFAULT_MAIN_ENTRY_FUNCTIONS(Flex, IFlex, DFlex, FLEX_TIMESTAMP_DELAY)
 

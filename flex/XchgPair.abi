@@ -1,5 +1,6 @@
 {
   "ABI version": 2,
+  "version": "2.1.0",
   "header": [
     "pubkey",
     "time",
@@ -9,19 +10,23 @@
   {
     "name": "onDeploy",
     "inputs": [
-    { "name":"_answer_id", "type":"uint32" }
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"deploy_value", "type":"uint128" }
     ],
     "outputs": [
     { "name":"value0", "type":"bool" }
-    ]
+    ],
+    "id": "0xa"
   },
   {
-    "name": "getFLeXAddr",
+    "name": "getFlexAddr",
     "inputs": [
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
+    ],
+    "id": "0xb"
   },
   {
     "name": "getTip3MajorRoot",
@@ -29,7 +34,8 @@
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
+    ],
+    "id": "0xc"
   },
   {
     "name": "getTip3MinorRoot",
@@ -37,8 +43,25 @@
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
-    ]
+    ],
+    "id": "0xd"
+  },
+  {
+    "name": "getMinAmount",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"uint128" }
+    ],
+    "id": "0xe"
   }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"flex_addr_", "type":"address" },
+    { "name":"tip3_major_root_", "type":"address" },
+    { "name":"tip3_minor_root_", "type":"address" },
+    { "name":"min_amount_", "type":"uint128" }
   ],
   "events": [
   ]

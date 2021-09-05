@@ -5,24 +5,27 @@
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
 
-namespace tvm { namespace schema {
+namespace tvm { inline namespace schema {
 
 __interface IXchgPair {
 
   [[internal, noaccept, answer_id]]
-  bool_t onDeploy();
+  bool_t onDeploy(uint128 min_amount, uint128 deploy_value) = 10;
 
   // ========== getters ==========
   [[getter]]
-  address getFLeXAddr();
+  address getFlexAddr() = 11;
 
   // address of major tip3 token root
   [[getter]]
-  address getTip3MajorRoot();
+  address getTip3MajorRoot() = 12;
 
   // address of minor tip3 token root
   [[getter]]
-  address getTip3MinorRoot();
+  address getTip3MinorRoot() = 13;
+
+  [[getter]]
+  uint128 getMinAmount() = 14;
 };
 using IXchgPairPtr = handle<IXchgPair>;
 
@@ -30,7 +33,7 @@ struct DXchgPair {
   address flex_addr_;
   address tip3_major_root_;
   address tip3_minor_root_;
-  uint128 deploy_value_; // required minimum value to deploy TradingPair
+  uint128 min_amount_; // minimum amount to buy/sell
 };
 
 __interface EXchgPair {

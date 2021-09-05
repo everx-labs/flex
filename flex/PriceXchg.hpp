@@ -12,9 +12,9 @@
 
 #include "Flex.hpp"
 #include "PriceCommon.hpp"
-#include "TONTokenWallet.hpp"
+#include "FlexWallet.hpp"
 
-namespace tvm { namespace schema {
+namespace tvm { inline namespace schema {
 
 using ITONTokenWalletPtr = handle<ITONTokenWallet>;
 
@@ -56,8 +56,12 @@ __interface IPriceXchg {
 
   [[internal, noaccept, answer_id]]
   OrderRet onTip3LendOwnership(
-    uint128 balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
-    cell payload, address answer_addr) = 201;
+    address answer_addr,
+    uint128 balance,
+    uint32  lend_finish_time,
+    uint256 pubkey,
+    address internal_owner,
+    cell    payload) = 201;
 
   [[internal, noaccept]]
   void processQueue() = 203;
@@ -80,7 +84,7 @@ struct DPriceXchg {
   uint128 min_amount_;
   uint8 deals_limit_; // limit for processed deals in one request
 
-  IFLeXNotifyPtr notify_addr_;
+  IFlexNotifyPtr notify_addr_;
 
   int8 workchain_id_;
 
