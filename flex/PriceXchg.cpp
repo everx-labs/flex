@@ -80,12 +80,12 @@ public:
     sell.account -= sell_ton_costs;
     buy.account -= buy_ton_costs;
 
-    ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get()), IGNORE_ACTION_ERRORS).
-      transfer(buy.tip3_wallet_receive, deal_amount, last_tip3_sell, sell.tip3_wallet_provide);
-    ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get()), IGNORE_ACTION_ERRORS).
-      transfer(sell.tip3_wallet_receive, *buy_payment, last_tip3_buy, buy.tip3_wallet_provide);
+    ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get())).
+      transfer(sell.tip3_wallet_provide, buy.tip3_wallet_receive, deal_amount, uint128(0), last_tip3_sell);
+    ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get())).
+      transfer(buy.tip3_wallet_provide, sell.tip3_wallet_receive, *buy_payment, uint128(0), last_tip3_buy);
 
-    notify_addr_(Grams(tons_cfg_.send_notify.get()), IGNORE_ACTION_ERRORS).
+    notify_addr_(Grams(tons_cfg_.send_notify.get())).
       onXchgDealCompleted(tip3root_sell_, tip3root_buy_, price_.numerator(), price_.denominator(), deal_amount);
 
     return {false, false, deal_amount};
@@ -104,7 +104,7 @@ public:
       if (!is_active_time(ord.order_finish_time)) {
         all_amount -= ord.amount;
         OrderRet ret { uint32(ec::expired), ord.original_amount - ord.amount, uint128{0} };
-        IPriceCallbackPtr(ord.client_addr)(Grams(ord.account.get()), IGNORE_ACTION_ERRORS).
+        IPriceCallbackPtr(ord.client_addr)(Grams(ord.account.get())).
           onOrderFinished(ret, sell);
         orders.pop();
         cur_order.reset();
@@ -149,7 +149,7 @@ public:
         if (!sell_out_of_tons && !buy_out_of_tons) {
           sell.account -= half_process_queue;
           buy.account -= half_process_queue;
-          IPriceXchgPtr(address{tvm_myaddr()})(Grams(tons_cfg_.process_queue.get()), IGNORE_ACTION_ERRORS).
+          IPriceXchgPtr(address{tvm_myaddr()})(Grams(tons_cfg_.process_queue.get())).
             processQueue();
           if (sell_idx == sell_idx_cur)
             ret_ = { uint32(ec::deals_limit), sell.original_amount - sell.amount, sell.amount };
@@ -172,9 +172,9 @@ public:
           ret_ = ret;
         if (sell.account > tons_cfg_.return_ownership) {
           sell.account -= tons_cfg_.return_ownership;
-          ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).
+          ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get())).
             returnOwnership();
-          IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get()), IGNORE_ACTION_ERRORS).
+          IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
             onOrderFinished(ret, bool_t{true});
         }
         sell_opt.reset();
@@ -185,9 +185,9 @@ public:
         if (buy_idx == buy_idx_cur)
           ret_ = ret;
         if (sell.account > tons_cfg_.return_ownership) {
-          ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).
+          ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get())).
             returnOwnership();
-          IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get()), IGNORE_ACTION_ERRORS).
+          IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get())).
             onOrderFinished(ret, bool_t{false});
         }
         buy_opt.reset();
@@ -206,7 +206,7 @@ public:
         OrderRet ret { uint32(ok), sell.original_amount, uint128{0} };
         if (sell_idx == sell_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get()), IGNORE_ACTION_ERRORS).
+        IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
           onOrderFinished(ret, bool_t{true});
         sell_opt.reset();
       }
@@ -215,7 +215,7 @@ public:
         OrderRet ret { uint32(ok), buy.original_amount, uint128{0} };
         if (buy_idx == buy_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get()), IGNORE_ACTION_ERRORS).
+        IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get())).
           onOrderFinished(ret, bool_t{false});
         buy_opt.reset();
       }
@@ -238,7 +238,7 @@ public:
 
   address tip3root_sell_;
   address tip3root_buy_;
-  IFLeXNotifyPtr notify_addr_;
+  IFlexNotifyPtr notify_addr_;
   price_t price_;
   unsigned deals_limit_;
   TonsConfig tons_cfg_;
@@ -259,7 +259,7 @@ struct process_ret {
 
 __attribute__((noinline))
 process_ret process_queue_impl(address tip3root_sell, address tip3root_buy,
-                               IFLeXNotifyPtr notify_addr,
+                               IFlexNotifyPtr notify_addr,
                                price_t price, uint8 deals_limit, TonsConfig tons_cfg,
                                unsigned sell_idx, unsigned buy_idx,
                                uint128 sells_amount, big_queue<OrderInfoXchg> sells,
@@ -280,7 +280,7 @@ std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
     auto ord = *it;
     if (ord.client_addr == client_addr) {
       unsigned minus_val = process_queue.get();
-      ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership, IGNORE_ACTION_ERRORS).
+      ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership).
         returnOwnership();
       minus_val += return_ownership.get();
 
@@ -289,7 +289,7 @@ std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
       if (plus_val > minus_val) {
         unsigned ret_val = plus_val - minus_val;
         OrderRet ret { uint32(ec::canceled), ord.original_amount - ord.amount, uint128{0} };
-        IPriceCallbackPtr(ord.client_addr)(Grams(ret_val), IGNORE_ACTION_ERRORS).
+        IPriceCallbackPtr(ord.client_addr)(Grams(ret_val)).
           onOrderFinished(ret, sell);
       }
 
@@ -306,8 +306,13 @@ class PriceXchg final : public smart_interface<IPriceXchg>, public DPriceXchg {
 public:
   __always_inline
   OrderRet onTip3LendOwnership(
-      uint128 lend_balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
-      cell payload_cl, address answer_addr) {
+    address answer_addr,
+    uint128 balance,
+    uint32  lend_finish_time,
+    uint256 pubkey,
+    address internal_owner,
+    cell    payload
+  ) {
     auto [tip3_wallet, value] = int_sender_and_value();
     ITONTokenWalletPtr wallet_in(tip3_wallet);
     Grams ret_owner_gr(tons_cfg_.return_ownership.get());
@@ -315,26 +320,28 @@ public:
     // to send answer to the original caller (caller->tip3wallet->price->caller)
     set_int_sender(answer_addr);
     set_int_return_value(tons_cfg_.order_answer.get());
-    set_int_return_flag(IGNORE_ACTION_ERRORS);
 
     auto min_value = onTip3LendOwnershipMinValue();
 
-    auto args = parse<PayloadArgs>(payload_cl.ctos());
+    auto args = parse<PayloadArgs>(payload.ctos());
     bool_t is_sell = args.sell;
     auto amount = args.amount;
     auto minor_amount = minor_cost(amount, price_);
     unsigned err = 0;
+    auto internal_owner_std = std::get<addr_std>(internal_owner.val()).address;
     if (value.get() < min_value)
       err = ec::not_enough_tons_to_process;
-    else if (is_sell ? !verify_tip3_addr(major_tip3cfg_, tip3_wallet, pubkey, internal_owner) :
-                       !verify_tip3_addr(minor_tip3cfg_, tip3_wallet, pubkey, internal_owner))
+    else if (is_sell ? !verify_tip3_addr(major_tip3cfg_, tip3_wallet, pubkey, internal_owner_std) :
+                       !verify_tip3_addr(minor_tip3cfg_, tip3_wallet, pubkey, internal_owner_std))
       err = ec::unverified_tip3_wallet;
     else if (!minor_amount)
       err = ec::too_big_tokens_amount;
     else if (amount < min_amount_)
       err = ec::not_enough_tokens_amount;
-    else if (lend_balance < (is_sell ? amount : *minor_amount))
+    else if (balance < (is_sell ? amount : *minor_amount))
       err = ec::too_big_tokens_amount;
+    else if (!is_active_time(lend_finish_time))
+      err = ec::expired;
 
     if (err)
       return on_ord_fail(err, wallet_in);
@@ -344,15 +351,22 @@ public:
     OrderInfoXchg ord{amount, amount, account, tip3_wallet, args.receive_tip3_wallet, args.client_addr, lend_finish_time};
     unsigned sell_idx = 0;
     unsigned buy_idx = 0;
+    uint128 notify_amount;
     if (is_sell) {
       sells_.push(ord);
       sells_amount_ += ord.amount;
       sell_idx = sells_.back_with_idx().first;
+      notify_amount = sells_amount_;
     } else {
       buys_.push(ord);
       buys_amount_ += ord.amount;
       buy_idx = buys_.back_with_idx().first;
+      notify_amount = buys_amount_;
     }
+
+    notify_addr_(Grams(tons_cfg_.send_notify.get())).
+      onXchgOrderAdded(is_sell, major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
+                       price_.numerator(), price_.denominator(), ord.amount, notify_amount);
 
     auto [sells_amount, sells, buys_amount, buys, ret] =
       process_queue_impl(major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
@@ -388,6 +402,7 @@ public:
 
   __always_inline
   void cancelSell() {
+    auto canceled_amount = sells_amount_;
     addr_std_fixed client_addr = int_sender();
     auto value = int_value();
     auto [sells, sells_amount] =
@@ -396,6 +411,11 @@ public:
                         Grams(tons_cfg_.process_queue.get()), value);
     sells_ = sells;
     sells_amount_ = sells_amount;
+    canceled_amount -= sells_amount_;
+
+    notify_addr_(Grams(tons_cfg_.send_notify.get())).
+      onXchgOrderCanceled(bool_t{true}, major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
+                          price_.numerator(), price_.denominator(), canceled_amount, sells_amount_);
 
     if (sells_.empty() && buys_.empty())
       suicide(flex_);
@@ -403,6 +423,7 @@ public:
 
   __always_inline
   void cancelBuy() {
+    auto canceled_amount = buys_amount_;
     addr_std_fixed client_addr = int_sender();
     auto value = int_value();
     auto [buys, buys_amount] =
@@ -411,6 +432,11 @@ public:
                         Grams(tons_cfg_.process_queue.get()), value);
     buys_ = buys;
     buys_amount_ = buys_amount;
+    canceled_amount -= buys_amount_;
+
+    notify_addr_(Grams(tons_cfg_.send_notify.get())).
+      onXchgOrderCanceled(bool_t{false}, major_tip3cfg_.root_address, minor_tip3cfg_.root_address,
+                          price_.numerator(), price_.denominator(), canceled_amount, buys_amount_);
 
     if (sells_.empty() && buys_.empty())
       suicide(flex_);
@@ -490,20 +516,23 @@ private:
     std::optional<address> owner_addr;
     if (internal_owner)
       owner_addr = address::make_std(workchain_id_, internal_owner);
-    DTONTokenWallet wallet_data {
+    return prepare_internal_wallet_state_init_and_addr(
       cfg.name, cfg.symbol, cfg.decimals,
-      TokensType(0), cfg.root_public_key, wallet_pubkey,
-      cfg.root_address, owner_addr, {}, tip3_code_, {}, workchain_id_
-    };
-    return prepare_wallet_state_init_and_addr(wallet_data).second;
+      cfg.root_public_key, wallet_pubkey, cfg.root_address,
+      owner_addr, tip3_code_, workchain_id_
+      ).second;
   }
 
   __always_inline
   OrderRet on_ord_fail(unsigned ec, ITONTokenWalletPtr wallet_in) {
-    auto incoming_value = int_value().get();
-    tvm_rawreserve(tvm_balance() - incoming_value, rawreserve_flag::up_to);
-    set_int_return_flag(SEND_ALL_GAS);
-    wallet_in(Grams(tons_cfg_.return_ownership.get()), IGNORE_ACTION_ERRORS).returnOwnership();
+    wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership();
+    if (sells_.empty() && buys_.empty()) {
+      set_int_return_flag(SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY);
+    } else {
+      auto incoming_value = int_value().get();
+      tvm_rawreserve(tvm_balance() - incoming_value, rawreserve_flag::up_to);
+      set_int_return_flag(SEND_ALL_GAS);
+    }
     return { uint32(ec), {}, {} };
   }
 };

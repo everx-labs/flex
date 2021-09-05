@@ -6,26 +6,29 @@
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
 
-namespace tvm { namespace schema {
+namespace tvm { inline namespace schema {
 
 __interface ITradingPair {
 
   [[internal, noaccept, answer_id]]
-  bool_t onDeploy();
+  bool_t onDeploy(uint128 min_amount, uint128 deploy_value) = 10;
 
   // ========== getters ==========
   [[getter]]
-  address getFLeXAddr();
+  address getFlexAddr() = 11;
 
   [[getter]]
-  address getTip3Root();
+  address getTip3Root() = 12;
+
+  [[getter]]
+  uint128 getMinAmount() = 13;
 };
 using ITradingPairPtr = handle<ITradingPair>;
 
 struct DTradingPair {
   address flex_addr_;
   address tip3_root_;
-  uint128 deploy_value_; // required minimum value to deploy TradingPair
+  uint128 min_amount_; // minimum amount to buy/sell
 };
 
 __interface ETradingPair {
