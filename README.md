@@ -3,6 +3,9 @@
 
 Flex is a [FreeTon](https://freeton.org/discover) decentralized and distributed limit order book (DLOB) which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via distributed smart contract model. 
 
+- [Content Table](#content-table)
+- [Flex DeBot ](#flex-debot)
+- [Listing a new pair on Flex](#listing-a-new-pair-on-flex)
 
 ## Flex DeBot 
  [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/debots/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
@@ -14,39 +17,14 @@ Since this will require to have a token wallet and to transfer the ownership of 
 - display active user orders
 - withdraw active user orders
 
-DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
-```
-tonos-cli --url net.ton.dev debot fetch 0:47abef2c28f6db37ecb3aec7c9e78a48333f131fef46c9b831f153d34df5e25c
-```
-```
-tonos-cli --url rustnet.ton.dev debot fetch 0:65e895d0deb7cd84ead4708956c979388210c8aeb5a1761bacbc7b51c856b53d
-```
+DeBot is deployed to [net.ton.dev](https://net.ton.live)
+
+Flex Debot address in Surf [https://uri.ton.surf/debot/0:5dc50f38c2f04a1cf701af8638009a466fccca8d98698000d67038cae2c95394?net=devnet](
+https://uri.ton.surf/debot/0:5dc50f38c2f04a1cf701af8638009a466fccca8d98698000d67038cae2c95394?net=devnet):
+
+
 *please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
 
-
-## TIP3 DeBot
-
-[`tip3Debot`](https://github.com/tonlabs/flex/blob/main/debots/tip3Debot/tip3Debot.sol) - [DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps manage TIP3 tokens: 
-- create new TIP3 token, 
-- grant TIP3 tokens to TIP3 wallets.
-
-DeBot is deployed to [net.ton.dev](https://net.ton.live). Run it with tonos-cli or enter debot address in [Surf](https://ton.surf/main):
-
-```
-tonos-cli --url net.ton.dev debot fetch 0:5e11dd18cf73aaf386ac1ebec2c78ea1fd91969e8e1d4a7bcff1eca38c4f0445
-```
-```
-tonos-cli --url rustnet.ton.dev debot fetch 0:186b5095ccbecdcaeead39b25923d233d52df498a07e01cdf0b1141b80dd0251
-```
-*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
-
-## AMM Flex DeBot
-```
-tonos-cli --url net.ton.dev debot fetch 0:807f0363a8192c9f18b8f6709ed37b50192b0f94d3f1aeacd577f6b253cbbed1
-```
-```
-tonos-cli --url rustnet.ton.dev debot fetch 0:4ac01ac5f2d71e5e684eaa5ccf44d9eab19c71d0438280a66e087f1b3e9bb5e2
-```
 
 ###Prerequisites: 
 
@@ -156,114 +134,71 @@ To buy tip3 tokens, client should specify tip3 wallet in his ownership by addres
 
 <img src="./screenshots/Exchange2.png"/>
 
-## Implementation
-
-```cpp
-struct OrderRet {
-  uint32 err_code;
-  uint128 processed;
-  uint128 enqueued;
-};
-
-struct SellArgs {
-  uint128 amount;
-  addr_std_fixed receive_wallet;
-};
-
-__interface IPrice {
-  // payload must be SellArgs struct
-  [[internal, noaccept, answer_id]]
-  OrderRet onTip3LendOwnership(
-    uint128 balance, uint32 lend_finish_time, uint256 pubkey, uint256 internal_owner,
-    cell payload, address answer_addr) = 201;
-
-  [[internal, noaccept, answer_id]]
-  OrderRet buyTip3(uint128 amount, address receive_tip3, uint32 order_finish_time) = 202;
-
-  // will be called in case of deals limit hit in buy/sell processing
-   [[internal, noaccept]]
-  void processQueue() = 203;
-
-  // will cancel all orders with this sender's receive_wallet
-  [[internal, noaccept]]
-  void cancelSell() = 204;
-
-  // will cancel all orders with this sender's answer_addr
-  [[internal, noaccept]]
-  void cancelBuy() = 205;
-};
-
-// callback for client notification
-__interface IPriceCallback {
-  [[internal, noaccept]]
-  void onOrderFinished(OrderRet ret, bool_t sell);
-};
-
-__interface IFLeX {
-
-  [[external, dyn_chain_parse]]
-  void constructor(uint256 deployer_pubkey,
-    uint128 transfer_tip3, uint128 return_ownership, uint128 trading_pair_deploy,
-    uint128 order_answer, uint128 process_queue, uint128 send_notify,
-    uint128 min_amount, uint8 deals_limit, address notify_addr);
-
-  // To fit message size limit, setPairCode/setPriceCode in separate functions
-  //  (not in constructor)
-  [[external, noaccept]]
-  void setPairCode(cell code);
-
-  [[external, noaccept]]
-  void setXchgPairCode(cell code);
-
-  [[external, noaccept]]
-  void setPriceCode(cell code);
-
-  [[external, noaccept]]
-  void setXchgPriceCode(cell code);
-
-  // ========== getters ==========
-
-  // means setPairCode/setPriceCode executed
-  [[getter]]
-  bool_t isFullyInitialized();
-
-  [[getter]]
-  TonsConfig getTonsCfg();
-
-  // Stock address will be added to Pair code as a salt
-  [[getter]]
-  cell getTradingPairCode();
-
-  // Stock address and tip3 root address will be added to Price code as a salt
-  [[getter, dyn_chain_parse]]
-  cell getSellPriceCode(address tip3_addr);
-
-  // Calculate address of trading pair contract for this tip3 root address
-  [[getter, dyn_chain_parse]]
-  address getSellTradingPair(address tip3_root);
-
-  // Minimum amount to trade
-  [[getter]]
-  uint128 getMinAmount();
-
-  // Deals limit to be processed in one message processing
-  [[getter]]
-  uint8 getDealsLimit();
-
-  // Notification address (for AMM service)
-  [[getter]]
-  address getNotifyAddr();
-};
-```
-
 ## TIP3 to TIP3 exchange 
 
-https://github.com/tonlabs/flex/blob/main/PriceXchg.hpp
-https://github.com/tonlabs/flex/blob/main/XchgPair.hpp
+https://github.com/tonlabs/flex/blob/main/flex/PriceXchg.hpp
+https://github.com/tonlabs/flex/blob/main/flex/XchgPair.hpp
 
-#### STEP3 implementation
-- Multiple orders automation 
+## Listing a new pair on Flex
+ 
 
-- More strategies
+1. First you need to deploy a FlexClient with the Flex DeBot.
+2. After you deployed the FlexClient, you should configure it to deploy trading pair:
 
+```bash
+tonos-cli call <flex_client_address> setExtWalletCode "{\"ext_wallet_code\":\"<external_wallet_code>\"}" --sign <path_to_keys or seed_phrase> --abi FlexClient.abi
+``` 
+where:
+<external_wallet_code> is the code of TONTokenWallet.tvc contract (`tvm_linker decode --tvc TONTokenWallet.tvc`);
+ 
+```bash
+tonos-cli call <flex_client_address> setFlexWrapperCode "{\"flex_wrapper_code\":\"<flex_wrapper_code>\"}" --sign <path_to_keys or seed_phrase> --abi FlexClient.abi
+``` 
+where:
+<flex_wrapper_code> is the code of Wrapper.tvc contract (tvm_linker decode --tvc Wrapper.tvc);
 
+3. Deploy a new tip3 token with the tip3 DeBot and save root_public_key, root_address, name, symbol and number of decimals for the next step.
+4. Now you can deploy Wrapper for tip3 token:
+ 
+```bash
+tonos-cli call <flex_client_address> deployWrapperWithWallet "{\"wrapper_pubkey\":\"<wrapper_pubkey>\",\"wrapper_deploy_value\":\"1500000000\",\"wrapper_keep_balance\":\"1000000000\",\"ext_wallet_balance\":\"1000000000\",\"set_internal_wallet_value\":\"500000000\",\"tip3cfg\":{\"name\":\"<tip3_name>\",\"symbol\":\"<tip3_symbol>\",\"decimals\":\"<tip3_decimals>\",\"root_public_key\":\"<tip3_root_public_key>\",\"root_address\":\"<tip3_root_address>\"}}" --sign <path_to_keys or seed_phrase> --abi FlexClient.abi
+```
+where:
+<wrapper_pubkey> is a newly generated public key;
+<tip3_name> is the name of the new token, it can be recovered by `tonos-cli run <tip3_root_address> getName "{}" --abi RootTokenContract.abi`;
+<tip3_symbol> is the symbol of the new token, it can be recovered by `tonos-cli run <tip3_root_address> getSymbol "{}" --abi RootTokenContract.abi`;
+<tip3_decimals> is a possible number of decimal places in the amount of this token, it can be recovered by `tonos-cli run <tip3_root_address> getDecimals "{}" --abi RootTokenContract.abi`;
+<tip3_root_public_key> is the root_public_key from the previous step, it can be recovered by `tonos-cli run <tip3_root_address> getRootKey "{}" --abi RootTokenContract.abi`;
+<tip3_root_address> is the root address from the previous step.
+
+5. Now deploy trading pair:
+```bash
+tonos-cli call <flex_client_address> deployTradingPair "{\"tip3_root\":\"<tip3_root>\",\"deploy_min_value\":\"<deploy_min_value>\",\"deploy_value\":\"<deploy_value>\",\"min_trade_amount\":\"<min_trade_amount>\",\"notify_addr\":\"<notify_addr>\"}" --sign <path_to_keys or seed_phrase> --abi FlexClient.abi
+```
+where:
+<tip3_root> is the wrapper address from the previous step;
+<deploy_min_value> is the min amount TONs required to deploy a new trading pair from `tonos-cli run <flex_address> getTonsCfg "{}" --abi Flex.abi`
+<deploy_value> is deploy_min_value + 1 TON;
+<min_trade_amount> is the minimal amount of tip3 in trade orders (lot);
+<notify_addr> is the subscription address for the new trading pair.
+
+* In case of a tip3-tip3 pair:
+
+```bash
+tonos-cli call <flex_client_address> deployXchgPair "{\"tip3_major_root\":\"<tip3_major_root>\","tip3_minor_root\":\"<tip3_minor_root>\",\"deploy_min_value\":\"<deploy_min_value>\",\"deploy_value\":\"<deploy_value>\",\"min_trade_amount\":\"<min_trade_amount>\",\"notify_addr\":\"<notify_addr>\"}" --sign <path_to_keys or seed_phrase> --abi FlexClient.abi
+```
+where:
+<tip3_major_root> - wrapper for major tip3;
+<tip3_minor_root> - wrapper for minor tip3.
+
+Full Client Deploy Debot
+`0:c58db77f5b66afc78a39747a57ec26f2f291b6874389df62367492f8d8be5ffa`
+
+Pair Deploy Debot `0:58134bcd108d0968ed5d17717b9838cf072ed13f7912a1f743feac3df6523a60`
+
+Tip3 Ext To Int Debot 
+`0:aaf216e285b842f65144938e0a6fd1e2f02e33f1985094e324c8911404cd1e1d`
+
+Wrapper Deploy Debot `0:97f4c980c69d535e03133b26d33c36349fa648006b95d39d3172cc9d0143a310`
+
+Tip3 Debot `0:cf3b864c45247930b01acf6706c34c00f7a42b48479dbe433e6efd49d5e3744b`
