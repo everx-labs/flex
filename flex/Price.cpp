@@ -65,8 +65,8 @@ public:
     buy.account -= buy_costs;
 
     ITONTokenWalletPtr(sell.tip3_wallet)(Grams(tons_cfg_.transfer_tip3.get())).
-      transfer(sell.tip3_wallet, buy.tip3_wallet, deal_amount, uint128(0), last_tip3_sell);
-    tvm_transfer(sell.client_addr, cost->get(), /*bounce*/true);
+      transfer(sell.tip3_wallet, buy.tip3_wallet, deal_amount, uint128(0), bool_t{false});
+    tvm_transfer(sell.client_addr, cost->get(), /*bounce*/true, SENDER_WANTS_TO_PAY_FEES_SEPARATELY);
 
     notify_addr_(Grams(tons_cfg_.send_notify.get())).
       onDealCompleted(tip3root_, price_, deal_amount);
@@ -154,7 +154,7 @@ public:
         if (sell.account > tons_cfg_.return_ownership) {
           sell.account -= tons_cfg_.return_ownership;
           ITONTokenWalletPtr(sell.tip3_wallet)(Grams(tons_cfg_.return_ownership.get())).
-            returnOwnership();
+            returnOwnership(sell.amount);
           IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
             onOrderFinished(ret, bool_t{true});
         }
@@ -257,7 +257,7 @@ std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
       unsigned minus_val = is_first ? process_queue.get() : 0;
       if (sell) {
         ITONTokenWalletPtr(ord.tip3_wallet)(return_ownership).
-          returnOwnership();
+          returnOwnership(ord.amount);
         minus_val += return_ownership.get();
       }
       unsigned plus_val = ord.account.get() + (is_first ? incoming_val.get() : 0);
@@ -316,7 +316,7 @@ public:
       err = ec::expired;
 
     if (err)
-      return on_sell_fail(err, wallet_in);
+      return on_sell_fail(err, wallet_in, amount);
 
     uint128 account = uint128(value.get()) - tons_cfg_.process_queue - tons_cfg_.order_answer;
 
@@ -514,8 +514,8 @@ private:
   }
 
   __always_inline
-  OrderRet on_sell_fail(unsigned ec, ITONTokenWalletPtr wallet_in) {
-    wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership();
+  OrderRet on_sell_fail(unsigned ec, ITONTokenWalletPtr wallet_in, uint128 amount) {
+    wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership(amount);
 
     if (sells_.empty() && buys_.empty()) {
       set_int_return_flag(SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY);

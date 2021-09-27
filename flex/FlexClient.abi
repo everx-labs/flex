@@ -29,8 +29,7 @@
       { "name":"process_queue", "type":"uint128" },
       { "name":"send_notify", "type":"uint128" }
     ], "name":"tons_cfg", "type":"tuple" },
-    { "name":"flex", "type":"address" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"flex", "type":"address" }
     ],
     "outputs": [
     ],
@@ -69,7 +68,8 @@
     { "name":"tip3_root", "type":"address" },
     { "name":"deploy_min_value", "type":"uint128" },
     { "name":"deploy_value", "type":"uint128" },
-    { "name":"min_trade_amount", "type":"uint128" }
+    { "name":"min_trade_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -83,7 +83,8 @@
     { "name":"tip3_minor_root", "type":"address" },
     { "name":"deploy_min_value", "type":"uint128" },
     { "name":"deploy_value", "type":"uint128" },
-    { "name":"min_trade_amount", "type":"uint128" }
+    { "name":"min_trade_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -108,7 +109,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" }
+    ], "name":"tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -132,7 +134,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" }
+    ], "name":"tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -167,7 +170,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"minor_tip3cfg", "type":"tuple" }
+    ], "name":"minor_tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -188,7 +192,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" }
+    ], "name":"tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     ],
@@ -208,7 +213,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" }
+    ], "name":"tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     ],
@@ -237,7 +243,8 @@
       { "name":"decimals", "type":"uint8" },
       { "name":"root_public_key", "type":"uint256" },
       { "name":"root_address", "type":"address" }
-    ], "name":"minor_tip3cfg", "type":"tuple" }
+    ], "name":"minor_tip3cfg", "type":"tuple" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     ],
@@ -378,7 +385,6 @@
       { "name":"send_notify", "type":"uint128" }
     ], "name":"tons_cfg_", "type":"tuple" },
     { "name":"flex_", "type":"address" },
-    { "name":"notify_addr_", "type":"address" },
     { "components":[
       { "name":"dict_", "type":"cell" }
     ], "name":"ext_wallet_code_", "type":"tuple" },

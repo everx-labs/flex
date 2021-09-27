@@ -10,7 +10,7 @@ namespace tvm { inline namespace schema {
 __interface IXchgPair {
 
   [[internal, noaccept, answer_id]]
-  bool_t onDeploy(uint128 min_amount, uint128 deploy_value) = 10;
+  bool_t onDeploy(uint128 min_amount, uint128 deploy_value, address notify_addr) = 10;
 
   // ========== getters ==========
   [[getter]]
@@ -26,6 +26,9 @@ __interface IXchgPair {
 
   [[getter]]
   uint128 getMinAmount() = 14;
+
+  [[getter]]
+  address getNotifyAddr() = 15;
 };
 using IXchgPairPtr = handle<IXchgPair>;
 
@@ -34,6 +37,7 @@ struct DXchgPair {
   address tip3_major_root_;
   address tip3_minor_root_;
   uint128 min_amount_; // minimum amount to buy/sell
+  address notify_addr_; // address for deals notifications
 };
 
 __interface EXchgPair {

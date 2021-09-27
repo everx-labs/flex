@@ -46,13 +46,21 @@ __interface IFlexNotify {
 };
 using IFlexNotifyPtr = handle<IFlexNotify>;
 
+struct FlexOwnershipInfo {
+  uint256 deployer_pubkey;
+  string ownership_description;
+  // If Flex is managed by other contract (deployer will not be able to execute non-deploy methods)
+  std::optional<address> owner_contract;
+};
+
 __interface IFlex {
 
   [[external, dyn_chain_parse]]
-  void constructor(uint256 deployer_pubkey,
+  void constructor(
+    uint256 deployer_pubkey, string ownership_description, std::optional<address> owner_address,
     uint128 transfer_tip3, uint128 return_ownership, uint128 trading_pair_deploy,
     uint128 order_answer, uint128 process_queue, uint128 send_notify,
-    uint8 deals_limit, address notify_addr) = 10;
+    uint8 deals_limit) = 10;
 
   // To fit message size limit, setPairCode/setPriceCode in separate functions
   //  (not in constructor)
@@ -68,50 +76,54 @@ __interface IFlex {
   [[external, noaccept]]
   void setXchgPriceCode(cell code) = 14;
 
+  [[external, internal, noaccept, dyn_chain_parse]]
+  void transfer(address to, uint128 tons) = 15;
+
   // ========== getters ==========
 
   // means setPairCode/setXchgPairCode/setPriceCode/setXchgPriceCode executed
   [[getter]]
-  bool_t isFullyInitialized() = 15;
+  bool_t isFullyInitialized() = 16;
 
   [[getter]]
-  TonsConfig getTonsCfg() = 16;
+  TonsConfig getTonsCfg() = 17;
 
   [[getter]]
-  cell getTradingPairCode() = 17;
+  cell getTradingPairCode() = 18;
 
   [[getter]]
-  cell getXchgPairCode() = 18;
+  cell getXchgPairCode() = 19;
 
   [[getter, dyn_chain_parse]]
-  cell getSellPriceCode(address tip3_addr) = 19;
+  cell getSellPriceCode(address tip3_addr) = 20;
 
   [[getter, dyn_chain_parse]]
-  cell getXchgPriceCode(address tip3_addr1, address tip3_addr2) = 20;
+  cell getXchgPriceCode(address tip3_addr1, address tip3_addr2) = 21;
 
   [[getter, dyn_chain_parse]]
-  address getSellTradingPair(address tip3_root) = 21;
+  address getSellTradingPair(address tip3_root) = 22;
 
   [[getter, dyn_chain_parse]]
-  address getXchgTradingPair(address tip3_major_root, address tip3_minor_root) = 22;
+  address getXchgTradingPair(address tip3_major_root, address tip3_minor_root) = 23;
 
   [[getter]]
-  uint8 getDealsLimit() = 23;
+  uint8 getDealsLimit() = 24;
 
   [[getter]]
-  address getNotifyAddr() = 24;
+  FlexOwnershipInfo getOwnershipInfo() = 25;
 };
 using IFlexPtr = handle<IFlex>;
 
 struct DFlex {
   uint256 deployer_pubkey_;
+  string ownership_description_;
+  std::optional<address> owner_address_;
   TonsConfig tons_cfg_;
   std::optional<cell> pair_code_;
   std::optional<cell> xchg_pair_code_;
   std::optional<cell> price_code_;
   std::optional<cell> xchg_price_code_;
   uint8 deals_limit_; // deals limit in one processing in Price
-  address notify_addr_;
 };
 
 __interface EFlex {

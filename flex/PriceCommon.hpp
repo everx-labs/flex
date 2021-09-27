@@ -2,12 +2,15 @@
 
 namespace tvm { inline namespace schema {
 
+using address_t = address; // for sparse packing in solidity debots
+// using address_t = addr_std_compact; // for compact packing in js-sdk/tonos-cli
+
 struct Tip3Config {
   string name;
   string symbol;
   uint8 decimals;
   uint256 root_public_key;
-  addr_std_compact root_address;
+  address_t root_address;
 };
 
 struct OrderRet {

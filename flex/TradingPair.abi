@@ -12,7 +12,8 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"min_amount", "type":"uint128" },
-    { "name":"deploy_value", "type":"uint128" }
+    { "name":"deploy_value", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"value0", "type":"bool" }
@@ -45,13 +46,23 @@
     { "name":"value0", "type":"uint128" }
     ],
     "id": "0xd"
+  },
+  {
+    "name": "getNotifyAddr",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0xe"
   }
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
     { "name":"flex_addr_", "type":"address" },
     { "name":"tip3_root_", "type":"address" },
-    { "name":"min_amount_", "type":"uint128" }
+    { "name":"min_amount_", "type":"uint128" },
+    { "name":"notify_addr_", "type":"address" }
   ],
   "events": [
   ]

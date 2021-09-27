@@ -12,7 +12,7 @@ using namespace schema;
 template<bool Internal>
 class RootTokenContract final : public smart_interface<IRootTokenContract>, public DRootTokenContract {
 public:
-  static constexpr unsigned wallet_hash = 0x7725a0815bada71953072fc17409af23b26e521e768e686a50d8658dd9dfe11f;
+  static constexpr unsigned wallet_hash = 0xa775b3e2c4ee169f8bedb65293aa72dffbbc163826810534c57e08f95aaf646e;
 
   struct error_code : tvm::error_code {
     static constexpr unsigned message_sender_is_not_my_owner  = 100;
@@ -55,7 +55,7 @@ public:
     tvm_accept();
     require(!wallet_code_, error_code::cant_override_wallet_code);
     require(__builtin_tvm_hashcu(wallet_code) == wallet_hash,
-            error_code::wrong_wallet_code_hash);
+             error_code::wrong_wallet_code_hash);
     wallet_code_ = wallet_code;
 
     if constexpr (Internal) {

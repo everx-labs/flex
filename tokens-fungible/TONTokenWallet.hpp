@@ -16,6 +16,9 @@ namespace tvm { inline namespace schema {
 // #define TIP3_ENABLE_BURN
 // #define TIP3_IMPROVED_TRANSFER
 
+using address_t = address; // for sparse packing in solidity debots
+// using address_t = addr_std_compact; // for compact packing in js-sdk/tonos-cli
+
 #ifdef TIP3_ENABLE_EXTERNAL
 #define TIP3_EXTERNAL [[external]]
 #else
@@ -95,8 +98,8 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void transfer(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     bool_t  return_ownership
@@ -107,8 +110,8 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept, answer_id]]
   void transferWithNotify(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     bool_t  return_ownership,
@@ -118,9 +121,9 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void transferToRecipient(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint256 recipient_public_key,
-    addr_std_compact recipient_internal_owner,
+    address_t recipient_internal_owner,
     uint128 tokens,
     uint128 grams,
     bool_t  deploy,
@@ -130,19 +133,19 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept, answer_id]]
   void transferToRecipientWithNotify(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint256 recipient_public_key,
-    addr_std_compact recipient_internal_owner,
+    address_t recipient_internal_owner,
     uint128 tokens,
     uint128 grams,
     bool_t  deploy,
     bool_t  return_ownership,
     cell    payload
   ) = 13;
+#endif // TIP3_IMPROVED_TRANSFER
 
   [[internal, noaccept, answer_id]]
   uint128 requestBalance() = 14;
-#endif // TIP3_IMPROVED_TRANSFER
 
   // Receive tokens from root
   [[internal, noaccept, answer_id]]
@@ -164,7 +167,7 @@ __interface ITONTokenWallet {
   // balance must be zero. Not allowed for lend ownership.
   TIP3_EXTERNAL
   [[internal, noaccept]]
-  void destroy(addr_std_compact dest) = 17;
+  void destroy(address_t dest) = 17;
 #endif // TIP3_IMPROVED_TRANSFER
 
 #ifdef TIP3_ENABLE_BURN
@@ -178,7 +181,7 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept, answer_id]]
   void lendOwnership(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint128 grams,
     uint256 std_dest,
     uint128 lend_balance,
@@ -187,9 +190,9 @@ __interface ITONTokenWallet {
     cell    payload
   ) = 19;
 
-  // return ownership back to the original owner
+  // return ownership back to the original owner (for provided amount of tokens)
   [[internal, noaccept]]
-  void returnOwnership() = 20;
+  void returnOwnership(uint128 tokens) = 20;
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
 
   // =============================== getters =============================== //
@@ -206,7 +209,7 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void approve(
-    addr_std_compact spender,
+    address_t spender,
     uint128 remainingTokens,
     uint128 tokens
   ) = 23;
@@ -214,9 +217,9 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void transferFrom(
-    addr_std_compact answer_addr,
-    addr_std_compact from,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t from,
+    address_t to,
     uint128 tokens,
     uint128 grams
   ) = 24;
@@ -224,9 +227,9 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void transferFromWithNotify(
-    addr_std_compact answer_addr,
-    addr_std_compact from,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t from,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     cell    payload

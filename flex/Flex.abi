@@ -11,14 +11,15 @@
     "name": "constructor",
     "inputs": [
     { "name":"deployer_pubkey", "type":"uint256" },
+    { "name":"ownership_description", "type":"string" },
+    { "name":"owner_address", "type":"optional(address)" },
     { "name":"transfer_tip3", "type":"uint128" },
     { "name":"return_ownership", "type":"uint128" },
     { "name":"trading_pair_deploy", "type":"uint128" },
     { "name":"order_answer", "type":"uint128" },
     { "name":"process_queue", "type":"uint128" },
     { "name":"send_notify", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"deals_limit", "type":"uint8" }
     ],
     "outputs": [
     ],
@@ -61,13 +62,23 @@
     "id": "0xe"
   },
   {
+    "name": "transfer",
+    "inputs": [
+    { "name":"to", "type":"address" },
+    { "name":"tons", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xf"
+  },
+  {
     "name": "isFullyInitialized",
     "inputs": [
     ],
     "outputs": [
     { "name":"value0", "type":"bool" }
     ],
-    "id": "0xf"
+    "id": "0x10"
   },
   {
     "name": "getTonsCfg",
@@ -81,7 +92,7 @@
     { "name":"process_queue", "type":"uint128" },
     { "name":"send_notify", "type":"uint128" }
     ],
-    "id": "0x10"
+    "id": "0x11"
   },
   {
     "name": "getTradingPairCode",
@@ -90,7 +101,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x11"
+    "id": "0x12"
   },
   {
     "name": "getXchgPairCode",
@@ -99,7 +110,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x12"
+    "id": "0x13"
   },
   {
     "name": "getSellPriceCode",
@@ -109,7 +120,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x13"
+    "id": "0x14"
   },
   {
     "name": "getXchgPriceCode",
@@ -120,7 +131,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x14"
+    "id": "0x15"
   },
   {
     "name": "getSellTradingPair",
@@ -130,7 +141,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x15"
+    "id": "0x16"
   },
   {
     "name": "getXchgTradingPair",
@@ -141,7 +152,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x16"
+    "id": "0x17"
   },
   {
     "name": "getDealsLimit",
@@ -150,21 +161,25 @@
     "outputs": [
     { "name":"value0", "type":"uint8" }
     ],
-    "id": "0x17"
+    "id": "0x18"
   },
   {
-    "name": "getNotifyAddr",
+    "name": "getOwnershipInfo",
     "inputs": [
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
+    { "name":"deployer_pubkey", "type":"uint256" },
+    { "name":"ownership_description", "type":"string" },
+    { "name":"owner_contract", "type":"optional(address)" }
     ],
-    "id": "0x18"
+    "id": "0x19"
   }
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
     { "name":"deployer_pubkey_", "type":"uint256" },
+    { "name":"ownership_description_", "type":"string" },
+    { "name":"owner_address_", "type":"optional(address)" },
     { "components":[
       { "name":"transfer_tip3", "type":"uint128" },
       { "name":"return_ownership", "type":"uint128" },
@@ -177,8 +192,7 @@
     { "name":"xchg_pair_code_", "type":"optional(cell)" },
     { "name":"price_code_", "type":"optional(cell)" },
     { "name":"xchg_price_code_", "type":"optional(cell)" },
-    { "name":"deals_limit_", "type":"uint8" },
-    { "name":"notify_addr_", "type":"address" }
+    { "name":"deals_limit_", "type":"uint8" }
   ],
   "events": [
   ]
