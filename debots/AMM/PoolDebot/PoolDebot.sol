@@ -9,13 +9,14 @@ import "debots/ConfirmInput.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/UserInfo/UserInfo.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Menu/Menu.sol";
 import "Sdk.sol";
+import "Upgradable.sol";
 
 abstract contract Pool {
     constructor(uint256 value0, address notify, address MM) public {}
     function setProlongation(bool prol) public functionID(0xb) {}
 }
 
-contract HelloDebot is Debot {
+contract HelloDebot is Debot, Upgradable {
     address m_MM;
     address _notify;
     TvmCell _codeP;
@@ -233,6 +234,14 @@ contract HelloDebot is Debot {
 
     function _version(uint24 major, uint24 minor, uint24 fix) private pure inline returns (uint24) {
         return (major << 16) | (minor << 8) | (fix);
+    }
+    
+    /*
+    *  Implementation of Upgradable
+    */
+    
+    function onCodeUpgrade() internal override {
+        tvm.resetStorage();
     }
 
 }

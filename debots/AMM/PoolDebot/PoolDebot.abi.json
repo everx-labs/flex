@@ -1,0 +1,227 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "setCodePool",
+			"inputs": [
+				{"name":"codeP","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setDataPool",
+			"inputs": [
+				{"name":"dataP","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "start",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setStock",
+			"inputs": [
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setnotify",
+			"inputs": [
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "enterPublicKey",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getPublicKey",
+			"inputs": [
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployPool",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "PClientAccType",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "isDeployPClient",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "isFCMoneySend",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "CheckStatus",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkPClientBalance",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployPClientStep2",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "DeployRootStep2",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onDeployMMFailed",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "askMenu",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menustake",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getstakeinfo",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "menuprolongation",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "prolongate",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "noprolongate",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "finish",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getVersion",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"semver","type":"uint24"}
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"state","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotOptions",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"options","type":"uint8"},
+				{"name":"debotAbi","type":"bytes"},
+				{"name":"targetAbi","type":"bytes"},
+				{"name":"targetAddr","type":"address"}
+			]
+		},
+		{
+			"name": "setABI",
+			"inputs": [
+				{"name":"dabi","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
