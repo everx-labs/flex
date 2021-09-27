@@ -21,12 +21,12 @@ Flex Debot address in Surf [
 https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f](https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f)
 
 
-<img src="./screenshots/flex_qr.png" height="300" width="300">
+<img src="./screenshots/flex_qr.png" height="200" width="200">
 
 Tip3 Debot address in Surf [
 https://uri.ton.surf/debot/0:883993b781db9494349dbf61418711636e52d9fc9991785420e2925337a91e40](https://uri.ton.surf/debot/0:883993b781db9494349dbf61418711636e52d9fc9991785420e2925337a91e40)
 
-<img src="./screenshots/flex_tip3_qr.png" height="300" width="300">
+<img src="./screenshots/flex_tip3_qr.png" height="200" width="200">
 
 Flex API address `0:f207fcab308c52a75226212d58dcfbc146cc7c1df1be16046200432f062a0822`
 
