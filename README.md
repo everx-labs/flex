@@ -17,16 +17,20 @@ Since this will require to have a token wallet and to transfer the ownership of 
 - display active user orders
 - withdraw active user orders
 
-DeBot is deployed to [net.ton.dev](https://net.ton.live)
-
-Flex Debot address in Surf [https://uri.ton.surf/debot/0:5dc50f38c2f04a1cf701af8638009a466fccca8d98698000d67038cae2c95394?net=devnet](
-https://uri.ton.surf/debot/0:5dc50f38c2f04a1cf701af8638009a466fccca8d98698000d67038cae2c95394?net=devnet):
+Flex Debot address in Surf [
+https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f](https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f)
 
 
-*please note that the current implementation is an MVP and is generally a **work in progress — You should not use it for real trading!!!**
+<img src="./screenshots/flex_qr.png" height="200" width="200">
 
+Tip3 Debot address in Surf [
+https://uri.ton.surf/debot/0:883993b781db9494349dbf61418711636e52d9fc9991785420e2925337a91e40](https://uri.ton.surf/debot/0:883993b781db9494349dbf61418711636e52d9fc9991785420e2925337a91e40)
 
-###Prerequisites: 
+<img src="./screenshots/flex_tip3_qr.png" height="200" width="200">
+
+Flex API address `0:f207fcab308c52a75226212d58dcfbc146cc7c1df1be16046200432f062a0822`
+
+### Prerequisites: 
 
 You can run debots in (Surf)[https://ton.surf/main] or latest (tonos-cli)[https://github.com/tonlabs/tonos-cli/].  install:
 ```
