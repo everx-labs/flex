@@ -2,21 +2,21 @@ pragma ton-solidity ^0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "debots/Debot.sol";
-import "debots/Terminal.sol";
-import "debots/AddressInput.sol";
-import "debots/ConfirmInput.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/AddressInput/AddressInput.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/ConfirmInput/ConfirmInput.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/UserInfo/UserInfo.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Menu/Menu.sol";
-import "Sdk.sol";
-import "Upgradable.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Sdk/Sdk.sol";
+import "../interfaces/Upgradable.sol";
 
 abstract contract Pool {
     constructor(uint256 value0, address notify, address MM) public {}
     function setProlongation(bool prol) public functionID(0xb) {}
 }
 
-contract HelloDebot is Debot, Upgradable {
+contract PoolDebot is Debot, Upgradable {
     address m_MM;
     address _notify;
     TvmCell _codeP;
@@ -27,6 +27,25 @@ contract HelloDebot is Debot, Upgradable {
     modifier alwaysAccept {
             tvm.accept();
             _;
+    }
+
+    function getRequiredInterfaces() public view virtual override returns (uint256[] interfaces) {
+        return [Terminal.ID, AddressInput.ID, ConfirmInput.ID, UserInfo.ID, Sdk.ID];
+    }
+
+    function getDebotInfo() public functionID(0xDEB) view virtual override returns(
+        string name, string version, string publisher, string caption, string author,
+        address support, string hello, string language, string dabi, bytes icon) {
+        name = "Liquidity Pool";
+        version = "0.1.0";
+        publisher = "TON Labs";
+        caption = "Liquidity Pool";
+        author = "TON Labs";
+        support = address(0);
+        hello = "Hi, I am a Liquidity Pool DeBot.";
+        language = "en";
+        dabi = m_debotAbi.get();
+        icon = "";
     }
 
     function setCodePool (TvmCell codeP) external alwaysAccept {
@@ -194,7 +213,6 @@ contract HelloDebot is Debot, Upgradable {
     }
     
     function prolongate() public {
-        bool now = true;
        optional(uint256) none;
         Pool(m_addr[m_masterPubKey]).setProlongation{
             abiVer: 2,
@@ -205,7 +223,7 @@ contract HelloDebot is Debot, Upgradable {
             expire: 0,
             sign: true,
             pubkey: none
-        }(now);
+        }(true);
     }
     
     function noprolongate() public {
@@ -220,7 +238,7 @@ contract HelloDebot is Debot, Upgradable {
             expire: 0,
             sign: true,
             pubkey: none
-        }(now);
+        }(false);
     }
     
     function finish() public {
@@ -228,10 +246,6 @@ contract HelloDebot is Debot, Upgradable {
         Terminal.print(0, format("Success!"));
     }
     
-    function getVersion() public override returns (string name, uint24 semver) {
-        (name, semver) = ("HelloWorld DeBot", _version(0,1,0));
-    }
-
     function _version(uint24 major, uint24 minor, uint24 fix) private pure inline returns (uint24) {
         return (major << 16) | (minor << 8) | (fix);
     }
