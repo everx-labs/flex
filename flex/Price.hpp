@@ -19,7 +19,7 @@ using ITONTokenWalletPtr = handle<ITONTokenWallet>;
 
 struct SellArgs {
   uint128 amount;
-  addr_std_compact receive_wallet;
+  address receive_wallet;
 };
 
 struct OrderInfo {

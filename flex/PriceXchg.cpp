@@ -81,9 +81,9 @@ public:
     buy.account -= buy_ton_costs;
 
     ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get())).
-      transfer(sell.tip3_wallet_provide, buy.tip3_wallet_receive, deal_amount, uint128(0), last_tip3_sell);
+      transfer(sell.tip3_wallet_provide, buy.tip3_wallet_receive, deal_amount, uint128(0), bool_t{false});
     ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.transfer_tip3.get())).
-      transfer(buy.tip3_wallet_provide, sell.tip3_wallet_receive, *buy_payment, uint128(0), last_tip3_buy);
+      transfer(buy.tip3_wallet_provide, sell.tip3_wallet_receive, *buy_payment, uint128(0), bool_t{false});
 
     notify_addr_(Grams(tons_cfg_.send_notify.get())).
       onXchgDealCompleted(tip3root_sell_, tip3root_buy_, price_.numerator(), price_.denominator(), deal_amount);
@@ -173,7 +173,7 @@ public:
         if (sell.account > tons_cfg_.return_ownership) {
           sell.account -= tons_cfg_.return_ownership;
           ITONTokenWalletPtr(sell.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get())).
-            returnOwnership();
+            returnOwnership(sell.amount);
           IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
             onOrderFinished(ret, bool_t{true});
         }
@@ -186,7 +186,7 @@ public:
           ret_ = ret;
         if (sell.account > tons_cfg_.return_ownership) {
           ITONTokenWalletPtr(buy.tip3_wallet_provide)(Grams(tons_cfg_.return_ownership.get())).
-            returnOwnership();
+            returnOwnership(buy.amount);
           IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get())).
             onOrderFinished(ret, bool_t{false});
         }
@@ -273,15 +273,21 @@ process_ret process_queue_impl(address tip3root_sell, address tip3root_buy,
 __attribute__((noinline))
 std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
     big_queue<OrderInfoXchg> orders, addr_std_fixed client_addr, uint128 all_amount, bool_t sell,
-    Grams return_ownership, Grams process_queue, Grams incoming_val) {
+    Grams return_ownership, Grams process_queue, Grams incoming_val, price_t price) {
   bool is_first = true;
   for (auto it = orders.begin(); it != orders.end();) {
     auto next_it = std::next(it);
     auto ord = *it;
     if (ord.client_addr == client_addr) {
       unsigned minus_val = process_queue.get();
+      uint128 return_amount = ord.amount;
+      if (!sell) {
+        auto opt_cost = minor_cost(ord.amount, price);
+        require(!!opt_cost, ec::too_big_tokens_amount);
+        return_amount = *opt_cost;
+      }
       ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership).
-        returnOwnership();
+        returnOwnership(ord.amount);
       minus_val += return_ownership.get();
 
       unsigned plus_val = ord.account.get() + (is_first ? incoming_val.get() : 0);
@@ -344,7 +350,7 @@ public:
       err = ec::expired;
 
     if (err)
-      return on_ord_fail(err, wallet_in);
+      return on_ord_fail(err, wallet_in, amount);
 
     uint128 account = uint128(value.get()) - tons_cfg_.process_queue - tons_cfg_.order_answer;
 
@@ -408,7 +414,7 @@ public:
     auto [sells, sells_amount] =
       cancel_order_impl(sells_, client_addr, sells_amount_, bool_t{true},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value);
+                        Grams(tons_cfg_.process_queue.get()), value, price_);
     sells_ = sells;
     sells_amount_ = sells_amount;
     canceled_amount -= sells_amount_;
@@ -429,7 +435,7 @@ public:
     auto [buys, buys_amount] =
       cancel_order_impl(buys_, client_addr, buys_amount_, bool_t{false},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value);
+                        Grams(tons_cfg_.process_queue.get()), value, price_);
     buys_ = buys;
     buys_amount_ = buys_amount;
     canceled_amount -= buys_amount_;
@@ -524,8 +530,8 @@ private:
   }
 
   __always_inline
-  OrderRet on_ord_fail(unsigned ec, ITONTokenWalletPtr wallet_in) {
-    wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership();
+  OrderRet on_ord_fail(unsigned ec, ITONTokenWalletPtr wallet_in, uint128 amount) {
+    wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership(amount);
     if (sells_.empty() && buys_.empty()) {
       set_int_return_flag(SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY);
     } else {

@@ -9,20 +9,13 @@
 
 namespace tvm { inline namespace schema {
 
-struct FlexBurnWalletArgs {
-  uint128 tons_value;
-  uint256 out_pubkey;
-  address out_internal_owner;
-  address my_tip3_addr;
-};
-
 __interface IFlexClient {
 
   [[external]]
   void constructor(uint256 pubkey, cell trading_pair_code, cell xchg_pair_code) = 10;
 
   [[external, noaccept]]
-  void setFlexCfg(TonsConfig tons_cfg, addr_std_compact flex, addr_std_compact notify_addr) = 11;
+  void setFlexCfg(TonsConfig tons_cfg, address_t flex) = 11;
 
   // === additional configuration necessary for deploy wrapper === //
   [[external, noaccept]]
@@ -37,19 +30,21 @@ __interface IFlexClient {
 
   [[external, noaccept]]
   address deployTradingPair(
-    addr_std_compact tip3_root,
+    address_t tip3_root,
     uint128 deploy_min_value,
     uint128 deploy_value,
-    uint128 min_trade_amount
+    uint128 min_trade_amount,
+    address_t notify_addr
   ) = 15;
 
   [[external, noaccept]]
   address deployXchgPair(
-    addr_std_compact tip3_major_root,
-    addr_std_compact tip3_minor_root,
+    address_t tip3_major_root,
+    address_t tip3_minor_root,
     uint128 deploy_min_value,
     uint128 deploy_value,
-    uint128 min_trade_amount
+    uint128 min_trade_amount,
+    address_t notify_addr
   ) = 16;
 
   [[external, noaccept]]
@@ -61,9 +56,10 @@ __interface IFlexClient {
     uint8   deals_limit,
     uint128 tons_value,
     cell    price_code,
-    addr_std_compact my_tip3_addr,
-    addr_std_compact receive_wallet,
-    Tip3Config tip3cfg
+    address_t my_tip3_addr,
+    address_t receive_wallet,
+    Tip3Config tip3cfg,
+    address_t notify_addr
   ) = 17;
 
   [[external, noaccept]]
@@ -75,8 +71,9 @@ __interface IFlexClient {
     uint8 deals_limit,
     uint128 deploy_value,
     cell price_code,
-    addr_std_compact my_tip3_addr,
-    Tip3Config tip3cfg
+    address_t my_tip3_addr,
+    Tip3Config tip3cfg,
+    address_t notify_addr
   ) = 18;
 
   [[external, noaccept]]
@@ -91,10 +88,11 @@ __interface IFlexClient {
     uint8   deals_limit,
     uint128 tons_value,
     cell    xchg_price_code,
-    addr_std_compact my_tip3_addr,
-    addr_std_compact receive_wallet,
+    address_t my_tip3_addr,
+    address_t receive_wallet,
     Tip3Config major_tip3cfg,
-    Tip3Config minor_tip3cfg
+    Tip3Config minor_tip3cfg,
+    address_t notify_addr
   ) = 19;
 
   [[external, noaccept]]
@@ -104,7 +102,8 @@ __interface IFlexClient {
     uint8   deals_limit,
     uint128 value,
     cell    price_code,
-    Tip3Config tip3cfg
+    Tip3Config tip3cfg,
+    address_t notify_addr
   ) = 20;
 
   [[external, noaccept]]
@@ -114,7 +113,8 @@ __interface IFlexClient {
     uint8   deals_limit,
     uint128 value,
     cell    price_code,
-    Tip3Config tip3cfg
+    Tip3Config tip3cfg,
+    address_t notify_addr
   ) = 21;
 
   [[external, noaccept]]
@@ -127,12 +127,13 @@ __interface IFlexClient {
     uint128 value,
     cell    xchg_price_code,
     Tip3Config major_tip3cfg,
-    Tip3Config minor_tip3cfg
+    Tip3Config minor_tip3cfg,
+    address_t notify_addr
   ) = 22;
 
   [[external, noaccept]]
   void transfer(
-    addr_std_compact dest,
+    address_t dest,
     uint128 value,
     bool_t bounce
   ) = 23;
@@ -158,8 +159,8 @@ __interface IFlexClient {
   void burnWallet(
     uint128 tons_value,
     uint256 out_pubkey,
-    addr_std_compact out_internal_owner,
-    addr_std_compact my_tip3_addr
+    address_t out_internal_owner,
+    address_t my_tip3_addr
   ) = 26;
 
   [[getter]]
@@ -182,7 +183,7 @@ __interface IFlexClient {
   [[getter, dyn_chain_parse]]
   cell getPayloadForDeployInternalWallet(
     uint256 owner_pubkey,
-    addr_std_compact owner_addr,
+    address_t owner_addr,
     uint128 tons
   ) = 32;
 };
@@ -195,7 +196,6 @@ struct DFlexClient {
   int8 workchain_id_;
   TonsConfig tons_cfg_;
   addr_std_compact flex_;
-  addr_std_compact notify_addr_;
   optcell ext_wallet_code_;
   optcell flex_wallet_code_;
   optcell flex_wrapper_code_;
@@ -205,4 +205,5 @@ __interface EFlexClient {
 };
 
 }} // namespace tvm::schema
+
 

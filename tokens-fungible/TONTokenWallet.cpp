@@ -41,8 +41,8 @@ public:
 
   __always_inline
   void transfer(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     bool_t  return_ownership
@@ -52,8 +52,8 @@ public:
 
   __always_inline
   void transferWithNotify(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     bool_t  return_ownership,
@@ -66,9 +66,9 @@ public:
 
   __always_inline
   void transferToRecipient(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint256 recipient_public_key,
-    addr_std_compact recipient_internal_owner,
+    address_t recipient_internal_owner,
     uint128 tokens,
     uint128 grams,
     bool_t  deploy,
@@ -80,9 +80,9 @@ public:
 
   __always_inline
   void transferToRecipientWithNotify(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint256 recipient_public_key,
-    addr_std_compact recipient_internal_owner,
+    address_t recipient_internal_owner,
     uint128 tokens,
     uint128 grams,
     bool_t  deploy,
@@ -149,7 +149,7 @@ public:
   }
 
   __always_inline
-  void destroy(addr_std_compact dest) {
+  void destroy(address_t dest) {
     check_owner(/*original_owner_only*/true, /*allowed_for_original_owner_in_lend_state*/false);
     require(balance_ == 0, error_code::destroy_non_empty_wallet);
     tvm_accept();
@@ -173,7 +173,7 @@ public:
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
   __always_inline
   void lendOwnership(
-    addr_std_compact answer_addr,
+    address_t answer_addr,
     uint128 grams,
     uint256 std_dest,
     uint128 lend_balance,
@@ -193,7 +193,15 @@ public:
     auto answer_addr_fxd = fixup_answer_addr(answer_addr);
     auto dest = address::make_std(workchain_id_, std_dest);
 
-    lend_ownership_.set_at(dest, {lend_balance, lend_finish_time});
+    // repeated lend to the same address will be { sumX + sumY, max(timeX, timeY) }
+    auto sum_lend_balance = lend_balance;
+    auto sum_lend_finish_time = lend_finish_time;
+    if (auto existing_lend = lend_ownership_.lookup(dest)) {
+      sum_lend_balance += existing_lend->lend_balance;
+      sum_lend_finish_time = std::max(lend_finish_time, existing_lend->lend_finish_time);
+    }
+
+    lend_ownership_.set_at(dest, {sum_lend_balance, sum_lend_finish_time});
 
     auto deploy_init = parse<StateInit>(deploy_init_cl.ctos());
     unsigned msg_flags = prepare_transfer_message_flags(grams);
@@ -214,9 +222,16 @@ public:
   }
 
   __always_inline
-  void returnOwnership() {
+  void returnOwnership(uint128 tokens) {
     check_owner(/*original_owner_only*/false, /*allowed_for_original_owner_in_lend_state*/false);
-    lend_ownership_.erase(int_sender());
+    auto sender = int_sender();
+    auto v = lend_ownership_[sender];
+    if (v.lend_balance <= tokens) {
+      lend_ownership_.erase(sender);
+    } else {
+      v.lend_balance -= tokens;
+      lend_ownership_.set_at(sender, v);
+    }
   }
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
 
@@ -268,7 +283,7 @@ public:
 #ifdef TIP3_ENABLE_ALLOWANCE
   __always_inline
   void approve(
-    addr_std_compact spender,
+    address_t spender,
     uint128 remainingTokens,
     uint128 tokens
   ) {
@@ -288,9 +303,9 @@ public:
 
   __always_inline
   void transferFrom(
-    addr_std_compact answer_addr,
-    addr_std_compact from,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t from,
+    address_t to,
     uint128 tokens,
     uint128 grams
   ) {
@@ -299,9 +314,9 @@ public:
 
   __always_inline
   void transferFromWithNotify(
-    addr_std_compact answer_addr,
-    addr_std_compact from,
-    addr_std_compact to,
+    address_t answer_addr,
+    address_t from,
+    address_t to,
     uint128 tokens,
     uint128 grams,
     cell    payload

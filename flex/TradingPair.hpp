@@ -11,7 +11,7 @@ namespace tvm { inline namespace schema {
 __interface ITradingPair {
 
   [[internal, noaccept, answer_id]]
-  bool_t onDeploy(uint128 min_amount, uint128 deploy_value) = 10;
+  bool_t onDeploy(uint128 min_amount, uint128 deploy_value, address notify_addr) = 10;
 
   // ========== getters ==========
   [[getter]]
@@ -22,6 +22,9 @@ __interface ITradingPair {
 
   [[getter]]
   uint128 getMinAmount() = 13;
+
+  [[getter]]
+  address getNotifyAddr() = 14;
 };
 using ITradingPairPtr = handle<ITradingPair>;
 
@@ -29,6 +32,7 @@ struct DTradingPair {
   address flex_addr_;
   address tip3_root_;
   uint128 min_amount_; // minimum amount to buy/sell
+  address notify_addr_; // address for deals notifications
 };
 
 __interface ETradingPair {

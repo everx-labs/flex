@@ -16,12 +16,13 @@ public:
   };
 
   __always_inline
-  bool_t onDeploy(uint128 min_amount, uint128 deploy_value) {
+  bool_t onDeploy(uint128 min_amount, uint128 deploy_value, address notify_addr) {
     require(int_value().get() > deploy_value, error_code::not_enough_tons);
     require(!min_amount_, error_code::double_deploy);
     require(min_amount > 0, error_code::zero_min_amount);
 
     min_amount_ = min_amount;
+    notify_addr_ = notify_addr;
     tvm_rawreserve(deploy_value.get(), rawreserve_flag::up_to);
     set_int_return_flag(SEND_ALL_GAS);
     return bool_t{true};
@@ -40,6 +41,11 @@ public:
   __always_inline
   uint128 getMinAmount() {
     return min_amount_;
+  }
+
+  __always_inline
+  address getNotifyAddr() {
+    return notify_addr_;
   }
 
   // =============== Support functions ==================
