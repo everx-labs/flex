@@ -1,0 +1,5 @@
+.solc_imports
+*.log
+*.code
+*.keys.json
+*.sh

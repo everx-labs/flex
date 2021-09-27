@@ -3,88 +3,16 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 // import required DeBot interfaces and basic DeBot contract.
-import "../interfaces/Debot.sol";
-import "../interfaces/Upgradable.sol";
-import "../interfaces/Sdk.sol";
-import "../interfaces/Terminal.sol";
-import "../interfaces/Menu.sol";
-import "../interfaces/ConfirmInput.sol";
-import "../interfaces/AddressInput.sol";
-import "../interfaces/AmountInput.sol";
-
-struct StockTonCfg {
-    uint128 transfer_tip3; uint128 return_ownership; uint128 trading_pair_deploy;
-    uint128 order_answer; uint128 process_queue; uint128 send_notify;
-}
-
-
-abstract contract AMSig {
-    function submitTransaction(
-        address dest,
-        uint128 value,
-        bool bounce,
-        bool allBalance,
-        TvmCell payload)
-    public returns (uint64 transId) {}
-}
-
-abstract contract AFlex {
-    function getSellPriceCode(address tip3_addr) public returns(TvmCell value0) {}
-    function getXchgPriceCode(address tip3_addr1, address tip3_addr2) public returns(TvmCell value0) {}
-}
-
-abstract contract ATradingPair {
-    function getTip3Root() public returns(address value0) {}
-    function getFLeXAddr() public returns(address value0) {}
-}
-
-abstract contract AXchgPair {
-    function getTip3MajorRoot() public returns(address value0) {}
-    function getTip3MinorRoot() public returns(address value0) {}
-    function getFLeXAddr() public returns(address value0) {}
-}
-
-abstract contract ATip3Root {
-    function getSymbol() public returns(bytes value0){}
- }
-
-struct LendOwnership{
-   address owner;
-   uint128 lend_balance;
-   uint32 lend_finish_time;
-}
-struct Allowance{
-    address spender;
-    uint128 remainingTokens;
-}
-
-struct T3WDetails {
-    uint8 decimals;
-    uint128 balance;
-    string symbol;
-    LendOwnership lend_ownership;
-    uint256 rootPubkey;
-    address root;
-    string name;
-}
-
-abstract contract ATip3Wallet {
-    function getDetails() public returns (bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) {}
-}
-
-abstract contract AFlexClient {
-    constructor(uint256 pubkey, TvmCell trading_pair_code) public {}
-    function deployPriceWithBuy(TvmCell args_cl) public returns(address value0) {}
-    function deployPriceWithSell(TvmCell args_cl) public returns(address value0) {}
-    function cancelBuyOrder(TvmCell args_cl) public {}
-    function cancelSellOrder(TvmCell args_cl) public {}
-    function deployPriceXchg(TvmCell args_cl) public returns(address value0) {}
-    function cancelXchgOrder(TvmCell args) public {}
-}
-
-interface IFlexDebot {
-    function updateTradingPairs() external;
-}
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "DeBotInterfaces.sol";
+import "../abstract/Upgradable.sol";
+import "../abstract/AMSig.sol";
+import "../abstract/AFlex.sol";
+import "../abstract/AXchgPair.sol";
+import "../abstract/AFlexClient.sol";
+import "../abstract/AFlexWallet.sol";
+import "../interface/IFlexTip3Tip3Debot.sol";
+import "../interface/IFlexDebot.sol";
 
 struct PriceInfo {
        uint128 sell;
@@ -92,16 +20,17 @@ struct PriceInfo {
        address addr;
     }
 
-struct Tip3MenuInfo{
-        address tp;
-        address t3rMajor;
-        address t3rMinor;
-        string symbol;
-    }
+struct T3WDetails {
+    uint256 rootPubkey;
+    address root;
+    string name;
+    uint8 decimals;
+    uint128 balance;
+    string symbol;
+    LendOwnership[] lend_ownership;
+}
 
-contract FlexDebot is Debot, Upgradable {
-
-    uint256 constant TIP3ROOT_CODEHASH = 0x9e4be18bf6a7f77d5267dde7afa144f905f46a7aa82854df8846ea21f71701c9;
+contract FlexTip3TonDebot is IFlexTip3Tip3Debot, Debot, Upgradable {
 
     uint8 constant MAJOR_DETAIL = 0;
     uint8 constant MINOR_DETAIL = 1;
@@ -111,31 +40,33 @@ contract FlexDebot is Debot, Upgradable {
     address m_tip3majorRoot;
     address m_tip3minorRoot;
     string m_tip3tip3Name;
-    uint256 m_masterPubKey;
+    uint32 m_signingBox;
     uint128 m_flexClientBalance;
     TvmCell m_sendMsg;
     TvmCell m_xchgPriceCode;
     address m_flexClient;
-    address m_tip3wallet;
     address m_tip3majorWallet;
     address m_tip3minorWallet;
+    address m_notifyAddr;
     mapping(uint8 => T3WDetails) m_tip3walletsDetails;
     uint128 m_dealPrice;
     uint128 m_dealAmount;
     uint32 m_dealTime;
     uint128 m_stockMinAmount;
     uint8 m_stockDealsLimit;
-    StockTonCfg m_stockTonCfg;
+    FlexTonCfg m_flexTonCfg;
     uint32 m_getT3WDetailsCallback;
+    bool m_bInstantBuy;
     mapping(uint128 => PriceInfo) m_prices;
+    uint128[] m_arPrices;
 
     function start() public override {
         Terminal.print(0,"Please invoke me");
     }
 
-    function tokensToStr(uint128 tokens, uint8 decimals) public returns (string) {
+    function tokensToStr(uint128 tokens, uint8 decimals) public pure returns (string) {
         if (decimals==0) return format("{}", tokens);
-        uint128 val = uint128(10 ** decimals);
+        uint128 val = uint128(10) ** uint128(decimals);
         (uint128 dec, uint128 float) = math.divmod(tokens, val);
         string floatStr = format("{}", float);
         while (floatStr.byteLength() < decimals) {
@@ -145,12 +76,53 @@ contract FlexDebot is Debot, Upgradable {
         return result;
     }
 
-    function tradeTip3Tip3(address fc, uint256 pk, uint128 minAmount, uint8 dealsLimit, StockTonCfg tonCfg, address stock, address t3major, address t3minor, address wt3major, address wt3minor) public{
+    function instantTradeTip3Tip3(address fc, uint32 signingBox, address notifyAddr, uint128 minAmount, uint8 dealsLimit, FlexTonCfg tonCfg, address stock, address t3major, address t3minor, address wt3major, address wt3minor, bool bBuy, uint128 price, uint128 volume) public override {
         m_flexClient = fc;
-        m_masterPubKey = pk;
+        m_signingBox = signingBox;
+        m_notifyAddr = notifyAddr;
         m_stockMinAmount = minAmount;
         m_stockDealsLimit = dealsLimit;
-        m_stockTonCfg = tonCfg;
+        m_flexTonCfg = tonCfg;
+        m_stockAddr = stock;
+        m_tip3majorRoot = t3major;
+        m_tip3minorRoot = t3minor;
+        m_tip3majorWallet = wt3major;
+        m_tip3minorWallet = wt3minor;
+        m_sender = msg.sender;
+        m_dealAmount = volume;
+        m_dealPrice = price;
+        m_bInstantBuy = bBuy;
+
+        optional(uint256) none;
+        AFlex(m_stockAddr).getXchgPriceCode{
+            abiVer: 2,
+            extMsg: true,
+            callbackId: tvm.functionId(setInstantPriceCode),
+            onErrorId: 0,
+            time: 0,
+            expire: 0,
+            sign: false,
+            pubkey: none
+        }(m_tip3majorRoot,m_tip3minorRoot);
+    }
+
+    function setInstantPriceCode(TvmCell value0) public {
+        m_xchgPriceCode = value0;
+
+        if (m_bInstantBuy)
+            m_getT3WDetailsCallback = tvm.functionId(deployPriceWithBuy);
+        else
+            m_getT3WDetailsCallback = tvm.functionId(deployPriceWithSell);
+        getFCT3WBalances();
+    }
+
+    function tradeTip3Tip3(address fc, uint32 signingBox, address notifyAddr, uint128 minAmount, uint8 dealsLimit, FlexTonCfg tonCfg, address stock, address t3major, address t3minor, address wt3major, address wt3minor) public override {
+        m_flexClient = fc;
+        m_signingBox = signingBox;
+        m_notifyAddr = notifyAddr;
+        m_stockMinAmount = minAmount;
+        m_stockDealsLimit = dealsLimit;
+        m_flexTonCfg = tonCfg;
         m_stockAddr = stock;
         m_tip3majorRoot = t3major;
         m_tip3minorRoot = t3minor;
@@ -170,7 +142,7 @@ contract FlexDebot is Debot, Upgradable {
     function getT3WDetails(uint128 nanotokens) public {
         m_flexClientBalance = nanotokens;
         optional(uint256) none;
-        ATip3Wallet(m_tip3minorWallet).getDetails{
+        AFlexWallet(m_tip3minorWallet).getDetails{
             abiVer: 2,
             extMsg: true,
             callbackId: tvm.functionId(getT3WMajorDetails),
@@ -182,10 +154,14 @@ contract FlexDebot is Debot, Upgradable {
         }();
     }
     //get tip3 minor wallet token balance
-    function getT3WMajorDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+    function getT3WMajorDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+        tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
@@ -193,7 +169,7 @@ contract FlexDebot is Debot, Upgradable {
         tip3walletDetails.name = name;
         m_tip3walletsDetails[MINOR_DETAIL] = tip3walletDetails;
         optional(uint256) none;
-        ATip3Wallet(m_tip3majorWallet).getDetails{
+        AFlexWallet(m_tip3majorWallet).getDetails{
             abiVer: 2,
             extMsg: true,
             callbackId: m_getT3WDetailsCallback,
@@ -205,10 +181,14 @@ contract FlexDebot is Debot, Upgradable {
         }();
     }
 
-    function setT3WDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+    function setT3WDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+        tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
@@ -219,11 +199,7 @@ contract FlexDebot is Debot, Upgradable {
         Terminal.print(0, format("{}",m_tip3majorWallet));
         Terminal.print(0,format("Minor tip3 wallet is"));
         Terminal.print(0, format("{}",m_tip3minorWallet));
-        getPriceCodeHash();
-    }
-
-    //get order book
-    function getPriceCodeHash() public view {
+        //get order book
         optional(uint256) none;
         AFlex(m_stockAddr).getXchgPriceCode{
             abiVer: 2,
@@ -242,10 +218,14 @@ contract FlexDebot is Debot, Upgradable {
         getPricesDataByHash();
     }
 
-    function setUpdateT3WDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+    function setUpdateT3WDetails(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+        tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
@@ -260,129 +240,132 @@ contract FlexDebot is Debot, Upgradable {
         Sdk.getAccountsDataByHash(tvm.functionId(onPricesByHash),h,address(0x0));
     }
 
-    function onPricesByHash(ISdk.AccData[] accounts) public {
+    function onPricesByHash(AccData[] accounts) public {
         MenuItem[] item;
         mapping (uint128 => PriceInfo) empty;
         m_prices = empty;
-
+        m_arPrices = new uint128[](0);
         string comment = format("Flex client balance: {:t}",m_flexClientBalance);
         comment.append(format("\nTip3 {} balance: ",m_tip3walletsDetails[MAJOR_DETAIL].symbol));
         comment.append(tokensToStr(m_tip3walletsDetails[MAJOR_DETAIL].balance,m_tip3walletsDetails[MAJOR_DETAIL].decimals));
         comment.append(format("\nTip3 {} balance: ",m_tip3walletsDetails[MINOR_DETAIL].symbol));
         comment.append(tokensToStr(m_tip3walletsDetails[MINOR_DETAIL].balance,m_tip3walletsDetails[MINOR_DETAIL].decimals));
-        
+
         for (uint i=0; i<accounts.length;i++)
         {
             TvmSlice sl = accounts[i].data.toSlice();
             sl.decode(bool);
             (uint128 pn, uint128 pd, uint128 s, uint128 b) = sl.decode(uint128,uint128,uint128,uint128);
+            if (pd!=(uint128(10)**uint128(m_tip3walletsDetails[MAJOR_DETAIL].decimals))) continue;
             m_prices[pn]=PriceInfo(s,b,accounts[i].id);
         }
 
-        optional(uint128 , PriceInfo) registryPair = m_prices.min();
+        optional(uint128 , PriceInfo) registryPair = m_prices.max();
         while (registryPair.hasValue()) {
             (uint128 key, PriceInfo pi) = registryPair.get();
             string str = tokensToStr(key,m_tip3walletsDetails[MINOR_DETAIL].decimals);
             str += " | sell "+tokensToStr(pi.sell,m_tip3walletsDetails[MAJOR_DETAIL].decimals)+" | buy "+tokensToStr(pi.buy,m_tip3walletsDetails[MAJOR_DETAIL].decimals);
             item.push(MenuItem(str,"",tvm.functionId(menuQuickDeal)));
-            registryPair = m_prices.next(key);
+            m_arPrices.push(key);
+            registryPair = m_prices.prev(key);
         }
-
-        if (m_tip3walletsDetails[MINOR_DETAIL].lend_ownership.owner==address(0))
+        if (m_tip3walletsDetails[MINOR_DETAIL].balance>0)
             item.push(MenuItem(format("Buy {} for {}",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),"",tvm.functionId(menuBuyTip3)));
-        else 
-            comment.append(format("\nYour {} tip3 wallet is lent. You can't buy now.",m_tip3walletsDetails[MINOR_DETAIL].symbol));
-        if (m_tip3walletsDetails[MAJOR_DETAIL].lend_ownership.owner==address(0))
+        if (m_tip3walletsDetails[MAJOR_DETAIL].balance>0)
             item.push( MenuItem(format("Sell {} for {}",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),"",tvm.functionId(menuSellTip3)));
-        else 
-            comment.append(format("\nYour {} tip3 wallet is lent. You can't sell now.",m_tip3walletsDetails[MAJOR_DETAIL].symbol));
-        if (m_tip3walletsDetails[MINOR_DETAIL].lend_ownership.owner!=address(0))
+        if (m_tip3walletsDetails[MINOR_DETAIL].lend_ownership.length>0)
             item.push(MenuItem("Cancel Buy order","",tvm.functionId(menuCancelBuyTip3)));
-        if (m_tip3walletsDetails[MAJOR_DETAIL].lend_ownership.owner!=address(0))
+        if (m_tip3walletsDetails[MAJOR_DETAIL].lend_ownership.length>0)
             item.push(MenuItem("Cancel Sell order","",tvm.functionId(menuCancelSellTip3)));
-        
-        
-        item.push(MenuItem("Update order book","",tvm.functionId(menuOrderBookUpdate)));
-        item.push(MenuItem("Back","",tvm.functionId(menuOrderBookBack)));
-        
-        Terminal.print(0,comment);
-        
-        Menu.select("Order Book","", item);
 
+        item.push(MenuItem("Update order book","",tvm.functionId(menuOrderBookUpdate)));
+        item.push(MenuItem("Withdraw tip3","",tvm.functionId(menuOrderBookBurnTip3)));
+        item.push(MenuItem("Back","",tvm.functionId(menuOrderBookBack)));
+
+        Terminal.print(0,comment);
+
+        Menu.select("Order Book","", item);
     }
 
     //cancel buy order
     function menuCancelBuyTip3(uint32 index) public {
+        index;//disable compile warnings
         m_dealPrice = 0;
         m_dealTime = 1;
-        onCancelSellTip3();
+        showCancelOrderMenu(MINOR_DETAIL);
     }
 
     //cancel sell order
     function menuCancelSellTip3(uint32 index) public {
+        index;//disable compile warnings
         m_dealPrice = 0;
         m_dealTime = 0;
-        onCancelSellTip3();
+        showCancelOrderMenu(MAJOR_DETAIL);
     }
-
-    function onCancelSellTip3() public {
-        optional(uint128 , PriceInfo) registryPair = m_prices.min();
+    function showCancelOrderMenu(uint8 wallet) public{
+        m_arPrices = new uint128[](0);
+        MenuItem[] item;
+        optional(uint128 , PriceInfo) registryPair = m_prices.max();
         while (registryPair.hasValue()) {
             (uint128 key, PriceInfo pi) = registryPair.get();
-            if (m_tip3walletsDetails[uint8(m_dealTime)].lend_ownership.owner == pi.addr){
-                m_dealPrice = key;
-                m_dealAmount = pi.sell;
-                if (m_dealTime==1) {m_dealAmount = pi.buy;}
-                break;
+            for (uint i = 0; i < m_tip3walletsDetails[wallet].lend_ownership.length; ++i){
+                if (m_tip3walletsDetails[wallet].lend_ownership[i].lend_addr == pi.addr){
+                    m_arPrices.push(key);
+                    item.push(MenuItem(format("Price {} Volume {}",tokensToStr(key,m_tip3walletsDetails[MINOR_DETAIL].decimals),tokensToStr(m_tip3walletsDetails[wallet].lend_ownership[i].lend_balance, m_tip3walletsDetails[wallet].decimals)),"",tvm.functionId(menuCancelSellTip3Order)));
+                    break;
+                }
             }
-            registryPair = m_prices.next(key);
+            registryPair = m_prices.prev(key);
         }
-
-        if (m_dealPrice!=0){
-            m_getT3WDetailsCallback = tvm.functionId(cancelSellOrder);
-            getFCT3WBalances();
-        } else {
-            string str;
-            if (m_dealTime==0) {str="major";}else {str="minor";}
-            Terminal.print(tvm.functionId(getPricesDataByHash),format("Error: {} tip3 lend owner address not found in price contracts ({})",str,m_tip3walletsDetails[uint8(m_dealTime)].lend_ownership.owner));
-        }
+        item.push(MenuItem("Back","",tvm.functionId(menuOrderBookUpdate)));
+        Menu.select("Cancel order","", item);
     }
 
-    function cancelSellOrder(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+     function menuCancelSellTip3Order(uint32 index) public {
+        m_dealPrice = m_arPrices[index];
+        m_getT3WDetailsCallback = tvm.functionId(cancelSellOrder);
+        getFCT3WBalances();
+     }
+
+    function cancelSellOrder(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+        tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
         tip3walletDetails.root = root_address;
         tip3walletDetails.name = name;
-        m_tip3walletsDetails[MAJOR_DETAIL] = tip3walletDetails;
-        
+
         uint128 payout = 1000000000;
-        if (payout+100000000>m_flexClientBalance) {
+        if (payout>m_flexClientBalance) {
             Terminal.print(0,"Error: Flex client balance too low!\nPlease send tons to your flex client address:");
             Terminal.print(tvm.functionId(getPricesDataByHash),format("{}",m_flexClient));
             return;
         }
-        
-
         uint128 priceNum = m_dealPrice;
-        uint128 priceDenum = 10**uint128(m_tip3walletsDetails[MINOR_DETAIL].decimals);
-        TvmBuilder bTip3CfgMajor;
-        bTip3CfgMajor.store(m_tip3walletsDetails[MAJOR_DETAIL].name,m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey,m_tip3walletsDetails[MAJOR_DETAIL].root);
-        TvmBuilder bTip3CfgMinor;
-        bTip3CfgMinor.store(m_tip3walletsDetails[MINOR_DETAIL].name,m_tip3walletsDetails[MINOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].decimals,m_tip3walletsDetails[MINOR_DETAIL].rootPubkey,m_tip3walletsDetails[MINOR_DETAIL].root);
-        TvmBuilder bFlexXchgCfgs;
-        bFlexXchgCfgs.storeRef(bTip3CfgMajor);
-        bFlexXchgCfgs.storeRef(bTip3CfgMinor);
-
-        TvmBuilder bFlexXchgCancelArgs;
+        uint128 priceDenum = uint128(10)**uint128(m_tip3walletsDetails[MAJOR_DETAIL].decimals);
         bool bSell = true;
         if (m_dealTime==1) {bSell=false;}
-        bFlexXchgCancelArgs.store(bSell, priceNum, priceDenum, m_stockMinAmount,m_stockDealsLimit,payout,m_xchgPriceCode,code);
-        bFlexXchgCancelArgs.storeRef(bFlexXchgCfgs);
-          
+
+        Tip3Cfg majoorTip3cfg;
+        majoorTip3cfg.name=m_tip3walletsDetails[MAJOR_DETAIL].name;
+        majoorTip3cfg.symbol=m_tip3walletsDetails[MAJOR_DETAIL].symbol;
+        majoorTip3cfg.decimals=m_tip3walletsDetails[MAJOR_DETAIL].decimals;
+        majoorTip3cfg.root_public_key=m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey;
+        majoorTip3cfg.root_address=m_tip3walletsDetails[MAJOR_DETAIL].root;
+
+        Tip3Cfg minorTip3cfg;
+        minorTip3cfg.name=m_tip3walletsDetails[MINOR_DETAIL].name;
+        minorTip3cfg.symbol=m_tip3walletsDetails[MINOR_DETAIL].symbol;
+        minorTip3cfg.decimals=m_tip3walletsDetails[MINOR_DETAIL].decimals;
+        minorTip3cfg.root_public_key=m_tip3walletsDetails[MINOR_DETAIL].rootPubkey;
+        minorTip3cfg.root_address=m_tip3walletsDetails[MINOR_DETAIL].root;
+
         optional(uint256) none;
         m_sendMsg =  tvm.buildExtMsg({
             abiVer: 2,
@@ -392,20 +375,14 @@ contract FlexDebot is Debot, Upgradable {
             time: 0,
             expire: 0,
             sign: true,
+            signBoxHandle: m_signingBox,
             pubkey: none,
-            call: {AFlexClient.cancelXchgOrder, bFlexXchgCancelArgs.toCell()}
+            call: {AFlexClient.cancelXchgOrder, bSell, priceNum, priceDenum, m_stockMinAmount,m_stockDealsLimit,payout,m_xchgPriceCode,majoorTip3cfg,minorTip3cfg,m_notifyAddr}
         });
         string pr = tokensToStr(m_dealPrice,m_tip3walletsDetails[MINOR_DETAIL].decimals);
-        string t3amount;
-        if (m_dealTime==1) {
-            t3amount = tokensToStr(m_dealAmount,m_tip3walletsDetails[uint8(MAJOR_DETAIL)].decimals);
-        } else {
-            t3amount = tokensToStr(m_dealAmount,m_tip3walletsDetails[uint8(MINOR_DETAIL)].decimals);
-        }
-         
         string str = "sell";
         if (m_dealTime==1) {str="buy";}
-        ConfirmInput.get(tvm.functionId(confirmCancelSellOrder),format("Cancel {} order at price {} amount {}\nProcessing value {:t} ton. Unused part will be returned. Continue?",str ,pr, t3amount, payout));
+        ConfirmInput.get(tvm.functionId(confirmCancelSellOrder),format("Cancel {} order at price {}\nProcessing value {:t} ton. Unused part will be returned. Continue?",str ,pr, payout));
     }
 
     function confirmCancelSellOrder(bool value) public {
@@ -416,7 +393,7 @@ contract FlexDebot is Debot, Upgradable {
         }
     }
 
-    function onSendCancelSellOrder() public {
+    function onSendCancelSellOrder() public view {
         tvm.sendrawmsg(m_sendMsg, 1);
     }
 
@@ -432,34 +409,24 @@ contract FlexDebot is Debot, Upgradable {
 
     //Quick Deal
     function menuQuickDeal(uint32 index) public {
-        PriceInfo pi;
-        optional(uint128 , PriceInfo) registryPair = m_prices.min();
-        for (uint i=0; i<=index; i++){
-            (m_dealPrice, pi) = registryPair.get();
-            registryPair = m_prices.next(m_dealPrice);
-        }
+        index;//disable compile warnings
+        m_dealPrice = m_arPrices[index];
+        PriceInfo pi = m_prices[m_dealPrice];
         if (pi.sell!=0 && pi.buy!=0) {
             Terminal.print(tvm.functionId(getPricesDataByHash),"Fast trade is not supported at volatile price levels");
         }else if (pi.sell!=0) {
-            if (m_tip3walletsDetails[MINOR_DETAIL].lend_ownership.owner==address(0)) {
-                if (m_tip3walletsDetails[MINOR_DETAIL].balance>0){
-                    uint128 max_val = math.min(pi.sell,m_tip3walletsDetails[MINOR_DETAIL].balance);
-                    AmountInput.get(tvm.functionId(getBuyQuickDealAmount), format("Amount of {} tip3 to buy for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,max_val);
-                    //AmountInput.get(tvm.functionId(getSellQuickDealAmount), "Amount of tip3 to sell:",m_tip3walletDetails.decimals,m_stockMinAmount,max_val);
-                } else {Terminal.print(tvm.functionId(getPricesDataByHash),"You haven't tip3 tokens to buy.");}
-            } else {
-                Terminal.print(tvm.functionId(getPricesDataByHash),"Your tip3 wallet is lent. You can't buy tip3 tokens now.");
-             }
+            if (m_tip3walletsDetails[MINOR_DETAIL].balance>0){
+                uint128 max_val = math.min(pi.sell,m_tip3walletsDetails[MINOR_DETAIL].balance);
+                AmountInput.get(tvm.functionId(getBuyQuickDealAmount), format("Amount of {} tip3 to 2 for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,max_val);
+                //AmountInput.get(tvm.functionId(getSellQuickDealAmount), "Amount of tip3 to sell:",m_tip3walletDetails.decimals,m_stockMinAmount,max_val);
+            } else {Terminal.print(tvm.functionId(getPricesDataByHash),"You haven't tip3 tokens to buy.");}
         }else if (pi.buy!=0) {
-            if (m_tip3walletsDetails[MAJOR_DETAIL].lend_ownership.owner==address(0)) {
-                if (m_tip3walletsDetails[MAJOR_DETAIL].balance>0){
-                    uint128 max_val = math.min(pi.buy,m_tip3walletsDetails[MAJOR_DETAIL].balance);
-                    AmountInput.get(tvm.functionId(getSellQuickDealAmount), format("Amount of {} tip3 to sell for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,max_val);
-                } else {Terminal.print(tvm.functionId(getPricesDataByHash),"You haven't tip3 tokens to sell.");}
-            } else {
-                Terminal.print(tvm.functionId(getPricesDataByHash),"Your tip3 wallet is lent. You can't sell tip3 tokens now.");
-            }
-        }else Terminal.print(tvm.functionId(getPricesDataByHash),"Fast trade is not supported at this price level");
+            if (m_tip3walletsDetails[MAJOR_DETAIL].balance>0){
+                uint128 max_val = math.min(pi.buy,m_tip3walletsDetails[MAJOR_DETAIL].balance);
+                AmountInput.get(tvm.functionId(getSellQuickDealAmount), format("Amount of {} tip3 to sell for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,max_val);
+                //AmountInput.get(tvm.functionId(getSellQuickDealAmount), "Amount of tip3 to sell:",m_tip3walletDetails.decimals,m_stockMinAmount,max_val);
+            } else {Terminal.print(tvm.functionId(getPricesDataByHash),"You haven't tip3 tokens to sell.");}
+        }
     }
 
     function getBuyQuickDealAmount(uint128 value) public {
@@ -480,17 +447,43 @@ contract FlexDebot is Debot, Upgradable {
 
     //update
     function menuOrderBookUpdate(uint32 index) public {
+        index;//disable compile warnings
         m_getT3WDetailsCallback = tvm.functionId(setUpdateT3WDetails);
         getFCT3WBalances();
     }
 
     //back
     function menuOrderBookBack(uint32 index) public {
+        index;//disable compile warnings
         IFlexDebot(m_sender).updateTradingPairs();
         m_sender = address(0);
     }
+
+    //withdraw tip3
+    function menuOrderBookBurnTip3(uint32 index) public {
+        index;//disable compile warning
+        MenuItem[] item;
+        item.push(MenuItem(format("Withdraw {} tip3",m_tip3walletsDetails[MAJOR_DETAIL].symbol),"",tvm.functionId(menuOrderBookBurnMajor)));
+        item.push(MenuItem(format("Withdraw {} tip3",m_tip3walletsDetails[MINOR_DETAIL].symbol),"",tvm.functionId(menuOrderBookBurnMinor)));
+        item.push(MenuItem("Back","",tvm.functionId(menuOrderBookUpdate)));
+        Menu.select("Withdraw tip3","", item);
+    }
+
+    function menuOrderBookBurnMajor(uint32 index) public {
+        index;//disable compile warning
+        IFlexDebot(m_sender).burnTip3Wallet(m_flexClient,m_signingBox,m_tip3majorWallet);
+        m_sender = address(0);
+    }
+
+    function menuOrderBookBurnMinor(uint32 index) public {
+        index;//disable compile warning
+        IFlexDebot(m_sender).burnTip3Wallet(m_flexClient,m_signingBox,m_tip3minorWallet);
+        m_sender = address(0);
+    }
+
     //buy
     function menuBuyTip3(uint32 index) public {
+        index;//disable compile warnings
         AmountInput.get(tvm.functionId(getDealAmmount), format("Amount of {} tip3 to buy for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,0xFFFFFFFF);
     }
     function getDealAmmount(uint128 value) public{
@@ -499,7 +492,7 @@ contract FlexDebot is Debot, Upgradable {
     }
     function getDealPrice(uint128 value) public{
         m_dealPrice = value;
-        AmountInput.get(tvm.functionId(getBuyDealTime), "Order time in hours:",0,1,0xFF);
+        AmountInput.get(tvm.functionId(getBuyDealTime), "Order time in hours:",0,1,8640);
     }
 
     function getBuyDealTime(uint128 value) public{
@@ -509,51 +502,51 @@ contract FlexDebot is Debot, Upgradable {
        getFCT3WBalances();
     }
 
-    function deployPriceWithBuy(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+    function deployPriceWithBuy(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+         tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
         tip3walletDetails.root = root_address;
         tip3walletDetails.name = name;
         m_tip3walletsDetails[MAJOR_DETAIL] = tip3walletDetails;
+        //m_dealPrice = price2Flex(m_dealTons, m_tip3walletDetails.decimals);
         uint128 priceNum = m_dealPrice;
-        uint128 priceDenum = 10**uint128(m_tip3walletsDetails[MINOR_DETAIL].decimals);
-        uint128 minorAmount = math.muldivr(m_dealAmount, priceNum, priceDenum);
-        if (minorAmount<1) 
+        uint128 priceDenum = uint128(10)**uint128(m_tip3walletsDetails[MAJOR_DETAIL].decimals);
+        uint128 minorAmount = math.muldivr(1, priceNum, priceDenum);
+        if (minorAmount<1)
         {
             Terminal.print(tvm.functionId(getPricesDataByHash),"Error: too low price! Cancelled!");
             return;
         }
-
-        if (minorAmount>m_tip3walletsDetails[MINOR_DETAIL].balance) 
+        minorAmount = math.muldivr(m_dealAmount, priceNum, priceDenum);
+        if (minorAmount>m_tip3walletsDetails[MINOR_DETAIL].balance)
         {
             Terminal.print(tvm.functionId(getPricesDataByHash),format("Error: you need {} tokens on your minor balance! Cancelled!",minorAmount));
             return;
         }
-    
-        uint128 payout = m_stockTonCfg.process_queue + m_stockTonCfg.transfer_tip3 + m_stockTonCfg.send_notify +
-          m_stockTonCfg.return_ownership + m_stockTonCfg.order_answer + 1000000000;
-          
-        TvmBuilder bTip3CfgMajor;
-        bTip3CfgMajor.store(m_tip3walletsDetails[MAJOR_DETAIL].name,m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey,m_tip3walletsDetails[MAJOR_DETAIL].root);
-        TvmBuilder bTip3CfgMinor;
-        bTip3CfgMinor.store(m_tip3walletsDetails[MINOR_DETAIL].name,m_tip3walletsDetails[MINOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].decimals,m_tip3walletsDetails[MINOR_DETAIL].rootPubkey,m_tip3walletsDetails[MINOR_DETAIL].root);
-        
-        TvmBuilder bFlexXchgCfgs;
-        bFlexXchgCfgs.storeRef(bTip3CfgMajor);
-        bFlexXchgCfgs.storeRef(bTip3CfgMinor);
+        uint128 payout = m_flexTonCfg.process_queue + m_flexTonCfg.transfer_tip3 + m_flexTonCfg.send_notify +
+          m_flexTonCfg.return_ownership + m_flexTonCfg.order_answer + 1000000000;
 
-        TvmBuilder bFlexSellArgsAddrs;
-        bFlexSellArgsAddrs.store(m_tip3minorWallet,m_tip3majorWallet);
-        TvmBuilder bFlexXchgArgs;
-        bFlexXchgArgs.store(false,priceNum,priceDenum,m_dealAmount,minorAmount,m_dealTime,m_stockMinAmount,m_stockDealsLimit,payout,
-                            m_xchgPriceCode);
-        bFlexXchgArgs.storeRef(bFlexSellArgsAddrs);
-        bFlexXchgArgs.store(code);
-        bFlexXchgArgs.storeRef(bFlexXchgCfgs);
+        Tip3Cfg majoorTip3cfg;
+        majoorTip3cfg.name=m_tip3walletsDetails[MAJOR_DETAIL].name;
+        majoorTip3cfg.symbol=m_tip3walletsDetails[MAJOR_DETAIL].symbol;
+        majoorTip3cfg.decimals=m_tip3walletsDetails[MAJOR_DETAIL].decimals;
+        majoorTip3cfg.root_public_key=m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey;
+        majoorTip3cfg.root_address=m_tip3walletsDetails[MAJOR_DETAIL].root;
+
+        Tip3Cfg minorTip3cfg;
+        minorTip3cfg.name=m_tip3walletsDetails[MINOR_DETAIL].name;
+        minorTip3cfg.symbol=m_tip3walletsDetails[MINOR_DETAIL].symbol;
+        minorTip3cfg.decimals=m_tip3walletsDetails[MINOR_DETAIL].decimals;
+        minorTip3cfg.root_public_key=m_tip3walletsDetails[MINOR_DETAIL].rootPubkey;
+        minorTip3cfg.root_address=m_tip3walletsDetails[MINOR_DETAIL].root;
 
         optional(uint256) none;
         m_sendMsg =  tvm.buildExtMsg({
@@ -564,10 +557,12 @@ contract FlexDebot is Debot, Upgradable {
             time: 0,
             expire: 0,
             sign: true,
+            signBoxHandle: m_signingBox,
             pubkey: none,
-            call: {AFlexClient.deployPriceXchg, bFlexXchgArgs.toCell()}
+            call: {AFlexClient.deployPriceXchg, false,priceNum,priceDenum,m_dealAmount,minorAmount,m_dealTime,m_stockMinAmount,m_stockDealsLimit,payout,
+                            m_xchgPriceCode,m_tip3minorWallet,m_tip3majorWallet,majoorTip3cfg,minorTip3cfg,m_notifyAddr}
         });
-        ConfirmInput.get(tvm.functionId(confirmDeployPriceWithBuy),format("It will cost {:t}. Unused part will be returned. Continue?",payout));
+        ConfirmInput.get(tvm.functionId(confirmDeployPriceWithBuy),format("It will cost {:t} TONs. Unused part will be returned. Continue?",payout));
     }
 
     function confirmDeployPriceWithBuy(bool value) public {
@@ -578,12 +573,12 @@ contract FlexDebot is Debot, Upgradable {
         }
     }
 
-    function onSendDeployBuy() public {
+    function onSendDeployBuy() public view {
         tvm.sendrawmsg(m_sendMsg, 1);
     }
 
     function onBuySuccess (address value0)  public  {
-        Terminal.print(0,format("debug price {}!",value0));
+        value0;//disable compile warning
         Terminal.print(0,"Buy order send!");
         getPricesDataByHash();
     }
@@ -594,6 +589,7 @@ contract FlexDebot is Debot, Upgradable {
 
     //sell done
     function menuSellTip3(uint32 index) public {
+        index;//disable compile warnings
         AmountInput.get(tvm.functionId(getSellDealAmmount), format("Amount of {} tip3 to sell for {} tip3:",m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].symbol),m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_stockMinAmount,m_tip3walletsDetails[MAJOR_DETAIL].balance);
     }
 
@@ -613,10 +609,14 @@ contract FlexDebot is Debot, Upgradable {
        getFCT3WBalances();
     }
 
-    function deployPriceWithSell(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public{
+    function deployPriceWithSell(bytes name, bytes symbol, uint8 decimals, uint128 balance,
+            uint256 root_public_key, uint256 wallet_public_key, address root_address,
+            address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance,
+            TvmCell code, Allowance allowance, int8 workchain_id) public{
+        wallet_public_key;owner_address;lend_balance;code;allowance;workchain_id;//disable compile warnings
         T3WDetails tip3walletDetails;
         tip3walletDetails.decimals = decimals;
-        tip3walletDetails.balance = balance;
+        tip3walletDetails.balance = balance - lend_balance;
         tip3walletDetails.lend_ownership = lend_ownership;
         tip3walletDetails.symbol = symbol;
         tip3walletDetails.rootPubkey = root_public_key;
@@ -624,41 +624,37 @@ contract FlexDebot is Debot, Upgradable {
         tip3walletDetails.name = name;
         m_tip3walletsDetails[MAJOR_DETAIL] = tip3walletDetails;
         uint128 priceNum = m_dealPrice;
-        uint128 priceDenum = 10**uint128(m_tip3walletsDetails[MINOR_DETAIL].decimals);
-        uint128 minorAmount = math.muldivr(m_dealAmount, priceNum, priceDenum);
-        if (minorAmount<1) 
+        uint128 priceDenum = uint128(10)**uint128(m_tip3walletsDetails[MAJOR_DETAIL].decimals);
+        uint128 minorAmount = math.muldivr(1, priceNum, priceDenum);
+        if (minorAmount<1)
         {
             Terminal.print(tvm.functionId(getPricesDataByHash),"Error: too low price! Cancelled!");
             return;
         }
 
-        if (m_dealAmount>m_tip3walletsDetails[MAJOR_DETAIL].balance) 
+        if (m_dealAmount>m_tip3walletsDetails[MAJOR_DETAIL].balance)
         {
             Terminal.print(tvm.functionId(getPricesDataByHash),format("Error: you need {} tokens on your major balance! Cancelled!",m_dealAmount));
             return;
         }
-        
-        uint128 payout = m_stockTonCfg.process_queue + m_stockTonCfg.transfer_tip3 + m_stockTonCfg.send_notify +
-          m_stockTonCfg.return_ownership + m_stockTonCfg.order_answer + 1000000000;
-          
-        TvmBuilder bTip3CfgMajor;
-        bTip3CfgMajor.store(m_tip3walletsDetails[MAJOR_DETAIL].name,m_tip3walletsDetails[MAJOR_DETAIL].symbol,m_tip3walletsDetails[MAJOR_DETAIL].decimals,m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey,m_tip3walletsDetails[MAJOR_DETAIL].root);
-        TvmBuilder bTip3CfgMinor;
-        bTip3CfgMinor.store(m_tip3walletsDetails[MINOR_DETAIL].name,m_tip3walletsDetails[MINOR_DETAIL].symbol,m_tip3walletsDetails[MINOR_DETAIL].decimals,m_tip3walletsDetails[MINOR_DETAIL].rootPubkey,m_tip3walletsDetails[MINOR_DETAIL].root);
-        
-        TvmBuilder bFlexXchgCfgs;
-        bFlexXchgCfgs.storeRef(bTip3CfgMajor);
-        bFlexXchgCfgs.storeRef(bTip3CfgMinor);
 
-        TvmBuilder bFlexSellArgsAddrs;
-        bFlexSellArgsAddrs.store(m_tip3majorWallet,m_tip3minorWallet);
-        TvmBuilder bFlexXchgArgs;
-        bFlexXchgArgs.store(true,priceNum,priceDenum,m_dealAmount,m_dealAmount,m_dealTime,m_stockMinAmount,m_stockDealsLimit,payout,
-                            m_xchgPriceCode);
-        bFlexXchgArgs.storeRef(bFlexSellArgsAddrs);
-        bFlexXchgArgs.store(code);
-        bFlexXchgArgs.storeRef(bFlexXchgCfgs);
- 
+        uint128 payout = m_flexTonCfg.process_queue + m_flexTonCfg.transfer_tip3 + m_flexTonCfg.send_notify +
+          m_flexTonCfg.return_ownership + m_flexTonCfg.order_answer + 1000000000;
+
+        Tip3Cfg majoorTip3cfg;
+        majoorTip3cfg.name=m_tip3walletsDetails[MAJOR_DETAIL].name;
+        majoorTip3cfg.symbol=m_tip3walletsDetails[MAJOR_DETAIL].symbol;
+        majoorTip3cfg.decimals=m_tip3walletsDetails[MAJOR_DETAIL].decimals;
+        majoorTip3cfg.root_public_key=m_tip3walletsDetails[MAJOR_DETAIL].rootPubkey;
+        majoorTip3cfg.root_address=m_tip3walletsDetails[MAJOR_DETAIL].root;
+
+        Tip3Cfg minorTip3cfg;
+        minorTip3cfg.name=m_tip3walletsDetails[MINOR_DETAIL].name;
+        minorTip3cfg.symbol=m_tip3walletsDetails[MINOR_DETAIL].symbol;
+        minorTip3cfg.decimals=m_tip3walletsDetails[MINOR_DETAIL].decimals;
+        minorTip3cfg.root_public_key=m_tip3walletsDetails[MINOR_DETAIL].rootPubkey;
+        minorTip3cfg.root_address=m_tip3walletsDetails[MINOR_DETAIL].root;
+
         optional(uint256) none;
         m_sendMsg =  tvm.buildExtMsg({
             abiVer: 2,
@@ -668,10 +664,12 @@ contract FlexDebot is Debot, Upgradable {
             time: 0,
             expire: 0,
             sign: true,
+            signBoxHandle: m_signingBox,
             pubkey: none,
-            call: {AFlexClient.deployPriceXchg, bFlexXchgArgs.toCell()}
+            call: {AFlexClient.deployPriceXchg, true,priceNum,priceDenum,m_dealAmount,m_dealAmount,m_dealTime,m_stockMinAmount,m_stockDealsLimit,payout,
+                            m_xchgPriceCode,m_tip3majorWallet,m_tip3minorWallet,majoorTip3cfg,minorTip3cfg,m_notifyAddr}
         });
-        ConfirmInput.get(tvm.functionId(confirmDeployPriceWithBuy),format("It will cost {:t}. Unused part will be returned. Continue?",payout));
+        ConfirmInput.get(tvm.functionId(confirmDeployPriceWithBuy),format("It will cost {:t} TONs. Unused part will be returned. Continue?",payout));
     }
 
     function confirmDeployPriceWithSell(bool value) public {
@@ -682,11 +680,12 @@ contract FlexDebot is Debot, Upgradable {
         }
     }
 
-    function onSendDeploySell() public {
+    function onSendDeploySell() public view {
         tvm.sendrawmsg(m_sendMsg, 1);
     }
 
     function onSellSuccess (address value0)  public  {
+        value0;//disable compile warnings
         Terminal.print(0,"Sell order send!");
         getPricesDataByHash();
     }
@@ -703,7 +702,7 @@ contract FlexDebot is Debot, Upgradable {
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "Flex TIP3/TIP3 Debot";
-        version = "0.1.0";
+        version = "0.2.3";
         publisher = "TON Labs";
         key = "Trade TIP3 for TIP3";
         author = "TON Labs";

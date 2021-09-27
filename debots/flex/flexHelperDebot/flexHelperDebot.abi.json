@@ -3,15 +3,15 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
-			"name": "setStockAddr",
+			"name": "setFlexClientCode",
 			"inputs": [
-				{"name":"addr","type":"address"}
+				{"name":"code","type":"cell"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "setFlexClientCode",
+			"name": "setFlexWalletCode",
 			"inputs": [
 				{"name":"code","type":"cell"}
 			],
@@ -28,14 +28,7 @@
 		{
 			"name": "getFCAddressAndKeys",
 			"inputs": [
-				{"name":"stock","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "enterPublicKey",
-			"inputs": [
+				{"name":"flex","type":"address"}
 			],
 			"outputs": [
 			]
@@ -43,7 +36,15 @@
 		{
 			"name": "getPublicKey",
 			"inputs": [
-				{"name":"value","type":"bytes"}
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getSigningBox",
+			"inputs": [
+				{"name":"handle","type":"uint32"}
 			],
 			"outputs": [
 			]
@@ -72,14 +73,14 @@
 			]
 		},
 		{
-			"name": "getStockTonsCfg",
+			"name": "getFlexTonsCfg",
 			"inputs": [
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "setStockTonsCfg",
+			"name": "setFlexTonsCfg",
 			"inputs": [
 				{"name":"transfer_tip3","type":"uint128"},
 				{"name":"return_ownership","type":"uint128"},
@@ -92,25 +93,9 @@
 			]
 		},
 		{
-			"name": "setStockMinAmount",
-			"inputs": [
-				{"name":"value0","type":"uint128"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "getStockNotifyAddr",
+			"name": "getFlexDealsLimit",
 			"inputs": [
 				{"name":"value0","type":"uint8"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "setStockNotifyAddr",
-			"inputs": [
-				{"name":"value0","type":"address"}
 			],
 			"outputs": [
 			]
@@ -124,23 +109,15 @@
 			]
 		},
 		{
-			"name": "isDeployFlexClient",
+			"name": "deployFlexClient",
 			"inputs": [
-				{"name":"value","type":"bool"}
+				{"name":"value","type":"address"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "isFCMoneySend",
-			"inputs": [
-				{"name":"value","type":"bool"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "DeployFlexClientStep1",
+			"name": "clientAccType",
 			"inputs": [
 				{"name":"acc_type","type":"int8"}
 			],
@@ -148,7 +125,7 @@
 			]
 		},
 		{
-			"name": "checkFlexClientBalance",
+			"name": "getClientBalance",
 			"inputs": [
 				{"name":"nanotokens","type":"uint128"}
 			],
@@ -156,14 +133,39 @@
 			]
 		},
 		{
-			"name": "DeployFlexClientStep2Proxy",
+			"name": "getBalanceToSend",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "grantFlexClient",
 			"inputs": [
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "DeployRootStep2",
+			"name": "onFCGrantSuccess",
+			"inputs": [
+				{"name":"transId","type":"uint64"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onFCGrantError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployFlexClientCode",
 			"inputs": [
 				{"name":"value","type":"bool"}
 			],
@@ -196,6 +198,44 @@
 		{
 			"name": "onSuccessFCSetTonsCfg",
 			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onGetFCWalletCode",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "hasFlexWalletCode",
+			"inputs": [
+				{"name":"value0","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "flexClientSetWalletCode",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSuccessFCSetFlexWalletCode",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onFCSetFlexWalletCodeError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
 			],
 			"outputs": [
 			]
@@ -234,7 +274,8 @@
 		{
 			"name": "getTip3WalletAddress",
 			"inputs": [
-				{"name":"stock","type":"address"},
+				{"name":"flex","type":"address"},
+				{"name":"signingBox","type":"uint32"},
 				{"name":"tip3root","type":"address"},
 				{"name":"flexClient","type":"address"},
 				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"}
@@ -243,9 +284,16 @@
 			]
 		},
 		{
-			"name": "setTip3RootSymbol",
+			"name": "setTip3WrapperSymbol",
 			"inputs": [
-				{"name":"value0","type":"bytes"}
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"total_granted","type":"uint128"},
+				{"name":"wallet_code","type":"cell"},
+				{"name":"owner_address","type":"address"},
+				{"name":"external_wallet","type":"address"}
 			],
 			"outputs": [
 			]
@@ -267,17 +315,25 @@
 			]
 		},
 		{
-			"name": "isDeployTip3Wallet",
+			"name": "enterMsigAddr",
 			"inputs": [
-				{"name":"value","type":"bool"}
+				{"name":"value","type":"address"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "enterMsigAddr",
+			"name": "getDeplotT3WClientAccType",
 			"inputs": [
-				{"name":"value","type":"address"}
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDeplotT3WClientBalance",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
 			],
 			"outputs": [
 			]
@@ -338,181 +394,18 @@
 			]
 		},
 		{
-			"name": "deployTradigPair",
-			"inputs": [
-				{"name":"stock","type":"address"},
-				{"name":"fclient","type":"address"},
-				{"name":"tpd","type":"uint128"},
-				{"name":"pk","type":"uint256"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "checkFlexClientBalanceForTPDeploy",
-			"inputs": [
-				{"name":"nanotokens","type":"uint128"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "enterTip3RootAddress",
-			"inputs": [
-				{"name":"value","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "getTip3RootCodeHash",
-			"inputs": [
-				{"name":"code_hash","type":"uint256"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "confirmDeployTradingPair",
-			"inputs": [
-				{"name":"value","type":"bool"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onSendDeployTradingPair",
-			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployTPSuccess",
-			"inputs": [
-				{"name":"value0","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployTPError",
-			"inputs": [
-				{"name":"sdkError","type":"uint32"},
-				{"name":"exitCode","type":"uint32"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployTradigPair",
-			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "deployXchgTradigPair",
-			"inputs": [
-				{"name":"stock","type":"address"},
-				{"name":"fclient","type":"address"},
-				{"name":"tpd","type":"uint128"},
-				{"name":"pk","type":"uint256"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "checkFlexClientBalanceForXchgTPDeploy",
-			"inputs": [
-				{"name":"nanotokens","type":"uint128"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "enterMajorTip3RootAddress",
-			"inputs": [
-				{"name":"value","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "getMajorTip3RootCodeHash",
-			"inputs": [
-				{"name":"code_hash","type":"uint256"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "enterMinorTip3RootAddress",
-			"inputs": [
-				{"name":"value","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "getMinorTip3RootCodeHash",
-			"inputs": [
-				{"name":"code_hash","type":"uint256"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "confirmDeployXchgTradingPair",
-			"inputs": [
-				{"name":"value","type":"bool"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onSendDeployXchgTradingPair",
-			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployXchgTPSuccess",
-			"inputs": [
-				{"name":"value0","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployXchgTPError",
-			"inputs": [
-				{"name":"sdkError","type":"uint32"},
-				{"name":"exitCode","type":"uint32"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "onDeployXchgTradigPair",
-			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "withdrawTons",
 			"inputs": [
-				{"name":"fclient","type":"address"}
+				{"name":"fclient","type":"address"},
+				{"name":"signingBox","type":"uint32"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "enterWithdrawalAddr",
+			"name": "getFlexClientBalance",
 			"inputs": [
-				{"name":"value","type":"address"}
+				{"name":"nanotokens","type":"uint128"}
 			],
 			"outputs": [
 			]
@@ -521,6 +414,14 @@
 			"name": "enterWithdrawalTons",
 			"inputs": [
 				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "enterWithdrawalAddr",
+			"inputs": [
+				{"name":"value","type":"address"}
 			],
 			"outputs": [
 			]
