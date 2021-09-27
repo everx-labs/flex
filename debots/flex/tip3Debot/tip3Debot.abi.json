@@ -216,6 +216,7 @@
 		{
 			"name": "onT3WCSuccess",
 			"inputs": [
+				{"name":"value0","type":"bool"}
 			],
 			"outputs": [
 			]
@@ -428,7 +429,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -486,7 +488,7 @@
 				{"name":"name","type":"bytes"},
 				{"name":"version","type":"bytes"},
 				{"name":"publisher","type":"bytes"},
-				{"name":"caption","type":"bytes"},
+				{"name":"key","type":"bytes"},
 				{"name":"author","type":"bytes"},
 				{"name":"support","type":"address"},
 				{"name":"hello","type":"bytes"},

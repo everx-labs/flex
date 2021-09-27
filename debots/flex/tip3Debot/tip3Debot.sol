@@ -1,27 +1,15 @@
-pragma ton-solidity >=0.35.0;
+pragma ton-solidity >=0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 // import required DeBot interfaces and basic DeBot contract.
-import "../interfaces/Debot.sol";
-import "../interfaces/Upgradable.sol";
-import "../interfaces/Transferable.sol";
-import "../interfaces/Sdk.sol";
-import "../interfaces/Terminal.sol";
-import "../interfaces/Menu.sol";
-import "../interfaces/AmountInput.sol";
-import "../interfaces/ConfirmInput.sol";
-import "../interfaces/AddressInput.sol";
-
-struct LendOwnership{
-   address owner;
-   uint128 lend_balance;
-   uint32 lend_finish_time;
-}
-struct Allowance{
-    address spender;
-    uint128 remainingTokens;
-}
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "DeBotInterfaces.sol";
+import "../abstract/Upgradable.sol";
+import "../abstract/Transferable.sol";
+import "../abstract/Utility.sol";
+import "../abstract/ATip3Root.sol";
+import "../abstract/ATip3Wallet.sol";
 
 struct TokenInfo{
     address root;
@@ -29,52 +17,8 @@ struct TokenInfo{
     string symbol;
 }
 
-abstract contract ATip3Root {
-    constructor(bytes name, bytes symbol, uint8 decimals, uint256 root_public_key, uint256 root_owner, uint128 total_supply) public {}
-    function getName() public returns(string value0) {}
-    function getSymbol() public returns(bytes value0){}
-    function setWalletCode(TvmCell wallet_code) public {}
-    function deployWallet(uint32 _answer_id, int8 workchain_id, uint256 pubkey, uint256 internal_owner,
-        uint128 tokens, uint128 grams) public functionID(1888586564) returns(address value0) {}
-    function grant(address dest, uint128 tokens, uint128 grams) public {}
-
-    function getWalletAddress(int8 workchain_id, uint256 pubkey, uint256 owner_std_addr) public returns(address value0) {}
-    function getDecimals() public returns (uint8 value0) {}
-    function getTotalSupply() public returns (uint128 value0) {}
-    function getTotalGranted() public returns (uint128 value0) {}
-    function getWalletCode() public returns (TvmCell value0) {}
-    function getWalletCodeHash() public returns(uint256 value0) {}
-}
-
-abstract contract TIP3Wallet {
-    function getDetails() public returns (bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) {}
-}
-
-abstract contract Utility {
-    function splitTokens(uint128 tokens, uint8 decimals) private pure returns (uint64, uint64) {
-        uint128 val = 1;
-        for(int i = 0; i < decimals; i++) {
-            val *= 10;
-        }
-        uint64 integer = uint64(tokens / val);
-        uint64 float = uint64(tokens - (integer * val));
-        return (integer, float);
-    }
-
-    function tokensToStr(uint128 tokens, uint8 decimals) public returns (string) {
-        (uint64 dec, uint64 float) = splitTokens(tokens, decimals);
-        string floatStr = format("{}", float);
-        while (floatStr.byteLength() < decimals) {
-            floatStr = "0" + floatStr;
-        }
-        string result = format("{}.{}", dec, floatStr);
-        return result;
-    }
-}
-
 contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
     uint256 m_masterPubKey;
-    uint256 m_masterSecKey;
 
     string m_name;
     string m_symbol;
@@ -94,7 +38,6 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
 
     TvmCell m_t3rContractCode;
     TvmCell m_t3WalletCode;
-   //TvmCell m_flexClientCode;
 
     address m_deployAddress;
     TvmCell m_deployState;
@@ -125,6 +68,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
     }
 
     function menuDeployRoot(uint32 index) public {
+        index;//disable compile warnings
         Terminal.input(tvm.functionId(inputPublicKey), "Enter public key attached to your account:", false);
     }
 
@@ -154,7 +98,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
         );
     }
 
-    function onDataResult(ISdk.AccData[] accounts) public {
+    function onDataResult(AccData[] accounts) public {
         optional(uint256) none;
         m_currentTokenIndex = m_tokenRoots.length;
         for (uint i=0; i < accounts.length;i++) {
@@ -297,7 +241,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
                 sign: true,
                 pubkey: key,
                 stateInit: m_deployState,
-                call: {ATip3Root,m_name,m_symbol,m_decimals,m_masterPubKey,0x0,m_totalSupply}
+                call: {ATip3Root,m_name,m_symbol,m_decimals,m_masterPubKey,address(0x0),m_totalSupply}
             });
             tvm.sendrawmsg(deployMsg, 0);
         }else
@@ -315,7 +259,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
         ConfirmInput.get(tvm.functionId(DeployRootStep10), "Do you want to retry?");
     }
 
-    function DeployRootStep11(bool value) public {
+    function DeployRootStep11(bool value) public view {
         if (!value) {
 
             return;
@@ -330,10 +274,11 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
             time: 0,
             expire: 0,
             pubkey: key
-        }(m_t3WalletCode);
+        }(0,m_t3WalletCode);
     }
 
-    function onT3WCSuccess() public {
+    function onT3WCSuccess(bool value0) public {
+        value0;//disable compile warnings
         Terminal.print(0, "Congrats! Now you have your own TIP3 token.\nTIP3 root address:");
         Terminal.print(tvm.functionId(Debot.start), format("{}", m_deployAddress));
     }
@@ -360,7 +305,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
             expire: 0,
             sign: false,
             pubkey: none
-        }(0, m_masterPubKey, 0);
+        }(m_masterPubKey, address(0));
     }
 
     function menuSetTipRoot(uint32 index) public {
@@ -378,11 +323,12 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
             Terminal.print(tvm.functionId(Debot.start),"This TIP3 Root is inactive.");
             return;
         }
-        Sdk.getAccountCodeHash(tvm.functionId(checkRootCodeHash), m_tip3root);        
+        Sdk.getAccountCodeHash(tvm.functionId(checkRootCodeHash), m_tip3root);
     }
 
     function checkRootCodeHash(uint256 code_hash) public {
         TvmCell t3rCode = m_t3rContractCode.toSlice().loadRef();
+        //TIP3_CODEHASH
         if(code_hash!=tvm.hash(t3rCode)){
             Terminal.print(tvm.functionId(Debot.start),format("Account {} is not a valid tip3 token.",m_tip3root));
             return;
@@ -492,10 +438,12 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
     }
 
     function menuCalcAddress(uint32 index) public {
+        index;//disable compile warnings
         Terminal.input(tvm.functionId(calcTipWallet), "Enter public key attached to your account:", false);
     }
 
     function menuEnterAddress(uint32 index) public {
+        index;//disable compile warnings
         AddressInput.get(tvm.functionId(setAddress), "Enter TIP3 wallet address:");
     }
 
@@ -537,19 +485,16 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
 
     function checkWalletStatus(int8 acc_type) public {
         if (acc_type == 1) {
-            Sdk.getAccountCodeHash(tvm.functionId(checkWalletCodeHash), m_tip3wallet);            
+            Sdk.getAccountCodeHash(tvm.functionId(checkWalletCodeHash), m_tip3wallet);
         } else {
             Terminal.print(tvm.functionId(Debot.start), format("Error: Account {} is not active!",m_tip3wallet));
         }
     }
 
     function  checkWalletCodeHash(uint256 code_hash) public {
-        TvmCell t3wCode = m_t3WalletCode.toSlice().loadRef();
-        Terminal.print(0, format("debug: Account {} code_hash {:064x}",m_tip3wallet,code_hash));
-        Terminal.print(0, format("debug: ethalon code_hash {:064x}",m_t3wCodeHash));
         if (code_hash == m_t3wCodeHash){
             optional(uint256) none;
-            TIP3Wallet(m_tip3wallet).getDetails{
+            ATip3Wallet(m_tip3wallet).getDetails{
                 abiVer: 2,
                 extMsg: true,
                 callbackId: tvm.functionId(printWalletBalance),
@@ -565,7 +510,9 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
 
     }
 
-    function printWalletBalance(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership lend_ownership, TvmCell code, Allowance allowance, int8 workchain_id) public {
+    function printWalletBalance(bytes name, bytes symbol, uint8 decimals, uint128 balance, uint256 root_public_key, uint256 wallet_public_key, address root_address, address owner_address, LendOwnership[] lend_ownership, uint128 lend_balance, TvmCell code, Allowance allowance, int8 workchain_id) public {
+        //disable compile warnings
+        name; symbol; decimals; root_public_key; wallet_public_key; root_address; owner_address; lend_ownership; lend_balance; code; allowance; workchain_id;
         Terminal.print(0, format("TIP3 Balance: {} tokens", tokensToStr(balance, m_decimals)));
         startGrant();
     }
@@ -582,7 +529,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
                 expire: 0,
                 sign: true,
                 pubkey: pubkey
-            }(0, 0, m_masterPubKey, 0, m_grantAmount, m_nativeAmount);
+            }(0, m_masterPubKey, 0, m_grantAmount, m_nativeAmount);
         } else if (acc_type == 1) {
             ATip3Root(m_tip3root).grant{
                 abiVer: 2,
@@ -593,13 +540,14 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
                 expire: 0,
                 sign: true,
                 pubkey: pubkey
-            }(m_tip3wallet, m_grantAmount, m_nativeAmount);
+            }(0, m_tip3wallet, m_grantAmount, m_nativeAmount);
         } else {
             Terminal.print(0, "Your wallet is frozen");
         }
     }
 
     function onDeployWalletSuccess(address value0) public {
+        value0;//disable compile warnings
         Terminal.print(tvm.functionId(Debot.start), "Succeeded. TIP3 wallet deployed and granted with tokens.");
     }
 
@@ -620,13 +568,13 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
     */
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string caption, string author,
+        string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "Flex Tip3 DeBot";
-        version = "0.4.3";
+        version = "0.5.9";
         publisher = "TON Labs";
-        caption = "";
+        key = "";
         author = "TON Labs";
         support = address.makeAddrStd(0, 0x0);
         hello = "Hello, i am a Flex Tip3 DeBot.";
@@ -636,7 +584,7 @@ contract Tip3Debot is Debot, Upgradable, Transferable, Utility {
     }
 
     function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
-        return [ AddressInput.ID, AmountInput.ID, ConfirmInput.ID, Menu.ID, Sdk.ID, Terminal.ID ];
+        return [ Terminal.ID, Menu.ID, Sdk.ID, AddressInput.ID, AmountInput.ID, ConfirmInput.ID ];
     }
 
     /*

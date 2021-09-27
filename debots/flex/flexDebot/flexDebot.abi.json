@@ -53,12 +53,43 @@
 			"name": "onGetFCAddressAndKeys",
 			"inputs": [
 				{"name":"fc","type":"address"},
-				{"name":"pk","type":"uint256"},
-				{"name":"minAmount","type":"uint128"},
+				{"name":"signingBox","type":"uint32"},
 				{"name":"dealsLimit","type":"uint8"},
 				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"},
 				{"name":"tpcode","type":"cell"},
 				{"name":"xchgpcode","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getInstantTPCodeHash",
+			"inputs": [
+				{"name":"code_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setInstantTPTip3Root",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setInstantTPTip3MajorRoot",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setInstantTPTip3MinorRoot",
+			"inputs": [
+				{"name":"value0","type":"address"}
 			],
 			"outputs": [
 			]
@@ -151,7 +182,14 @@
 		{
 			"name": "setTip3MajorRootSymbol",
 			"inputs": [
-				{"name":"value0","type":"bytes"}
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"total_granted","type":"uint128"},
+				{"name":"wallet_code","type":"cell"},
+				{"name":"owner_address","type":"address"},
+				{"name":"external_wallet","type":"address"}
 			],
 			"outputs": [
 			]
@@ -189,7 +227,14 @@
 		{
 			"name": "setTip3MinorRootSymbol",
 			"inputs": [
-				{"name":"value0","type":"bytes"}
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"total_granted","type":"uint128"},
+				{"name":"wallet_code","type":"cell"},
+				{"name":"owner_address","type":"address"},
+				{"name":"external_wallet","type":"address"}
 			],
 			"outputs": [
 			]
@@ -232,14 +277,6 @@
 			]
 		},
 		{
-			"name": "menuDeployTradigPair",
-			"inputs": [
-				{"name":"index","type":"uint32"}
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "onSelectSymbolMenu",
 			"inputs": [
 				{"name":"index","type":"uint32"}
@@ -248,9 +285,137 @@
 			]
 		},
 		{
+			"name": "getTPMinAmount",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSetTradingPairMinAmount",
+			"inputs": [
+				{"name":"value0","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onSetTradingPairNotifyAddress",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "onGetTip3WalletAddress",
 			"inputs": [
 				{"name":"t3w","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "burnTip3Wallet",
+			"inputs": [
+				{"name":"fclient","type":"address"},
+				{"name":"signingBox","type":"uint32"},
+				{"name":"t3Wallet","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getBurnTip3WalletFlexClientBalance",
+			"inputs": [
+				{"name":"nanotokens","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getT3WalletDetails",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"balance","type":"uint128"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_public_key","type":"uint256"},
+				{"name":"root_address","type":"address"},
+				{"name":"owner_address","type":"address"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
+				{"name":"code","type":"cell"},
+				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
+				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getExtTip3WalletPublicKey",
+			"inputs": [
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getExtTip3WalletOwner",
+			"inputs": [
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "confirmBurn",
+			"inputs": [
+				{"name":"value","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onBurnSuccess",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onBurnError",
+			"inputs": [
+				{"name":"sdkError","type":"uint32"},
+				{"name":"exitCode","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onBurnTip3Wallet",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "invokeWithBuyOrder",
+			"inputs": [
+				{"name":"tradingPair","type":"address"},
+				{"name":"price","type":"uint128"},
+				{"name":"volume","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "invokeWithSellOrder",
+			"inputs": [
+				{"name":"tradingPair","type":"address"},
+				{"name":"price","type":"uint128"},
+				{"name":"volume","type":"uint128"}
 			],
 			"outputs": [
 			]

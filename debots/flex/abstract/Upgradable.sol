@@ -1,4 +1,4 @@
-pragma ton-solidity >=0.35.0;
+pragma ton-solidity >=0.47.0;
 
 abstract contract Upgradable {
     /*
@@ -10,9 +10,9 @@ abstract contract Upgradable {
     /// Remark: only code is used from this structure.
     function upgrade(TvmCell state) public virtual {
         require(msg.pubkey() == tvm.pubkey(), 100);
+        TvmCell newcode = state.toSlice().loadRef();
         tvm.accept();
         tvm.commit();
-        TvmCell newcode = state.toSlice().loadRef();
         tvm.setcode(newcode);
         tvm.setCurrentCode(newcode);
         onCodeUpgrade();

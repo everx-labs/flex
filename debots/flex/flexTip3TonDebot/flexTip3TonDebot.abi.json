@@ -3,22 +3,6 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
-			"name": "setStockAddr",
-			"inputs": [
-				{"name":"addr","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "setFlexHelperDebot",
-			"inputs": [
-				{"name":"addr","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "start",
 			"inputs": [
 			],
@@ -55,10 +39,38 @@
 			]
 		},
 		{
+			"name": "instantTradeTip3Ton",
+			"inputs": [
+				{"name":"fc","type":"address"},
+				{"name":"signingBox","type":"uint32"},
+				{"name":"notifyAddr","type":"address"},
+				{"name":"minAmount","type":"uint128"},
+				{"name":"dealsLimit","type":"uint8"},
+				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"},
+				{"name":"stock","type":"address"},
+				{"name":"t3root","type":"address"},
+				{"name":"wt3","type":"address"},
+				{"name":"bBuy","type":"bool"},
+				{"name":"price","type":"uint128"},
+				{"name":"volume","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setInstantPriceCode",
+			"inputs": [
+				{"name":"value0","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "tradeTip3Ton",
 			"inputs": [
 				{"name":"fc","type":"address"},
-				{"name":"pk","type":"uint256"},
+				{"name":"signingBox","type":"uint32"},
+				{"name":"notifyAddr","type":"address"},
 				{"name":"minAmount","type":"uint128"},
 				{"name":"dealsLimit","type":"uint8"},
 				{"components":[{"name":"transfer_tip3","type":"uint128"},{"name":"return_ownership","type":"uint128"},{"name":"trading_pair_deploy","type":"uint128"},{"name":"order_answer","type":"uint128"},{"name":"process_queue","type":"uint128"},{"name":"send_notify","type":"uint128"}],"name":"tonCfg","type":"tuple"},
@@ -95,7 +107,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -129,7 +142,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -161,6 +175,14 @@
 			]
 		},
 		{
+			"name": "menuCancelSellTip3Order",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "cancelSellOrder",
 			"inputs": [
 				{"name":"name","type":"bytes"},
@@ -171,7 +193,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -237,7 +260,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -317,6 +341,14 @@
 			]
 		},
 		{
+			"name": "menuOrderBookBurnTip3",
+			"inputs": [
+				{"name":"index","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "menuBuyTip3",
 			"inputs": [
 				{"name":"index","type":"uint32"}
@@ -359,10 +391,18 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "confirmTestBuy",
+			"inputs": [
 			],
 			"outputs": [
 			]
@@ -442,7 +482,8 @@
 				{"name":"wallet_public_key","type":"uint256"},
 				{"name":"root_address","type":"address"},
 				{"name":"owner_address","type":"address"},
-				{"components":[{"name":"owner","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple"},
+				{"components":[{"name":"lend_addr","type":"address"},{"name":"lend_balance","type":"uint128"},{"name":"lend_finish_time","type":"uint32"}],"name":"lend_ownership","type":"tuple[]"},
+				{"name":"lend_balance","type":"uint128"},
 				{"name":"code","type":"cell"},
 				{"components":[{"name":"spender","type":"address"},{"name":"remainingTokens","type":"uint128"}],"name":"allowance","type":"tuple"},
 				{"name":"workchain_id","type":"int8"}
@@ -491,7 +532,7 @@
 				{"name":"name","type":"bytes"},
 				{"name":"version","type":"bytes"},
 				{"name":"publisher","type":"bytes"},
-				{"name":"caption","type":"bytes"},
+				{"name":"key","type":"bytes"},
 				{"name":"author","type":"bytes"},
 				{"name":"support","type":"address"},
 				{"name":"hello","type":"bytes"},
@@ -510,7 +551,6 @@
 		},
 		{
 			"name": "upgrade",
-			"id": "0x2",
 			"inputs": [
 				{"name":"state","type":"cell"}
 			],
