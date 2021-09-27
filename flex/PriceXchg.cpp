@@ -287,7 +287,7 @@ std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
         return_amount = *opt_cost;
       }
       ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership).
-        returnOwnership(ord.amount);
+        returnOwnership(return_amount);
       minus_val += return_ownership.get();
 
       unsigned plus_val = ord.account.get() + (is_first ? incoming_val.get() : 0);
