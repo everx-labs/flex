@@ -30,7 +30,7 @@ https://uri.ton.surf/debot/0:883993b781db9494349dbf61418711636e52d9fc9991785420e
 
 Flex API address `0:f207fcab308c52a75226212d58dcfbc146cc7c1df1be16046200432f062a0822`
 
-###Prerequisites: 
+### Prerequisites: 
 
 You can run debots in (Surf)[https://ton.surf/main] or latest (tonos-cli)[https://github.com/tonlabs/tonos-cli/].  install:
 ```
