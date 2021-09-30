@@ -73,7 +73,7 @@ Flex DeBot also allows you to cancel orders and withdraw tokens to external wall
 ![https://github.com/tonlabs/flex/raw/main/screenshots/help8.png](https://github.com/tonlabs/flex/raw/main/screenshots/help8.png)
 
 Flex DeBot address in Surf:
-[https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f](https://www.notion.so/4aa666a0e60d5b00f8bfd6aa1d90d64f)
+[https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f](https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f)
 
 ![https://github.com/tonlabs/flex/raw/main/screenshots/flex_qr.png](https://github.com/tonlabs/flex/raw/main/screenshots/flex_qr.png)
 
