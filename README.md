@@ -3,9 +3,10 @@
 
 Flex is a [FreeTon](https://freeton.org/discover) decentralized and distributed limit order book (DLOB) which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via distributed smart contract model. 
 
-- [Content Table](#content-table)
 - [Flex DeBot ](#flex-debot)
 - [Listing a new pair on Flex](#listing-a-new-pair-on-flex)
+
+Flex website is available at https://flex.ton.surf/. Help for the website can be found [here](https://github.com/tonlabs/flex/blob/main/flex_help.md).
 
 ## Flex DeBot 
  [`FlexDebot`](https://github.com/tonlabs/flex/blob/main/debots/flexDebot/flexDebot.sol) -[DeBot](https://help.ton.surf/en/support/solutions/articles/77000397693-what-are-debots-) that helps buy/sell TIP3 tokens: 
