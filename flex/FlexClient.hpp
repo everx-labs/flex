@@ -29,25 +29,6 @@ __interface IFlexClient {
   // === ===================================================== === //
 
   [[external, noaccept]]
-  address deployTradingPair(
-    address_t tip3_root,
-    uint128 deploy_min_value,
-    uint128 deploy_value,
-    uint128 min_trade_amount,
-    address_t notify_addr
-  ) = 15;
-
-  [[external, noaccept]]
-  address deployXchgPair(
-    address_t tip3_major_root,
-    address_t tip3_minor_root,
-    uint128 deploy_min_value,
-    uint128 deploy_value,
-    uint128 min_trade_amount,
-    address_t notify_addr
-  ) = 16;
-
-  [[external, noaccept]]
   address deployPriceWithSell(
     uint128 price,
     uint128 amount,
@@ -60,7 +41,7 @@ __interface IFlexClient {
     address_t receive_wallet,
     Tip3Config tip3cfg,
     address_t notify_addr
-  ) = 17;
+  ) = 15;
 
   [[external, noaccept]]
   address deployPriceWithBuy(
@@ -74,7 +55,7 @@ __interface IFlexClient {
     address_t my_tip3_addr,
     Tip3Config tip3cfg,
     address_t notify_addr
-  ) = 18;
+  ) = 16;
 
   [[external, noaccept]]
   address deployPriceXchg(
@@ -93,7 +74,7 @@ __interface IFlexClient {
     Tip3Config major_tip3cfg,
     Tip3Config minor_tip3cfg,
     address_t notify_addr
-  ) = 19;
+  ) = 17;
 
   [[external, noaccept]]
   void cancelSellOrder(
@@ -104,7 +85,7 @@ __interface IFlexClient {
     cell    price_code,
     Tip3Config tip3cfg,
     address_t notify_addr
-  ) = 20;
+  ) = 18;
 
   [[external, noaccept]]
   void cancelBuyOrder(
@@ -115,7 +96,7 @@ __interface IFlexClient {
     cell    price_code,
     Tip3Config tip3cfg,
     address_t notify_addr
-  ) = 21;
+  ) = 19;
 
   [[external, noaccept]]
   void cancelXchgOrder(
@@ -129,23 +110,42 @@ __interface IFlexClient {
     Tip3Config major_tip3cfg,
     Tip3Config minor_tip3cfg,
     address_t notify_addr
-  ) = 22;
+  ) = 20;
 
   [[external, noaccept]]
   void transfer(
     address_t dest,
     uint128 value,
     bool_t bounce
+  ) = 21;
+
+  // Request wrapper registration from Flex Root
+  [[external, noaccept]]
+  void registerWrapper(
+    uint256 wrapper_pubkey,
+    uint128 value,
+    Tip3Config tip3cfg
+  ) = 22;
+
+  // Request trading pair registration from Flex Root
+  [[external, noaccept]]
+  void registerTradingPair(
+    uint256 request_pubkey,
+    uint128 value,
+    address tip3_root,
+    uint128 min_amount,
+    address notify_addr
   ) = 23;
 
+  // Request xchg pair registration from Flex Root
   [[external, noaccept]]
-  address deployWrapperWithWallet(
-    uint256 wrapper_pubkey,
-    uint128 wrapper_deploy_value,
-    uint128 wrapper_keep_balance,
-    uint128 ext_wallet_balance,
-    uint128 set_internal_wallet_value,
-    Tip3Config tip3cfg
+  void registerXchgPair(
+    uint256 request_pubkey,
+    uint128 value,
+    address tip3_major_root,
+    address tip3_minor_root,
+    uint128 min_amount,
+    address notify_addr
   ) = 24;
 
   [[external, noaccept]]
@@ -180,7 +180,7 @@ __interface IFlexClient {
 
   // Prepare payload for transferWithNotify call from external wallet to wrapper's wallet
   // to deploy flex internal wallet
-  [[getter, dyn_chain_parse]]
+  [[getter]]
   cell getPayloadForDeployInternalWallet(
     uint256 owner_pubkey,
     address_t owner_addr,
@@ -195,7 +195,7 @@ struct DFlexClient {
   cell xchg_pair_code_;
   int8 workchain_id_;
   TonsConfig tons_cfg_;
-  addr_std_compact flex_;
+  address flex_;
   optcell ext_wallet_code_;
   optcell flex_wallet_code_;
   optcell flex_wrapper_code_;

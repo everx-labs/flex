@@ -122,9 +122,9 @@ public:
   __always_inline
   void internalTransfer(
     uint128 tokens,
-    addr_std_compact answer_addr,
+    address answer_addr,
     uint256 sender_pubkey,
-    addr_std_compact sender_owner,
+    address sender_owner,
     bool_t  notify_receiver,
     cell    payload
   ) {
@@ -326,8 +326,8 @@ public:
 
   __always_inline
   void internalTransferFrom(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address answer_addr,
+    address to,
     uint128 tokens,
     bool_t  notify_receiver,
     cell    payload
@@ -404,11 +404,11 @@ public:
   DEFAULT_SUPPORT_FUNCTIONS(ITONTokenWallet, wallet_replay_protection_t)
 private:
   __always_inline
-  void transfer_impl(addr_std_compact answer_addr, addr_std_compact to, uint128 tokens, uint128 grams,
+  void transfer_impl(address answer_addr, address to, uint128 tokens, uint128 grams,
                      bool return_ownership, bool send_notify, cell payload) {
     auto active_balance = check_transfer_requires(tokens, grams);
     // Transfer to zero address is not allowed.
-    require(to.address != 0, error_code::transfer_to_zero_address);
+    require(std::get<addr_std>(to()).address != 0, error_code::transfer_to_zero_address);
     tvm_accept();
 
     auto answer_addr_fxd = fixup_answer_addr(answer_addr);
@@ -445,7 +445,7 @@ private:
 
 #ifdef TIP3_ENABLE_ALLOWANCE
   __always_inline
-  void transfer_from_impl(addr_std_compact answer_addr, addr_std_compact from, addr_std_compact to,
+  void transfer_from_impl(address answer_addr, address from, address to,
                           uint128 tokens, uint128 grams, bool send_notify, cell payload) {
     check_owner(/*original_owner_only*/true, /*allowed_for_original_owner_in_lend_state*/false);
     tvm_accept();
@@ -468,8 +468,8 @@ private:
   // If zero answer_addr is specified, it is corrected to incoming sender (for internal message),
   // or this contract address (for external message)
   __always_inline
-  address fixup_answer_addr(addr_std_compact answer_addr) {
-    if (answer_addr.address == 0) {
+  address fixup_answer_addr(address answer_addr) {
+    if (std::get<addr_std>(answer_addr()).address == 0) {
       if constexpr (Internal)
         return address{int_sender()};
       else
