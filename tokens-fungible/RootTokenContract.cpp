@@ -51,11 +51,11 @@ public:
 
   __always_inline
   bool_t setWalletCode(cell wallet_code) {
-    check_owner();
+    check_owner(true);
     tvm_accept();
     require(!wallet_code_, error_code::cant_override_wallet_code);
-    require(__builtin_tvm_hashcu(wallet_code) == wallet_hash,
-             error_code::wrong_wallet_code_hash);
+    // require(__builtin_tvm_hashcu(wallet_code) == wallet_hash,
+    //         error_code::wrong_wallet_code_hash);
     wallet_code_ = wallet_code;
 
     if constexpr (Internal) {
@@ -282,17 +282,19 @@ private:
   }
 
   __always_inline
-  void check_external_owner() {
-    require(!is_internal_owner(), error_code::internal_owner_enabled);
+  void check_external_owner(bool allow_pubkey_owner_in_internal_node) {
+    require(allow_pubkey_owner_in_internal_node || !is_internal_owner(), error_code::internal_owner_enabled);
     require(msg_pubkey() == root_public_key_, error_code::message_sender_is_not_my_owner);
   }
 
+  // allow_pubkey_owner_in_internal_node - to allow setWalletCode initialization by external message,
+  //  even in internal-owned mode
   __always_inline
-  void check_owner() {
+  void check_owner(bool allow_pubkey_owner_in_internal_node = false) {
     if constexpr (Internal)
       check_internal_owner();
     else
-      check_external_owner();
+      check_external_owner(allow_pubkey_owner_in_internal_node);
   }
 };
 

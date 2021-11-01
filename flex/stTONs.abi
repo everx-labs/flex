@@ -1,0 +1,126 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "constructor",
+    "inputs": [
+    { "name":"owner_pubkey", "type":"uint256" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_public_key", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"tip3cfg", "type":"tuple" },
+    { "name":"depool", "type":"address" },
+    { "components":[
+      { "name":"receive_stake_transfer_costs", "type":"uint128" },
+      { "name":"store_crystals_costs", "type":"uint128" },
+      { "name":"mint_costs", "type":"uint128" },
+      { "name":"process_receive_stake_costs", "type":"uint128" },
+      { "name":"deploy_wallet_costs", "type":"uint128" },
+      { "name":"min_transfer_tokens", "type":"uint128" },
+      { "name":"transfer_stake_costs", "type":"uint128" }
+    ], "name":"costs", "type":"tuple" },
+    { "name":"tip3code", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "storeCrystalls",
+    "inputs": [
+    { "name":"client_addr", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  },
+  {
+    "name": "receiveStakeTransfer",
+    "inputs": [
+    { "name":"source", "type":"address" },
+    { "name":"amount", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x23c4771d"
+  },
+  {
+    "name": "internalTransfer",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"tokens", "type":"uint128" },
+    { "name":"answer_addr", "type":"address" },
+    { "name":"sender_pubkey", "type":"uint256" },
+    { "name":"sender_owner", "type":"address" },
+    { "name":"notify_receiver", "type":"bool" },
+    { "name":"payload", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x10"
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"owner_pubkey", "type":"uint256" },
+    { "name":"owner_address", "type":"optional(address)" },
+    { "name":"tip3root", "type":"address" },
+    { "name":"depool", "type":"address" },
+    { "components":[
+      { "name":"std_addr", "type":"uint256" },
+      { "name":"account", "type":"uint128" }
+    ], "name":"accounts", "type":"tuple[]" },
+    { "components":[
+      { "name":"receive_stake_transfer_costs", "type":"uint128" },
+      { "name":"store_crystals_costs", "type":"uint128" },
+      { "name":"mint_costs", "type":"uint128" },
+      { "name":"process_receive_stake_costs", "type":"uint128" },
+      { "name":"deploy_wallet_costs", "type":"uint128" },
+      { "name":"min_transfer_tokens", "type":"uint128" },
+      { "name":"transfer_stake_costs", "type":"uint128" }
+    ], "name":"costs", "type":"tuple" }
+    ],
+    "id": "0x11"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"owner_pubkey_", "type":"uint256" },
+    { "name":"owner_address_", "type":"optional(address)" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_public_key", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"tip3cfg_", "type":"tuple" },
+    { "components":[
+      { "name":"addr_", "type":"address" }
+    ], "name":"depool_", "type":"tuple" },
+    { "name":"stored_crystals_", "type":"map(uint256,uint128)" },
+    { "components":[
+      { "name":"receive_stake_transfer_costs", "type":"uint128" },
+      { "name":"store_crystals_costs", "type":"uint128" },
+      { "name":"mint_costs", "type":"uint128" },
+      { "name":"process_receive_stake_costs", "type":"uint128" },
+      { "name":"deploy_wallet_costs", "type":"uint128" },
+      { "name":"min_transfer_tokens", "type":"uint128" },
+      { "name":"transfer_stake_costs", "type":"uint128" }
+    ], "name":"costs_", "type":"tuple" },
+    { "name":"workchain_id_", "type":"int8" },
+    { "name":"tip3code_", "type":"cell" }
+  ],
+  "events": [
+  ]
+}

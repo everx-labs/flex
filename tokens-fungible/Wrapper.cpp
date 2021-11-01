@@ -12,7 +12,7 @@ using namespace schema;
 template<bool Internal>
 class Wrapper final : public smart_interface<IWrapper>, public DWrapper {
 public:
-  static constexpr unsigned internal_wallet_hash = 0xb5b3458432edc47223b79fdfdae253946762ce83c1d22c7d273e21b51026d506;
+  static constexpr unsigned internal_wallet_hash = 0x6a2b3b28065ac68b7617e74a75f8235aa1687d2f8d90eb836c25e7b7c4b30d06;
 
   struct error_code : tvm::error_code {
     static constexpr unsigned message_sender_is_not_my_owner    = 100;
@@ -29,13 +29,36 @@ public:
     static constexpr unsigned burn_unallocated                  = 111;
     static constexpr unsigned message_sender_is_not_good_wallet = 112;
     static constexpr unsigned cant_override_external_wallet     = 113;
+    static constexpr unsigned only_flex_may_deploy_me           = 114;
+    static constexpr unsigned unexpected_refs_count_in_code     = 115;
   };
+
+  __always_inline
+  StateInit getStateInit(const message<anyval> &msg) {
+    if (msg.init->isa<ref<StateInit>>()) {
+      return msg.init->get<ref<StateInit>>()();
+    } else {
+      return msg.init->get<StateInit>();
+    }
+  }
 
   __always_inline
   bool_t init(address external_wallet) {
     require(!external_wallet_, error_code::cant_override_external_wallet);
-    check_owner();
-    tvm_accept();
+
+    auto parsed_msg = parse<message<anyval>>(parser(msg_slice()), error_code::bad_incoming_msg);
+    require(!!parsed_msg.init, error_code::bad_incoming_msg);
+    auto init = getStateInit(parsed_msg);
+    require(!!init.code, error_code::bad_incoming_msg);
+    auto mycode = *init.code;
+    require(mycode.ctos().srefs() == 3, error_code::unexpected_refs_count_in_code);
+    parser mycode_parser(mycode.ctos());
+    mycode_parser.ldref();
+    mycode_parser.ldref();
+    auto mycode_salt = mycode_parser.ldrefrtos();
+    auto flex_addr = parse<address>(mycode_salt);
+    require(flex_addr == int_sender(), error_code::only_flex_may_deploy_me);
+
     external_wallet_ = external_wallet;
 
     tvm_rawreserve(start_balance_.get(), rawreserve_flag::up_to);
@@ -48,8 +71,8 @@ public:
     check_owner();
     tvm_accept();
     require(!internal_wallet_code_, error_code::cant_override_wallet_code);
-    require(__builtin_tvm_hashcu(wallet_code) == internal_wallet_hash,
-            error_code::wrong_wallet_code_hash);
+    //require(__builtin_tvm_hashcu(wallet_code) == internal_wallet_hash,
+    //        error_code::wrong_wallet_code_hash);
     internal_wallet_code_ = wallet_code;
 
     if constexpr (Internal) {
@@ -63,7 +86,7 @@ public:
   __always_inline
   address deployEmptyWallet(
     uint256 pubkey,
-    addr_std_compact internal_owner,
+    address internal_owner,
     uint128 grams
   ) {
     // This protects from spending root balance to deploy message
@@ -82,11 +105,11 @@ public:
   // Notification about incoming tokens from Wrapper owned external wallet
   __always_inline
   WrapperRet onTip3Transfer(
-    addr_std_compact answer_addr,
+    address answer_addr,
     uint128 balance,
     uint128 new_tokens,
     uint256 sender_pubkey,
-    addr_std_compact sender_owner,
+    address sender_owner,
     cell    payload
   ) {
     require(int_sender() == external_wallet_->get(), error_code::not_my_wallet_notifies);
@@ -182,7 +205,7 @@ public:
   }
 
   __always_inline
-  address getWalletAddress(uint256 pubkey, addr_std_compact owner) {
+  address getWalletAddress(uint256 pubkey, address owner) {
     return calc_internal_wallet_init(pubkey, owner).second;
   }
 

@@ -37,7 +37,7 @@ bool is_active_time(uint32 order_finish_time) {
 __always_inline
 std::optional<uint128> minor_cost(uint128 amount, price_t price) {
   unsigned cost = __builtin_tvm_muldivr(amount.get(), price.numerator().get(), price.denominator().get());
-  if (cost >> 128)
+  if ((cost >> 128) || (cost == 0))
     return {};
   return uint128{cost};
 }
@@ -273,21 +273,15 @@ process_ret process_queue_impl(address tip3root_sell, address tip3root_buy,
 __attribute__((noinline))
 std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
     big_queue<OrderInfoXchg> orders, addr_std_fixed client_addr, uint128 all_amount, bool_t sell,
-    Grams return_ownership, Grams process_queue, Grams incoming_val, price_t price) {
+    Grams return_ownership, Grams process_queue, Grams incoming_val) {
   bool is_first = true;
   for (auto it = orders.begin(); it != orders.end();) {
     auto next_it = std::next(it);
     auto ord = *it;
     if (ord.client_addr == client_addr) {
       unsigned minus_val = process_queue.get();
-      uint128 return_amount = ord.amount;
-      if (!sell) {
-        auto opt_cost = minor_cost(ord.amount, price);
-        require(!!opt_cost, ec::too_big_tokens_amount);
-        return_amount = *opt_cost;
-      }
       ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership).
-        returnOwnership(return_amount);
+        returnOwnership(ord.amount);
       minus_val += return_ownership.get();
 
       unsigned plus_val = ord.account.get() + (is_first ? incoming_val.get() : 0);
@@ -414,7 +408,7 @@ public:
     auto [sells, sells_amount] =
       cancel_order_impl(sells_, client_addr, sells_amount_, bool_t{true},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value, price_);
+                        Grams(tons_cfg_.process_queue.get()), value);
     sells_ = sells;
     sells_amount_ = sells_amount;
     canceled_amount -= sells_amount_;
@@ -435,7 +429,7 @@ public:
     auto [buys, buys_amount] =
       cancel_order_impl(buys_, client_addr, buys_amount_, bool_t{false},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value, price_);
+                        Grams(tons_cfg_.process_queue.get()), value);
     buys_ = buys;
     buys_amount_ = buys_amount;
     canceled_amount -= buys_amount_;

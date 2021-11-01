@@ -11,7 +11,7 @@ using root_replay_protection_t = replay_attack_protection::timestamp<ROOT_TIMEST
 __interface IRootTokenContract {
 
   // expected offchain constructor execution
-  [[internal, external, dyn_chain_parse]]
+  [[internal, external]]
   void constructor(
     string name,
     string symbol,
@@ -21,11 +21,11 @@ __interface IRootTokenContract {
     uint128 total_supply
   ) = 10;
 
-  [[internal, external, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, external, noaccept, answer_id]]
   bool_t setWalletCode(cell wallet_code) = 11;
 
   // Should be provided pubkey (for external owned wallet) or std addr (for internal owned wallet).
-  [[internal, external, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, external, noaccept, answer_id]]
   address deployWallet(
     uint256 pubkey,
     address internal_owner,
@@ -34,21 +34,21 @@ __interface IRootTokenContract {
   ) = 12;
 
   // Anyone may request to deploy an empty wallet
-  [[internal, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, noaccept, answer_id]]
   address deployEmptyWallet(
     uint256 pubkey,
     address internal_owner,
     uint128 grams
   ) = 13;
 
-  [[internal, external, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, external, noaccept, answer_id]]
   void grant(
     address dest,
     uint128 tokens,
     uint128 grams
   ) = 14;
 
-  [[internal, external, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, external, noaccept, answer_id]]
   bool_t mint(uint128 tokens) = 15;
 
   [[internal, noaccept, answer_id]]
@@ -78,7 +78,7 @@ __interface IRootTokenContract {
   [[getter]]
   cell getWalletCode() = 24;
 
-  [[getter, dyn_chain_parse]]
+  [[getter]]
   address getWalletAddress(uint256 pubkey, address owner) = 25;
 
   [[getter]]

@@ -17,7 +17,6 @@ namespace tvm { inline namespace schema {
 // #define TIP3_IMPROVED_TRANSFER
 
 using address_t = address; // for sparse packing in solidity debots
-// using address_t = addr_std_compact; // for compact packing in js-sdk/tonos-cli
 
 #ifdef TIP3_ENABLE_EXTERNAL
 #define TIP3_EXTERNAL [[external]]
@@ -82,11 +81,11 @@ __interface ITONTokenWalletNotify {
 
   [[internal, noaccept, answer_id]]
   bool_t onTip3Transfer(
-    addr_std_compact answer_addr,
+    address answer_addr,
     uint128 balance,
     uint128 new_tokens,
     uint256 sender_pubkey,
-    addr_std_compact sender_owner,
+    address sender_owner,
     cell    payload
   ) = 202;
 };
@@ -155,9 +154,9 @@ __interface ITONTokenWallet {
   [[internal, noaccept, answer_id]]
   void internalTransfer(
     uint128 tokens,
-    addr_std_compact answer_addr,
+    address answer_addr,
     uint256 sender_pubkey,
-    addr_std_compact sender_owner,
+    address sender_owner,
     bool_t  notify_receiver,
     cell    payload
   ) = 16;
@@ -238,8 +237,8 @@ __interface ITONTokenWallet {
   TIP3_EXTERNAL
   [[internal]]
   void internalTransferFrom(
-    addr_std_compact answer_addr,
-    addr_std_compact to,
+    address answer_addr,
+    address to,
     uint128 tokens,
     bool_t  notify_receiver,
     cell    payload

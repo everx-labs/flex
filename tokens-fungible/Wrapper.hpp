@@ -14,7 +14,7 @@ struct WrapperRet {
 
 struct FlexDeployWalletArgs {
   uint256 pubkey;
-  addr_std_compact internal_owner;
+  address internal_owner;
   uint128 grams;
 };
 
@@ -25,34 +25,34 @@ struct wrapper_details_info {
   uint256 root_public_key;
   uint128 total_granted;
   cell    wallet_code;
-  addr_std_compact owner_address;
-  addr_std_compact external_wallet;
+  address owner_address;
+  address external_wallet;
 };
 
 // ===== FLeX Wrapper Contract ===== //
 __interface IWrapper {
 
-  [[internal, external, dyn_chain_parse, answer_id]]
+  [[internal, external, answer_id, deploy]]
   bool_t init(address external_wallet) = 10;
 
   [[internal, external, noaccept, answer_id]]
   bool_t setInternalWalletCode(cell wallet_code) = 11;
 
-  [[internal, noaccept, dyn_chain_parse, answer_id]]
+  [[internal, noaccept, answer_id]]
   address deployEmptyWallet(
     uint256 pubkey,
-    addr_std_compact internal_owner,
+    address internal_owner,
     uint128 grams
   ) = 12;
 
   // Notification about incoming tokens from Wrapper owned external wallet
   [[internal, noaccept, answer_id]]
   WrapperRet onTip3Transfer(
-    addr_std_compact answer_addr,
+    address answer_addr,
     uint128 balance,
     uint128 new_tokens,
     uint256 sender_pubkey,
-    addr_std_compact sender_owner,
+    address sender_owner,
     cell    payload
   ) = 202;
 
@@ -76,7 +76,7 @@ __interface IWrapper {
   bool_t hasInternalWalletCode() = 16;
 
   [[getter, dyn_chain_parse]]
-  address getWalletAddress(uint256 pubkey, addr_std_compact owner) = 17;
+  address getWalletAddress(uint256 pubkey, address owner) = 17;
 };
 using IWrapperPtr = handle<IWrapper>;
 

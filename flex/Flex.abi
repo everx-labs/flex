@@ -1,6 +1,6 @@
 {
   "ABI version": 2,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "header": [
     "pubkey",
     "time",
@@ -13,53 +13,42 @@
     { "name":"deployer_pubkey", "type":"uint256" },
     { "name":"ownership_description", "type":"string" },
     { "name":"owner_address", "type":"optional(address)" },
-    { "name":"transfer_tip3", "type":"uint128" },
-    { "name":"return_ownership", "type":"uint128" },
-    { "name":"trading_pair_deploy", "type":"uint128" },
-    { "name":"order_answer", "type":"uint128" },
-    { "name":"process_queue", "type":"uint128" },
-    { "name":"send_notify", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" }
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"trading_pair_deploy", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" }
+    ], "name":"tons_cfg", "type":"tuple" },
+    { "name":"deals_limit", "type":"uint8" },
+    { "components":[
+      { "name":"register_wrapper_cost", "type":"uint128" },
+      { "name":"reject_wrapper_cost", "type":"uint128" },
+      { "name":"wrapper_deploy_value", "type":"uint128" },
+      { "name":"wrapper_keep_balance", "type":"uint128" },
+      { "name":"ext_wallet_balance", "type":"uint128" },
+      { "name":"set_internal_wallet_value", "type":"uint128" },
+      { "name":"register_pair_cost", "type":"uint128" },
+      { "name":"reject_pair_cost", "type":"uint128" },
+      { "name":"pair_deploy_value", "type":"uint128" },
+      { "name":"pair_keep_balance", "type":"uint128" },
+      { "name":"register_return_value", "type":"uint128" }
+    ], "name":"listing_cfg", "type":"tuple" }
     ],
     "outputs": [
     ],
     "id": "0xa"
   },
   {
-    "name": "setPairCode",
+    "name": "setSpecificCode",
     "inputs": [
+    { "name":"type", "type":"uint8" },
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
     ],
     "id": "0xb"
-  },
-  {
-    "name": "setXchgPairCode",
-    "inputs": [
-    { "name":"code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xc"
-  },
-  {
-    "name": "setPriceCode",
-    "inputs": [
-    { "name":"code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xd"
-  },
-  {
-    "name": "setXchgPriceCode",
-    "inputs": [
-    { "name":"code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xe"
   },
   {
     "name": "transfer",
@@ -69,7 +58,117 @@
     ],
     "outputs": [
     ],
+    "id": "0xc"
+  },
+  {
+    "name": "registerTradingPair",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"tip3_root", "type":"address" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0xd"
+  },
+  {
+    "name": "registerXchgPair",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"tip3_major_root", "type":"address" },
+    { "name":"tip3_minor_root", "type":"address" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0xe"
+  },
+  {
+    "name": "registerWrapper",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_public_key", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"tip3cfg", "type":"tuple" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
     "id": "0xf"
+  },
+  {
+    "name": "approveTradingPair",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x10"
+  },
+  {
+    "name": "rejectTradingPair",
+    "inputs": [
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"bool" }
+    ],
+    "id": "0x11"
+  },
+  {
+    "name": "approveXchgPair",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x12"
+  },
+  {
+    "name": "rejectXchgPair",
+    "inputs": [
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"bool" }
+    ],
+    "id": "0x13"
+  },
+  {
+    "name": "approveWrapper",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x14"
+  },
+  {
+    "name": "rejectWrapper",
+    "inputs": [
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"bool" }
+    ],
+    "id": "0x15"
   },
   {
     "name": "isFullyInitialized",
@@ -78,39 +177,80 @@
     "outputs": [
     { "name":"value0", "type":"bool" }
     ],
-    "id": "0x10"
+    "id": "0x16"
   },
   {
-    "name": "getTonsCfg",
+    "name": "getDetails",
     "inputs": [
     ],
     "outputs": [
-    { "name":"transfer_tip3", "type":"uint128" },
-    { "name":"return_ownership", "type":"uint128" },
-    { "name":"trading_pair_deploy", "type":"uint128" },
-    { "name":"order_answer", "type":"uint128" },
-    { "name":"process_queue", "type":"uint128" },
-    { "name":"send_notify", "type":"uint128" }
+    { "name":"initialized", "type":"bool" },
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"trading_pair_deploy", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" }
+    ], "name":"tons_cfg", "type":"tuple" },
+    { "components":[
+      { "name":"register_wrapper_cost", "type":"uint128" },
+      { "name":"reject_wrapper_cost", "type":"uint128" },
+      { "name":"wrapper_deploy_value", "type":"uint128" },
+      { "name":"wrapper_keep_balance", "type":"uint128" },
+      { "name":"ext_wallet_balance", "type":"uint128" },
+      { "name":"set_internal_wallet_value", "type":"uint128" },
+      { "name":"register_pair_cost", "type":"uint128" },
+      { "name":"reject_pair_cost", "type":"uint128" },
+      { "name":"pair_deploy_value", "type":"uint128" },
+      { "name":"pair_keep_balance", "type":"uint128" },
+      { "name":"register_return_value", "type":"uint128" }
+    ], "name":"listing_cfg", "type":"tuple" },
+    { "name":"trading_pair_code", "type":"cell" },
+    { "name":"xchg_pair_code", "type":"cell" },
+    { "name":"deals_limit", "type":"uint8" },
+    { "components":[
+      { "name":"deployer_pubkey", "type":"uint256" },
+      { "name":"ownership_description", "type":"string" },
+      { "name":"owner_contract", "type":"optional(address)" }
+    ], "name":"ownership", "type":"tuple" },
+    { "components":[
+      { "name":"wrapper_pubkey", "type":"uint256" },
+      { "components":[
+        { "name":"client_addr", "type":"address" },
+        { "name":"client_funds", "type":"uint128" },
+        { "components":[
+          { "name":"name", "type":"string" },
+          { "name":"symbol", "type":"string" },
+          { "name":"decimals", "type":"uint8" },
+          { "name":"root_public_key", "type":"uint256" },
+          { "name":"root_address", "type":"address" }
+        ], "name":"tip3cfg", "type":"tuple" }
+      ], "name":"request", "type":"tuple" }
+    ], "name":"wrapper_listing_requests", "type":"tuple[]" },
+    { "components":[
+      { "name":"wrapper_pubkey", "type":"uint256" },
+      { "components":[
+        { "name":"client_addr", "type":"address" },
+        { "name":"client_funds", "type":"uint128" },
+        { "name":"tip3_root", "type":"address" },
+        { "name":"min_amount", "type":"uint128" },
+        { "name":"notify_addr", "type":"address" }
+      ], "name":"request", "type":"tuple" }
+    ], "name":"trading_pair_listing_requests", "type":"tuple[]" },
+    { "components":[
+      { "name":"request_pubkey", "type":"uint256" },
+      { "components":[
+        { "name":"client_addr", "type":"address" },
+        { "name":"client_funds", "type":"uint128" },
+        { "name":"tip3_major_root", "type":"address" },
+        { "name":"tip3_minor_root", "type":"address" },
+        { "name":"min_amount", "type":"uint128" },
+        { "name":"notify_addr", "type":"address" }
+      ], "name":"request", "type":"tuple" }
+    ], "name":"xchg_pair_listing_requests", "type":"tuple[]" }
     ],
-    "id": "0x11"
-  },
-  {
-    "name": "getTradingPairCode",
-    "inputs": [
-    ],
-    "outputs": [
-    { "name":"value0", "type":"cell" }
-    ],
-    "id": "0x12"
-  },
-  {
-    "name": "getXchgPairCode",
-    "inputs": [
-    ],
-    "outputs": [
-    { "name":"value0", "type":"cell" }
-    ],
-    "id": "0x13"
+    "id": "0x17"
   },
   {
     "name": "getSellPriceCode",
@@ -120,7 +260,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x14"
+    "id": "0x18"
   },
   {
     "name": "getXchgPriceCode",
@@ -131,7 +271,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x15"
+    "id": "0x19"
   },
   {
     "name": "getSellTradingPair",
@@ -141,7 +281,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x16"
+    "id": "0x1a"
   },
   {
     "name": "getXchgTradingPair",
@@ -152,32 +292,13 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x17"
-  },
-  {
-    "name": "getDealsLimit",
-    "inputs": [
-    ],
-    "outputs": [
-    { "name":"value0", "type":"uint8" }
-    ],
-    "id": "0x18"
-  },
-  {
-    "name": "getOwnershipInfo",
-    "inputs": [
-    ],
-    "outputs": [
-    { "name":"deployer_pubkey", "type":"uint256" },
-    { "name":"ownership_description", "type":"string" },
-    { "name":"owner_contract", "type":"optional(address)" }
-    ],
-    "id": "0x19"
+    "id": "0x1b"
   }
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
     { "name":"deployer_pubkey_", "type":"uint256" },
+    { "name":"workchain_id_", "type":"int8" },
     { "name":"ownership_description_", "type":"string" },
     { "name":"owner_address_", "type":"optional(address)" },
     { "components":[
@@ -188,11 +309,44 @@
       { "name":"process_queue", "type":"uint128" },
       { "name":"send_notify", "type":"uint128" }
     ], "name":"tons_cfg_", "type":"tuple" },
-    { "name":"pair_code_", "type":"optional(cell)" },
-    { "name":"xchg_pair_code_", "type":"optional(cell)" },
-    { "name":"price_code_", "type":"optional(cell)" },
-    { "name":"xchg_price_code_", "type":"optional(cell)" },
-    { "name":"deals_limit_", "type":"uint8" }
+    { "components":[
+      { "name":"register_wrapper_cost", "type":"uint128" },
+      { "name":"reject_wrapper_cost", "type":"uint128" },
+      { "name":"wrapper_deploy_value", "type":"uint128" },
+      { "name":"wrapper_keep_balance", "type":"uint128" },
+      { "name":"ext_wallet_balance", "type":"uint128" },
+      { "name":"set_internal_wallet_value", "type":"uint128" },
+      { "name":"register_pair_cost", "type":"uint128" },
+      { "name":"reject_pair_cost", "type":"uint128" },
+      { "name":"pair_deploy_value", "type":"uint128" },
+      { "name":"pair_keep_balance", "type":"uint128" },
+      { "name":"register_return_value", "type":"uint128" }
+    ], "name":"listing_cfg_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"pair_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"xchg_pair_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"price_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"xchg_price_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"ext_wallet_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"flex_wallet_code_", "type":"tuple" },
+    { "components":[
+      { "name":"dict_", "type":"cell" }
+    ], "name":"wrapper_code_", "type":"tuple" },
+    { "name":"deals_limit_", "type":"uint8" },
+    { "name":"wrapper_listing_requests_", "type":"optional(cell)" },
+    { "name":"trading_pair_listing_requests_", "type":"optional(cell)" },
+    { "name":"xchg_pair_listing_requests_", "type":"optional(cell)" }
   ],
   "events": [
   ]

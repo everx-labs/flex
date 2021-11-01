@@ -296,49 +296,43 @@ public:
   }
 
   __always_inline
-  address deployWrapperWithWallet(
+  void registerWrapper(
     uint256 wrapper_pubkey,
-    uint128 wrapper_deploy_value,
-    uint128 wrapper_keep_balance,
-    uint128 ext_wallet_balance,
-    uint128 set_internal_wallet_value,
+    uint128 value,
     Tip3Config tip3cfg
   ) {
     require(msg_pubkey() == owner_, error_code::message_sender_is_not_my_owner);
-    require(ext_wallet_code_, error_code::missed_ext_wallet_code);
-    require(flex_wallet_code_, error_code::missed_flex_wallet_code);
-    require(flex_wrapper_code_, error_code::missed_flex_wrapper_code);
     tvm_accept();
+    IFlexPtr(flex_)(Grams(value.get())).registerWrapper(wrapper_pubkey, tip3cfg);
+  }
 
-    DWrapper wrapper_data {
-      .name_ = tip3cfg.name,
-      .symbol_ = tip3cfg.symbol,
-      .decimals_ = tip3cfg.decimals,
-      .workchain_id_ = workchain_id_,
-      .root_public_key_ = wrapper_pubkey,
-      .total_granted_ = {},
-      .internal_wallet_code_ = {},
-      .owner_address_ = address{tvm_myaddr()},
-      .start_balance_ = Grams(wrapper_keep_balance.get()),
-      .external_wallet_ = {}
-    };
-    auto [wrapper_init, wrapper_hash_addr] = prepare_wrapper_state_init_and_addr(flex_wrapper_code_.get(), wrapper_data);
-    IWrapperPtr wrapper_addr(address::make_std(workchain_id_, wrapper_hash_addr));
+  __always_inline
+  void registerTradingPair(
+    uint256 request_pubkey,
+    uint128 value,
+    address tip3_root,
+    uint128 min_amount,
+    address notify_addr
+  ) {
+    require(msg_pubkey() == owner_, error_code::message_sender_is_not_my_owner);
+    tvm_accept();
+    IFlexPtr(flex_)(Grams(value.get())).
+      registerTradingPair(request_pubkey, tip3_root, min_amount, notify_addr);
+  }
 
-    // ============= Deploying external wallet for Flex wrapper ============ //
-    auto [wallet_init, wallet_hash_addr] = prepare_external_wallet_state_init_and_addr(
-      tip3cfg.name, tip3cfg.symbol, tip3cfg.decimals,
-      tip3cfg.root_public_key, wrapper_pubkey, tip3cfg.root_address,
-      wrapper_addr.get(), ext_wallet_code_.get(), workchain_id_);
-    ITONTokenWalletPtr wallet_addr(address::make_std(workchain_id_, wallet_hash_addr));
-    wallet_addr.deploy_noop(wallet_init, Grams(ext_wallet_balance.get()));
-
-    // ================== Deploying Flex wrapper for Nuka ================== //
-    wrapper_addr.deploy(wrapper_init, Grams(wrapper_deploy_value.get())).init(wallet_addr.get());
-
-    wrapper_addr(Grams(set_internal_wallet_value.get())).setInternalWalletCode(flex_wallet_code_.get());
-
-    return wrapper_addr.get();
+  __always_inline
+  void registerXchgPair(
+    uint256 request_pubkey,
+    uint128 value,
+    address tip3_major_root,
+    address tip3_minor_root,
+    uint128 min_amount,
+    address notify_addr
+  ) {
+    require(msg_pubkey() == owner_, error_code::message_sender_is_not_my_owner);
+    tvm_accept();
+    IFlexPtr(flex_)(Grams(value.get())).
+      registerXchgPair(request_pubkey, tip3_major_root, tip3_minor_root, min_amount, notify_addr);
   }
 
   __always_inline

@@ -1,6 +1,6 @@
 {
   "ABI version": 2,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "header": [
     "pubkey",
     "time",
@@ -63,35 +63,6 @@
     "id": "0xe"
   },
   {
-    "name": "deployTradingPair",
-    "inputs": [
-    { "name":"tip3_root", "type":"address" },
-    { "name":"deploy_min_value", "type":"uint128" },
-    { "name":"deploy_value", "type":"uint128" },
-    { "name":"min_trade_amount", "type":"uint128" },
-    { "name":"notify_addr", "type":"address" }
-    ],
-    "outputs": [
-    { "name":"value0", "type":"address" }
-    ],
-    "id": "0xf"
-  },
-  {
-    "name": "deployXchgPair",
-    "inputs": [
-    { "name":"tip3_major_root", "type":"address" },
-    { "name":"tip3_minor_root", "type":"address" },
-    { "name":"deploy_min_value", "type":"uint128" },
-    { "name":"deploy_value", "type":"uint128" },
-    { "name":"min_trade_amount", "type":"uint128" },
-    { "name":"notify_addr", "type":"address" }
-    ],
-    "outputs": [
-    { "name":"value0", "type":"address" }
-    ],
-    "id": "0x10"
-  },
-  {
     "name": "deployPriceWithSell",
     "inputs": [
     { "name":"price", "type":"uint128" },
@@ -115,7 +86,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x11"
+    "id": "0xf"
   },
   {
     "name": "deployPriceWithBuy",
@@ -140,7 +111,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x12"
+    "id": "0x10"
   },
   {
     "name": "deployPriceXchg",
@@ -176,7 +147,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x13"
+    "id": "0x11"
   },
   {
     "name": "cancelSellOrder",
@@ -197,7 +168,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x14"
+    "id": "0x12"
   },
   {
     "name": "cancelBuyOrder",
@@ -218,7 +189,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x15"
+    "id": "0x13"
   },
   {
     "name": "cancelXchgOrder",
@@ -248,7 +219,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x16"
+    "id": "0x14"
   },
   {
     "name": "transfer",
@@ -259,16 +230,13 @@
     ],
     "outputs": [
     ],
-    "id": "0x17"
+    "id": "0x15"
   },
   {
-    "name": "deployWrapperWithWallet",
+    "name": "registerWrapper",
     "inputs": [
     { "name":"wrapper_pubkey", "type":"uint256" },
-    { "name":"wrapper_deploy_value", "type":"uint128" },
-    { "name":"wrapper_keep_balance", "type":"uint128" },
-    { "name":"ext_wallet_balance", "type":"uint128" },
-    { "name":"set_internal_wallet_value", "type":"uint128" },
+    { "name":"value", "type":"uint128" },
     { "components":[
       { "name":"name", "type":"string" },
       { "name":"symbol", "type":"string" },
@@ -278,7 +246,33 @@
     ], "name":"tip3cfg", "type":"tuple" }
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x16"
+  },
+  {
+    "name": "registerTradingPair",
+    "inputs": [
+    { "name":"request_pubkey", "type":"uint256" },
+    { "name":"value", "type":"uint128" },
+    { "name":"tip3_root", "type":"address" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x17"
+  },
+  {
+    "name": "registerXchgPair",
+    "inputs": [
+    { "name":"request_pubkey", "type":"uint256" },
+    { "name":"value", "type":"uint128" },
+    { "name":"tip3_major_root", "type":"address" },
+    { "name":"tip3_minor_root", "type":"address" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"notify_addr", "type":"address" }
+    ],
+    "outputs": [
     ],
     "id": "0x18"
   },
