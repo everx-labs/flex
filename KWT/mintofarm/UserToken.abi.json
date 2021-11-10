@@ -1,0 +1,183 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"Root","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAirdrop",
+			"id": "0xAA",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "isAcceptAir",
+			"id": "0xAAA",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "isAcceptStake",
+			"id": "0xAAB",
+			"inputs": [
+				{"name":"acceptStake","type":"uint128"},
+				{"name":"needGet","type":"uint128"},
+				{"name":"period","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getToken",
+			"id": "0xE",
+			"inputs": [
+				{"name":"wallet","type":"address"},
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendMoney",
+			"id": "0x11B",
+			"inputs": [
+				{"name":"count","type":"uint128"},
+				{"name":"dest","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "update",
+			"id": "0xCCC",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "selfupdate",
+			"id": "0xCCD",
+			"inputs": [
+				{"name":"index","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendtoWKWT",
+			"id": "0x1AB",
+			"inputs": [
+				{"name":"pool","type":"address"},
+				{"name":"t","type":"uint128"},
+				{"name":"ston","type":"uint128"},
+				{"name":"KWT","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "returntoWKWT",
+			"id": "0x1AC",
+			"inputs": [
+				{"name":"t","type":"uint128"},
+				{"name":"ston","type":"uint128"},
+				{"name":"KWT","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setWKWTRoot",
+			"id": "0x11A",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setWKWTRootData",
+			"id": "0x11BA",
+			"inputs": [
+				{"name":"data","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "WKWTaddr",
+			"id": "0x11C",
+			"inputs": [
+				{"name":"a","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getStake",
+			"id": "0xD",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"Value","type":"uint128"},{"name":"Timestamp","type":"uint128"},{"name":"ReturnToken","type":"uint128"}],"name":"value0","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "getBalance",
+			"id": "0xDD",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint128"},
+				{"name":"value1","type":"uint128"}
+			]
+		},
+		{
+			"name": "getRoot",
+			"id": "0xB",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"_WKWTaddr","type":"address"},
+		{"name":"nowAir","type":"uint128"},
+		{"name":"nowAirvalue","type":"uint128"},
+		{"components":[{"name":"Value","type":"uint128"},{"name":"Timestamp","type":"uint128"},{"name":"ReturnToken","type":"uint128"}],"name":"_orders","type":"tuple[]"},
+		{"name":"_readytoWithdraw","type":"uint128"},
+		{"name":"_startValue","type":"uint128"},
+		{"name":"_lock","type":"uint128"},
+		{"name":"_AllowPeriod","type":"uint128[]"},
+		{"name":"_percent","type":"uint128[]"},
+		{"name":"_Root","type":"address"},
+		{"name":"_isSet","type":"bool"},
+		{"name":"_WKWTRoot","type":"cell"},
+		{"name":"_WKWTRootdata","type":"cell"},
+		{"name":"requestStake","type":"bool"},
+		{"name":"_airValue","type":"uint128"},
+		{"name":"_lastUpdate","type":"uint128"}
+	]
+}
