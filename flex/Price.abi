@@ -21,7 +21,8 @@
     "outputs": [
     { "name":"err_code", "type":"uint32" },
     { "name":"processed", "type":"uint128" },
-    { "name":"enqueued", "type":"uint128" }
+    { "name":"enqueued", "type":"uint128" },
+    { "name":"price_", "type":"uint128" }
     ],
     "id": "0xc9"
   },
@@ -36,7 +37,8 @@
     "outputs": [
     { "name":"err_code", "type":"uint32" },
     { "name":"processed", "type":"uint128" },
-    { "name":"enqueued", "type":"uint128" }
+    { "name":"enqueued", "type":"uint128" },
+    { "name":"price_", "type":"uint128" }
     ],
     "id": "0xca"
   },
