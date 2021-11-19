@@ -21,7 +21,11 @@
     "outputs": [
     { "name":"err_code", "type":"uint32" },
     { "name":"processed", "type":"uint128" },
-    { "name":"enqueued", "type":"uint128" }
+    { "name":"enqueued", "type":"uint128" },
+    { "components":[
+      { "name":"num", "type":"uint128" },
+      { "name":"denum", "type":"uint128" }
+    ], "name":"price", "type":"tuple" }
     ],
     "id": "0xc9"
   },

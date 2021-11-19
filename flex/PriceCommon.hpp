@@ -12,16 +12,4 @@ struct Tip3Config {
   address_t root_address;
 };
 
-struct OrderRet {
-  uint32 err_code;
-  uint128 processed;
-  uint128 enqueued;
-};
-
-__interface IPriceCallback {
-  [[internal, noaccept]]
-  void onOrderFinished(OrderRet ret, bool_t sell) = 300;
-};
-using IPriceCallbackPtr = handle<IPriceCallback>;
-
 }} // namespace tvm::schema

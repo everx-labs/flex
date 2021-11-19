@@ -77,7 +77,7 @@ public:
   __attribute__((noinline))
   static std::tuple<std::optional<OrderInfoWithIdx>, queue<OrderInfo>, uint128>
   extract_active_order(std::optional<OrderInfoWithIdx> cur_order,
-                       queue<OrderInfo> orders, uint128 all_amount, bool_t sell) {
+                       queue<OrderInfo> orders, uint128 all_amount, bool_t sell, uint128 price) {
     if (cur_order)
       return {cur_order, orders, all_amount};
 
@@ -86,8 +86,8 @@ public:
       auto ord = cur_order->second;
       if (!is_active_time(ord.order_finish_time)) {
         all_amount -= ord.amount;
-        OrderRet ret { uint32(ec::expired), ord.original_amount - ord.amount, uint128{0} };
-        IPriceCallbackPtr(ord.client_addr)(Grams(ord.account.get())).
+        OrderRetTrade ret { uint32(ec::expired), ord.original_amount - ord.amount, uint128{0}, price };
+        IPriceCallbackTradePtr(ord.client_addr)(Grams(ord.account.get())).
           onOrderFinished(ret, sell);
         orders.pop();
         cur_order.reset();
@@ -105,9 +105,9 @@ public:
     unsigned deals_count = 0;
     while (true) {
       std::tie(sell_opt, sells_, sells_amount_) =
-        extract_active_order(sell_opt, sells_, sells_amount_, bool_t{true});
+        extract_active_order(sell_opt, sells_, sells_amount_, bool_t{true}, price_);
       std::tie(buy_opt, buys_, buys_amount_) =
-        extract_active_order(buy_opt, buys_, buys_amount_, bool_t{false});
+        extract_active_order(buy_opt, buys_, buys_amount_, bool_t{false}, price_);
       if (!sell_opt || !buy_opt)
         break;
 
@@ -148,24 +148,24 @@ public:
       // ==== if one of sides is out of tons ====
       if (sell_out_of_tons) {
         sells_.pop();
-        OrderRet ret { uint32(ec::out_of_tons), sell.original_amount - sell.amount, uint128{0} };
+        OrderRetTrade ret { uint32(ec::out_of_tons), sell.original_amount - sell.amount, uint128{0}, price_ };
         if (sell_idx == sell_idx_cur)
           ret_ = ret;
         if (sell.account > tons_cfg_.return_ownership) {
           sell.account -= tons_cfg_.return_ownership;
           ITONTokenWalletPtr(sell.tip3_wallet)(Grams(tons_cfg_.return_ownership.get())).
             returnOwnership(sell.amount);
-          IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
+          IPriceCallbackTradePtr(sell.client_addr)(Grams(sell.account.get())).
             onOrderFinished(ret, bool_t{true});
         }
         sell_opt.reset();
       }
       if (buy_out_of_tons) {
         buys_.pop();
-        OrderRet ret { uint32(ec::out_of_tons), buy.original_amount - buy.amount, uint128{0} };
+        OrderRetTrade ret { uint32(ec::out_of_tons), buy.original_amount - buy.amount, uint128{0}, price_ };
         if (buy_idx == buy_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get())).
+        IPriceCallbackTradePtr(buy.client_addr)(Grams(buy.account.get())).
           onOrderFinished(ret, bool_t{false});
         buy_opt.reset();
       }
@@ -180,19 +180,19 @@ public:
       // ==== if one of sides is out of tokens amount ====
       if (!sell.amount) {
         sells_.pop();
-        OrderRet ret { uint32(ok), sell.original_amount, uint128{0} };
+        OrderRetTrade ret { uint32(ok), sell.original_amount, uint128{0}, price_ };
         if (sell_idx == sell_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(sell.client_addr)(Grams(sell.account.get())).
+        IPriceCallbackTradePtr(sell.client_addr)(Grams(sell.account.get())).
           onOrderFinished(ret, bool_t{true});
         sell_opt.reset();
       }
       if (!buy.amount) {
         buys_.pop();
-        OrderRet ret { uint32(ok), buy.original_amount, uint128{0} };
+        OrderRetTrade ret { uint32(ok), buy.original_amount, uint128{0}, price_ };
         if (buy_idx == buy_idx_cur)
           ret_ = ret;
-        IPriceCallbackPtr(buy.client_addr)(Grams(buy.account.get())).
+        IPriceCallbackTradePtr(buy.client_addr)(Grams(buy.account.get())).
           onOrderFinished(ret, bool_t{false});
         buy_opt.reset();
       }
@@ -202,14 +202,14 @@ public:
       auto sell = sell_opt->second;
       sells_.change_front(sell);
       if (sell_idx == sell_opt->first)
-        ret_ = OrderRet { uint32(ok), sell.original_amount - sell.amount, sell.amount };
+        ret_ = OrderRetTrade { uint32(ok), sell.original_amount - sell.amount, sell.amount, price_ };
     }
     if (buy_opt && buy_opt->second.amount) {
       // If the last buy order is not fully processed, modify its amount
       auto buy = buy_opt->second;
       buys_.change_front(buy);
       if (buy_idx == buy_opt->first)
-        ret_ = OrderRet { uint32(ok), buy.original_amount - buy.amount, buy.amount };
+        ret_ = OrderRetTrade { uint32(ok), buy.original_amount - buy.amount, buy.amount, price_ };
     }
   }
 
@@ -222,7 +222,7 @@ public:
   queue<OrderInfo> sells_;
   uint128 buys_amount_;
   queue<OrderInfo> buys_;
-  std::optional<OrderRet> ret_;
+  std::optional<OrderRetTrade> ret_;
 };
 
 struct process_ret {
@@ -230,7 +230,7 @@ struct process_ret {
   queue<OrderInfo> sells_;
   uint128 buys_amount;
   queue<OrderInfo> buys_;
-  std::optional<OrderRet> ret_;
+  std::optional<OrderRetTrade> ret_;
 };
 
 __attribute__((noinline))
@@ -248,7 +248,7 @@ process_ret process_queue_impl(address tip3root, IFlexNotifyPtr notify_addr,
 __attribute__((noinline))
 std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
     queue<OrderInfo> orders, addr_std_fixed client_addr, uint128 all_amount, bool_t sell,
-    Grams return_ownership, Grams process_queue, Grams incoming_val) {
+    Grams return_ownership, Grams process_queue, Grams incoming_val, uint128 price) {
   bool is_first = true;
   for (auto it = orders.begin(); it != orders.end();) {
     auto next_it = std::next(it);
@@ -264,8 +264,8 @@ std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
       is_first = false;
       if (plus_val > minus_val) {
         unsigned ret_val = plus_val - minus_val;
-        OrderRet ret { uint32(ec::canceled), ord.original_amount - ord.amount, uint128{0} };
-        IPriceCallbackPtr(ord.client_addr)(Grams(ret_val)).
+        OrderRetTrade ret { uint32(ec::canceled), ord.original_amount - ord.amount, uint128{0}, price };
+        IPriceCallbackTradePtr(ord.client_addr)(Grams(ret_val)).
           onOrderFinished(ret, sell);
       }
 
@@ -281,7 +281,7 @@ std::pair<queue<OrderInfo>, uint128> cancel_order_impl(
 class Price final : public smart_interface<IPrice>, public DPrice {
 public:
   __always_inline
-  OrderRet onTip3LendOwnership(
+  OrderRetTrade onTip3LendOwnership(
     address answer_addr,
     uint128 balance,
     uint32  lend_finish_time,
@@ -339,11 +339,11 @@ public:
     if (sells_.empty() && buys_.empty())
       suicide(flex_);
     if (ret) return *ret;
-    return { uint32(ok), uint128(0), sell.amount };
+    return { uint32(ok), uint128(0), sell.amount, price_ };
   }
 
   __always_inline
-  OrderRet buyTip3(uint128 amount, address receive_tip3_wallet, uint32 order_finish_time) {
+  OrderRetTrade buyTip3(uint128 amount, address receive_tip3_wallet, uint32 order_finish_time) {
     auto [sender, value_gr] = int_sender_and_value();
     require(amount >= min_amount_, ec::not_enough_tokens_amount);
     auto cost = calc_cost(amount, price_);
@@ -374,7 +374,7 @@ public:
     if (sells_.empty() && buys_.empty())
       suicide(flex_);
     if (ret) return *ret;
-    return { uint32(ok), uint128(0), buy.amount };
+    return { uint32(ok), uint128(0), buy.amount, price_ };
   }
 
   __always_inline
@@ -400,7 +400,7 @@ public:
     auto [sells, sells_amount] =
       cancel_order_impl(sells_, client_addr, sells_amount_, bool_t{true},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value);
+                        Grams(tons_cfg_.process_queue.get()), value, price_);
     sells_ = sells;
     sells_amount_ = sells_amount;
     canceled_amount -= sells_amount;
@@ -420,7 +420,7 @@ public:
     auto [buys, buys_amount] =
       cancel_order_impl(buys_, client_addr, buys_amount_, bool_t{false},
                         Grams(tons_cfg_.return_ownership.get()),
-                        Grams(tons_cfg_.process_queue.get()), value);
+                        Grams(tons_cfg_.process_queue.get()), value, price_);
     buys_ = buys;
     buys_amount_ = buys_amount;
     canceled_amount -= buys_amount;
@@ -514,7 +514,7 @@ private:
   }
 
   __always_inline
-  OrderRet on_sell_fail(unsigned ec, ITONTokenWalletPtr wallet_in, uint128 amount) {
+  OrderRetTrade on_sell_fail(unsigned ec, ITONTokenWalletPtr wallet_in, uint128 amount) {
     wallet_in(Grams(tons_cfg_.return_ownership.get())).returnOwnership(amount);
 
     if (sells_.empty() && buys_.empty()) {
@@ -524,7 +524,7 @@ private:
       tvm_rawreserve(tvm_balance() - incoming_value, rawreserve_flag::up_to);
       set_int_return_flag(SEND_ALL_GAS);
     }
-    return { uint32(ec), {}, {} };
+    return { uint32(ec), {}, {}, price_ };
   }
 };
 

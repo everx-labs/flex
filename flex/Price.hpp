@@ -17,6 +17,19 @@ namespace tvm { inline namespace schema {
 
 using ITONTokenWalletPtr = handle<ITONTokenWallet>;
 
+struct OrderRetTrade {
+  uint32 err_code;
+  uint128 processed;
+  uint128 enqueued;
+  uint128 price_;
+};
+
+__interface IPriceCallbackTrade {
+  [[internal, noaccept]]
+  void onOrderFinished(OrderRetTrade ret, bool_t sell) = 300;
+};
+using IPriceCallbackTradePtr = handle<IPriceCallbackTrade>;
+
 struct SellArgs {
   uint128 amount;
   address receive_wallet;
@@ -40,12 +53,12 @@ struct DetailsInfo {
 };
 
 // usage from debot:
-// co_await tip3.tail_call<OrderRet>(price_addr, gr).lendOwnership(...)
+// co_await tip3.tail_call<OrderRetTrade>(price_addr, gr).lendOwnership(...)
 
 __interface IPrice {
 
   [[internal, noaccept, answer_id]]
-  OrderRet onTip3LendOwnership(
+  OrderRetTrade onTip3LendOwnership(
     address answer_addr,
     uint128 balance,
     uint32  lend_finish_time,
@@ -54,7 +67,7 @@ __interface IPrice {
     cell    payload) = 201;
 
   [[internal, noaccept, answer_id]]
-  OrderRet buyTip3(uint128 amount, address receive_tip3, uint32 order_finish_time) = 202;
+  OrderRetTrade buyTip3(uint128 amount, address receive_tip3, uint32 order_finish_time) = 202;
 
   [[internal, noaccept]]
   void processQueue() = 203;

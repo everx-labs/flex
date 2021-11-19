@@ -26,6 +26,19 @@ struct RationalPrice {
 };
 using price_t = RationalPrice;
 
+struct OrderRetXchg {
+  uint32 err_code;
+  uint128 processed;
+  uint128 enqueued;
+  price_t price;
+};
+
+__interface IPriceCallbackXchg {
+  [[internal, noaccept]]
+  void onOrderFinished(OrderRetXchg ret, bool_t sell) = 300;
+};
+using IPriceCallbackXchgPtr = handle<IPriceCallbackXchg>;
+
 struct PayloadArgs {
   bool_t sell;
   uint128 amount;
@@ -55,7 +68,7 @@ struct DetailsInfoXchg {
 __interface IPriceXchg {
 
   [[internal, noaccept, answer_id]]
-  OrderRet onTip3LendOwnership(
+  OrderRetXchg onTip3LendOwnership(
     address answer_addr,
     uint128 balance,
     uint32  lend_finish_time,
