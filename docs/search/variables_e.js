@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['tip3_5fmajor_5froot_619',['tip3_major_root',['../structtvm_1_1XchgPairListingRequest.html#a8b03951f77c2b9da81d0afb342ed512b',1,'tvm::XchgPairListingRequest']]],
+  ['tip3_5fmajor_5froot_5f_620',['tip3_major_root_',['../structtvm_1_1DXchgPair.html#a063d8f986594089a4ae61e5b9c99010a',1,'tvm::DXchgPair']]],
+  ['tip3_5fminor_5froot_621',['tip3_minor_root',['../structtvm_1_1XchgPairListingRequest.html#a015d2877a2a246ecaf8fcb7ccf71e38f',1,'tvm::XchgPairListingRequest']]],
+  ['tip3_5fminor_5froot_5f_622',['tip3_minor_root_',['../structtvm_1_1DXchgPair.html#a7ab910274822d566c422e29d23cbc802',1,'tvm::DXchgPair']]],
+  ['tip3_5froot_623',['tip3_root',['../structtvm_1_1TradingPairListingRequest.html#a4dd81620703aaa118aaa270f982f3bf1',1,'tvm::TradingPairListingRequest']]],
+  ['tip3_5froot_5f_624',['tip3_root_',['../structtvm_1_1DTradingPair.html#a263fe803f4584f6fd609387b9323e3b6',1,'tvm::DTradingPair']]],
+  ['tip3_5fwallet_625',['tip3_wallet',['../structtvm_1_1OrderInfo.html#a6c9739a58380992dd953cc7d5d057bec',1,'tvm::OrderInfo']]],
+  ['tip3_5fwallet_5fprovide_626',['tip3_wallet_provide',['../structtvm_1_1OrderInfoXchg.html#afc458e16438a1ff5b1c8ccdf67f371e3',1,'tvm::OrderInfoXchg']]],
+  ['tip3_5fwallet_5freceive_627',['tip3_wallet_receive',['../structtvm_1_1OrderInfoXchg.html#a0e9b686830ecba910dad83b21731799b',1,'tvm::OrderInfoXchg']]],
+  ['tip3cfg_628',['tip3cfg',['../structtvm_1_1WrapperListingRequest.html#a3c2815bcf0eb199728c967509962101e',1,'tvm::WrapperListingRequest']]],
+  ['tip3cfg_5f_629',['tip3cfg_',['../structtvm_1_1DPrice.html#ac7aba61aaa949c79d8e02d4f74287b67',1,'tvm::DPrice']]],
+  ['tons_5fcfg_630',['tons_cfg',['../structtvm_1_1FlexDetails.html#acdf716e35584e068717c035829a6f404',1,'tvm::FlexDetails']]],
+  ['tons_5fcfg_5f_631',['tons_cfg_',['../structtvm_1_1DFlex.html#a442dfe406fc3cfda4c306cb77f5f489b',1,'tvm::DFlex::tons_cfg_()'],['../structtvm_1_1DPrice.html#a61c971ab58c9b7970db13a17608b310e',1,'tvm::DPrice::tons_cfg_()'],['../structtvm_1_1DPriceXchg.html#a490269534d8d99ba88df80254dded9a1',1,'tvm::DPriceXchg::tons_cfg_()']]],
+  ['too_5fbig_5ftokens_5famount_632',['too_big_tokens_amount',['../structec.html#a58a0e281b50ab45cfc9c0a96127bfd6d',1,'ec']]],
+  ['total_5fgranted_633',['total_granted',['../structtvm_1_1wrapper__details__info.html#a54858a9e001f811d5322b9e66626ea5f',1,'tvm::wrapper_details_info']]],
+  ['total_5fgranted_5f_634',['total_granted_',['../structtvm_1_1DRootTokenContract.html#af87cd9881260b55136497c1548959e4c',1,'tvm::DRootTokenContract::total_granted_()'],['../structtvm_1_1DWrapper.html#a42d52504c87cd1489f1f1ffb6d962844',1,'tvm::DWrapper::total_granted_()']]],
+  ['total_5fsupply_5f_635',['total_supply_',['../structtvm_1_1DRootTokenContract.html#acdd7cb515a3b2ca6ffed2370e6b485ba',1,'tvm::DRootTokenContract']]],
+  ['trading_5fpair_5fcode_636',['trading_pair_code',['../structtvm_1_1FlexDetails.html#ab5537213ebf158d257cac139083b471a',1,'tvm::FlexDetails']]],
+  ['trading_5fpair_5fdeploy_637',['trading_pair_deploy',['../structtvm_1_1TonsConfig.html#adc744ff2c7a53eabe48c99a5e5c041c8',1,'tvm::TonsConfig']]],
+  ['trading_5fpair_5flisting_5frequests_638',['trading_pair_listing_requests',['../structtvm_1_1FlexDetails.html#a574b404794303b4d4837f8daeaea2873',1,'tvm::FlexDetails']]],
+  ['transfer_5ftip3_639',['transfer_tip3',['../structtvm_1_1TonsConfig.html#a005e3f22e4cdbe294fab7d8a53267833',1,'tvm::TonsConfig']]],
+  ['transfer_5fto_5fzero_5faddress_640',['transfer_to_zero_address',['../structTONTokenWallet_1_1error__code.html#a8bb2096df020b1c4f64620b33cc0b940',1,'TONTokenWallet::error_code']]]
+];

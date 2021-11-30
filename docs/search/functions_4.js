@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['getdecimals_432',['getDecimals',['../structtvm_1_1IRootTokenContract.html#a3f11ff3015598bdaffab8457d9e84187',1,'tvm::IRootTokenContract']]],
+  ['getdetails_433',['getDetails',['../structtvm_1_1IFlex.html#a7085c447105c2a7be7890b4990d727a9',1,'tvm::IFlex::getDetails()'],['../structtvm_1_1ITONTokenWallet.html#a42f757f6aa2201df8eaa6f15f91fb9ca',1,'tvm::ITONTokenWallet::getDetails()'],['../structtvm_1_1IWrapper.html#a6274770123aadcc379b4183c6de6350e',1,'tvm::IWrapper::getDetails()']]],
+  ['getflexaddr_434',['getFlexAddr',['../structtvm_1_1ITradingPair.html#a5aff90583d8e263bac2c44ea90a1f02a',1,'tvm::ITradingPair::getFlexAddr()'],['../structtvm_1_1IXchgPair.html#aa71a4f003091c77fb3917c0d1bc78298',1,'tvm::IXchgPair::getFlexAddr()']]],
+  ['getminamount_435',['getMinAmount',['../structtvm_1_1ITradingPair.html#aa2ece4decbee12f4d93c4f421be0643f',1,'tvm::ITradingPair::getMinAmount()'],['../structtvm_1_1IXchgPair.html#a8dca1075ff2b0930eeb77e68047d2530',1,'tvm::IXchgPair::getMinAmount()']]],
+  ['getname_436',['getName',['../structtvm_1_1IRootTokenContract.html#a01d19c5be809c0dc64fd995827eb9600',1,'tvm::IRootTokenContract']]],
+  ['getnotifyaddr_437',['getNotifyAddr',['../structtvm_1_1ITradingPair.html#ab03ce56cf0ccb40539aa193e8c98e9fb',1,'tvm::ITradingPair::getNotifyAddr()'],['../structtvm_1_1IXchgPair.html#a5832a4459c73a39033aff8a97d894ee3',1,'tvm::IXchgPair::getNotifyAddr()']]],
+  ['getrootkey_438',['getRootKey',['../structtvm_1_1IRootTokenContract.html#a9b859015036232192d5ade3fbc7f6237',1,'tvm::IRootTokenContract']]],
+  ['getsellpricecode_439',['getSellPriceCode',['../structtvm_1_1IFlex.html#ac205e105d62cdb45ef9195a7e2cdd42c',1,'tvm::IFlex']]],
+  ['getselltradingpair_440',['getSellTradingPair',['../structtvm_1_1IFlex.html#aaa711596bd120baab75b68c89e0e6f34',1,'tvm::IFlex']]],
+  ['getsymbol_441',['getSymbol',['../structtvm_1_1IRootTokenContract.html#a4fa3f1e3553bbfde055949783223083c',1,'tvm::IRootTokenContract']]],
+  ['gettip3majorroot_442',['getTip3MajorRoot',['../structtvm_1_1IXchgPair.html#a7d494cbd4f9856525d25e737fa7491e8',1,'tvm::IXchgPair']]],
+  ['gettip3minorroot_443',['getTip3MinorRoot',['../structtvm_1_1IXchgPair.html#ac5b1e066eeed8c36ff2357e59a1ca042',1,'tvm::IXchgPair']]],
+  ['gettip3root_444',['getTip3Root',['../structtvm_1_1ITradingPair.html#a9d48abc8de90734814479d2fe464cbd3',1,'tvm::ITradingPair']]],
+  ['gettotalgranted_445',['getTotalGranted',['../structtvm_1_1IRootTokenContract.html#a7471e39b10e2ef036572986671a97c5c',1,'tvm::IRootTokenContract']]],
+  ['gettotalsupply_446',['getTotalSupply',['../structtvm_1_1IRootTokenContract.html#a340ef7a67ac4068425dda48964022654',1,'tvm::IRootTokenContract']]],
+  ['getwalletaddress_447',['getWalletAddress',['../structtvm_1_1IRootTokenContract.html#ab149f7556190eefecd2de6abd10a65fc',1,'tvm::IRootTokenContract::getWalletAddress()'],['../structtvm_1_1IWrapper.html#a8de4631d6b6483cdca57715f959274b9',1,'tvm::IWrapper::getWalletAddress()']]],
+  ['getwalletcode_448',['getWalletCode',['../structtvm_1_1IRootTokenContract.html#aaa7d1eb1ee5d8754539052f0e41cbe96',1,'tvm::IRootTokenContract']]],
+  ['getwalletcodehash_449',['getWalletCodeHash',['../structtvm_1_1IRootTokenContract.html#a5d9d9a1cc0a610dccf1eb139e6ddb848',1,'tvm::IRootTokenContract']]],
+  ['getxchgpricecode_450',['getXchgPriceCode',['../structtvm_1_1IFlex.html#a1a5a9ba918816ebd07dced795c158dfb',1,'tvm::IFlex']]],
+  ['getxchgtradingpair_451',['getXchgTradingPair',['../structtvm_1_1IFlex.html#a935194708ac05c0d8a1039cd1ccc135e',1,'tvm::IFlex']]],
+  ['grant_452',['grant',['../structtvm_1_1IRootTokenContract.html#a66a5104d25075287bcf5b74cd101b139',1,'tvm::IRootTokenContract']]]
+];

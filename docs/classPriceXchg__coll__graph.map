@@ -1,0 +1,8 @@
+<map id="PriceXchg" name="PriceXchg">
+<area shape="rect" id="node1" title=" " alt="" coords="89,185,176,212"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,228,136"/>
+<area shape="rect" id="node3" href="$structtvm_1_1DPriceXchg.html" title="PriceXchg persistent data struct." alt="" coords="251,109,382,136"/>
+<area shape="rect" id="node4" href="$structtvm_1_1TonsConfig.html" title="Processing native funds value ..." alt="" coords="95,5,221,32"/>
+<area shape="rect" id="node5" href="$structtvm_1_1RationalPrice.html" title="Rational price &#45; numerator/denominator." alt="" coords="245,5,388,32"/>
+<area shape="rect" id="node6" href="$structtvm_1_1Tip3Config.html" title=" " alt="" coords="413,5,538,32"/>
+</map>

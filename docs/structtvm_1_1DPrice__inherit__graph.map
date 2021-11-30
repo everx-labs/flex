@@ -1,0 +1,4 @@
+<map id="tvm::DPrice" name="tvm::DPrice">
+<area shape="rect" id="node1" title="Price persistent data struct." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$classPrice.html" title="Implements tvm::IPrice interface." alt="" coords="27,80,82,107"/>
+</map>

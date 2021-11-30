@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['calc_5fext_5fwallet_5finit_5fhash_18',['calc_ext_wallet_init_hash',['../TONTokenWallet_8hpp.html#ab8329a001f09f2c236a63281dce3fb9a',1,'tvm']]],
+  ['calc_5fint_5fwallet_5finit_5fhash_19',['calc_int_wallet_init_hash',['../TONTokenWallet_8hpp.html#a5dabf8c96b2658f452481097f50cca4b',1,'tvm']]],
+  ['calc_5fwallet_5finit_5fhash_20',['calc_wallet_init_hash',['../TONTokenWallet_8hpp.html#a5f343988edbff416ee5be704ca7cac31',1,'tvm']]],
+  ['cancelbuy_21',['cancelBuy',['../structtvm_1_1IPrice.html#a1fc1fe2b62170663bd9053a73320c81f',1,'tvm::IPrice::cancelBuy()'],['../structtvm_1_1IPriceXchg.html#ac8b42287ff8bcd74aaf357f1e4a3d7a0',1,'tvm::IPriceXchg::cancelBuy()']]],
+  ['canceled_22',['canceled',['../structec.html#aeebf269ece8a7ced76fac165c01a697a',1,'ec']]],
+  ['cancelsell_23',['cancelSell',['../structtvm_1_1IPrice.html#a8e92c5872fb0d452920390e4ae199794',1,'tvm::IPrice::cancelSell()'],['../structtvm_1_1IPriceXchg.html#a87ab21ff308508d3001fa6ee3a23fadf',1,'tvm::IPriceXchg::cancelSell()']]],
+  ['cant_5foverride_5fexternal_5fwallet_24',['cant_override_external_wallet',['../structWrapper_1_1error__code.html#a5a305365f97ca43dd909eccb3017b5a5',1,'Wrapper::error_code']]],
+  ['cant_5foverride_5fwallet_5fcode_25',['cant_override_wallet_code',['../structWrapper_1_1error__code.html#a337d34899488b06377f2be47f54e9c84',1,'Wrapper::error_code']]],
+  ['client_5faddr_26',['client_addr',['../structtvm_1_1WrapperListingRequest.html#ac13b7e3cb0931eea3b93c622c012e4c6',1,'tvm::WrapperListingRequest::client_addr()'],['../structtvm_1_1TradingPairListingRequest.html#a1c7e443a2dff7c0a77c84b4231567722',1,'tvm::TradingPairListingRequest::client_addr()'],['../structtvm_1_1XchgPairListingRequest.html#a5f8934d5898e88e619e21c08ee3acd69',1,'tvm::XchgPairListingRequest::client_addr()'],['../structtvm_1_1OrderInfo.html#a8b559bda8ab26ac2c2e2bb89d05a6b80',1,'tvm::OrderInfo::client_addr()'],['../structtvm_1_1PayloadArgs.html#a38df5d6363a324fe6b8dc0e19f80b856',1,'tvm::PayloadArgs::client_addr()']]],
+  ['client_5ffunds_27',['client_funds',['../structtvm_1_1WrapperListingRequest.html#a0bf22650c460915826ae70f69f53aece',1,'tvm::WrapperListingRequest::client_funds()'],['../structtvm_1_1TradingPairListingRequest.html#ad1c737a45b7fb472104a0d51d1cd21a3',1,'tvm::TradingPairListingRequest::client_funds()'],['../structtvm_1_1XchgPairListingRequest.html#a47dcd95af9925624b37d73828495812d',1,'tvm::XchgPairListingRequest::client_funds()']]],
+  ['code_5f_28',['code_',['../structtvm_1_1DTONTokenWalletExternal.html#a150ed64dd7c4b8e38802c0b346126f50',1,'tvm::DTONTokenWalletExternal']]],
+  ['code_5fdepth_29',['code_depth',['../structtvm_1_1details__info.html#a7b524241b616fffd8aa5d886296902c6',1,'tvm::details_info']]],
+  ['code_5fdepth_5f_30',['code_depth_',['../structtvm_1_1DTONTokenWallet.html#aaa5a2688837e06aee16aa38e9957fbb5',1,'tvm::DTONTokenWallet::code_depth_()'],['../structtvm_1_1DTONTokenWalletExternal.html#a4a0c84312792268d8bbda12e68724e01',1,'tvm::DTONTokenWalletExternal::code_depth_()'],['../structtvm_1_1DTONTokenWalletInternal.html#a7350c82a8bcb3c8082e9f6022f988fee',1,'tvm::DTONTokenWalletInternal::code_depth_()']]],
+  ['code_5fhash_31',['code_hash',['../structtvm_1_1details__info.html#addf56b6586279ca4c3506854e728d10f',1,'tvm::details_info']]],
+  ['code_5fhash_5f_32',['code_hash_',['../structtvm_1_1DTONTokenWallet.html#a15c415b2f49c6df508e417edaab226d6',1,'tvm::DTONTokenWallet::code_hash_()'],['../structtvm_1_1DTONTokenWalletExternal.html#abd04eaa96c556429520620ca8d25e18d',1,'tvm::DTONTokenWalletExternal::code_hash_()'],['../structtvm_1_1DTONTokenWalletInternal.html#a1910a5f8f03f7c5208878ffe922817d7',1,'tvm::DTONTokenWalletInternal::code_hash_()']]],
+  ['code_5ftype_33',['code_type',['../Flex_8hpp.html#a69cbe61a29a93c78aebfa20c58ccc8c7',1,'tvm']]],
+  ['constructor_34',['constructor',['../structtvm_1_1IFlex.html#affbfd472640cb5c5e5e41ddeb0f146c2',1,'tvm::IFlex::constructor()'],['../structtvm_1_1IRootTokenContract.html#a3f1f2bbcad3c6bfd7db7e04eb229e5c0',1,'tvm::IRootTokenContract::constructor()']]],
+  ['crystals_35',['crystals',['../structtvm_1_1FlexDeployWalletArgs.html#acd5a0fd0873b55bec723324135948eef',1,'tvm::FlexDeployWalletArgs']]]
+];

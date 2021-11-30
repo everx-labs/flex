@@ -1,0 +1,7 @@
+<map id="Price" name="Price">
+<area shape="rect" id="node1" title="Implements tvm::IPrice interface." alt="" coords="89,171,144,197"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,196,121"/>
+<area shape="rect" id="node3" href="$structtvm_1_1DPrice.html" title="Price persistent data struct." alt="" coords="221,95,319,121"/>
+<area shape="rect" id="node4" href="$structtvm_1_1TonsConfig.html" title="Processing native funds value ..." alt="" coords="132,5,259,32"/>
+<area shape="rect" id="node5" href="$structtvm_1_1Tip3Config.html" title=" " alt="" coords="283,5,409,32"/>
+</map>

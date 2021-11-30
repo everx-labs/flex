@@ -1,0 +1,8 @@
+<map id="Flex.hpp" name="Flex.hpp">
+<area shape="rect" id="node1" title="Flex root contract interfaces and data&#45;structs." alt="" coords="109,5,187,32"/>
+<area shape="rect" id="node2" href="$Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="5,80,83,107"/>
+<area shape="rect" id="node3" href="$Price_8hpp.html" title="Price contract interfaces and data&#45;structs Price &#45; contract to enqueue and process tip3&#45;crystals exch..." alt="" coords="107,80,189,107"/>
+<area shape="rect" id="node5" href="$PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="213,80,328,107"/>
+<area shape="rect" id="node4" href="$Price_8cpp.html" title="Price contract implementation. Contract for trading price for tip3/crystals exchange." alt="" coords="107,155,189,181"/>
+<area shape="rect" id="node6" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="214,155,327,181"/>
+</map>

@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['wallet_5f_643',['wallet_',['../structtvm_1_1DWrapper.html#aab2c024cb045f620bea2477a9a3122d6',1,'tvm::DWrapper']]],
+  ['wallet_5fcode_644',['wallet_code',['../structtvm_1_1wrapper__details__info.html#aab7105ad12930d4db582ffed5fc98e6c',1,'tvm::wrapper_details_info']]],
+  ['wallet_5fcode_5f_645',['wallet_code_',['../structtvm_1_1DRootTokenContract.html#a4144feeb157a99da36ec3d399258cedd',1,'tvm::DRootTokenContract']]],
+  ['wallet_5fin_5flend_5fowneship_646',['wallet_in_lend_owneship',['../structTONTokenWallet_1_1error__code.html#a215914b146bfded4aab3469a625b7762',1,'TONTokenWallet::error_code']]],
+  ['wallet_5fpubkey_5f_647',['wallet_pubkey_',['../structtvm_1_1DTONTokenWallet.html#afcc9d567de73ace51126a78c904f8a3f',1,'tvm::DTONTokenWallet::wallet_pubkey_()'],['../structtvm_1_1DTONTokenWalletExternal.html#a7f670004812fce75a4b415ff44babdaf',1,'tvm::DTONTokenWalletExternal::wallet_pubkey_()'],['../structtvm_1_1DTONTokenWalletInternal.html#a6a0907f739532617e1daa7d19ae44fff',1,'tvm::DTONTokenWalletInternal::wallet_pubkey_()']]],
+  ['wallet_5fpublic_5fkey_648',['wallet_public_key',['../structtvm_1_1details__info.html#abfb7c57f85e9b8aa73e2253065fcbc54',1,'tvm::details_info']]],
+  ['workchain_5fid_649',['workchain_id',['../structtvm_1_1details__info.html#aba9007f10b226b240924ca2af9abc6f8',1,'tvm::details_info']]],
+  ['workchain_5fid_5f_650',['workchain_id_',['../structtvm_1_1DFlex.html#acfb7f6ee652747d962570d1882b73da0',1,'tvm::DFlex::workchain_id_()'],['../structtvm_1_1DPrice.html#a73eecf415f7181975940e4aad0c5bcad',1,'tvm::DPrice::workchain_id_()'],['../structtvm_1_1DPriceXchg.html#a825dff8dac71145eebe40da402942522',1,'tvm::DPriceXchg::workchain_id_()'],['../structtvm_1_1DTONTokenWallet.html#a8b0a799a99170d947583a3f9fdd79e8a',1,'tvm::DTONTokenWallet::workchain_id_()'],['../structtvm_1_1DTONTokenWalletExternal.html#a63e3e7052898b64f9e34b0cb43791c98',1,'tvm::DTONTokenWalletExternal::workchain_id_()'],['../structtvm_1_1DTONTokenWalletInternal.html#a37eb1f23b94892e5987f6350e825d567',1,'tvm::DTONTokenWalletInternal::workchain_id_()'],['../structtvm_1_1DWrapper.html#a4786d2f02c8b51ceaef6b4ece7ed628f',1,'tvm::DWrapper::workchain_id_()']]],
+  ['wrapper_5fcode_5f_651',['wrapper_code_',['../structtvm_1_1DFlex.html#a504344b79eb6d59ce94ad7d496b27725',1,'tvm::DFlex']]],
+  ['wrapper_5fdeploy_5fvalue_652',['wrapper_deploy_value',['../structtvm_1_1ListingConfig.html#a7a248ba080c9f698c7fed08a57f27d7a',1,'tvm::ListingConfig']]],
+  ['wrapper_5fkeep_5fbalance_653',['wrapper_keep_balance',['../structtvm_1_1ListingConfig.html#a616d927f80c589e5093d06bf3a837a10',1,'tvm::ListingConfig']]],
+  ['wrapper_5flisting_5frequests_654',['wrapper_listing_requests',['../structtvm_1_1FlexDetails.html#ace9e897534bfe6335203e002d8e30f72',1,'tvm::FlexDetails']]],
+  ['wrapper_5fpubkey_655',['wrapper_pubkey',['../structtvm_1_1WrapperListingRequestWithPubkey.html#a6072228e25e649b4dfed26b7334c0a91',1,'tvm::WrapperListingRequestWithPubkey']]],
+  ['wrong_5fbounced_5fargs_656',['wrong_bounced_args',['../structTONTokenWallet_1_1error__code.html#a8eb8b3365a3a751ae37768541047047d',1,'TONTokenWallet::error_code::wrong_bounced_args()'],['../structWrapper_1_1error__code.html#ab6ce520d568ad6698f221ac04761a8bd',1,'Wrapper::error_code::wrong_bounced_args()']]],
+  ['wrong_5fbounced_5fheader_657',['wrong_bounced_header',['../structTONTokenWallet_1_1error__code.html#a58d11fc5a8ff2153cb89044b3c2b23e3',1,'TONTokenWallet::error_code::wrong_bounced_header()'],['../structWrapper_1_1error__code.html#a0b106195bc8a767fab3938248241bcf8',1,'Wrapper::error_code::wrong_bounced_header()']]],
+  ['wrong_5fspender_658',['wrong_spender',['../structTONTokenWallet_1_1error__code.html#afb0ea0229497e069a3ae83446edc1eea',1,'TONTokenWallet::error_code']]],
+  ['wrong_5fwallet_5fcode_5fhash_659',['wrong_wallet_code_hash',['../structWrapper_1_1error__code.html#aba7424e1b5a45f536de6d90de9181a1e',1,'Wrapper::error_code']]]
+];
