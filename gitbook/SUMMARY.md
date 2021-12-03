@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Flash Exchange (FLEX)](README.md)
+* [Flash Exchange (FLEX)](../README.md)
 
 ## Guides
 
