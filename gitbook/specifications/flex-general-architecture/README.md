@@ -13,7 +13,7 @@ After performing the calculation of addresses, the user performs a read operatio
 
 Trading step value for a pair will be provided in the pair's Root Contract data. Users can now calculate a whole order book of this pair by entering all price steps around the target price or ask the database for all addresses of that Price contract code hash. After calculating all price step contract addresses, a user may try to retrieve all these contracts. If the contract does not exist, it means there are no orders of that price.
 
-![](../../.gitbook/assets/flex.svg)
+![](../../../.gitbook/assets/flex.svg)
 
 
 

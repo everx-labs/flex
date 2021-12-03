@@ -8,7 +8,7 @@ The app is identified by an external public key that the user has to specify.
 
 The following diagram details authorization procedure.
 
-![](../.gitbook/assets/Authorization\_Flex.png)
+![](../../.gitbook/assets/Authorization\_Flex.png)
 
 As TIP3 wallets are normally governed by the user's Flex Client contract, the authorization needs to be preformed by it as well, in a similar fashion to how ownership of the wallet can be lent to a Price exchange contract.
 

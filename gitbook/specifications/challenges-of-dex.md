@@ -12,7 +12,7 @@ Some are trying to solve this by moving to the fastest possible blockchain. But 
 
 Central exchanges using CLOB such as NYSE, CBOT, Coinbase, Binance operate in microsecond time frames. This is how it looks:
 
-![](../.gitbook/assets/CLOB.png)
+![](../../.gitbook/assets/CLOB.png)
 
 ## **How are orders filled on CLOB?**
 

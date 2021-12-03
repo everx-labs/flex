@@ -16,11 +16,11 @@ You can buy any listed tokens, or sell any listed tokens you own.
 
 Use the drop-down network list to switch to Devnet and back:
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help1.png](https://github.com/tonlabs/flex/raw/main/screenshots/help1.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help1.png)
+![](../.gitbook/assets/help1.png)
 
 Use the token drop-down list to select a token you want to trade:
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help2.png](https://github.com/tonlabs/flex/raw/main/screenshots/help2.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help2.png)
+![](../.gitbook/assets/help2.png)
 
 
 
@@ -28,11 +28,11 @@ Use the token drop-down list to select a token you want to trade:
 
 Flex displays all available information about a token which can help you decide on a trade. A few graphs visualize token status and history, while the **Orderbook** and **Trades** tabs list the currently available orders and accumulated trade statistics.
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help3.png](https://github.com/tonlabs/flex/raw/main/screenshots/help3.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help3.png)
+![](../.gitbook/assets/help3.png)
 
 Decide on a trade, and fill in your order in the rightmost section of the page:
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help4.png](https://github.com/tonlabs/flex/raw/main/screenshots/help4.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help4.png)
+![](../.gitbook/assets/help4.png)
 
 You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it.
 
@@ -45,7 +45,7 @@ Click the **Buy...** or **Sell...** button, once you're ready. You'll be redirec
 
 **If this is your first time trading**, the DeBot will help you deploy the necessary contracts (your **Flex Client** contract and your **TIP3 token wallets**).
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help5.png](https://github.com/tonlabs/flex/raw/main/screenshots/help5.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help5.png)
+![](../.gitbook/assets/help5.png)
 
 You might have to confirm several transactions and pay a few small fees during this process.
 
@@ -57,18 +57,19 @@ If any other Flex contracts are missing, the DeBot will help you prepare them to
 
 **Once all required contracts are ready**, the DeBot will summarize the trade transaction for you and ask for a confirmation. Confirm it, if you are sure.
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help6.png](https://github.com/tonlabs/flex/raw/main/screenshots/help6.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help6.png)
+![](../.gitbook/assets/help6.png)
 
 When all actions are complete, DeBot will display your Flex Client and TIP3 wallet balances, the updated state of the order book, and your options for further trading.
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help7.png](https://github.com/tonlabs/flex/raw/main/screenshots/help7.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help7.png)
+![](../.gitbook/assets/help7.png)
 
 You can use it to set up any further trades, or return to the [flex.ton.surf](http://flex.ton.surf) website, if it is more convenient to you.
 
 Flex DeBot also allows you to cancel orders and withdraw tokens to external wallets:
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/help8.png](https://github.com/tonlabs/flex/raw/main/screenshots/help8.png)](https://github.com/tonlabs/flex/raw/main/screenshots/help8.png)
+![](../.gitbook/assets/help8.png)
 
 Flex DeBot address in Surf: [https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f](https://uri.ton.surf/debot/0:e57e4fa3f5ab829c12ce145ce24c0a9b4aa666a0e60d5b00f8bfd6aa1d90d64f)
 
-[![https://github.com/tonlabs/flex/raw/main/screenshots/flex\_qr.png](https://github.com/tonlabs/flex/raw/main/screenshots/flex\_qr.png)](https://github.com/tonlabs/flex/raw/main/screenshots/flex\_qr.png)
+![](../.gitbook/assets/flex\_qr.png)
+
