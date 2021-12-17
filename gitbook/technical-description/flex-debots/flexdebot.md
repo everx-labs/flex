@@ -39,7 +39,7 @@ View source code [here](https://github.com/tonlabs/flex/tree/main/debots/flex/fl
 | menuUpdateTradigPair               |                                                    | Initiates Trading Pair list update                                 |   |
 | onSelectSymbolMenu                 |                                                    | Looks for and/or deplots TIP3 wallet                               |   |
 | getTPMinAmount                     |                                                    | Sets Trading Pair minimum trading amount                           |   |
-| getTPMinAmount                     |                                                    | Sets Trading pair notification address                             |   |
+| onSetTradingPairMinAmount          |                                                    | Sets Trading pair notification address                             |   |
 | onSetTradingPairNotifyAddress      | Flex Helper DeBot                                  | Gets TIP3 Major wallet address via Flex Helper                     |   |
 | onGetTip3WalletAddress             | <p>Flex Helper DeBot</p><p>Flex Tip3Tip3 DeBot</p> | Gets TIP3 Minor wallet address via Flex Helper and initiates trade |   |
 | burnTip3Wallet                     |                                                    | Initiates TIP3 withdrawal from Flex wallet                         |   |

@@ -8,7 +8,7 @@ Flex works with TIP3/TIP3 pairs. New token pairs can be added to Flex by deployi
 
 If the price contract does not exist, a User can create a "Good-til-cancelled (GTC) order" by deploying the pair contract adding the price as a contract data in the constructor and sending the required amount of money to cover the trade.
 
-For example, passing a price of $0.55 XTIP3 into the constructor and sending 10,000 YTIP3 to the contract will create a sell order of 10,000 YTIP3 for $0.55 XTIP3 per 1 YTIP3 in a XTIP3-YTIP3 trading pair contract. Sending XTIP3 tokens will create a buy order.
+For example, passing a price of $0.55 YTIP3 into the constructor and sending 10,000 XTIP3 (major token) to the contract will create a sell order of 10,000 XTIP3 for the price of 0.55 YTIP3 per 1 XTIP3 in a XTIP3-YTIP3 trading pair contract. Sending YTIP3 tokens will create a buy order.
 
 A User can Cancel un-executed orders at any time. Flex orders also have expiration time set by users to avoid a long-forgotten order suddenly being filled.
 

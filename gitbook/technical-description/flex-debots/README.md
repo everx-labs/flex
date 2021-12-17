@@ -16,8 +16,8 @@ View Flex DeBot source code [here](https://github.com/tonlabs/flex/tree/main/deb
 
 [Flex DeBot](./#\_fx2fa8m3626n-1) helps buy and sell TIP3 tokens:
 
-* queue all available pairs
-* queue all price contracts in the pair and display current sell/buy order quantity
+* query all available pairs
+* query all price contracts in the pair and display current sell/buy order quantity
 * show current book price
 * create and send Good-til-cancelled (GTC) order for a selected token quantity for a selected Price. Since this will require to have a token wallet and to transfer the ownership of the user wallet to the Price Contract it should do all this just by asking user for a seed phrase or private key once
 * display active user orders
@@ -25,7 +25,7 @@ View Flex DeBot source code [here](https://github.com/tonlabs/flex/tree/main/deb
 
 ### TIP3 DeBot <a href="#_643rfn3xmp76" id="_643rfn3xmp76"></a>
 
-[TIP3 DeBot](tip3debot.md) helps to manage TIP3 tokens:
+[TIP3 DeBot](tip3debot.md) helps to manage TIP3 tokens outside of Flex:
 
 * create a new TIP3 token,
 * grant TIP3 tokens to TIP3 wallets.

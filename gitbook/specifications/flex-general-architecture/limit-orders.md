@@ -47,4 +47,4 @@ else:
 
 Maker and Taker orders are flags.
 
-Limit order can be implemented as a special smart contract.
+Limit order will be implemented in Flex DeBot.

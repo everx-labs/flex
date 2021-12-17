@@ -1,6 +1,6 @@
 # FlexHelperDebot
 
-FlexHelperDebot works with user Flex Client and TIP3 wallet contracts when invoked by FlexDebot.
+FlexHelperDebot works with user Flex Client and Flex TIP3 wallet contracts when invoked by FlexDebot.
 
 View source code [here](https://github.com/tonlabs/flex/tree/main/debots/flex/flexHelperDebot).
 

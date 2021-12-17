@@ -20,6 +20,6 @@ The most common algorithm used is Price/Time priority, aka FIFO: all orders at t
 
 ## **Why are CLOB hard to implement on a blockchain?**
 
-The size of the state needed by an order book to represent the set of outstanding orders is large and extremely costly in the smart contract environment, where users must pay for pace and compute power utilized.
+The size of the state needed by an order book to represent the set of outstanding orders is large and extremely costly in the smart contract environment, where users must pay for space and compute power utilized.
 
 The matching logic for order books is often complicated as it must often support several different order types (such as icebergs, good-till-cancel, and stop-limit orders.

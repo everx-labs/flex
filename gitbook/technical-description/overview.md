@@ -5,7 +5,7 @@ Flex is based on two simple concepts - distributing all trading logic over stand
 Flex consists of the following contracts:
 
 * Flex Root
-* Wrapper (TIP3 root)
+* Wrapper (Flex TIP3 token root)
 * Exchange Pair
 * Price exchange
 * Flex Client
