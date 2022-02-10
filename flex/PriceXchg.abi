@@ -11,21 +11,21 @@
     "name": "onTip3LendOwnership",
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
-    { "name":"answer_addr", "type":"address" },
     { "name":"balance", "type":"uint128" },
     { "name":"lend_finish_time", "type":"uint32" },
     { "name":"pubkey", "type":"uint256" },
-    { "name":"internal_owner", "type":"address" },
-    { "name":"payload", "type":"cell" }
+    { "name":"owner", "type":"optional(address)" },
+    { "name":"payload", "type":"cell" },
+    { "name":"answer_addr", "type":"address" }
     ],
     "outputs": [
     { "name":"err_code", "type":"uint32" },
     { "name":"processed", "type":"uint128" },
     { "name":"enqueued", "type":"uint128" },
-    { "components":[
-      { "name":"num", "type":"uint128" },
-      { "name":"denum", "type":"uint128" }
-    ], "name":"price", "type":"tuple" }
+    { "name":"price_num", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
+    { "name":"user_id", "type":"uint256" },
+    { "name":"order_id", "type":"uint256" }
     ],
     "id": "0xc9"
   },
@@ -52,6 +52,108 @@
     "outputs": [
     ],
     "id": "0xcd"
+  },
+  {
+    "name": "getSells",
+    "inputs": [
+    ],
+    "outputs": [
+    { "components":[
+      { "name":"immediate_client", "type":"bool" },
+      { "name":"post_order", "type":"bool" },
+      { "name":"original_amount", "type":"uint128" },
+      { "name":"amount", "type":"uint128" },
+      { "name":"account", "type":"uint128" },
+      { "name":"lend_amount", "type":"uint128" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"tip3_wallet_provide", "type":"tuple" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"tip3_wallet_receive", "type":"tuple" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"client_addr", "type":"tuple" },
+      { "name":"order_finish_time", "type":"uint32" },
+      { "name":"user_id", "type":"uint256" },
+      { "name":"order_id", "type":"uint256" },
+      { "name":"ltime", "type":"uint64" }
+    ], "name":"value0", "type":"tuple[]" }
+    ],
+    "id": "0xce"
+  },
+  {
+    "name": "getBuys",
+    "inputs": [
+    ],
+    "outputs": [
+    { "components":[
+      { "name":"immediate_client", "type":"bool" },
+      { "name":"post_order", "type":"bool" },
+      { "name":"original_amount", "type":"uint128" },
+      { "name":"amount", "type":"uint128" },
+      { "name":"account", "type":"uint128" },
+      { "name":"lend_amount", "type":"uint128" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"tip3_wallet_provide", "type":"tuple" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"tip3_wallet_receive", "type":"tuple" },
+      { "components":[
+        { "name":"workchain_id", "type":"int8" },
+        { "name":"address", "type":"uint256" }
+      ], "name":"client_addr", "type":"tuple" },
+      { "name":"order_finish_time", "type":"uint32" },
+      { "name":"user_id", "type":"uint256" },
+      { "name":"order_id", "type":"uint256" },
+      { "name":"ltime", "type":"uint64" }
+    ], "name":"value0", "type":"tuple[]" }
+    ],
+    "id": "0xcf"
+  },
+  {
+    "name": "getConfig",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"flex", "type":"address" },
+    { "name":"pair", "type":"address" },
+    { "name":"notify_addr", "type":"address" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_pubkey", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"major_tip3cfg", "type":"tuple" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_pubkey", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"minor_tip3cfg", "type":"tuple" },
+    { "name":"major_reserve_wallet", "type":"address" },
+    { "name":"minor_reserve_wallet", "type":"address" },
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"trading_pair_deploy", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" }
+    ], "name":"ev_cfg", "type":"tuple" },
+    { "name":"min_amount", "type":"uint128" },
+    { "name":"deals_limit", "type":"uint8" },
+    { "name":"workchain_id", "type":"int8" }
+    ],
+    "id": "0xd0"
   }
   ],
   "fields": [
@@ -63,52 +165,15 @@
     { "name":"sells_amount_", "type":"uint128" },
     { "name":"buys_amount_", "type":"uint128" },
     { "components":[
-      { "name":"workchain_id", "type":"int8" },
-      { "name":"address", "type":"uint256" }
-    ], "name":"flex_", "type":"tuple" },
-    { "name":"min_amount_", "type":"uint128" },
-    { "name":"deals_limit_", "type":"uint8" },
-    { "components":[
-      { "name":"addr_", "type":"address" }
-    ], "name":"notify_addr_", "type":"tuple" },
-    { "name":"workchain_id_", "type":"int8" },
-    { "components":[
-      { "name":"transfer_tip3", "type":"uint128" },
-      { "name":"return_ownership", "type":"uint128" },
-      { "name":"trading_pair_deploy", "type":"uint128" },
-      { "name":"order_answer", "type":"uint128" },
-      { "name":"process_queue", "type":"uint128" },
-      { "name":"send_notify", "type":"uint128" }
-    ], "name":"tons_cfg_", "type":"tuple" },
-    { "name":"tip3_code_", "type":"cell" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"major_tip3cfg_", "type":"tuple" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"minor_tip3cfg_", "type":"tuple" },
-    { "components":[
       { "name":"size_", "type":"uint32" },
       { "components":[
-        { "components":[
-          { "name":"dict_", "type":"cell" }
-        ], "name":"dict_", "type":"tuple" }
+        { "name":"dict_", "type":"optional(cell)" }
       ], "name":"dict_", "type":"tuple" }
     ], "name":"sells_", "type":"tuple" },
     { "components":[
       { "name":"size_", "type":"uint32" },
       { "components":[
-        { "components":[
-          { "name":"dict_", "type":"cell" }
-        ], "name":"dict_", "type":"tuple" }
+        { "name":"dict_", "type":"optional(cell)" }
       ], "name":"dict_", "type":"tuple" }
     ], "name":"buys_", "type":"tuple" }
   ],

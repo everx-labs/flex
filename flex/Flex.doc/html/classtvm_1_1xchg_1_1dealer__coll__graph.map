@@ -1,0 +1,7 @@
+<map id="dealer" name="dealer">
+<area shape="rect" id="node1" title="Class for iterating queue and processing deals." alt="" coords="230,109,293,136"/>
+<area shape="rect" id="node2" href="$structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="142,5,253,32"/>
+<area shape="rect" id="node4" href="$structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="277,5,376,32"/>
+<area shape="rect" id="node5" href="$structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="400,5,491,32"/>
+</map>

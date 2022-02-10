@@ -1,3 +1,9 @@
+/** \file
+ *  \brief Flex root contract interfaces and data-structs.
+ *  \author Andrew Zhogin
+ *  \copyright 2019-2022 (c) TON LABS
+ */
+
 #pragma once
 
 #include <tvm/schema/message.hpp>
@@ -5,292 +11,256 @@
 #include <tvm/contract_handle.hpp>
 #include <tvm/replay_attack_protection/timestamp.hpp>
 #include "PriceCommon.hpp"
+#include "FlexWallet.hpp"
+#include "EversConfig.hpp"
+#include "ListingConfig.hpp"
 
-namespace tvm { inline namespace schema {
+namespace tvm {
 
 static constexpr unsigned FLEX_TIMESTAMP_DELAY = 1800;
 using flex_replay_protection_t = replay_attack_protection::timestamp<FLEX_TIMESTAMP_DELAY>;
 
-// Processing native funds value ...
-struct TonsConfig {
-  // ... for executing tip3 transfer
-  uint128 transfer_tip3;
-  // ... to return tip3 ownership
-  uint128 return_ownership;
-  // ... to deploy tip3 trading pair
-  uint128 trading_pair_deploy;
-  // .. to send answer message from Price
-  uint128 order_answer;
-  // ... to process processQueue function
-  //  (also is used for buyTip3/onTip3LendOwnership/cancelSell/cancelBuy estimations)
-  uint128 process_queue;
-  // ... to send notification about completed deal (IFlexNotify)
-  uint128 send_notify;
-};
-
-struct ListingConfig {
-  // Funds requirement (from client) to deploy wrapper
-  uint128 register_wrapper_cost;
-  // Funds to be taken in case of rejected wrapper
-  // rest will be returned to client
-  uint128 reject_wrapper_cost;
-  // Funds to send in wrapper deploy message
-  uint128 wrapper_deploy_value;
-  // Wrapper will try to keep this balance (should be less then wrapper_deploy_value)
-  uint128 wrapper_keep_balance;
-  // Funds to send in external wallet deploy message
-  uint128 ext_wallet_balance;
-  // Funds to send with Wrapper::setInternalWalletCode message
-  uint128 set_internal_wallet_value;
-  // Funds requirement (from client) to deploy xchg/trading pair
-  uint128 register_pair_cost;
-  // Funds to be taken in case of rejected xchg/trading pair
-  // rest will be returned to client
-  uint128 reject_pair_cost;
-  // Funds to send in pair deploy message
-  uint128 pair_deploy_value;
-  // Pair will try to keep this balance
-  uint128 pair_keep_balance;
-  // Value for answer
-  uint128 register_return_value;
-};
-
-// Answers to client about approved/rejected listings
+/** \interface IListingAnswer
+ *  \brief Answers to client about approved/rejected listings.
+ */
 __interface IListingAnswer {
+  /// Wrapper has been approved
   [[internal, noaccept]]
   void onWrapperApproved(uint256 pubkey, address contract) = 500;
+  /// Wrapper has been rejected
   [[internal, noaccept]]
   void onWrapperRejected(uint256 pubkey) = 501;
+  /// Exchange pair has been approved
   [[internal, noaccept]]
-  void onTradingPairApproved(uint256 pubkey, address contract) = 502;
+  void onXchgPairApproved(uint256 pubkey, address contract) = 502;
+  /// Exchange pair has been rejected
   [[internal, noaccept]]
-  void onTradingPairRejected(uint256 pubkey) = 503;
-  [[internal, noaccept]]
-  void onXchgPairApproved(uint256 pubkey, address contract) = 504;
-  [[internal, noaccept]]
-  void onXchgPairRejected(uint256 pubkey) = 505;
+  void onXchgPairRejected(uint256 pubkey) = 503;
 };
 using IListingAnswerPtr = handle<IListingAnswer>;
 
+/** \interface IFlexNotify
+ *  \brief Notifications to AMM about orders.
+ */
 __interface IFlexNotify {
+  /// Notification about completed exchange deal tip3/tip3
   [[internal, noaccept]]
-  void onDealCompleted(address tip3root, uint128 price, uint128 amount) = 10;
+  void onXchgDealCompleted(
+    bool       seller_is_taker, ///< Seller is a taker in deal
+    address    pair,            ///< Address of XchgPair contract
+    address    tip3root_major,  ///< Address of RootTokenContract for the major tip3 token
+    address    tip3root_minor,  ///< Address of RootTokenContract for the minor tip3 token
+    Tip3Config major_tip3cfg,   ///< Major tip3 configuration
+    Tip3Config minor_tip3cfg,   ///< Minor tip3 configuration
+    uint128    price_num,       ///< Token price numerator
+    uint128    price_denum,     ///< Token price denominator
+    uint128    amount           ///< Amount of major tip3 tokens in the deal
+  ) = 10;
+  /// Notification about added exchange order (tip3/tip3)
   [[internal, noaccept]]
-  void onXchgDealCompleted(address tip3root_sell, address tip3root_buy,
-                           uint128 price_num, uint128 price_denum, uint128 amount) = 11;
+  void onXchgOrderAdded(
+    bool    sell,           ///< Is it a sell order
+    address tip3root_major, ///< Address of RootTokenContract for the major tip3 token
+    address tip3root_minor, ///< Address of RootTokenContract for the minor tip3 token
+    uint128 price_num,      ///< Token price numerator
+    uint128 price_denum,    ///< Token price denominator
+    uint128 amount,         ///< Amount of major tip3 tokens added in the order
+    uint128 sum_amount      ///< Summarized amount of major tokens rest in all orders for this price (sell or buy only)
+  ) = 11;
+  /// Notification about canceled exchange order (tip3/tip3)
   [[internal, noaccept]]
-  void onOrderAdded(bool_t sell, address tip3root, uint128 price, uint128 amount, uint128 sum_amount) = 12;
-  [[internal, noaccept]]
-  void onOrderCanceled(bool_t sell, address tip3root, uint128 price, uint128 amount, uint128 sum_amount) = 13;
-  [[internal, noaccept]]
-  void onXchgOrderAdded(bool_t sell, address tip3root_major, address tip3root_minor,
-                        uint128 price_num, uint128 price_denum, uint128 amount, uint128 sum_amount) = 14;
-  [[internal, noaccept]]
-  void onXchgOrderCanceled(bool_t sell, address tip3root_major, address tip3root_minor,
-                           uint128 price_num, uint128 price_denum, uint128 amount, uint128 sum_amount) = 15;
+  void onXchgOrderCanceled(
+    bool    sell,           ///< Is it a sell order
+    address tip3root_major, ///< Address of RootTokenContract for the major tip3 token
+    address tip3root_minor, ///< Address of RootTokenContract for the minor tip3 token
+    uint128 price_num,      ///< Token price numerator
+    uint128 price_denum,    ///< Token price denominator
+    uint128 amount,         ///< Amount of major tip3 tokens canceled
+    uint128 sum_amount      ///< Summarized amount of major tokens rest in all orders for this price (sell or buy only)
+  ) = 12;
 };
 using IFlexNotifyPtr = handle<IFlexNotify>;
 
-// Request to deploy wrapper
+/// Request to deploy wrapper
 struct WrapperListingRequest {
-  // client address to send notification with the remaining funds
-  address client_addr;
-  // Native funds, sent by client
-  uint128 client_funds;
-  // Configuration of external tip3 wallet
-  Tip3Config tip3cfg;
+  address    client_addr;  ///< Client address to send notification with the remaining funds
+  uint128    client_funds; ///< Native funds, sent by client
+  Tip3Config tip3cfg;      ///< Configuration of external tip3 wallet
 };
 
+/// Request to deploy wrapper with public key (for getter)
 struct WrapperListingRequestWithPubkey {
-  uint256 wrapper_pubkey;
-  WrapperListingRequest request;
+  uint256               wrapper_pubkey; ///< Wrapper's public key
+  WrapperListingRequest request;        ///< Request's details
 };
 
-// Request to deploy trading pair
-struct TradingPairListingRequest {
-  // client address to send notification with the remaining funds
-  address client_addr;
-  // Native funds, sent by client
-  uint128 client_funds;
-  address tip3_root;
-  uint128 min_amount;
-  address notify_addr;
-};
-
-struct TradingPairListingRequestWithPubkey {
-  uint256 wrapper_pubkey;
-  TradingPairListingRequest request;
-};
-
-// Request to deploy xchg pair
+/// Request to deploy exchange pair (tip3/tip3)
 struct XchgPairListingRequest {
-  // client address to send notification with the remaining funds
-  address client_addr;
-  // Native funds, sent by client
-  uint128 client_funds;
-  address tip3_major_root;
-  address tip3_minor_root;
-  uint128 min_amount;
-  address notify_addr;
+  address    client_addr;       ///< Client address to send notification with the remaining funds
+  uint128    client_funds;      ///< Native funds, sent by client
+  address    tip3_major_root;   ///< Address of RootTokenContract for the major tip3 token
+  address    tip3_minor_root;   ///< Address of RootTokenContract for the minor tip3 token
+  Tip3Config major_tip3cfg;     ///< Major tip3 configuration (of token Wrapper)
+  Tip3Config minor_tip3cfg;     ///< Minor tip3 configuration (of token Wrapper)
+  uint128    min_amount;        ///< Minimum amount of major tokens for a deal or an order
+  address    notify_addr;       ///< Notification address (AMM)
 };
 
+/// Request to deploy exchange pair (tip3/tip3) with public key (for getter)
 struct XchgPairListingRequestWithPubkey {
-  uint256 request_pubkey;
-  XchgPairListingRequest request;
+  uint256                pubkey;  ///< Request's public key
+  XchgPairListingRequest request; ///< Request's details
 };
 
+/// Ownership info for Flex root
 struct FlexOwnershipInfo {
-  uint256 deployer_pubkey;
-  string ownership_description;
-  // If Flex is managed by other contract (deployer will not be able to execute non-deploy methods)
-  std::optional<address> owner_contract;
+  uint256     deployer_pubkey;       ///< Deployer's public key
+  string      ownership_description; ///< Ownership description
+  address_opt owner; ///< If Flex is managed by other contract (deployer will not be able to execute non-deploy methods)
 };
 
+/// Flex root details (for getter)
 struct FlexDetails {
-  bool_t initialized;
-  TonsConfig tons_cfg;
-  ListingConfig listing_cfg;
-  cell trading_pair_code;
-  cell xchg_pair_code;
-  uint8 deals_limit;
-  FlexOwnershipInfo ownership;
-  dict_array<WrapperListingRequestWithPubkey> wrapper_listing_requests;
-  dict_array<TradingPairListingRequestWithPubkey> trading_pair_listing_requests;
-  dict_array<XchgPairListingRequestWithPubkey> xchg_pair_listing_requests;
+  bool              initialized;    ///< Is Flex completely initialized
+  EversConfig       ev_cfg;         ///< Native funds (processing costs) configuration
+  ListingConfig     listing_cfg;    ///< Listing processing costs configuration
+  cell              xchg_pair_code; ///< Exchange pair code (XchgPair)
+  cell              wrapper_code;   ///< Wrapper code ()
+  uint8             deals_limit;    ///< Deals limit to be processed in one transaction
+  FlexOwnershipInfo ownership;      ///< Ownership info
+  dict_array<WrapperListingRequestWithPubkey> wrapper_listing_requests; ///< Wrapper listing requests
+  dict_array<XchgPairListingRequestWithPubkey> xchg_pair_listing_requests; ///< Exchange pair listing requests
 };
 
+/// Enumeration of code types for Flex initialization
 enum class code_type {
-  trade_pair_code = 1,
-  xchg_pair_code,
-  wrapper_code,
-  ext_wallet_code,
-  flex_wallet_code,
-  price_code,
-  xchg_price_code
+  xchg_pair_code   = 1, ///< Code of exchange pair (tip3/tip3)
+  wrapper_code     = 2, ///< Code of Wrapper
+  ext_wallet_code  = 3, ///< Code of external wallet
+  flex_wallet_code = 4, ///< Code of flex wallet
+  xchg_price_code  = 5  ///< Code of PriceXchg contract (tip3/tip3)
 };
 
+/** \interface IFlex
+ *  \brief Flex root contract interface.
+ *  Flex is a root contract for exchange system.
+ */
 __interface IFlex {
 
+  /// Constructor of Flex
   [[external]]
   void constructor(
-    uint256 deployer_pubkey,
-    string ownership_description, std::optional<address> owner_address,
-    TonsConfig tons_cfg,
-    uint8 deals_limit,
-    ListingConfig listing_cfg) = 10;
+    uint256        deployer_pubkey,       ///< Deployer's public key.
+                                          ///< If \p owner_address is not specified, will also be an owner.
+    string         ownership_description, ///< Ownership description
+    address_opt    owner_address,         ///< Owner contract address (optional)
+    EversConfig    ev_cfg,                ///< Native funds (processing costs) configuration
+    uint8          deals_limit,           ///< Deals limit for one transaction
+    ListingConfig  listing_cfg            ///< Listing configuration (listing processing costs)
+  ) = 10;
 
-  // To fit message size limit, set specific code in separate function
-  //  (not in constructor). To set pairs, wrapper, wallets, prices contract codes.
-  // `type` should be code_type enum
+  /// To fit message size limit, we need to set specific code in separate function (not in constructor).
+  /// To set pairs, wrapper, wallets, prices contract codes.
+  /// /p `type` should be code_type enum.
   [[external, noaccept]]
   void setSpecificCode(uint8 type, cell code) = 11;
 
+  /// Transfer of native funds to destination contract
   [[external, internal, noaccept]]
-  void transfer(address to, uint128 tons) = 12;
+  void transfer(address to, uint128 evers) = 12;
+
+  /// Transfer of tokens from Wrapper's reserve wallet
+  [[external, internal, noaccept]]
+  void transferReserveTokens(address wrapper, uint128 tokens, address to, uint128 evers) = 13;
 
   // Listing procedures
-  // Request to register trading pair (returns pre-calculated address of future trading pair)
-  [[internal, noaccept, answer_id]]
-  address registerTradingPair(
-    uint256 pubkey,
-    address tip3_root,
-    uint128 min_amount,
-    address notify_addr
-    ) = 13;
-  // Request to register xchg pair (returns pre-calculated address of future xchg pair)
+  /// Request to register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair)
   [[internal, noaccept, answer_id]]
   address registerXchgPair(
-    uint256 pubkey,
-    address tip3_major_root,
-    address tip3_minor_root,
-    uint128 min_amount,
-    address notify_addr
+    uint256    pubkey,          ///< Public key of the request (just for id)
+    address    tip3_major_root, ///< Address of RootTokenContract for the major tip3 token
+    address    tip3_minor_root, ///< Address of RootTokenContract for the minor tip3 token
+    Tip3Config major_tip3cfg,   ///< Major tip3 configuration
+    Tip3Config minor_tip3cfg,   ///< Minor tip3 configuration
+    uint128    min_amount,      ///< Minimum amount of major tokens for a deal or an order
+    address    notify_addr      ///< Notification address (AMM)
     ) = 14;
-  // Request to register wrapper (returns pre-calculated address of future wrapper)
+  /// Request to register wrapper (returns pre-calculated address of future wrapper)
   [[internal, noaccept, answer_id]]
   address registerWrapper(
-    uint256 pubkey,
-    Tip3Config tip3cfg
+    uint256    pubkey, ///< Wrapper's pubkey
+    Tip3Config tip3cfg ///< Configuration of external tip3 wallet
     ) = 15;
-
-  [[external, internal, noaccept, answer_id]]
-  address approveTradingPair(
-    uint256 pubkey
-    ) = 16;
-  [[external, internal, noaccept]]
-  bool_t rejectTradingPair(
-    uint256 pubkey
-    ) = 17;
+  /// Approve tip3/tip3 exchange pair
   [[external, internal, noaccept, answer_id]]
   address approveXchgPair(
     uint256 pubkey
     ) = 18;
+  /// Reject tip3/tip3 exchange pair
   [[external, internal, noaccept]]
-  bool_t rejectXchgPair(
+  bool rejectXchgPair(
     uint256 pubkey
     ) = 19;
+  /// Approve wrapper
   [[external, internal, noaccept, answer_id]]
   address approveWrapper(
     uint256 pubkey
     ) = 20;
+  /// Reject wrapper
   [[external, internal, noaccept]]
-  bool_t rejectWrapper(
+  bool rejectWrapper(
     uint256 pubkey
     ) = 21;
   // ========== getters ==========
 
-  // means setPairCode/setXchgPairCode/setPriceCode/setXchgPriceCode executed
+  /// Is Flex completely initialized.
+  /// Means setSpecificCode for all code types executed.
   [[getter]]
-  bool_t isFullyInitialized() = 22;
+  bool isFullyInitialized() = 22;
 
+  /// Get contract state details.
   [[getter]]
   FlexDetails getDetails() = 23;
 
+  /// Get address of tip3/tip3 exchange pair
   [[getter]]
-  cell getSellPriceCode(address tip3_addr) = 24;
+  address getXchgTradingPair(address tip3_major_root, address tip3_minor_root) = 25;
 
+  /// Calculate necessary lend tokens for order
   [[getter]]
-  cell getXchgPriceCode(address tip3_addr1, address tip3_addr2) = 25;
-
-  [[getter]]
-  address getSellTradingPair(address tip3_root) = 26;
-
-  [[getter]]
-  address getXchgTradingPair(address tip3_major_root, address tip3_minor_root) = 27;
+  uint128 calcLendTokensForOrder(bool sell, uint128 major_tokens, price_t price) = 26;
 };
 using IFlexPtr = handle<IFlex>;
 
+/// Flex persistent data struct
 struct DFlex {
-  uint256 deployer_pubkey_;
-  int8 workchain_id_;
-  string ownership_description_;
-  std::optional<address> owner_address_;
-  TonsConfig tons_cfg_;
-  ListingConfig listing_cfg_;
-  optcell pair_code_;
-  optcell xchg_pair_code_;
-  optcell price_code_;
-  optcell xchg_price_code_;
-  optcell ext_wallet_code_;
-  optcell flex_wallet_code_;
-  optcell wrapper_code_;
-  uint8 deals_limit_; // deals limit in one processing in Price
+  uint256        deployer_pubkey_;       ///< Deployer's public key
+  int8           workchain_id_;          ///< Workchain id
+  string         ownership_description_; ///< Ownership description
+  address_opt    owner_address_;         ///< Owner contract address (optional)
+  EversConfig    ev_cfg_;                ///< Native funds (processing costs) configuration
+  ListingConfig  listing_cfg_;           ///< Listing processing costs configuration
+  optcell        xchg_pair_code_;        ///< XchgPair code (with salt added)
+  optcell        xchg_price_code_;       ///< PriceXchg code
+  optcell        ext_wallet_code_;       ///< External wallet code (TONTokenWallet.tvc)
+  optcell        flex_wallet_code_;      ///< Flex wallet code (FlexWallet.tvc)
+  optcell        wrapper_code_;          ///< Wrapper code
+  uint8          deals_limit_;           ///< Deals limit for one transaction
 
-  // map from wrapper pubkey into listing data
+  /// Map from wrapper pubkey into listing data
   using wrappers_map = dict_map<uint256, WrapperListingRequest>;
   wrappers_map wrapper_listing_requests_;
-  // map from request pubkey into trading pair listing data
-  using trading_pairs_map = dict_map<uint256, TradingPairListingRequest>;
-  trading_pairs_map trading_pair_listing_requests_;
-  // map from request pubkey into xchg pair listing data
+  /// Map from request pubkey into xchg pair listing data
   using xchg_pairs_map = dict_map<uint256, XchgPairListingRequest>;
   xchg_pairs_map xchg_pair_listing_requests_;
 };
 
+/// \interface EFlex
+/// \brief Flex events interface
 __interface EFlex {
 };
 
-// Prepare Flex StateInit structure and expected contract address (hash from StateInit)
+/// Prepare Flex StateInit structure and expected contract address (hash from StateInit)
 inline
 std::pair<StateInit, uint256> prepare_flex_state_init_and_addr(DFlex flex_data, cell flex_code) {
   cell flex_data_cl =
@@ -305,5 +275,5 @@ std::pair<StateInit, uint256> prepare_flex_state_init_and_addr(DFlex flex_data, 
   return { flex_init, uint256(tvm_hash(flex_init_cl)) };
 }
 
-}} // namespace tvm::schema
+} // namespace tvm
 

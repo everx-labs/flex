@@ -11,8 +11,7 @@
     "name": "constructor",
     "inputs": [
     { "name":"pubkey", "type":"uint256" },
-    { "name":"trading_pair_code", "type":"cell" },
-    { "name":"xchg_pair_code", "type":"cell" }
+    { "name":"user_id", "type":"uint256" }
     ],
     "outputs": [
     ],
@@ -28,21 +27,12 @@
       { "name":"order_answer", "type":"uint128" },
       { "name":"process_queue", "type":"uint128" },
       { "name":"send_notify", "type":"uint128" }
-    ], "name":"tons_cfg", "type":"tuple" },
+    ], "name":"ev_cfg", "type":"tuple" },
     { "name":"flex", "type":"address" }
     ],
     "outputs": [
     ],
     "id": "0xb"
-  },
-  {
-    "name": "setExtWalletCode",
-    "inputs": [
-    { "name":"ext_wallet_code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xc"
   },
   {
     "name": "setFlexWalletCode",
@@ -51,37 +41,24 @@
     ],
     "outputs": [
     ],
-    "id": "0xd"
+    "id": "0xc"
   },
   {
-    "name": "setFlexWrapperCode",
+    "name": "deployPriceXchg",
     "inputs": [
-    { "name":"flex_wrapper_code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xe"
-  },
-  {
-    "name": "deployPriceWithSell",
-    "inputs": [
-    { "name":"price", "type":"uint128" },
+    { "name":"sell", "type":"bool" },
+    { "name":"immediate_client", "type":"bool" },
+    { "name":"post_order", "type":"bool" },
+    { "name":"price_num", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
     { "name":"amount", "type":"uint128" },
+    { "name":"lend_amount", "type":"uint128" },
     { "name":"lend_finish_time", "type":"uint32" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"tons_value", "type":"uint128" },
-    { "name":"price_code", "type":"cell" },
+    { "name":"evers", "type":"uint128" },
+    { "name":"xchg_price_code", "type":"cell" },
     { "name":"my_tip3_addr", "type":"address" },
     { "name":"receive_wallet", "type":"address" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"order_id", "type":"uint256" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -89,107 +66,38 @@
     "id": "0xf"
   },
   {
-    "name": "deployPriceWithBuy",
+    "name": "lendOwnershipPubkey",
     "inputs": [
-    { "name":"price", "type":"uint128" },
-    { "name":"amount", "type":"uint128" },
-    { "name":"order_finish_time", "type":"uint32" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"deploy_value", "type":"uint128" },
-    { "name":"price_code", "type":"cell" },
     { "name":"my_tip3_addr", "type":"address" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"user_id", "type":"uint256" },
+    { "name":"evers", "type":"uint128" },
+    { "name":"lend_finish_time", "type":"uint32" }
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
     ],
     "id": "0x10"
   },
   {
-    "name": "deployPriceXchg",
+    "name": "reLendOwnershipPubkey",
     "inputs": [
-    { "name":"sell", "type":"bool" },
-    { "name":"price_num", "type":"uint128" },
-    { "name":"price_denum", "type":"uint128" },
-    { "name":"amount", "type":"uint128" },
-    { "name":"lend_amount", "type":"uint128" },
-    { "name":"lend_finish_time", "type":"uint32" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"tons_value", "type":"uint128" },
-    { "name":"xchg_price_code", "type":"cell" },
     { "name":"my_tip3_addr", "type":"address" },
-    { "name":"receive_wallet", "type":"address" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"major_tip3cfg", "type":"tuple" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"minor_tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"user_id", "type":"uint256" },
+    { "name":"new_key", "type":"optional(uint256)" },
+    { "name":"evers", "type":"uint128" }
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
     ],
     "id": "0x11"
   },
   {
-    "name": "cancelSellOrder",
+    "name": "forgetUserId",
     "inputs": [
-    { "name":"price", "type":"uint128" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"value", "type":"uint128" },
-    { "name":"price_code", "type":"cell" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"user_id", "type":"uint256" }
     ],
     "outputs": [
     ],
     "id": "0x12"
-  },
-  {
-    "name": "cancelBuyOrder",
-    "inputs": [
-    { "name":"price", "type":"uint128" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
-    { "name":"value", "type":"uint128" },
-    { "name":"price_code", "type":"cell" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
-    ],
-    "outputs": [
-    ],
-    "id": "0x13"
   },
   {
     "name": "cancelXchgOrder",
@@ -197,29 +105,12 @@
     { "name":"sell", "type":"bool" },
     { "name":"price_num", "type":"uint128" },
     { "name":"price_denum", "type":"uint128" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"deals_limit", "type":"uint8" },
     { "name":"value", "type":"uint128" },
-    { "name":"xchg_price_code", "type":"cell" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"major_tip3cfg", "type":"tuple" },
-    { "components":[
-      { "name":"name", "type":"string" },
-      { "name":"symbol", "type":"string" },
-      { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
-      { "name":"root_address", "type":"address" }
-    ], "name":"minor_tip3cfg", "type":"tuple" },
-    { "name":"notify_addr", "type":"address" }
+    { "name":"xchg_price_code", "type":"cell" }
     ],
     "outputs": [
     ],
-    "id": "0x14"
+    "id": "0x13"
   },
   {
     "name": "transfer",
@@ -230,7 +121,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x15"
+    "id": "0x14"
   },
   {
     "name": "registerWrapper",
@@ -241,26 +132,13 @@
       { "name":"name", "type":"string" },
       { "name":"symbol", "type":"string" },
       { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
+      { "name":"root_pubkey", "type":"uint256" },
       { "name":"root_address", "type":"address" }
     ], "name":"tip3cfg", "type":"tuple" }
     ],
     "outputs": [
     ],
-    "id": "0x16"
-  },
-  {
-    "name": "registerTradingPair",
-    "inputs": [
-    { "name":"request_pubkey", "type":"uint256" },
-    { "name":"value", "type":"uint128" },
-    { "name":"tip3_root", "type":"address" },
-    { "name":"min_amount", "type":"uint128" },
-    { "name":"notify_addr", "type":"address" }
-    ],
-    "outputs": [
-    ],
-    "id": "0x17"
+    "id": "0x15"
   },
   {
     "name": "registerXchgPair",
@@ -269,42 +147,71 @@
     { "name":"value", "type":"uint128" },
     { "name":"tip3_major_root", "type":"address" },
     { "name":"tip3_minor_root", "type":"address" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_pubkey", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"major_tip3cfg", "type":"tuple" },
+    { "components":[
+      { "name":"name", "type":"string" },
+      { "name":"symbol", "type":"string" },
+      { "name":"decimals", "type":"uint8" },
+      { "name":"root_pubkey", "type":"uint256" },
+      { "name":"root_address", "type":"address" }
+    ], "name":"minor_tip3cfg", "type":"tuple" },
     { "name":"min_amount", "type":"uint128" },
     { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
     ],
-    "id": "0x18"
+    "id": "0x16"
   },
   {
     "name": "deployEmptyFlexWallet",
     "inputs": [
     { "name":"pubkey", "type":"uint256" },
-    { "name":"tons_to_wallet", "type":"uint128" },
+    { "name":"evers_to_wallet", "type":"uint128" },
     { "components":[
       { "name":"name", "type":"string" },
       { "name":"symbol", "type":"string" },
       { "name":"decimals", "type":"uint8" },
-      { "name":"root_public_key", "type":"uint256" },
+      { "name":"root_pubkey", "type":"uint256" },
       { "name":"root_address", "type":"address" }
     ], "name":"tip3cfg", "type":"tuple" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x19"
+    "id": "0x17"
   },
   {
     "name": "burnWallet",
     "inputs": [
-    { "name":"tons_value", "type":"uint128" },
+    { "name":"evers_value", "type":"uint128" },
     { "name":"out_pubkey", "type":"uint256" },
-    { "name":"out_internal_owner", "type":"address" },
+    { "name":"out_owner", "type":"optional(address)" },
     { "name":"my_tip3_addr", "type":"address" }
     ],
     "outputs": [
     ],
-    "id": "0x1a"
+    "id": "0x18"
+  },
+  {
+    "name": "onTip3Transfer",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"balance", "type":"uint128" },
+    { "name":"new_tokens", "type":"uint128" },
+    { "name":"sender_pubkey", "type":"uint256" },
+    { "name":"sender_owner", "type":"optional(address)" },
+    { "name":"payload", "type":"cell" },
+    { "name":"answer_addr", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xca"
   },
   {
     "name": "getOwner",
@@ -313,7 +220,7 @@
     "outputs": [
     { "name":"value0", "type":"uint256" }
     ],
-    "id": "0x1b"
+    "id": "0x19"
   },
   {
     "name": "getFlex",
@@ -322,16 +229,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x1c"
-  },
-  {
-    "name": "hasExtWalletCode",
-    "inputs": [
-    ],
-    "outputs": [
-    { "name":"value0", "type":"bool" }
-    ],
-    "id": "0x1d"
+    "id": "0x1a"
   },
   {
     "name": "hasFlexWalletCode",
@@ -340,35 +238,79 @@
     "outputs": [
     { "name":"value0", "type":"bool" }
     ],
-    "id": "0x1e"
+    "id": "0x1b"
   },
   {
-    "name": "hasFlexWrapperCode",
+    "name": "getUserId",
     "inputs": [
     ],
     "outputs": [
-    { "name":"value0", "type":"bool" }
+    { "name":"value0", "type":"uint256" }
     ],
-    "id": "0x1f"
+    "id": "0x1c"
+  },
+  {
+    "name": "getLendUserIds",
+    "inputs": [
+    ],
+    "outputs": [
+    { "components":[
+      { "name":"first", "type":"uint256" },
+      { "components":[
+        { "name":"pubkey", "type":"uint256" },
+        { "name":"lend_finish_time", "type":"uint32" }
+      ], "name":"second", "type":"tuple" }
+    ], "name":"value0", "type":"tuple[]" }
+    ],
+    "id": "0x1d"
   },
   {
     "name": "getPayloadForDeployInternalWallet",
     "inputs": [
     { "name":"owner_pubkey", "type":"uint256" },
-    { "name":"owner_addr", "type":"address" },
-    { "name":"tons", "type":"uint128" }
+    { "name":"owner_addr", "type":"optional(address)" },
+    { "name":"evers", "type":"uint128" }
     ],
     "outputs": [
     { "name":"value0", "type":"cell" }
+    ],
+    "id": "0x1e"
+  },
+  {
+    "name": "getPayloadForPriceXchg",
+    "inputs": [
+    { "name":"sell", "type":"bool" },
+    { "name":"immediate_client", "type":"bool" },
+    { "name":"post_order", "type":"bool" },
+    { "name":"amount", "type":"uint128" },
+    { "name":"receive_tip3_wallet", "type":"address" },
+    { "name":"client_addr", "type":"address" },
+    { "name":"user_id", "type":"uint256" },
+    { "name":"order_id", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"cell" }
+    ],
+    "id": "0x1f"
+  },
+  {
+    "name": "getStateInitForPriceXchg",
+    "inputs": [
+    { "name":"price_num", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
+    { "name":"xchg_price_code", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"first", "type":"cell" },
+    { "name":"second", "type":"address" }
     ],
     "id": "0x20"
   }
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
+    { "name":"__replay", "type":"uint64" },
     { "name":"owner_", "type":"uint256" },
-    { "name":"trading_pair_code_", "type":"cell" },
-    { "name":"xchg_pair_code_", "type":"cell" },
     { "name":"workchain_id_", "type":"int8" },
     { "components":[
       { "name":"transfer_tip3", "type":"uint128" },
@@ -377,17 +319,11 @@
       { "name":"order_answer", "type":"uint128" },
       { "name":"process_queue", "type":"uint128" },
       { "name":"send_notify", "type":"uint128" }
-    ], "name":"tons_cfg_", "type":"tuple" },
+    ], "name":"ev_cfg_", "type":"tuple" },
     { "name":"flex_", "type":"address" },
-    { "components":[
-      { "name":"dict_", "type":"cell" }
-    ], "name":"ext_wallet_code_", "type":"tuple" },
-    { "components":[
-      { "name":"dict_", "type":"cell" }
-    ], "name":"flex_wallet_code_", "type":"tuple" },
-    { "components":[
-      { "name":"dict_", "type":"cell" }
-    ], "name":"flex_wrapper_code_", "type":"tuple" }
+    { "name":"flex_wallet_code_", "type":"optional(cell)" },
+    { "name":"user_id_", "type":"uint256" },
+    { "name":"lend_user_ids_", "type":"optional(cell)" }
   ],
   "events": [
   ]

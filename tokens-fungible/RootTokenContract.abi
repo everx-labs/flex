@@ -13,8 +13,8 @@
     { "name":"name", "type":"string" },
     { "name":"symbol", "type":"string" },
     { "name":"decimals", "type":"uint8" },
-    { "name":"root_public_key", "type":"uint256" },
-    { "name":"root_owner", "type":"address" },
+    { "name":"root_pubkey", "type":"uint256" },
+    { "name":"root_owner", "type":"optional(address)" },
     { "name":"total_supply", "type":"uint128" }
     ],
     "outputs": [
@@ -37,9 +37,9 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"pubkey", "type":"uint256" },
-    { "name":"internal_owner", "type":"address" },
+    { "name":"owner", "type":"optional(address)" },
     { "name":"tokens", "type":"uint128" },
-    { "name":"grams", "type":"uint128" }
+    { "name":"evers", "type":"uint128" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -51,8 +51,8 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"pubkey", "type":"uint256" },
-    { "name":"internal_owner", "type":"address" },
-    { "name":"grams", "type":"uint128" }
+    { "name":"owner", "type":"optional(address)" },
+    { "name":"evers", "type":"uint128" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -65,7 +65,7 @@
     { "name":"_answer_id", "type":"uint32" },
     { "name":"dest", "type":"address" },
     { "name":"tokens", "type":"uint128" },
-    { "name":"grams", "type":"uint128" }
+    { "name":"evers", "type":"uint128" }
     ],
     "outputs": [
     ],
@@ -168,7 +168,7 @@
     "name": "getWalletAddress",
     "inputs": [
     { "name":"pubkey", "type":"uint256" },
-    { "name":"owner", "type":"address" }
+    { "name":"owner", "type":"optional(address)" }
     ],
     "outputs": [
     { "name":"value0", "type":"address" }
@@ -187,17 +187,15 @@
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
+    { "name":"__replay", "type":"uint64" },
     { "name":"name_", "type":"string" },
     { "name":"symbol_", "type":"string" },
     { "name":"decimals_", "type":"uint8" },
-    { "name":"root_public_key_", "type":"uint256" },
+    { "name":"root_pubkey_", "type":"uint256" },
+    { "name":"root_owner_", "type":"optional(address)" },
     { "name":"total_supply_", "type":"uint128" },
     { "name":"total_granted_", "type":"uint128" },
-    { "components":[
-      { "name":"dict_", "type":"cell" }
-    ], "name":"wallet_code_", "type":"tuple" },
-    { "name":"owner_address_", "type":"optional(address)" },
-    { "name":"start_balance_", "type":"varuint16" }
+    { "name":"wallet_code_", "type":"optional(cell)" }
   ],
   "events": [
   ]
