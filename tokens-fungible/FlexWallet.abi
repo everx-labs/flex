@@ -13,12 +13,27 @@
     { "name":"answer_addr", "type":"address" },
     { "name":"to", "type":"address" },
     { "name":"tokens", "type":"uint128" },
-    { "name":"grams", "type":"uint128" },
-    { "name":"return_ownership", "type":"bool" }
+    { "name":"evers", "type":"uint128" },
+    { "name":"return_ownership", "type":"uint128" }
     ],
     "outputs": [
     ],
     "id": "0xa"
+  },
+  {
+    "name": "transferWithNotify",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"answer_addr", "type":"address" },
+    { "name":"to", "type":"address" },
+    { "name":"tokens", "type":"uint128" },
+    { "name":"evers", "type":"uint128" },
+    { "name":"return_ownership", "type":"uint128" },
+    { "name":"payload", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
   },
   {
     "name": "requestBalance",
@@ -36,7 +51,7 @@
     { "name":"_answer_id", "type":"uint32" },
     { "name":"tokens", "type":"uint128" },
     { "name":"answer_addr", "type":"address" },
-    { "name":"keep_grams", "type":"uint128" }
+    { "name":"keep_evers", "type":"uint128" }
     ],
     "outputs": [
     { "name":"value0", "type":"bool" }
@@ -50,7 +65,7 @@
     { "name":"tokens", "type":"uint128" },
     { "name":"answer_addr", "type":"address" },
     { "name":"sender_pubkey", "type":"uint256" },
-    { "name":"sender_owner", "type":"address" },
+    { "name":"sender_owner", "type":"optional(address)" },
     { "name":"notify_receiver", "type":"bool" },
     { "name":"payload", "type":"cell" }
     ],
@@ -63,7 +78,7 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"out_pubkey", "type":"uint256" },
-    { "name":"out_internal_owner", "type":"address" }
+    { "name":"out_owner", "type":"optional(address)" }
     ],
     "outputs": [
     ],
@@ -74,8 +89,8 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"answer_addr", "type":"address" },
-    { "name":"grams", "type":"uint128" },
-    { "name":"std_dest", "type":"uint256" },
+    { "name":"evers", "type":"uint128" },
+    { "name":"dest", "type":"address" },
     { "name":"lend_balance", "type":"uint128" },
     { "name":"lend_finish_time", "type":"uint32" },
     { "name":"deploy_init_cl", "type":"cell" },
@@ -86,13 +101,23 @@
     "id": "0x13"
   },
   {
+    "name": "lendOwnershipPubkey",
+    "inputs": [
+    { "name":"pubkey", "type":"optional(uint256)" },
+    { "name":"lend_finish_time", "type":"optional(uint32)" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x14"
+  },
+  {
     "name": "returnOwnership",
     "inputs": [
     { "name":"tokens", "type":"uint128" }
     ],
     "outputs": [
     ],
-    "id": "0x14"
+    "id": "0x15"
   },
   {
     "name": "getDetails",
@@ -103,38 +128,63 @@
     { "name":"symbol", "type":"string" },
     { "name":"decimals", "type":"uint8" },
     { "name":"balance", "type":"uint128" },
-    { "name":"root_public_key", "type":"uint256" },
-    { "name":"wallet_public_key", "type":"uint256" },
+    { "name":"root_pubkey", "type":"uint256" },
     { "name":"root_address", "type":"address" },
+    { "name":"wallet_pubkey", "type":"uint256" },
     { "name":"owner_address", "type":"address" },
     { "components":[
-      { "name":"lend_addr", "type":"address" },
+      { "name":"lend_pubkey", "type":"uint256" },
+      { "name":"lend_finish_time", "type":"uint32" }
+    ], "name":"lend_pubkey", "type":"optional(tuple)" },
+    { "components":[
+      { "components":[
+        { "components":[
+          { "name":"workchain_id", "type":"int8" },
+          { "name":"address", "type":"uint256" }
+        ], "name":"dest", "type":"tuple" }
+      ], "name":"lend_key", "type":"tuple" },
       { "name":"lend_balance", "type":"uint128" },
       { "name":"lend_finish_time", "type":"uint32" }
-    ], "name":"lend_ownership", "type":"tuple[]" },
+    ], "name":"lend_owners", "type":"tuple[]" },
     { "name":"lend_balance", "type":"uint128" },
-    { "name":"code", "type":"cell" },
+    { "name":"code_hash", "type":"uint256" },
+    { "name":"code_depth", "type":"uint16" },
     { "components":[
       { "name":"spender", "type":"address" },
       { "name":"remainingTokens", "type":"uint128" }
     ], "name":"allowance", "type":"tuple" },
     { "name":"workchain_id", "type":"int8" }
     ],
-    "id": "0x15"
+    "id": "0x16"
+  },
+  {
+    "name": "getBalance",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"uint128" }
+    ],
+    "id": "0x17"
   }
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
+    { "name":"__replay", "type":"uint64" },
     { "name":"name_", "type":"string" },
     { "name":"symbol_", "type":"string" },
     { "name":"decimals_", "type":"uint8" },
     { "name":"balance_", "type":"uint128" },
-    { "name":"root_public_key_", "type":"uint256" },
-    { "name":"wallet_public_key_", "type":"uint256" },
+    { "name":"root_pubkey_", "type":"uint256" },
     { "name":"root_address_", "type":"address" },
+    { "name":"wallet_pubkey_", "type":"uint256" },
     { "name":"owner_address_", "type":"optional(address)" },
-    { "name":"lend_ownership_", "type":"optional(cell)" },
-    { "name":"code_", "type":"cell" },
+    { "components":[
+      { "name":"lend_pubkey", "type":"uint256" },
+      { "name":"lend_finish_time", "type":"uint32" }
+    ], "name":"lend_pubkey_", "type":"optional(tuple)" },
+    { "name":"lend_owners_", "type":"optional(cell)" },
+    { "name":"code_hash_", "type":"uint256" },
+    { "name":"code_depth_", "type":"uint16" },
     { "name":"workchain_id_", "type":"int8" }
   ],
   "events": [

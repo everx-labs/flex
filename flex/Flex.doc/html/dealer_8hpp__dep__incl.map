@@ -1,0 +1,4 @@
+<map id="dealer.hpp" name="dealer.hpp">
+<area shape="rect" id="node1" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="17,5,107,32"/>
+<area shape="rect" id="node2" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="5,80,119,107"/>
+</map>

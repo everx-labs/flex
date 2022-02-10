@@ -1,0 +1,9 @@
+<map id="xchg_iterator" name="xchg_iterator">
+<area shape="rect" id="node1" title="Tip3/tip3 exchange orders iterator." alt="" coords="125,199,233,225"/>
+<area shape="rect" id="node2" href="$classtvm_1_1xchg_1_1orders__queue__cached.html" title="Working version of orders_queue with cached head order." alt="" coords="5,109,168,136"/>
+<area shape="rect" id="node3" href="$classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="11,5,122,32"/>
+<area shape="rect" id="node4" href="$classtvm_1_1xchg_1_1process__queue__state.html" title="Processing orders queue state for PriceXchg." alt="" coords="233,109,391,136"/>
+<area shape="rect" id="node5" href="$structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="147,5,259,32"/>
+<area shape="rect" id="node6" href="$structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="283,5,381,32"/>
+<area shape="rect" id="node7" href="$structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="405,5,496,32"/>
+</map>
