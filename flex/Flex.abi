@@ -94,6 +94,8 @@
       { "name":"root_address", "type":"address" }
     ], "name":"minor_tip3cfg", "type":"tuple" },
     { "name":"min_amount", "type":"uint128" },
+    { "name":"minmove", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
     { "name":"notify_addr", "type":"address" }
     ],
     "outputs": [
@@ -118,6 +120,17 @@
     { "name":"value0", "type":"address" }
     ],
     "id": "0xf"
+  },
+  {
+    "name": "registerWrapperEver",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x10"
   },
   {
     "name": "approveXchgPair",
@@ -150,6 +163,17 @@
     { "name":"value0", "type":"address" }
     ],
     "id": "0x14"
+  },
+  {
+    "name": "approveWrapperEver",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"pubkey", "type":"uint256" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0xc9"
   },
   {
     "name": "rejectWrapper",
@@ -199,7 +223,9 @@
     ], "name":"listing_cfg", "type":"tuple" },
     { "name":"xchg_pair_code", "type":"cell" },
     { "name":"wrapper_code", "type":"cell" },
+    { "name":"wrapper_ever_code", "type":"cell" },
     { "name":"deals_limit", "type":"uint8" },
+    { "name":"unsalted_price_code_hash", "type":"uint256" },
     { "components":[
       { "name":"deployer_pubkey", "type":"uint256" },
       { "name":"ownership_description", "type":"string" },
@@ -241,6 +267,8 @@
           { "name":"root_address", "type":"address" }
         ], "name":"minor_tip3cfg", "type":"tuple" },
         { "name":"min_amount", "type":"uint128" },
+        { "name":"minmove", "type":"uint128" },
+        { "name":"price_denum", "type":"uint128" },
         { "name":"notify_addr", "type":"address" }
       ], "name":"request", "type":"tuple" }
     ], "name":"xchg_pair_listing_requests", "type":"tuple[]" }
@@ -307,6 +335,7 @@
     { "name":"ext_wallet_code_", "type":"optional(cell)" },
     { "name":"flex_wallet_code_", "type":"optional(cell)" },
     { "name":"wrapper_code_", "type":"optional(cell)" },
+    { "name":"wrapper_ever_code_", "type":"optional(cell)" },
     { "name":"deals_limit_", "type":"uint8" },
     { "name":"wrapper_listing_requests_", "type":"optional(cell)" },
     { "name":"xchg_pair_listing_requests_", "type":"optional(cell)" }

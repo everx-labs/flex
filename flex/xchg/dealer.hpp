@@ -160,13 +160,13 @@ public:
     // *
     // In `seller_taker` scheme, we need to perform token transfers:
     // * transfer of seller.(major_deal_amount + maker_vig_val) tokens
-    //    to buyer major token wallet (buyer.tip3_wallet_receive).
-    // * transfer of buyer.minor_deal_amount tokens to seller minor token wallet (seller.tip3_wallet_receive).
+    //    to buyer major token wallet (buyer.tip3_creds_receive).
+    // * transfer of buyer.minor_deal_amount tokens to seller minor token wallet (seller.tip3_creds_receive).
     // * transfer of seller.reserve_val to major reserve wallet.
     // In `buyer_taker` scheme, we need to perform token transfers:
     // * transfer of buyer.(minor_deal_amount + maker_vig_val) tokens
-    //    to seller minor token wallet (seller.tip3_wallet_receive).
-    // * transfer of seller.major_deal_amount tokens to buyer major token wallet (buyer.tip3_wallet_receive).
+    //    to seller minor token wallet (seller.tip3_creds_receive).
+    // * transfer of seller.major_deal_amount tokens to buyer major token wallet (buyer.tip3_creds_receive).
     // * transfer of buyer.reserve_val to minor reserve wallet.
 
     auto major_deal_amount = deal_amount;
@@ -197,9 +197,9 @@ public:
       };
       // Transfer of major tokens from seller to buyer
       ITONTokenWalletPtr(sell.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-        transferWithNotify(sell.tip3_wallet_provide, buy.tip3_wallet_receive, major_deal_amount + maker_vig_val,
-                           0u128, 0u128,
-                           build_chain_static(seller_payload));
+        transferToRecipient(sell.tip3_wallet_provide, { buy.user_id, buy.client_addr }, major_deal_amount + maker_vig_val,
+                            0u128, true, 0u128,
+                            build_chain_static(seller_payload));
 
       FlexTransferPayloadArgs buyer_payload {
         .sender_sell = false,
@@ -218,13 +218,13 @@ public:
       };
       // Transfer of minor tokens from buyer to seller
       ITONTokenWalletPtr(buy.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-        transferWithNotify(buy.tip3_wallet_provide, sell.tip3_wallet_receive, minor_deal_amount, 0u128, buy_extra_return,
-                           build_chain_static(buyer_payload));
+        transferToRecipient(buy.tip3_wallet_provide, { sell.user_id, sell.client_addr }, minor_deal_amount, 0u128, true, buy_extra_return,
+                            build_chain_static(buyer_payload));
       // Transfer of major tokens from seller to major reserve wallet
       if (reserve_val > 0) {
         ITONTokenWalletPtr(sell.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-          transferWithNotify(sell.tip3_wallet_provide, major_reserve_wallet_, reserve_val, 0u128, 0u128,
-                             build_chain_static(seller_payload));
+          transfer(sell.tip3_wallet_provide, major_reserve_wallet_, reserve_val, 0u128, 0u128,
+                   build_chain_static(seller_payload));
       }
     } else {
       uint128 taker_fee_val = mul(minor_deal_amount, taker_fee);
@@ -250,9 +250,9 @@ public:
       };
       // transfer of minor tokens from buyer to seller
       ITONTokenWalletPtr(buy.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-        transferWithNotify(buy.tip3_wallet_provide, sell.tip3_wallet_receive, minor_deal_amount + maker_vig_val,
-                           0u128, 0u128,
-                           build_chain_static(buyer_payload));
+        transferToRecipient(buy.tip3_wallet_provide, { sell.user_id, sell.client_addr }, minor_deal_amount + maker_vig_val,
+                            0u128, true, 0u128,
+                            build_chain_static(buyer_payload));
 
       FlexTransferPayloadArgs seller_payload {
         .sender_sell = true,
@@ -271,13 +271,13 @@ public:
       };
       // transfer of major tokens from seller to buyer
       ITONTokenWalletPtr(sell.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-        transferWithNotify(sell.tip3_wallet_provide, buy.tip3_wallet_receive, major_deal_amount, 0u128, sell_extra_return,
+        transferToRecipient(sell.tip3_wallet_provide, { buy.user_id, buy.client_addr }, major_deal_amount, 0u128, true, sell_extra_return,
                            build_chain_static(seller_payload));
       // Transfer of minor tokens from buyer to minor reserve wallet
       if (reserve_val > 0) {
         ITONTokenWalletPtr(buy.tip3_wallet_provide)(Evers(ev_cfg_.transfer_tip3.get())).
-          transferWithNotify(buy.tip3_wallet_provide, minor_reserve_wallet_, reserve_val, 0u128, 0u128,
-                             build_chain_static(buyer_payload));
+          transfer(buy.tip3_wallet_provide, minor_reserve_wallet_, reserve_val, 0u128, 0u128,
+                   build_chain_static(buyer_payload));
       }
     }
     return {

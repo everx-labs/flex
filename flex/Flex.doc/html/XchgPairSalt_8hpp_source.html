@@ -71,31 +71,33 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;FlexWallet.hpp&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="EversConfig_8hpp.html">EversConfig.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;tvm/schema/message.hpp&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;tvm/smart_switcher.hpp&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;tvm/contract_handle.hpp&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>tvm {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1XchgPairSalt.html">XchgPairSalt</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">   21</a></span>&#160;  address     <a class="code" href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">flex</a>;            </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">   22</a></span>&#160;  <a class="code" href="structtvm_1_1EversConfig.html">EversConfig</a> <a class="code" href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">ev_cfg</a>;          </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">   23</a></span>&#160;  uint8       <a class="code" href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">deals_limit</a>;     </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">   24</a></span>&#160;  cell        <a class="code" href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">xchg_price_code</a>; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;} <span class="comment">// namespace tvm</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="RationalValue_8hpp.html">RationalValue.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;tvm/schema/message.hpp&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;tvm/smart_switcher.hpp&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;tvm/contract_handle.hpp&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>tvm {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html">   21</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1XchgPairSalt.html">XchgPairSalt</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">   22</a></span>&#160;  address     <a class="code" href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">flex</a>;            </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">   23</a></span>&#160;  <a class="code" href="structtvm_1_1EversConfig.html">EversConfig</a> <a class="code" href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">ev_cfg</a>;          </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">   24</a></span>&#160;  uint8       <a class="code" href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">deals_limit</a>;     </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">   25</a></span>&#160;  cell        <a class="code" href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">xchg_price_code</a>; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// namespace tvm</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_a70983fd60daeae4017703cdf4f7aac80"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">tvm::XchgPairSalt::deals_limit</a></div><div class="ttdeci">uint8 deals_limit</div><div class="ttdoc">Limit for processed deals in one request.</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:23</div></div>
-<div class="ttc" id="astructtvm_1_1XchgPairSalt_html"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html">tvm::XchgPairSalt</a></div><div class="ttdoc">XchgPair configuration structure (stored in salt)</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:20</div></div>
+<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_a70983fd60daeae4017703cdf4f7aac80"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#a70983fd60daeae4017703cdf4f7aac80">tvm::XchgPairSalt::deals_limit</a></div><div class="ttdeci">uint8 deals_limit</div><div class="ttdoc">Limit for processed deals in one request.</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:24</div></div>
+<div class="ttc" id="astructtvm_1_1XchgPairSalt_html"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html">tvm::XchgPairSalt</a></div><div class="ttdoc">XchgPair configuration structure (stored in salt)</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:21</div></div>
 <div class="ttc" id="aEversConfig_8hpp_html"><div class="ttname"><a href="EversConfig_8hpp.html">EversConfig.hpp</a></div><div class="ttdoc">Flex evers configuration (processing costs)</div></div>
+<div class="ttc" id="aRationalValue_8hpp_html"><div class="ttname"><a href="RationalValue_8hpp.html">RationalValue.hpp</a></div><div class="ttdoc">Flex rational price (numerator / denominator)</div></div>
 <div class="ttc" id="astructtvm_1_1EversConfig_html"><div class="ttname"><a href="structtvm_1_1EversConfig.html">tvm::EversConfig</a></div><div class="ttdoc">Processing native funds value ...</div><div class="ttdef"><b>Definition:</b> EversConfig.hpp:12</div></div>
-<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_a151a267fd58df5caaf8d9f3ac0586a8e"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">tvm::XchgPairSalt::ev_cfg</a></div><div class="ttdeci">EversConfig ev_cfg</div><div class="ttdoc">Processing costs configuration of Flex in native funds (evers).</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:22</div></div>
-<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_ae009da869fd276d34443dc9208ac9837"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">tvm::XchgPairSalt::xchg_price_code</a></div><div class="ttdeci">cell xchg_price_code</div><div class="ttdoc">Code of PriceXchg contract (unsalted).</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:24</div></div>
-<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_afdb53a6785727c76d2bc343130c52006"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">tvm::XchgPairSalt::flex</a></div><div class="ttdeci">address flex</div><div class="ttdoc">Flex root address.</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:21</div></div>
+<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_a151a267fd58df5caaf8d9f3ac0586a8e"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#a151a267fd58df5caaf8d9f3ac0586a8e">tvm::XchgPairSalt::ev_cfg</a></div><div class="ttdeci">EversConfig ev_cfg</div><div class="ttdoc">Processing costs configuration of Flex in native funds (evers).</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:23</div></div>
+<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_ae009da869fd276d34443dc9208ac9837"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837">tvm::XchgPairSalt::xchg_price_code</a></div><div class="ttdeci">cell xchg_price_code</div><div class="ttdoc">Code of PriceXchg contract (unsalted).</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:25</div></div>
+<div class="ttc" id="astructtvm_1_1XchgPairSalt_html_afdb53a6785727c76d2bc343130c52006"><div class="ttname"><a href="structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006">tvm::XchgPairSalt::flex</a></div><div class="ttdeci">address flex</div><div class="ttdoc">Flex root address.</div><div class="ttdef"><b>Definition:</b> XchgPairSalt.hpp:22</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

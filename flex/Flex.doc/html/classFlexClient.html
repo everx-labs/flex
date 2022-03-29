@@ -90,10 +90,9 @@ Collaboration diagram for FlexClient:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFlexClient__coll__graph.png" border="0" usemap="#FlexClient_coll__map" alt="Collaboration graph"/></div>
 <map name="FlexClient_coll__map" id="FlexClient_coll__map">
-<area shape="rect" title="FlexClient contract. Implements IFlexClient." alt="" coords="90,171,178,197"/>
-<area shape="rect" title=" " alt="" coords="5,95,231,121"/>
-<area shape="rect" href="structtvm_1_1DFlexClient.html" title="FlexClient persistent data struct." alt="" coords="255,95,354,121"/>
-<area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="255,5,354,32"/>
+<area shape="rect" title="FlexClient contract. Implements IFlexClient." alt="" coords="167,80,255,107"/>
+<area shape="rect" title=" " alt="" coords="5,5,231,32"/>
+<area shape="rect" href="structtvm_1_1DFlexClient.html" title="FlexClient persistent data struct." alt="" coords="255,5,354,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -110,45 +109,66 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>replay_protection_t<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a64a6d12c955e954c106ce682dbe334ea"><td class="memItemLeft" align="right" valign="top"><a id="a64a6d12c955e954c106ce682dbe334ea"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>constructor</b> (uint256 pubkey, uint256 user_id)</td></tr>
-<tr class="separator:a64a6d12c955e954c106ce682dbe334ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3742205a16164c72ad1a1c8533b6711f"><td class="memItemLeft" align="right" valign="top"><a id="a3742205a16164c72ad1a1c8533b6711f"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setFlexCfg</b> (<a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, address flex)</td></tr>
-<tr class="separator:a3742205a16164c72ad1a1c8533b6711f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38befd2314b3e68f9f89c710d9664536"><td class="memItemLeft" align="right" valign="top"><a id="a38befd2314b3e68f9f89c710d9664536"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>constructor</b> (uint256 pubkey)</td></tr>
+<tr class="separator:a38befd2314b3e68f9f89c710d9664536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a400cc19325e4584b742f739f88043df5"><td class="memItemLeft" align="right" valign="top"><a id="a400cc19325e4584b742f739f88043df5"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setFlexCfg</b> (address flex)</td></tr>
+<tr class="separator:a400cc19325e4584b742f739f88043df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566d21918a4fde0a84f49f44f78dfb0f"><td class="memItemLeft" align="right" valign="top"><a id="a566d21918a4fde0a84f49f44f78dfb0f"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setFlexWalletCode</b> (cell flex_wallet_code)</td></tr>
 <tr class="separator:a566d21918a4fde0a84f49f44f78dfb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb6f41ec281c9a00313daffe656ce31"><td class="memItemLeft" align="right" valign="top"><a id="a7fb6f41ec281c9a00313daffe656ce31"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setAuthIndexCode</b> (cell auth_index_code)</td></tr>
+<tr class="separator:a7fb6f41ec281c9a00313daffe656ce31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3339f37d0b8d444bb149e9b9a685198c"><td class="memItemLeft" align="right" valign="top"><a id="a3339f37d0b8d444bb149e9b9a685198c"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setUserIdIndexCode</b> (cell user_id_index_code)</td></tr>
+<tr class="separator:a3339f37d0b8d444bb149e9b9a685198c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d797ff7c880fd7e6d10b8fb93bdf63e"><td class="memItemLeft" align="right" valign="top"><a id="a0d797ff7c880fd7e6d10b8fb93bdf63e"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>lendOwnershipPubkey</b> (address my_tip3_addr, uint256 pubkey, uint256 user_id, uint128 evers, uint32 lend_finish_time)</td></tr>
 <tr class="separator:a0d797ff7c880fd7e6d10b8fb93bdf63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622485b5d832b6813fdfb6c04114a5b3"><td class="memItemLeft" align="right" valign="top"><a id="a622485b5d832b6813fdfb6c04114a5b3"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>reLendOwnershipPubkey</b> (address my_tip3_addr, uint256 user_id, opt&lt; uint256 &gt; new_key, uint128 evers)</td></tr>
 <tr class="separator:a622485b5d832b6813fdfb6c04114a5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad56d1f6ab799a7887e46bf5e940d863d"><td class="memItemLeft" align="right" valign="top"><a id="ad56d1f6ab799a7887e46bf5e940d863d"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>forgetUserId</b> (uint256 user_id)</td></tr>
-<tr class="separator:ad56d1f6ab799a7887e46bf5e940d863d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad238fe48713a7da1882fbfc8f132671c"><td class="memItemLeft" align="right" valign="top"><a id="ad238fe48713a7da1882fbfc8f132671c"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelXchgOrder</b> (bool sell, uint128 price_num, uint128 price_denum, uint128 value, cell xchg_price_code)</td></tr>
-<tr class="separator:ad238fe48713a7da1882fbfc8f132671c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a334c954a90513738a2c610e3a123b3e8"><td class="memItemLeft" align="right" valign="top"><a id="a334c954a90513738a2c610e3a123b3e8"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelXchgOrder</b> (bool sell, uint128 price_num, uint128 value, cell salted_price_code, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="separator:a334c954a90513738a2c610e3a123b3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598ba916d64796d6dd839992e891d63c"><td class="memItemLeft" align="right" valign="top"><a id="a598ba916d64796d6dd839992e891d63c"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>transfer</b> (address dest, uint128 value, bool bounce)</td></tr>
 <tr class="separator:a598ba916d64796d6dd839992e891d63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2e482b174182f1f31f40690a5b81a88"><td class="memItemLeft" align="right" valign="top"><a id="ac2e482b174182f1f31f40690a5b81a88"></a>
-__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>deployPriceXchg</b> (bool sell, bool immediate_client, bool post_order, uint128 price_num, uint128 price_denum, uint128 amount, uint128 lend_amount, uint32 lend_finish_time, uint128 evers, cell xchg_price_code, address my_tip3_addr, address receive_wallet, uint256 order_id)</td></tr>
-<tr class="separator:ac2e482b174182f1f31f40690a5b81a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0405a91c3e9f360d492a5786b5aba96"><td class="memItemLeft" align="right" valign="top"><a id="ac0405a91c3e9f360d492a5786b5aba96"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>transferTokens</b> (address src, address dst, uint128 tokens, uint128 evers)</td></tr>
+<tr class="separator:ac0405a91c3e9f360d492a5786b5aba96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3f6024680219e987ad7274d8410dc9"><td class="memItemLeft" align="right" valign="top"><a id="a9b3f6024680219e987ad7274d8410dc9"></a>
+__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>deployPriceXchg</b> (bool sell, bool immediate_client, bool post_order, uint128 price_num, uint128 amount, uint128 lend_amount, uint32 lend_finish_time, uint128 evers, cell unsalted_price_code, cell price_salt, address my_tip3_addr, uint256 user_id, uint256 order_id)</td></tr>
+<tr class="separator:a9b3f6024680219e987ad7274d8410dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ef1e71331875772bfec47af95171736"><td class="memItemLeft" align="right" valign="top"><a id="a9ef1e71331875772bfec47af95171736"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>registerWrapper</b> (uint256 wrapper_pubkey, uint128 value, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
 <tr class="separator:a9ef1e71331875772bfec47af95171736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7658098a03d293489a251e77c773ba2e"><td class="memItemLeft" align="right" valign="top"><a id="a7658098a03d293489a251e77c773ba2e"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>registerXchgPair</b> (uint256 request_pubkey, uint128 value, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, address notify_addr)</td></tr>
-<tr class="separator:a7658098a03d293489a251e77c773ba2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e022b73cd598c24f155d234d71b41d9"><td class="memItemLeft" align="right" valign="top"><a id="a7e022b73cd598c24f155d234d71b41d9"></a>
-__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>deployEmptyFlexWallet</b> (uint256 pubkey, uint128 evers_to_wallet, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
-<tr class="separator:a7e022b73cd598c24f155d234d71b41d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f14a34d83983a8b485d08f8ae209822"><td class="memItemLeft" align="right" valign="top"><a id="a7f14a34d83983a8b485d08f8ae209822"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>registerWrapperEver</b> (uint256 wrapper_pubkey, uint128 value)</td></tr>
+<tr class="separator:a7f14a34d83983a8b485d08f8ae209822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3149977e442b7f872adfa72c4c6329f8"><td class="memItemLeft" align="right" valign="top"><a id="a3149977e442b7f872adfa72c4c6329f8"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>registerXchgPair</b> (uint256 request_pubkey, uint128 value, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
+<tr class="separator:a3149977e442b7f872adfa72c4c6329f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada81624b8fc23ada32ae8269c8314d71"><td class="memItemLeft" align="right" valign="top"><a id="ada81624b8fc23ada32ae8269c8314d71"></a>
+__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>deployEmptyFlexWallet</b> (uint256 pubkey, uint128 evers_to_wallet, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg, opt&lt; <a class="el" href="structtvm_1_1client__lend__info.html">client_lend_info</a> &gt; lend_info)</td></tr>
+<tr class="separator:ada81624b8fc23ada32ae8269c8314d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab664b94f3683453629685a83f9fd73be"><td class="memItemLeft" align="right" valign="top"><a id="ab664b94f3683453629685a83f9fd73be"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>deployIndex</b> (uint256 user_id, uint256 <a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a>, string name, uint128 evers_all, uint128 evers_to_auth_idx)</td></tr>
+<tr class="separator:ab664b94f3683453629685a83f9fd73be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a00490b7a61a9050187824f1965be76"><td class="memItemLeft" align="right" valign="top"><a id="a7a00490b7a61a9050187824f1965be76"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>reLendIndex</b> (uint256 user_id, uint256 new_lend_pubkey, dict_array&lt; address &gt; wallets, uint128 evers_relend_call, uint128 evers_each_wallet_call, uint128 evers_to_remove, uint128 evers_to_auth_idx)</td></tr>
+<tr class="separator:a7a00490b7a61a9050187824f1965be76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab362ea3db75fe2adace1e4a47bc9f746"><td class="memItemLeft" align="right" valign="top"><a id="ab362ea3db75fe2adace1e4a47bc9f746"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyIndex</b> (uint256 user_id, uint128 evers)</td></tr>
+<tr class="separator:ab362ea3db75fe2adace1e4a47bc9f746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab66669ffaa22306425168d94534833ac"><td class="memItemLeft" align="right" valign="top"><a id="ab66669ffaa22306425168d94534833ac"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>burnWallet</b> (uint128 evers_value, uint256 out_pubkey, address_opt out_owner, address my_tip3_addr)</td></tr>
 <tr class="separator:ab66669ffaa22306425168d94534833ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca4583b925c6a9930dc5ef7b1c2b365f"><td class="memItemLeft" align="right" valign="top"><a id="aca4583b925c6a9930dc5ef7b1c2b365f"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setTradeRestriction</b> (uint128 evers, address my_tip3_addr, address flex, uint256 unsalted_price_code_hash)</td></tr>
+<tr class="separator:aca4583b925c6a9930dc5ef7b1c2b365f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceba5522985b37e506db2e2d374b4b9e"><td class="memItemLeft" align="right" valign="top">__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlexClient.html#aceba5522985b37e506db2e2d374b4b9e">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
 <tr class="separator:aceba5522985b37e506db2e2d374b4b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3859f957e465449218ba58bb053fb350"><td class="memItemLeft" align="right" valign="top"><a id="a3859f957e465449218ba58bb053fb350"></a>
@@ -160,25 +180,28 @@ __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:ae120afcdaa0b15d06cb230ed2a2450f6"><td class="memItemLeft" align="right" valign="top"><a id="ae120afcdaa0b15d06cb230ed2a2450f6"></a>
 __always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasFlexWalletCode</b> ()</td></tr>
 <tr class="separator:ae120afcdaa0b15d06cb230ed2a2450f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e45ca61c2f8a2b4cfeb528ca2526e63"><td class="memItemLeft" align="right" valign="top"><a id="a1e45ca61c2f8a2b4cfeb528ca2526e63"></a>
-__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><b>getUserId</b> ()</td></tr>
-<tr class="separator:a1e45ca61c2f8a2b4cfeb528ca2526e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac58017d9148e5dbc8a2264bd3f20eb30"><td class="memItemLeft" align="right" valign="top"><a id="ac58017d9148e5dbc8a2264bd3f20eb30"></a>
-__always_inline lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><b>getLendUserIds</b> ()</td></tr>
-<tr class="separator:ac58017d9148e5dbc8a2264bd3f20eb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5da6b8b7d4120645ab8919bc2c84951"><td class="memItemLeft" align="right" valign="top"><a id="aa5da6b8b7d4120645ab8919bc2c84951"></a>
+__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasAuthIndexCode</b> ()</td></tr>
+<tr class="separator:aa5da6b8b7d4120645ab8919bc2c84951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aba35443a9b5c80ecaa29687e17e099"><td class="memItemLeft" align="right" valign="top"><a id="a2aba35443a9b5c80ecaa29687e17e099"></a>
+__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasUserIdIndexCode</b> ()</td></tr>
+<tr class="separator:a2aba35443a9b5c80ecaa29687e17e099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d20c3dc4953e25777e55afd939a3290"><td class="memItemLeft" align="right" valign="top"><a id="a4d20c3dc4953e25777e55afd939a3290"></a>
 __always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getPayloadForDeployInternalWallet</b> (uint256 owner_pubkey, address_opt owner_addr, uint128 evers)</td></tr>
 <tr class="separator:a4d20c3dc4953e25777e55afd939a3290"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03a3ebffea9aeddc38dfc2d34f697578"><td class="memItemLeft" align="right" valign="top">__always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlexClient.html#a03a3ebffea9aeddc38dfc2d34f697578">getPayloadForPriceXchg</a> (bool sell, bool immediate_client, bool post_order, uint128 amount, address receive_tip3_wallet, address client_addr, uint256 user_id, uint256 order_id)</td></tr>
-<tr class="separator:a03a3ebffea9aeddc38dfc2d34f697578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a834e1e094fac65913a97c1a899858eee"><td class="memItemLeft" align="right" valign="top">__always_inline std::pair&lt; cell, address &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlexClient.html#a834e1e094fac65913a97c1a899858eee">getStateInitForPriceXchg</a> (uint128 price_num, uint128 price_denum, cell xchg_price_code)</td></tr>
-<tr class="separator:a834e1e094fac65913a97c1a899858eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92d5b4c87ea855b39444cac0aadac0fa"><td class="memItemLeft" align="right" valign="top">__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlexClient.html#a92d5b4c87ea855b39444cac0aadac0fa">getPriceXchgAddress</a> (uint128 price_num, cell salted_price_code)</td></tr>
+<tr class="separator:a92d5b4c87ea855b39444cac0aadac0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae542715990ecc345d2317f358a136cd8"><td class="memItemLeft" align="right" valign="top">__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlexClient.html#ae542715990ecc345d2317f358a136cd8">getUserIdIndex</a> (uint256 user_id)</td></tr>
+<tr class="separator:ae542715990ecc345d2317f358a136cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae51aad34310a739602e8970ddd25243f"><td class="memItemLeft" align="right" valign="top"><a id="ae51aad34310a739602e8970ddd25243f"></a>
 static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_fallback</b> (cell, slice)</td></tr>
 <tr class="separator:ae51aad34310a739602e8970ddd25243f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae14a616a15b7cd32318c4aa1079ffefe"><td class="memItemLeft" align="right" valign="top"><a id="ae14a616a15b7cd32318c4aa1079ffefe"></a>
+static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_receive</b> (cell, slice)</td></tr>
+<tr class="separator:ae14a616a15b7cd32318c4aa1079ffefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -191,10 +214,6 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#adace34b88f2aa0bf685f076a78b886fd">workchain_id_</a></td></tr>
 <tr class="memdesc:adace34b88f2aa0bf685f076a78b886fd inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Workchain id. <br /></td></tr>
 <tr class="separator:adace34b88f2aa0bf685f076a78b886fd inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa99cb959b3a7f6e47d21d223e190930d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="aa99cb959b3a7f6e47d21d223e190930d"></a>
-<a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#aa99cb959b3a7f6e47d21d223e190930d">ev_cfg_</a></td></tr>
-<tr class="memdesc:aa99cb959b3a7f6e47d21d223e190930d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evers configuration. <br /></td></tr>
-<tr class="separator:aa99cb959b3a7f6e47d21d223e190930d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50de7bd729c69a5039dc26263a167b99 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="a50de7bd729c69a5039dc26263a167b99"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#a50de7bd729c69a5039dc26263a167b99">flex_</a></td></tr>
 <tr class="memdesc:a50de7bd729c69a5039dc26263a167b99 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root. <br /></td></tr>
@@ -203,20 +222,20 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#a56779bd50e9c0a91c853fef996f25bda">flex_wallet_code_</a></td></tr>
 <tr class="memdesc:a56779bd50e9c0a91c853fef996f25bda inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> token wallet code. <br /></td></tr>
 <tr class="separator:a56779bd50e9c0a91c853fef996f25bda inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97dd80c7872ea00d4b64240811e8650d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="a97dd80c7872ea00d4b64240811e8650d"></a>
-uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#a97dd80c7872ea00d4b64240811e8650d">user_id_</a></td></tr>
-<tr class="memdesc:a97dd80c7872ea00d4b64240811e8650d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">User id. <br /></td></tr>
-<tr class="separator:a97dd80c7872ea00d4b64240811e8650d inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad86ee5ff0d36d5055c55e67c661f6b7 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="aad86ee5ff0d36d5055c55e67c661f6b7"></a>
-<a class="el" href="FlexClient_8hpp.html#a468f08d0f7d1ed226c8cb1a9cfa887ad">lend_user_ids_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#aad86ee5ff0d36d5055c55e67c661f6b7">lend_user_ids_</a></td></tr>
-<tr class="memdesc:aad86ee5ff0d36d5055c55e67c661f6b7 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend user ids. <br /></td></tr>
-<tr class="separator:aad86ee5ff0d36d5055c55e67c661f6b7 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c3e368af26a5281c687b8fb8ae1cb56 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="a5c3e368af26a5281c687b8fb8ae1cb56"></a>
+optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#a5c3e368af26a5281c687b8fb8ae1cb56">auth_index_code_</a></td></tr>
+<tr class="memdesc:a5c3e368af26a5281c687b8fb8ae1cb56 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">AuthIndex code. <br /></td></tr>
+<tr class="separator:a5c3e368af26a5281c687b8fb8ae1cb56 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcec347234c3340dfc6791a2be593805 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memItemLeft" align="right" valign="top"><a id="abcec347234c3340dfc6791a2be593805"></a>
+optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlexClient.html#abcec347234c3340dfc6791a2be593805">user_id_index_code_</a></td></tr>
+<tr class="memdesc:abcec347234c3340dfc6791a2be593805 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">UserIdIndex code. <br /></td></tr>
+<tr class="separator:abcec347234c3340dfc6791a2be593805 inherit pub_attribs_structtvm_1_1DFlexClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a> contract. Implements IFlexClient. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03a3ebffea9aeddc38dfc2d34f697578"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03a3ebffea9aeddc38dfc2d34f697578">&#9670;&nbsp;</a></span>getPayloadForPriceXchg()</h2>
+<a id="a92d5b4c87ea855b39444cac0aadac0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92d5b4c87ea855b39444cac0aadac0fa">&#9670;&nbsp;</a></span>getPriceXchgAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,92 +244,7 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline cell getPayloadForPriceXchg </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>sell</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>immediate_client</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>post_order</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>amount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>receive_tip3_wallet</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>client_addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>user_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>order_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sell</td><td>Sell order if true, buy order if false. </td></tr>
-    <tr><td class="paramname">immediate_client</td><td>Should this order try to be executed as a client order first (find existing corresponding orders). </td></tr>
-    <tr><td class="paramname">post_order</td><td>Should this order be enqueued if it doesn't already have corresponding orders. </td></tr>
-    <tr><td class="paramname">amount</td><td>Amount of major tokens to buy or sell. </td></tr>
-    <tr><td class="paramname">receive_tip3_wallet</td><td>Client tip3 wallet to receive tokens (minor for sell or major for buy) </td></tr>
-    <tr><td class="paramname">client_addr</td><td>Client contract address. <a class="el" href="classPriceXchg.html">PriceXchg</a> will execute cancels from this address, send notifications and return the remaining native funds (evers) to this address. </td></tr>
-    <tr><td class="paramname">user_id</td><td>User id for client purposes. </td></tr>
-    <tr><td class="paramname">order_id</td><td>Order id for client purposes. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a834e1e094fac65913a97c1a899858eee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a834e1e094fac65913a97c1a899858eee">&#9670;&nbsp;</a></span>getStateInitForPriceXchg()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__always_inline std::pair&lt;cell, address&gt; getStateInitForPriceXchg </td>
+          <td class="memname">__always_inline address getPriceXchgAddress </td>
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>price_num</em>, </td>
@@ -318,14 +252,8 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>price_denum</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">cell&#160;</td>
-          <td class="paramname"><em>xchg_price_code</em>&#160;</td>
+          <td class="paramname"><em>salted_price_code</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -342,8 +270,39 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">price_num</td><td>Price numerator for rational price value </td></tr>
-    <tr><td class="paramname">price_denum</td><td>Price denominator for rational price value </td></tr>
-    <tr><td class="paramname">xchg_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract </td></tr>
+    <tr><td class="paramname">salted_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract (salted!). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae542715990ecc345d2317f358a136cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae542715990ecc345d2317f358a136cd8">&#9670;&nbsp;</a></span>getUserIdIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">__always_inline address getUserIdIndex </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
   </table>
   </dd>
 </dl>

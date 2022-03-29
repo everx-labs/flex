@@ -7,6 +7,7 @@
 #include "Flex.hpp"
 #include "XchgPair.hpp"
 #include "Wrapper.hpp"
+#include "WrapperEver.hpp"
 #include <tvm/contract.hpp>
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
@@ -57,6 +58,15 @@ std::pair<address, DFlex::wrappers_map> approveWrapperImpl(
   ListingConfig listing_cfg);
 
 __attribute__((noinline))
+std::pair<address, DFlex::wrappers_map> approveWrapperEverImpl(
+  uint256 pubkey,
+  DFlex::wrappers_map wrapper_listing_requests,
+  cell wrapper_code,
+  cell flex_wallet_code,
+  int8 workchain_id,
+  ListingConfig listing_cfg);
+
+__attribute__((noinline))
 DFlex::wrappers_map rejectWrapperImpl(
   uint256 pubkey,
   DFlex::wrappers_map wrapper_listing_requests,
@@ -76,11 +86,12 @@ public:
     static constexpr unsigned wrapper_not_requested         = 105; ///< Wrapper is not requested
     static constexpr unsigned xchg_pair_not_requested       = 106; ///< Exchange pair is not requested
     static constexpr unsigned costs_inconsistency           = 107; ///< Costs inconsistency
+    static constexpr unsigned incorrect_config              = 108; ///< Incorrect config
 
     /// Wrapper with such public key already requested
-    static constexpr unsigned wrapper_with_such_pubkey_already_requested = 108;
+    static constexpr unsigned wrapper_with_such_pubkey_already_requested = 109;
     /// Exchange pair with such public key already requested
-    static constexpr unsigned xchg_pair_with_such_pubkey_already_requested = 109;
+    static constexpr unsigned xchg_pair_with_such_pubkey_already_requested = 110;
   };
 
   __always_inline
@@ -107,11 +118,12 @@ public:
   __always_inline
   void setSpecificCode(uint8 type, cell code) {
     switch (static_cast<code_type>(type.get())) {
-    case code_type::xchg_pair_code: setXchgPairCode(code); return;
-    case code_type::wrapper_code: setWrapperCode(code); return;
-    case code_type::ext_wallet_code: setExtWalletCode(code); return;
-    case code_type::flex_wallet_code: setFlexWalletCode(code); return;
-    case code_type::xchg_price_code: setXchgPriceCode(code); return;
+      case code_type::xchg_pair_code: setXchgPairCode(code); return;
+      case code_type::wrapper_code: setWrapperCode(code); return;
+      case code_type::ext_wallet_code: setExtWalletCode(code); return;
+      case code_type::flex_wallet_code: setFlexWalletCode(code); return;
+      case code_type::xchg_price_code: setXchgPriceCode(code); return;
+      case code_type::wrapper_ever_code: setWrapperEverCode(code); return;
     }
   }
 
@@ -149,6 +161,16 @@ public:
 
     require(code.ctos().srefs() == 2, error_code::unexpected_refs_count_in_code);
     wrapper_code_ = builder().stslice(code.ctos()).stref(build(tvm_myaddr()).endc()).endc();
+  }
+
+  __always_inline
+  void setWrapperEverCode(cell code) {
+    require(!wrapper_ever_code_, error_code::cant_override_code);
+    require(msg_pubkey() == deployer_pubkey_, error_code::sender_is_not_deployer);
+    tvm_accept();
+
+    require(code.ctos().srefs() == 2, error_code::unexpected_refs_count_in_code);
+    wrapper_ever_code_ = builder().stslice(code.ctos()).stref(build(tvm_myaddr()).endc()).endc();
   }
 
   __always_inline
@@ -205,23 +227,26 @@ public:
     Tip3Config major_tip3cfg,
     Tip3Config minor_tip3cfg,
     uint128    min_amount,
+    uint128    minmove,
+    uint128    price_denum,
     address    notify_addr
   ) {
     require(int_value().get() > listing_cfg_.register_pair_cost, error_code::not_enough_funds);
     require(!xchg_pair_listing_requests_.contains(pubkey.get()),
             error_code::xchg_pair_with_such_pubkey_already_requested);
+    require(min_amount > 0 && minmove > 0, error_code::incorrect_config);
 
     xchg_pair_listing_requests_.set_at(pubkey.get(), {
       int_sender(), uint128(int_value().get()) - listing_cfg_.register_return_value,
       tip3_major_root, tip3_minor_root, major_tip3cfg, minor_tip3cfg,
-      min_amount, notify_addr
+      min_amount, minmove, price_denum, notify_addr
     });
 
     auto pair_data = prepare_pair(tip3_major_root, tip3_minor_root);
 
     set_int_return_value(listing_cfg_.register_return_value.get());
 
-    auto [state_init, std_addr] = prepare_xchg_pair_state_init_and_addr(pair_data, xchg_pair_code_.get());
+    auto [state_init, std_addr] = prepare<IXchgPair>(pair_data, xchg_pair_code_.get());
     return address::make_std(workchain_id_, std_addr);
   }
 
@@ -285,6 +310,44 @@ public:
   }
 
   __always_inline
+  address registerWrapperEver(uint256 pubkey) {
+    require(int_value().get() > listing_cfg_.register_wrapper_cost, error_code::not_enough_funds);
+    require(!wrapper_listing_requests_.contains(pubkey.get()),
+            error_code::wrapper_with_such_pubkey_already_requested);
+
+    Tip3Config tip3cfg {
+      .name = { 'E', 'V', 'E', 'R' },
+      .symbol = { 'E', 'V', 'E', 'R' },
+      .decimals = 9u8,
+      .root_pubkey = 0u256,
+      .root_address = address::make_std(int8(0), uint256(0))
+    };
+
+    wrapper_listing_requests_.set_at(pubkey.get(), {
+      int_sender(), uint128(int_value().get()) - listing_cfg_.register_return_value,
+      tip3cfg
+    });
+
+    DWrapper wrapper_data {
+      .name_ = tip3cfg.name,
+      .symbol_ = tip3cfg.symbol,
+      .decimals_ = tip3cfg.decimals,
+      .workchain_id_ = workchain_id_,
+      .root_pubkey_ = pubkey,
+      .total_granted_ = {},
+      .internal_wallet_code_ = {},
+      .start_balance_ = Evers(listing_cfg_.wrapper_keep_balance.get()),
+      .flex_ = {},
+      .wallet_ = {}
+    };
+
+    set_int_return_value(listing_cfg_.register_return_value.get());
+
+    auto [wrapper_init, wrapper_hash_addr] = prepare_wrapper_ever_state_init_and_addr(wrapper_ever_code_.get(), wrapper_data);
+    return address::make_std(workchain_id_, wrapper_hash_addr);
+  }
+
+  __always_inline
   address approveWrapper(uint256 pubkey) {
     check_owner();
     tvm_accept();
@@ -304,6 +367,30 @@ public:
   }
 
   __always_inline
+  address approveWrapperEver(uint256 pubkey) {
+      check_owner();
+      tvm_accept();
+
+      auto [wrapper_addr, new_wrapper_listing_requests] = approveWrapperEverImpl(
+          pubkey,
+          wrapper_listing_requests_,
+          wrapper_ever_code_.get(),
+          flex_wallet_code_.get(),
+          workchain_id_,
+          listing_cfg_
+      );
+      wrapper_listing_requests_ = new_wrapper_listing_requests;
+
+      if constexpr (Internal) {
+          auto value_gr = int_value();
+          tvm_rawreserve(tvm_balance() - value_gr(), rawreserve_flag::up_to);
+          set_int_return_flag(SEND_ALL_GAS);
+      }
+
+      return wrapper_addr;
+  }
+
+  __always_inline
   bool rejectWrapper(uint256 pubkey) {
     check_owner();
     tvm_accept();
@@ -318,8 +405,9 @@ public:
 
   __always_inline
   bool isFullyInitialized() {
-    return xchg_pair_code_ && xchg_price_code_ &&
-           ext_wallet_code_ && flex_wallet_code_ && wrapper_code_;
+    return xchg_pair_code_ && xchg_price_code_
+      && ext_wallet_code_ && flex_wallet_code_
+      && wrapper_code_ && wrapper_ever_code_;
   }
 
   __always_inline
@@ -330,7 +418,9 @@ public:
       getListingCfg(),
       getXchgPairCode(),
       getWrapperCode(),
+      getWrapperEverCode(),
       getDealsLimit(),
+      getUnsaltedPriceCodeHash(),
       getOwnershipInfo(),
       getWrapperListingRequests(),
       getXchgPairListingRequests()
@@ -358,9 +448,14 @@ public:
   }
 
   __always_inline
+  cell getWrapperEverCode() {
+    return wrapper_ever_code_.get();
+  }
+
+  __always_inline
   address getXchgTradingPair(address tip3_major_root, address tip3_minor_root) {
     auto pair_data = prepare_pair(tip3_major_root, tip3_minor_root);
-    auto std_addr = prepare_xchg_pair_state_init_and_addr(pair_data, xchg_pair_code_.get()).second;
+    auto std_addr = prepare<IXchgPair>(pair_data, xchg_pair_code_.get()).second;
     return address::make_std(workchain_id_, std_addr);
   }
 
@@ -372,6 +467,12 @@ public:
   __always_inline
   uint8 getDealsLimit() {
     return deals_limit_;
+  }
+
+  __always_inline
+  uint256 getUnsaltedPriceCodeHash() {
+    require(xchg_price_code_, error_code::xchg_price_code_undefined);
+    return uint256{tvm_hash(xchg_price_code_.get())};
   }
 
   __always_inline
@@ -429,10 +530,11 @@ std::pair<address, DFlex::xchg_pairs_map> approveXchgPairImpl(
 
   auto pair_data = prepare_pair(req_info.tip3_major_root, req_info.tip3_minor_root);
 
-  auto [state_init, std_addr] = prepare_xchg_pair_state_init_and_addr(pair_data, xchg_pair_code);
+  auto [state_init, std_addr] = prepare<IXchgPair>(pair_data, xchg_pair_code);
   auto xchg_pair = IXchgPairPtr(address::make_std(workchain_id, std_addr));
   xchg_pair.deploy(state_init, Evers(listing_cfg.pair_deploy_value.get())).
-    onDeploy(req_info.min_amount, listing_cfg.pair_keep_balance, req_info.notify_addr,
+    onDeploy(req_info.min_amount, req_info.minmove, req_info.price_denum,
+             listing_cfg.pair_keep_balance, req_info.notify_addr,
              req_info.major_tip3cfg, req_info.minor_tip3cfg);
 
   auto remaining_funds = req_info.client_funds - listing_cfg.register_pair_cost;
@@ -499,6 +601,40 @@ std::pair<address, DFlex::wrappers_map> approveWrapperImpl(
   // ================== Deploying Flex wrapper ================== //
   wrapper_addr.deploy(wrapper_init, Evers(listing_cfg.wrapper_deploy_value.get()))
     .init(wallet_addr.get(), listing_cfg.reserve_wallet_value, flex_wallet_code);
+  return { wrapper_addr.get(), wrapper_listing_requests };
+}
+
+__attribute__((noinline))
+std::pair<address, DFlex::wrappers_map> approveWrapperEverImpl(
+  uint256 pubkey,
+  DFlex::wrappers_map wrapper_listing_requests,
+  cell wrapper_code,
+  cell flex_wallet_code,
+  int8 workchain_id,
+  ListingConfig listing_cfg
+) {
+  auto opt_req_info = wrapper_listing_requests.extract(pubkey.get());
+  require(!!opt_req_info, Flex<true>::error_code::wrapper_not_requested);
+  auto req_info = *opt_req_info;
+  auto tip3cfg = req_info.tip3cfg;
+  DWrapper wrapper_data {
+    .name_ = tip3cfg.name,
+    .symbol_ = tip3cfg.symbol,
+    .decimals_ = tip3cfg.decimals,
+    .workchain_id_ = workchain_id,
+    .root_pubkey_ = pubkey,
+    .total_granted_ = {},
+    .internal_wallet_code_ = {},
+    .start_balance_ = Evers(listing_cfg.wrapper_keep_balance.get()),
+    .flex_ = address{tvm_myaddr()},
+    .wallet_ = {}
+  };
+  auto [wrapper_init, wrapper_hash_addr] = prepare_wrapper_ever_state_init_and_addr(wrapper_code, wrapper_data);
+  IWrapperEverPtr wrapper_addr(address::make_std(workchain_id, wrapper_hash_addr));
+
+  // ================== Deploying Flex wrapper ================== //
+  wrapper_addr.deploy(wrapper_init, Evers(listing_cfg.wrapper_deploy_value.get()))
+    .init(listing_cfg.reserve_wallet_value, flex_wallet_code);
   return { wrapper_addr.get(), wrapper_listing_requests };
 }
 

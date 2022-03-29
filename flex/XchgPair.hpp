@@ -25,11 +25,13 @@ __interface IXchgPair {
   /// Initialization method, may only be called by Flex root.
   [[internal, noaccept, answer_id, deploy]]
   bool onDeploy(
-    uint128 min_amount,           ///< Minimum amount of major tokens for a deal or an order
-    uint128 deploy_value,         ///< Crystals to be kept in the contract
-    address notify_addr,          ///< Notification address (AMM)
-    Tip3Config major_tip3cfg,     ///< Major tip3 configuration
-    Tip3Config minor_tip3cfg      ///< Minor tip3 configuration
+    uint128    min_amount,    ///< Minimum amount of major tokens for a deal or an order
+    uint128    minmove,       ///< Minimum move for price
+    uint128    price_denum,   ///< Price denominator for the pair
+    uint128    deploy_value,  ///< Crystals to be kept in the contract
+    address    notify_addr,   ///< Notification address (AMM)
+    Tip3Config major_tip3cfg, ///< Major tip3 configuration
+    Tip3Config minor_tip3cfg  ///< Minor tip3 configuration
   ) = 10;
 
   // ========== getters ==========
@@ -49,25 +51,37 @@ __interface IXchgPair {
   [[getter]]
   uint128 getMinAmount() = 14;
 
+  /// Get minimum move for price
+  [[getter]]
+  uint128 getMinmove() = 15;
+
+  /// Get price denominator
+  [[getter]]
+  uint128 getPriceDenum() = 16;
+
   /// Get notification address (AMM)
   [[getter]]
-  address getNotifyAddr() = 15;
+  address getNotifyAddr() = 17;
 
   /// Get major reserve wallet
   [[getter]]
-  address getMajorReserveWallet() = 16;
+  address getMajorReserveWallet() = 18;
 
   /// Get minor reserve wallet
   [[getter]]
-  address getMinorReserveWallet() = 17;
+  address getMinorReserveWallet() = 19;
 
-  /// Get PriceXchg contract code with configuration salt added.
+  /// Get XchgPair configuration from code salt (common for all pairs of one flex)
   [[getter]]
-  cell getXchgPriceCode() = 18;
+  XchgPairSalt getConfig() = 20;
 
-  /// Get XchgPair configuration from code salt (common for all pairs of one flex).
+  /// Get PriceXchg contract code with configuration salt added
   [[getter]]
-  XchgPairSalt getConfig() = 19;
+  cell getPriceXchgCode(bool salted) = 21;
+
+  /// Get PriceXchg salt (configuration) for this pair
+  [[getter]]
+  cell getPriceXchgSalt() = 22;
 };
 using IXchgPairPtr = handle<IXchgPair>;
 
@@ -76,6 +90,8 @@ struct DXchgPair {
   address tip3_major_root_;       ///< Address of RootTokenContract for major tip3 token
   address tip3_minor_root_;       ///< Address of RootTokenContract for minor tip3 token
   uint128 min_amount_;            ///< Minimum amount of major tokens for a deal or an order
+  uint128 minmove_;               ///< Minimum move for price
+  uint128 price_denum_;           ///< Price denominator for the pair
   address notify_addr_;           ///< Notification address (AMM)
   address major_reserve_wallet_;  ///< Major reserve wallet
   address minor_reserve_wallet_;  ///< Minor reserve wallet
@@ -89,16 +105,15 @@ __interface EXchgPair {
 };
 
 /// Prepare Exchange Pair StateInit structure and expected contract address (hash from StateInit)
-inline
-std::pair<StateInit, uint256> prepare_xchg_pair_state_init_and_addr(DXchgPair pair_data, cell pair_code) {
-  cell pair_data_cl = prepare_persistent_data<IXchgPair, void, DXchgPair>({}, pair_data);
-  StateInit pair_init {
-    /*split_depth*/{}, /*special*/{},
-    pair_code, pair_data_cl, /*library*/{}
-  };
-  cell pair_init_cl = build(pair_init).make_cell();
-  return { pair_init, uint256(tvm_hash(pair_init_cl)) };
-}
+template<>
+struct preparer<IXchgPair, DXchgPair> {
+  __always_inline
+  static std::pair<StateInit, uint256> execute(DXchgPair pair_data, cell pair_code) {
+    cell pair_data_cl = prepare_persistent_data<IXchgPair, void, DXchgPair>({}, pair_data);
+    StateInit pair_init { {}, {}, pair_code, pair_data_cl, {} };
+    cell pair_init_cl = build(pair_init).make_cell();
+    return { pair_init, uint256(tvm_hash(pair_init_cl)) };
+  }
+};
 
 } // namespace tvm
-

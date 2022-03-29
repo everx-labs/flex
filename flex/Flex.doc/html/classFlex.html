@@ -116,6 +116,9 @@ __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setXc
 <tr class="memitem:a4959f75552fe2250156b89c0475cf1d9"><td class="memItemLeft" align="right" valign="top"><a id="a4959f75552fe2250156b89c0475cf1d9"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setWrapperCode</b> (cell code)</td></tr>
 <tr class="separator:a4959f75552fe2250156b89c0475cf1d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac80fd5859379e76bb1e7099f9011bfbe"><td class="memItemLeft" align="right" valign="top"><a id="ac80fd5859379e76bb1e7099f9011bfbe"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setWrapperEverCode</b> (cell code)</td></tr>
+<tr class="separator:ac80fd5859379e76bb1e7099f9011bfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a999780c2f38278432a320fb0bdd2b597"><td class="memItemLeft" align="right" valign="top"><a id="a999780c2f38278432a320fb0bdd2b597"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>setXchgPriceCode</b> (cell code)</td></tr>
 <tr class="separator:a999780c2f38278432a320fb0bdd2b597"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,9 +134,9 @@ __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>trans
 <tr class="memitem:aba60003a0db3d4967dd471e1a596d5c3"><td class="memItemLeft" align="right" valign="top"><a id="aba60003a0db3d4967dd471e1a596d5c3"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>transferReserveTokens</b> (address wrapper, uint128 tokens, address to, uint128 evers)</td></tr>
 <tr class="separator:aba60003a0db3d4967dd471e1a596d5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29f85e3873bf08787fa21a2012fd22a8"><td class="memItemLeft" align="right" valign="top"><a id="a29f85e3873bf08787fa21a2012fd22a8"></a>
-__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>registerXchgPair</b> (uint256 pubkey, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, address notify_addr)</td></tr>
-<tr class="separator:a29f85e3873bf08787fa21a2012fd22a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75e62d0543d6311fc8b4b9881d9a480"><td class="memItemLeft" align="right" valign="top"><a id="aa75e62d0543d6311fc8b4b9881d9a480"></a>
+__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>registerXchgPair</b> (uint256 pubkey, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
+<tr class="separator:aa75e62d0543d6311fc8b4b9881d9a480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a292c124836d2a400816d6c8694e61640"><td class="memItemLeft" align="right" valign="top"><a id="a292c124836d2a400816d6c8694e61640"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>approveXchgPair</b> (uint256 pubkey)</td></tr>
 <tr class="separator:a292c124836d2a400816d6c8694e61640"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,9 +146,15 @@ __always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>rejec
 <tr class="memitem:a0d5ea77e3e3b0741e0064c27da66ef51"><td class="memItemLeft" align="right" valign="top"><a id="a0d5ea77e3e3b0741e0064c27da66ef51"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>registerWrapper</b> (uint256 pubkey, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
 <tr class="separator:a0d5ea77e3e3b0741e0064c27da66ef51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f88cdde0a51ec71f0519ef2294d15bd"><td class="memItemLeft" align="right" valign="top"><a id="a8f88cdde0a51ec71f0519ef2294d15bd"></a>
+__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>registerWrapperEver</b> (uint256 pubkey)</td></tr>
+<tr class="separator:a8f88cdde0a51ec71f0519ef2294d15bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e3c6d17330bae064509e79bfc768072"><td class="memItemLeft" align="right" valign="top"><a id="a5e3c6d17330bae064509e79bfc768072"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>approveWrapper</b> (uint256 pubkey)</td></tr>
 <tr class="separator:a5e3c6d17330bae064509e79bfc768072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30ea7dfb6c59e6edb1f02ee3a5ac082b"><td class="memItemLeft" align="right" valign="top"><a id="a30ea7dfb6c59e6edb1f02ee3a5ac082b"></a>
+__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>approveWrapperEver</b> (uint256 pubkey)</td></tr>
+<tr class="separator:a30ea7dfb6c59e6edb1f02ee3a5ac082b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04442875e9229fe55a116e4c5619396a"><td class="memItemLeft" align="right" valign="top"><a id="a04442875e9229fe55a116e4c5619396a"></a>
 __always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>rejectWrapper</b> (uint256 pubkey)</td></tr>
 <tr class="separator:a04442875e9229fe55a116e4c5619396a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,6 +176,9 @@ __always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getXc
 <tr class="memitem:acf2aa23209e2643c5a1928b0b4f9e283"><td class="memItemLeft" align="right" valign="top"><a id="acf2aa23209e2643c5a1928b0b4f9e283"></a>
 __always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getWrapperCode</b> ()</td></tr>
 <tr class="separator:acf2aa23209e2643c5a1928b0b4f9e283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9438bfcb37d755fb13c7620fe0b26566"><td class="memItemLeft" align="right" valign="top"><a id="a9438bfcb37d755fb13c7620fe0b26566"></a>
+__always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getWrapperEverCode</b> ()</td></tr>
+<tr class="separator:a9438bfcb37d755fb13c7620fe0b26566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad94e91bdba2c8252f1bc4010be4e2291"><td class="memItemLeft" align="right" valign="top"><a id="ad94e91bdba2c8252f1bc4010be4e2291"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getXchgTradingPair</b> (address tip3_major_root, address tip3_minor_root)</td></tr>
 <tr class="separator:ad94e91bdba2c8252f1bc4010be4e2291"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,6 +188,9 @@ __always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>ca
 <tr class="memitem:af1b7a35997465846c688a7fd78378f65"><td class="memItemLeft" align="right" valign="top"><a id="af1b7a35997465846c688a7fd78378f65"></a>
 __always_inline uint8&#160;</td><td class="memItemRight" valign="bottom"><b>getDealsLimit</b> ()</td></tr>
 <tr class="separator:af1b7a35997465846c688a7fd78378f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423e7782116e40ae9e366a28d9f29147"><td class="memItemLeft" align="right" valign="top"><a id="a423e7782116e40ae9e366a28d9f29147"></a>
+__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><b>getUnsaltedPriceCodeHash</b> ()</td></tr>
+<tr class="separator:a423e7782116e40ae9e366a28d9f29147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a656f3b59031e81a95b35c63bdbaeabc4"><td class="memItemLeft" align="right" valign="top"><a id="a656f3b59031e81a95b35c63bdbaeabc4"></a>
 __always_inline <a class="el" href="structtvm_1_1FlexOwnershipInfo.html">FlexOwnershipInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getOwnershipInfo</b> ()</td></tr>
 <tr class="separator:a656f3b59031e81a95b35c63bdbaeabc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,6 +266,10 @@ optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a9d411fa84dc05d979cd714a050d5b24b">wrapper_code_</a></td></tr>
 <tr class="memdesc:a9d411fa84dc05d979cd714a050d5b24b inherit pub_attribs_structtvm_1_1DFlex"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapper.html">Wrapper</a> code. <br /></td></tr>
 <tr class="separator:a9d411fa84dc05d979cd714a050d5b24b inherit pub_attribs_structtvm_1_1DFlex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a496e97122be445943477bd0db0a44be7 inherit pub_attribs_structtvm_1_1DFlex"><td class="memItemLeft" align="right" valign="top"><a id="a496e97122be445943477bd0db0a44be7"></a>
+optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a496e97122be445943477bd0db0a44be7">wrapper_ever_code_</a></td></tr>
+<tr class="memdesc:a496e97122be445943477bd0db0a44be7 inherit pub_attribs_structtvm_1_1DFlex"><td class="mdescLeft">&#160;</td><td class="mdescRight">WrapperEver code. <br /></td></tr>
+<tr class="separator:a496e97122be445943477bd0db0a44be7 inherit pub_attribs_structtvm_1_1DFlex"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a59ae48166a091894e121adbce8e33c inherit pub_attribs_structtvm_1_1DFlex"><td class="memItemLeft" align="right" valign="top"><a id="a8a59ae48166a091894e121adbce8e33c"></a>
 uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a8a59ae48166a091894e121adbce8e33c">deals_limit_</a></td></tr>
 <tr class="memdesc:a8a59ae48166a091894e121adbce8e33c inherit pub_attribs_structtvm_1_1DFlex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deals limit for one transaction. <br /></td></tr>

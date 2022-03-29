@@ -103,6 +103,8 @@ struct XchgPairListingRequest {
   Tip3Config major_tip3cfg;     ///< Major tip3 configuration (of token Wrapper)
   Tip3Config minor_tip3cfg;     ///< Minor tip3 configuration (of token Wrapper)
   uint128    min_amount;        ///< Minimum amount of major tokens for a deal or an order
+  uint128    minmove;           ///< Minimum move for price
+  uint128    price_denum;       ///< Price denominator for the pair
   address    notify_addr;       ///< Notification address (AMM)
 };
 
@@ -121,24 +123,27 @@ struct FlexOwnershipInfo {
 
 /// Flex root details (for getter)
 struct FlexDetails {
-  bool              initialized;    ///< Is Flex completely initialized
-  EversConfig       ev_cfg;         ///< Native funds (processing costs) configuration
-  ListingConfig     listing_cfg;    ///< Listing processing costs configuration
-  cell              xchg_pair_code; ///< Exchange pair code (XchgPair)
-  cell              wrapper_code;   ///< Wrapper code ()
-  uint8             deals_limit;    ///< Deals limit to be processed in one transaction
-  FlexOwnershipInfo ownership;      ///< Ownership info
-  dict_array<WrapperListingRequestWithPubkey> wrapper_listing_requests; ///< Wrapper listing requests
+  bool              initialized;              ///< Is Flex completely initialized
+  EversConfig       ev_cfg;                   ///< Native funds (processing costs) configuration
+  ListingConfig     listing_cfg;              ///< Listing processing costs configuration
+  cell              xchg_pair_code;           ///< Exchange pair code (XchgPair)
+  cell              wrapper_code;             ///< Wrapper code
+  cell              wrapper_ever_code;        ///< Wrapper Ever code
+  uint8             deals_limit;              ///< Deals limit to be processed in one transaction
+  uint256           unsalted_price_code_hash; ///< PriceXchg code hash (unsalted)
+  FlexOwnershipInfo ownership;                ///< Ownership info
+  dict_array<WrapperListingRequestWithPubkey> wrapper_listing_requests;    ///< Wrapper listing requests
   dict_array<XchgPairListingRequestWithPubkey> xchg_pair_listing_requests; ///< Exchange pair listing requests
 };
 
 /// Enumeration of code types for Flex initialization
 enum class code_type {
-  xchg_pair_code   = 1, ///< Code of exchange pair (tip3/tip3)
-  wrapper_code     = 2, ///< Code of Wrapper
-  ext_wallet_code  = 3, ///< Code of external wallet
-  flex_wallet_code = 4, ///< Code of flex wallet
-  xchg_price_code  = 5  ///< Code of PriceXchg contract (tip3/tip3)
+  xchg_pair_code    = 1, ///< Code of exchange pair (tip3/tip3)
+  wrapper_code      = 2, ///< Code of Wrapper
+  ext_wallet_code   = 3, ///< Code of external wallet
+  flex_wallet_code  = 4, ///< Code of flex wallet
+  xchg_price_code   = 5, ///< Code of PriceXchg contract (tip3/tip3)
+  wrapper_ever_code = 6  ///< Code of WrapperEver
 };
 
 /** \interface IFlex
@@ -183,6 +188,8 @@ __interface IFlex {
     Tip3Config major_tip3cfg,   ///< Major tip3 configuration
     Tip3Config minor_tip3cfg,   ///< Minor tip3 configuration
     uint128    min_amount,      ///< Minimum amount of major tokens for a deal or an order
+    uint128    minmove,         ///< Minimum move for price.
+    uint128    price_denum,     ///< Price denominator for the pair.
     address    notify_addr      ///< Notification address (AMM)
     ) = 14;
   /// Request to register wrapper (returns pre-calculated address of future wrapper)
@@ -191,6 +198,11 @@ __interface IFlex {
     uint256    pubkey, ///< Wrapper's pubkey
     Tip3Config tip3cfg ///< Configuration of external tip3 wallet
     ) = 15;
+    /// Request to register wrapper for Ever (returns pre-calculated address of future wrapper)
+  [[internal, noaccept, answer_id]]
+  address registerWrapperEver(
+    uint256    pubkey ///< Wrapper's pubkey
+    ) = 16;
   /// Approve tip3/tip3 exchange pair
   [[external, internal, noaccept, answer_id]]
   address approveXchgPair(
@@ -206,6 +218,11 @@ __interface IFlex {
   address approveWrapper(
     uint256 pubkey
     ) = 20;
+  /// Approve wrapper
+  [[external, internal, noaccept, answer_id]]
+  address approveWrapperEver(
+    uint256 pubkey
+    ) = 201;
   /// Reject wrapper
   [[external, internal, noaccept]]
   bool rejectWrapper(
@@ -245,6 +262,7 @@ struct DFlex {
   optcell        ext_wallet_code_;       ///< External wallet code (TONTokenWallet.tvc)
   optcell        flex_wallet_code_;      ///< Flex wallet code (FlexWallet.tvc)
   optcell        wrapper_code_;          ///< Wrapper code
+  optcell        wrapper_ever_code_;     ///< WrapperEver code
   uint8          deals_limit_;           ///< Deals limit for one transaction
 
   /// Map from wrapper pubkey into listing data

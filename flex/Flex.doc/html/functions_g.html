@@ -86,14 +86,14 @@ $(function() {
 <li>getFlexAddr()
 : <a class="el" href="structtvm_1_1IXchgPair.html#afaebbe5f716569cb8ae6dc453668ab4d">IXchgPair</a>
 </li>
-<li>getLendUserIds()
-: <a class="el" href="structtvm_1_1IFlexClient.html#a85c24269c1e388d1cc9d9e3d1d7ad452">IFlexClient</a>
-</li>
 <li>getMajorReserveWallet()
 : <a class="el" href="structtvm_1_1IXchgPair.html#a6f85967e5c47834abb36f973e64fc93d">IXchgPair</a>
 </li>
 <li>getMinAmount()
 : <a class="el" href="structtvm_1_1IXchgPair.html#a6d8365d367107e81a6397770637b6a06">IXchgPair</a>
+</li>
+<li>getMinmove()
+: <a class="el" href="structtvm_1_1IXchgPair.html#a6e10de6a0fd588166c1ca99c2cb1d03f">IXchgPair</a>
 </li>
 <li>getMinorReserveWallet()
 : <a class="el" href="structtvm_1_1IXchgPair.html#a9105aa2e6010b5da929b608f0f368836">IXchgPair</a>
@@ -110,9 +110,18 @@ $(function() {
 <li>getPayloadForDeployInternalWallet()
 : <a class="el" href="structtvm_1_1IFlexClient.html#ab43b9a79d6b97b40cb1a94fb68a09ad7">IFlexClient</a>
 </li>
-<li>getPayloadForPriceXchg()
-: <a class="el" href="classFlexClient.html#a03a3ebffea9aeddc38dfc2d34f697578">FlexClient</a>
-, <a class="el" href="structtvm_1_1IFlexClient.html#a0a5c5ad023c99da963fedad5eab05b56">IFlexClient</a>
+<li>getPriceDenum()
+: <a class="el" href="structtvm_1_1IXchgPair.html#abb0c89c863c833be866af45c3f1fd55c">IXchgPair</a>
+</li>
+<li>getPriceXchgAddress()
+: <a class="el" href="classFlexClient.html#a92d5b4c87ea855b39444cac0aadac0fa">FlexClient</a>
+, <a class="el" href="structtvm_1_1IFlexClient.html#ab6a853f73ca3e422e7cfff10503b30f2">IFlexClient</a>
+</li>
+<li>getPriceXchgCode()
+: <a class="el" href="structtvm_1_1IXchgPair.html#a436e8d8a020c51300a19e61520060e17">IXchgPair</a>
+</li>
+<li>getPriceXchgSalt()
+: <a class="el" href="structtvm_1_1IXchgPair.html#ad5dba04ca6fe7036295ce0b61eb66d8c">IXchgPair</a>
 </li>
 <li>getReserveWallet()
 : <a class="el" href="structtvm_1_1IWrapper.html#a8b87e8d90253ab10b021b620f05275d4">IWrapper</a>
@@ -120,12 +129,11 @@ $(function() {
 <li>getRootKey()
 : <a class="el" href="structtvm_1_1IRootTokenContract.html#a0ede3b8efce3aac68576a39c822e065e">IRootTokenContract</a>
 </li>
+<li>getRootOwner()
+: <a class="el" href="structtvm_1_1IRootTokenContract.html#a85c78cf255c24e944be72f559b344824">IRootTokenContract</a>
+</li>
 <li>getSells()
 : <a class="el" href="structtvm_1_1IPriceXchg.html#a40ade7b973940aa891576551a7e8421d">IPriceXchg</a>
-</li>
-<li>getStateInitForPriceXchg()
-: <a class="el" href="classFlexClient.html#a834e1e094fac65913a97c1a899858eee">FlexClient</a>
-, <a class="el" href="structtvm_1_1IFlexClient.html#a7790fbbef5c9a404dbf26ec157d7eac9">IFlexClient</a>
 </li>
 <li>getSymbol()
 : <a class="el" href="structtvm_1_1IRootTokenContract.html#a6c83c8a8b83b403756d0acf74329e300">IRootTokenContract</a>
@@ -142,8 +150,9 @@ $(function() {
 <li>getTotalSupply()
 : <a class="el" href="structtvm_1_1IRootTokenContract.html#a5825cb1382442103c7f5ea9d0fdb19e6">IRootTokenContract</a>
 </li>
-<li>getUserId()
-: <a class="el" href="structtvm_1_1IFlexClient.html#a747bf06d29a79f3409e5f59d8bdf68b1">IFlexClient</a>
+<li>getUserIdIndex()
+: <a class="el" href="classFlexClient.html#ae542715990ecc345d2317f358a136cd8">FlexClient</a>
+, <a class="el" href="structtvm_1_1IFlexClient.html#af9146a47f3b225ef3a000c1737b6c979">IFlexClient</a>
 </li>
 <li>getWalletAddress()
 : <a class="el" href="structtvm_1_1IRootTokenContract.html#a3cb2a6e4c67da6b93c794478da849fc3">IRootTokenContract</a>
@@ -154,9 +163,6 @@ $(function() {
 </li>
 <li>getWalletCodeHash()
 : <a class="el" href="structtvm_1_1IRootTokenContract.html#a7341c650d48773e45c0e1bf0cdd18ed2">IRootTokenContract</a>
-</li>
-<li>getXchgPriceCode()
-: <a class="el" href="structtvm_1_1IXchgPair.html#a172210c0010861a3ab498dbde821904f">IXchgPair</a>
 </li>
 <li>getXchgTradingPair()
 : <a class="el" href="structtvm_1_1IFlex.html#ad23bb6fded6ebf84ed4fd007b918c267">IFlex</a>

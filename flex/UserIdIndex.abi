@@ -1,0 +1,60 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"lend_pubkey", "type":"uint256" },
+    { "name":"name", "type":"string" },
+    { "name":"evers_to_auth_idx", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "reLendPubkey",
+    "inputs": [
+    { "name":"new_lend_pubkey", "type":"uint256" },
+    { "name":"evers_to_remove", "type":"uint128" },
+    { "name":"evers_to_auth_idx", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  },
+  {
+    "name": "remove",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xc"
+  },
+  {
+    "name": "getConfig",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"owner", "type":"address" },
+    { "name":"auth_index_code", "type":"cell" }
+    ],
+    "id": "0xd"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"workchain_id_", "type":"int8" },
+    { "name":"user_id_", "type":"uint256" },
+    { "name":"lend_pubkey_", "type":"uint256" },
+    { "name":"name_", "type":"optional(string)" }
+  ],
+  "events": [
+  ]
+}

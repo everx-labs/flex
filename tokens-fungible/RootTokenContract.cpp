@@ -14,6 +14,7 @@
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
 #include <tvm/default_support_functions.hpp>
+#include <tvm/suffixes.hpp>
 
 #ifndef TIP3_WALLET_CODE_HASH
 #error "Macros TIP3_WALLET_CODE_HASH must be defined (code hash of TONTokenWallet)"
@@ -43,7 +44,6 @@ public:
     static constexpr unsigned define_pubkey_or_internal_owner = 106;
     static constexpr unsigned wrong_wallet_code_hash          = 107;
     static constexpr unsigned cant_override_wallet_code       = 108;
-    static constexpr unsigned too_big_decimals                = 109;
   };
 
   __always_inline
@@ -56,7 +56,6 @@ public:
     uint128 total_supply
   ) {
     require((root_pubkey != 0) or root_owner, error_code::define_pubkey_or_internal_owner);
-    require(decimals < 4, error_code::too_big_decimals);
     name_ = name;
     symbol_ = symbol;
     decimals_ = decimals;
@@ -108,7 +107,7 @@ public:
     temporary_data::setglob(global_id::answer_id, return_func_id()->get());
     ITONTokenWalletPtr dest_handle(dest);
     dest_handle.deploy(wallet_init, Evers(evers.get())).
-      accept(tokens, answer_addr, evers);
+      acceptMint(tokens, answer_addr, evers);
 
     total_granted_ += tokens;
 
@@ -159,7 +158,7 @@ public:
     }
 
     ITONTokenWalletPtr dest_handle(dest);
-    dest_handle(Evers(evers.get()), msg_flags).accept(tokens, answer_addr, uint128(0));
+    dest_handle(Evers(evers.get()), msg_flags).acceptMint(tokens, answer_addr, 0u128);
 
     total_granted_ += tokens;
   }
@@ -204,6 +203,10 @@ public:
     return root_pubkey_;
   }
 
+  __always_inline address_opt getRootOwner() {
+    return root_owner_;
+  }
+
   __always_inline uint128 getTotalSupply() {
     return total_supply_;
   }
@@ -229,11 +232,11 @@ public:
   __always_inline static int _on_bounced(cell /*msg*/, slice msg_body) {
     tvm_accept();
 
-    using Args = args_struct_t<&ITONTokenWallet::accept>;
+    using Args = args_struct_t<&ITONTokenWallet::acceptMint>;
     parser p(msg_body);
     require(p.ldi(32) == -1, error_code::wrong_bounced_header);
     auto [opt_hdr, =p] = parse_continue<abiv2::internal_msg_header_with_answer_id>(p);
-    require(opt_hdr && opt_hdr->function_id == id_v<&ITONTokenWallet::accept>,
+    require(opt_hdr && opt_hdr->function_id == id_v<&ITONTokenWallet::acceptMint>,
             error_code::wrong_bounced_header);
     auto args = parse<Args>(p, error_code::wrong_bounced_args);
     auto bounced_val = args.tokens;
@@ -272,7 +275,7 @@ private:
                           root_pubkey_, root_address,
                           pubkey, owner,
                           uint256(wallet_hash), uint16(wallet_code_depth),
-                          workchain_id(), wallet_code_.get());
+                          workchain_id());
 
     auto [wallet_init, dest_addr] = prepare_wallet_state_init_and_addr(wallet_data, wallet_code_.get());
     address dest = address::make_std(workchain_id(), dest_addr);

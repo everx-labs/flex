@@ -112,10 +112,12 @@ address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 opt&lt; <a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#ae7447313397799ae5b64b64a5c207b50">lend_pubkey_</a></td></tr>
 <tr class="memdesc:ae7447313397799ae5b64b64a5c207b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership pubkeys (pubkey =&gt; <a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a>). <br /></td></tr>
 <tr class="separator:ae7447313397799ae5b64b64a5c207b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53b7593151a0edc71f3e4558c2c9db28"><td class="memItemLeft" align="right" valign="top"><a id="a53b7593151a0edc71f3e4558c2c9db28"></a>
-<a class="el" href="TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d">lend_owners_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#a53b7593151a0edc71f3e4558c2c9db28">lend_ownership_</a></td></tr>
-<tr class="memdesc:a53b7593151a0edc71f3e4558c2c9db28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership map ({service owner, user_id} =&gt; <a class="el" href="structtvm_1_1lend__owner.html" title="Lend ownership record (for usage in address-&gt;lend_owner_record map).">lend_owner</a>). <br /></td></tr>
-<tr class="separator:a53b7593151a0edc71f3e4558c2c9db28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd47133b52d4eb6dbc10070dd894e197"><td class="memItemLeft" align="right" valign="top"><a id="acd47133b52d4eb6dbc10070dd894e197"></a>
+<a class="el" href="TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d">lend_owners_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#acd47133b52d4eb6dbc10070dd894e197">lend_owners_</a></td></tr>
+<tr class="memdesc:acd47133b52d4eb6dbc10070dd894e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership map (service owner =&gt; <a class="el" href="structtvm_1_1lend__owner.html" title="Lend ownership record (for usage in address-&gt;lend_owner_record map).">lend_owner</a>). <br /></td></tr>
+<tr class="separator:acd47133b52d4eb6dbc10070dd894e197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc6bf6070834ae9479510e6cf9e0a64d"><td class="memItemLeft" align="right" valign="top">opt&lt; <a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#abc6bf6070834ae9479510e6cf9e0a64d">restriction_</a></td></tr>
+<tr class="separator:abc6bf6070834ae9479510e6cf9e0a64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac31a987d16b72f568284c569e81df390"><td class="memItemLeft" align="right" valign="top"><a id="ac31a987d16b72f568284c569e81df390"></a>
 uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#ac31a987d16b72f568284c569e81df390">code_hash_</a></td></tr>
 <tr class="memdesc:ac31a987d16b72f568284c569e81df390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tip3 wallet code hash to verify other wallets. <br /></td></tr>
@@ -194,19 +196,19 @@ int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 
 </div>
 </div>
-<a id="a53b7593151a0edc71f3e4558c2c9db28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53b7593151a0edc71f3e4558c2c9db28">&#9670;&nbsp;</a></span>lend_ownership_</h2>
+<a id="acd47133b52d4eb6dbc10070dd894e197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd47133b52d4eb6dbc10070dd894e197">&#9670;&nbsp;</a></span>lend_owners_</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d">lend_owners_map</a> lend_ownership_</td>
+          <td class="memname"><a class="el" href="TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d">lend_owners_map</a> lend_owners_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lend ownership map ({service owner, user_id} =&gt; <a class="el" href="structtvm_1_1lend__owner.html" title="Lend ownership record (for usage in address-&gt;lend_owner_record map).">lend_owner</a>). </p>
+<p>Lend ownership map (service owner =&gt; <a class="el" href="structtvm_1_1lend__owner.html" title="Lend ownership record (for usage in address-&gt;lend_owner_record map).">lend_owner</a>). </p>
 
 </div>
 </div>
@@ -255,6 +257,21 @@ int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </div><div class="memdoc">
 
 <p>Owner contract address for internal ownership. </p>
+
+</div>
+</div>
+<a id="abc6bf6070834ae9479510e6cf9e0a64d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6bf6070834ae9479510e6cf9e0a64d">&#9670;&nbsp;</a></span>restriction_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">opt&lt;<a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a>&gt; restriction_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Restriction info to allow trade orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash. </p>
 
 </div>
 </div>

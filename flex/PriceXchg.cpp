@@ -48,13 +48,13 @@ auto process_queue_impl(price_t price, address pair, Tip3Config major_tip3cfg, T
 __attribute__((noinline))
 std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
     big_queue<OrderInfoXchg> orders, addr_std_fixed client_addr, uint128 all_amount, bool sell,
-    Evers return_ownership, Evers process_queue, Evers incoming_val, price_t price
+    Evers return_ownership, Evers process_queue, Evers incoming_val, price_t price, opt<uint256> user_id, opt<uint256> order_id
 ) {
   bool is_first = true;
   for (auto it = orders.begin(); it != orders.end();) {
     auto next_it = std::next(it);
     auto ord = *it;
-    if (ord.client_addr == client_addr) {
+    if ((ord.client_addr == client_addr) && (!user_id || (*user_id == ord.user_id)) && (!order_id || (*order_id == ord.order_id))) {
       unsigned minus_val = process_queue.get();
       ITONTokenWalletPtr(ord.tip3_wallet_provide)(return_ownership).
         returnOwnership(ord.lend_amount);
@@ -79,6 +79,12 @@ std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
   return { orders, all_amount };
 }
 
+/// Is it a correct price: price.num % minmove == 0
+__always_inline
+bool is_correct_price(price_t price, uint128 minmove) {
+  return 0 == (price.num % minmove);
+}
+
 /// Implements IPriceXchg
 /// May be in 3 states:
 /// 1. Only sell orders
@@ -87,6 +93,7 @@ std::pair<big_queue<OrderInfoXchg>, uint128> cancel_order_impl(
 ///    In the next processQueue() call (calls) to itself will be converted into state #1 or state #2.
 class PriceXchg final : public smart_interface<IPriceXchg>, public DPriceXchg {
   using data = DPriceXchg;
+  static constexpr bool _checked_deploy = true; /// Deploy is only allowed with [[deploy]] function call
 public:
   __always_inline
   OrderRet onTip3LendOwnership(
@@ -98,6 +105,8 @@ public:
     address     answer_addr
   ) {
     auto cfg = getConfig();
+    price_t price { price_num_, cfg.price_denum };
+    require(is_correct_price(price, cfg.minmove), ec::incorrect_price);
     auto [tip3_wallet, value] = int_sender_and_value();
     ITONTokenWalletPtr wallet_in(tip3_wallet);
     Evers ret_owner_gr(cfg.ev_cfg.return_ownership.get());
@@ -111,13 +120,14 @@ public:
     auto args = parse_chain_static<FlexLendPayloadArgs>(parser(payload.ctos()));
     bool is_sell = args.sell;
     auto amount = args.amount;
-    auto minor_amount = calc_lend_tokens_for_order(is_sell, amount, price_);
+
+    auto minor_amount = calc_lend_tokens_for_order(is_sell, amount, price);
 
     unsigned err = 0;
     if (value.get() < min_value)
       err = ec::not_enough_tons_to_process;
-    else if (is_sell ? !verify_tip3_addr(cfg.major_tip3cfg, tip3_wallet, pubkey, owner) :
-                       !verify_tip3_addr(cfg.minor_tip3cfg, tip3_wallet, pubkey, owner))
+    else if (is_sell ? !verify_tip3_addr(cfg.major_tip3cfg, cfg, tip3_wallet, pubkey, owner) :
+                       !verify_tip3_addr(cfg.minor_tip3cfg, cfg, tip3_wallet, pubkey, owner))
       err = ec::unverified_tip3_wallet;
     else if (amount < cfg.min_amount)
       err = ec::not_enough_tokens_amount;
@@ -131,13 +141,13 @@ public:
     else if (!args.post_order && (is_sell ? sells_amount_ != 0 : buys_amount_ != 0))
       err = ec::have_this_side_with_non_post_order;
     if (err)
-      return on_ord_fail(err, wallet_in, balance, args.user_id, args.order_id);
+      return on_ord_fail(err, wallet_in, balance, args.user_id, args.order_id, cfg.price_denum);
 
     uint128 account = uint128(value.get()) - cfg.ev_cfg.process_queue - cfg.ev_cfg.order_answer;
 
     OrderInfoXchg ord {
       args.immediate_client, args.post_order, amount, amount, account, balance, tip3_wallet,
-      args.receive_tip3_wallet, args.client_addr, lend_finish_time, args.user_id, args.order_id,
+      args.client_addr, lend_finish_time, args.user_id, args.order_id,
       uint64{__builtin_tvm_ltime()}
       };
     unsigned sell_idx = 0;
@@ -157,10 +167,10 @@ public:
 
     IFlexNotifyPtr(cfg.notify_addr)(Evers(cfg.ev_cfg.send_notify.get())).
       onXchgOrderAdded(is_sell, cfg.major_tip3cfg.root_address, cfg.minor_tip3cfg.root_address,
-                       price_.numerator(), price_.denominator(), ord.amount, notify_amount);
+                       price.numerator(), price.denominator(), ord.amount, notify_amount);
 
     auto [sells, buys, ret] =
-      process_queue_impl(price_, cfg.pair, cfg.major_tip3cfg, cfg.minor_tip3cfg, cfg.ev_cfg,
+      process_queue_impl(price, cfg.pair, cfg.major_tip3cfg, cfg.minor_tip3cfg, cfg.ev_cfg,
                          sells_amount_, sells_, buys_amount_, buys_,
                          cfg.min_amount, cfg.deals_limit, uint8(c_msgs_limit),
                          cfg.notify_addr, cfg.major_reserve_wallet, cfg.minor_reserve_wallet,
@@ -174,7 +184,7 @@ public:
     if (sells_.empty() && buys_.empty())
       suicide(cfg.flex);
     if (ret) return *ret;
-    return { uint32(ok), 0u128, ord.amount, price_.num, price_.denum, ord.user_id, ord.order_id };
+    return { uint32(ok), 0u128, ord.amount, price.num, price.denum, ord.user_id, ord.order_id };
   }
 
   __always_inline
@@ -184,7 +194,7 @@ public:
 
     auto cfg = getConfig();
     auto [sells, buys, ret] =
-      process_queue_impl(price_, cfg.pair, cfg.major_tip3cfg, cfg.minor_tip3cfg, cfg.ev_cfg,
+      process_queue_impl({price_num_, cfg.price_denum}, cfg.pair, cfg.major_tip3cfg, cfg.minor_tip3cfg, cfg.ev_cfg,
                          sells_amount_, sells_, buys_amount_, buys_,
                          cfg.min_amount, cfg.deals_limit, uint8(c_msgs_limit),
                          cfg.notify_addr, cfg.major_reserve_wallet, cfg.minor_reserve_wallet,
@@ -199,44 +209,83 @@ public:
   }
 
   __always_inline
-  void cancelSell() {
+  void cancelOrder(
+    bool         sell,
+    opt<uint256> user_id,
+    opt<uint256> order_id
+  ) {
     auto cfg = getConfig();
-    auto canceled_amount = sells_amount_;
-    addr_std_fixed client_addr = int_sender();
-    auto value = int_value();
-    auto [sells, sells_amount] =
-      cancel_order_impl(sells_, client_addr, sells_amount_, true,
-                        Evers(cfg.ev_cfg.return_ownership.get()),
-                        Evers(cfg.ev_cfg.process_queue.get()), value, price_);
-    sells_ = sells;
-    sells_amount_ = sells_amount;
-    canceled_amount -= sells_amount_;
+    auto [client_addr, value] = int_sender_and_value();
+    uint128 canceled_amount;
+    uint128 rest_amount;
+    if (sell) {
+      canceled_amount = sells_amount_;
+      auto [sells, sells_amount] =
+        cancel_order_impl(sells_, client_addr, sells_amount_, true,
+                          Evers(cfg.ev_cfg.return_ownership.get()),
+                          Evers(cfg.ev_cfg.process_queue.get()), value, {price_num_, cfg.price_denum}, user_id, order_id);
+      sells_ = sells;
+      sells_amount_ = sells_amount;
+      canceled_amount -= sells_amount_;
+    } else {
+      canceled_amount = buys_amount_;
+      auto [buys, buys_amount] =
+        cancel_order_impl(buys_, client_addr, buys_amount_, false,
+                          Evers(cfg.ev_cfg.return_ownership.get()),
+                          Evers(cfg.ev_cfg.process_queue.get()), value, {price_num_, cfg.price_denum}, user_id, order_id);
+      buys_ = buys;
+      buys_amount_ = buys_amount;
+      canceled_amount -= buys_amount_;
+    }
 
     IFlexNotifyPtr(cfg.notify_addr)(Evers(cfg.ev_cfg.send_notify.get())).
-      onXchgOrderCanceled(true, cfg.major_tip3cfg.root_address, cfg.minor_tip3cfg.root_address,
-                          price_.numerator(), price_.denominator(), canceled_amount, sells_amount_);
+      onXchgOrderCanceled(sell, cfg.major_tip3cfg.root_address, cfg.minor_tip3cfg.root_address,
+                          price_num_, cfg.price_denum, canceled_amount, rest_amount);
 
     if (sells_.empty() && buys_.empty())
       suicide(cfg.flex);
   }
 
   __always_inline
-  void cancelBuy() {
+  void cancelWalletOrder(
+    bool         sell,
+    address      owner,
+    uint256      user_id,
+    opt<uint256> order_id
+  ) {
     auto cfg = getConfig();
-    auto canceled_amount = buys_amount_;
-    addr_std_fixed client_addr = int_sender();
-    auto value = int_value();
-    auto [buys, buys_amount] =
-      cancel_order_impl(buys_, client_addr, buys_amount_, false,
-                        Evers(cfg.ev_cfg.return_ownership.get()),
-                        Evers(cfg.ev_cfg.process_queue.get()), value, price_);
-    buys_ = buys;
-    buys_amount_ = buys_amount;
-    canceled_amount -= buys_amount_;
+    auto [tip3_wallet, value] = int_sender_and_value();
+    bool good_wallet = sell ? verify_tip3_addr(cfg.major_tip3cfg, cfg, tip3_wallet, user_id, owner):
+                              verify_tip3_addr(cfg.minor_tip3cfg, cfg, tip3_wallet, user_id, owner);
+    require(good_wallet, ec::unverified_tip3_wallet);
+
+    uint128 canceled_amount;
+    uint128 rest_amount;
+    if (sell) {
+      canceled_amount = sells_amount_;
+      auto [sells, sells_amount] =
+        cancel_order_impl(sells_, owner, sells_amount_, true,
+                          Evers(cfg.ev_cfg.return_ownership.get()),
+                          Evers(cfg.ev_cfg.process_queue.get()), value, {price_num_, cfg.price_denum}, user_id, order_id);
+      sells_ = sells;
+      sells_amount_ = sells_amount;
+      canceled_amount -= sells_amount_;
+      rest_amount = sells_amount_;
+    } else {
+      canceled_amount = buys_amount_;
+      auto [buys, buys_amount] =
+        cancel_order_impl(buys_, owner, buys_amount_, false,
+                          Evers(cfg.ev_cfg.return_ownership.get()),
+                          Evers(cfg.ev_cfg.process_queue.get()), value, {price_num_, cfg.price_denum}, user_id, order_id);
+      buys_ = buys;
+      buys_amount_ = buys_amount;
+      canceled_amount -= buys_amount_;
+      rest_amount = buys_amount_;
+    }
 
     IFlexNotifyPtr(cfg.notify_addr)(Evers(cfg.ev_cfg.send_notify.get())).
-      onXchgOrderCanceled(false, cfg.major_tip3cfg.root_address, cfg.minor_tip3cfg.root_address,
-                          price_.numerator(), price_.denominator(), canceled_amount, buys_amount_);
+      onXchgOrderCanceled(sell, cfg.major_tip3cfg.root_address, cfg.minor_tip3cfg.root_address,
+                          price_num_, cfg.price_denum, canceled_amount, rest_amount);
 
     if (sells_.empty() && buys_.empty())
       suicide(cfg.flex);
@@ -285,35 +334,37 @@ private:
       cfg.ev_cfg.return_ownership + cfg.ev_cfg.order_answer;
   }
 
-  __always_inline
-  bool verify_tip3_addr(
-    Tip3Config cfg,
-    address tip3_wallet,
-    uint256 wallet_pubkey,
-    std::optional<address> wallet_internal_owner
+  __attribute__((noinline))
+  static bool verify_tip3_addr(
+    Tip3Config    cfg,
+    PriceXchgSalt salt,
+    address       tip3_wallet,
+    uint256       wallet_pubkey,
+    opt<address>  wallet_internal_owner
   ) {
-    auto expected_address = expected_wallet_address(cfg, wallet_pubkey, wallet_internal_owner);
+    auto expected_address = expected_wallet_address(cfg, salt, wallet_pubkey, wallet_internal_owner);
     return std::get<addr_std>(tip3_wallet()).address == expected_address;
   }
 
   /// Optimized expected tip3 address calculation using code hash instead of full code cell.
   /// Macroses should be defined: TIP3_WALLET_CODE_HASH, TIP3_WALLET_CODE_DEPTH
   __always_inline
-  uint256 expected_wallet_address(
-    Tip3Config  cfg,
-    uint256     wallet_pubkey,
-    address_opt wallet_owner
+  static uint256 expected_wallet_address(
+    Tip3Config    cfg,
+    PriceXchgSalt salt,
+    uint256       wallet_pubkey,
+    address_opt   wallet_owner
   ) {
     return calc_int_wallet_init_hash(
       cfg.name, cfg.symbol, cfg.decimals, cfg.root_pubkey, cfg.root_address,
       wallet_pubkey, wallet_owner,
-      uint256(TIP3_WALLET_CODE_HASH), uint16(TIP3_WALLET_CODE_DEPTH), getConfig().workchain_id
+      uint256(TIP3_WALLET_CODE_HASH), uint16(TIP3_WALLET_CODE_DEPTH), salt.workchain_id
       );
   }
 
   __always_inline
   OrderRet on_ord_fail(unsigned ec, ITONTokenWalletPtr wallet_in, uint128 lend_amount,
-                       uint256 user_id, uint256 order_id) {
+                       uint256 user_id, uint256 order_id, uint128 price_denum) {
     wallet_in(Evers(ev_cfg().return_ownership.get())).returnOwnership(lend_amount);
     if (sells_.empty() && buys_.empty()) {
       set_int_return_flag(SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY);
@@ -322,7 +373,7 @@ private:
       tvm_rawreserve(tvm_balance() - incoming_value, rawreserve_flag::up_to);
       set_int_return_flag(SEND_ALL_GAS);
     }
-    return { uint32(ec), {}, {}, price_.num, price_.denum, user_id, order_id };
+    return { uint32(ec), {}, {}, price_num_, price_denum, user_id, order_id };
   }
 };
 

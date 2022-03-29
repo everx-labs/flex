@@ -20,15 +20,16 @@ struct ec : tvm::error_code {
   static constexpr unsigned canceled                       = 106; ///< Order is canceled
   static constexpr unsigned expired                        = 107; ///< Order is expired
   static constexpr unsigned no_post_order_partially_done   = 108; ///< Order without post-order flag is partially done
+  static constexpr unsigned incorrect_price                = 109; ///< Incorrect price
 
   /// \brief When an order without 'immediate_client' flag comes to a PriceXchg with enqueued orders of other side.
   /** New sell order comes to a PriceXchg with enqueued buy orders.
       Or new buy order comes to a PriceXchg with enqueued sell orders. **/
-  static constexpr unsigned have_other_side_with_non_immediate_client = 109;
+  static constexpr unsigned have_other_side_with_non_immediate_client = 110;
   /// \brief When an order without 'post_order' flag comes to a PriceXchg with enqueued orders of this side.
   /** New sell order comes to a PriceXchg with enqueued sell orders.
       Or new buy order comes to a PriceXchg with enqueued buy orders. **/
-  static constexpr unsigned have_this_side_with_non_post_order = 110;
+  static constexpr unsigned have_this_side_with_non_post_order = 111;
 };
 
 }} // namespace tvm::xchg

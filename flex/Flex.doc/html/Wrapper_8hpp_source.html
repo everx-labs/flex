@@ -74,158 +74,113 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TONTokenWallet_8hpp.html">TONTokenWallet.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>tvm {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structtvm_1_1WrapperRet.html">   27</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1WrapperRet.html">WrapperRet</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structtvm_1_1WrapperRet.html#a4ccfa0bb65a6d88429170a17c2f14df5">   28</a></span>&#160;  uint32  <a class="code" href="structtvm_1_1WrapperRet.html#a4ccfa0bb65a6d88429170a17c2f14df5">err_code</a>;    </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structtvm_1_1WrapperRet.html#afc98d456edb6218d30c1a7e9a26ab7b4">   29</a></span>&#160;  address <a class="code" href="structtvm_1_1WrapperRet.html#afc98d456edb6218d30c1a7e9a26ab7b4">flex_wallet</a>; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexDeployWalletArgs.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1FlexDeployWalletArgs.html">FlexDeployWalletArgs</a> {</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexDeployWalletArgs.html#a873585bb6128ec69e3e0c894fa0a354a">   34</a></span>&#160;  uint256     <a class="code" href="structtvm_1_1FlexDeployWalletArgs.html#a873585bb6128ec69e3e0c894fa0a354a">pubkey</a>;   </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexDeployWalletArgs.html#a36b7121209e7361243cd9a59b2e4380b">   35</a></span>&#160;  address_opt <a class="code" href="structtvm_1_1FlexDeployWalletArgs.html#a36b7121209e7361243cd9a59b2e4380b">owner</a>;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexDeployWalletArgs.html#ae25d810e33ed3271bd167df43f1feab5">   36</a></span>&#160;  uint128     <a class="code" href="structtvm_1_1FlexDeployWalletArgs.html#ae25d810e33ed3271bd167df43f1feab5">evers</a>;    </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1wrapper__details__info.html">wrapper_details_info</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">   41</a></span>&#160;  <span class="keywordtype">string</span>   <a class="code" href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">name</a>;            </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">   42</a></span>&#160;  <span class="keywordtype">string</span>   <a class="code" href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">symbol</a>;          </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">   43</a></span>&#160;  uint8    <a class="code" href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">decimals</a>;        </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">   44</a></span>&#160;  uint256  <a class="code" href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">root_pubkey</a>;     </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">   45</a></span>&#160;  uint128  <a class="code" href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">total_granted</a>;   </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">   46</a></span>&#160;  cell     <a class="code" href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">wallet_code</a>;     </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">   47</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">external_wallet</a>; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">   48</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">reserve_wallet</a>;  </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">   49</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">flex</a>;            </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// ===== FLeX Wrapper Contract ===== //</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structtvm_1_1IWrapper.html">   56</a></span>&#160;<span class="comment"></span>__interface <a class="code" href="structtvm_1_1IWrapper.html">IWrapper</a> {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  [[<span class="keyword">internal</span>, answer_id, deploy]]</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">bool</span> init(</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    address external_wallet,      </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint128 reserve_wallet_evers, </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cell internal_wallet_code     </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  ) = 10;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  address deployEmptyWallet(</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    uint256     pubkey,  </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    address_opt owner,   </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    uint128     evers    </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  ) = 12;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;WrapperCommon.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>tvm {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html">   28</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1wrapper__details__info.html">wrapper_details_info</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">   29</a></span>&#160;  <span class="keywordtype">string</span>   <a class="code" href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">name</a>;            </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">   30</a></span>&#160;  <span class="keywordtype">string</span>   <a class="code" href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">symbol</a>;          </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">   31</a></span>&#160;  uint8    <a class="code" href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">decimals</a>;        </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">   32</a></span>&#160;  uint256  <a class="code" href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">root_pubkey</a>;     </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">   33</a></span>&#160;  uint128  <a class="code" href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">total_granted</a>;   </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">   34</a></span>&#160;  cell     <a class="code" href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">wallet_code</a>;     </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">   35</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">external_wallet</a>; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">   36</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">reserve_wallet</a>;  </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">   37</a></span>&#160;  address  <a class="code" href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">flex</a>;            </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// ===== FLeX Wrapper Contract ===== //</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structtvm_1_1IWrapper.html">   44</a></span>&#160;<span class="comment"></span>__interface <a class="code" href="structtvm_1_1IWrapper.html">IWrapper</a> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  [[<span class="keyword">internal</span>, answer_id, deploy]]</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordtype">bool</span> init(</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    address external_wallet,      </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint128 reserve_wallet_evers, </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    cell internal_wallet_code     </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  ) = 10;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  address deployEmptyWallet(</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    uint256     pubkey,  </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    address_opt owner,   </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    uint128     evers    </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  ) = 12;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  WrapperRet onTip3Transfer(</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    uint128     balance,       </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    uint128     new_tokens,    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    uint256     sender_pubkey, </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    address_opt sender_owner,  </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    cell        payload,       </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    address     answer_addr    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  ) = 202;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="structtvm_1_1WrapperRet.html">WrapperRet</a> onTip3Transfer(</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    uint128     balance,       </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    uint128     new_tokens,    </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    uint256     sender_pubkey, </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    address_opt sender_owner,  </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    cell        payload,       </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    address     answer_addr    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  ) = 202;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  [[<span class="keyword">internal</span>, noaccept]]</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">void</span> burn(</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    uint128     tokens,        </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    address     answer_addr,   </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    uint256     sender_pubkey, </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    address_opt sender_owner,  </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint256     out_pubkey,    </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    address_opt out_owner      </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  ) = 13;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  [[<span class="keyword">internal</span>, noaccept]]</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> burn(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    uint128     tokens,        </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    address     answer_addr,   </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    uint256     sender_pubkey, </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    address_opt sender_owner,  </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    uint256     out_pubkey,    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    address_opt out_owner      </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  ) = 13;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  [[<span class="keyword">internal</span>, noaccept]]</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">void</span> transferFromReserveWallet(</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    address_opt answer_addr, </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    address     to,          </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    uint128     tokens       </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  ) = 14;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  uint128 requestTotalGranted() = 15;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  [[<span class="keyword">internal</span>, noaccept]]</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> transferFromReserveWallet(</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    address_opt answer_addr, </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    address     to,          </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    uint128     tokens       </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  ) = 14;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="structtvm_1_1wrapper__details__info.html">wrapper_details_info</a> getDetails() = 16;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">bool</span> hasInternalWalletCode() = 17;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  uint128 requestTotalGranted() = 15;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <a class="code" href="structtvm_1_1wrapper__details__info.html">wrapper_details_info</a> getDetails() = 16;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">bool</span> hasInternalWalletCode() = 17;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  address getWalletAddress(</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    uint256     pubkey, </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    address_opt owner   </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  ) = 18;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  address getReserveWallet() = 19;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;};</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">using</span> IWrapperPtr = handle&lt;IWrapper&gt;;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  address getWalletAddress(</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    uint256     pubkey, </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    address_opt owner   </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  ) = 18;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  address getReserveWallet() = 19;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;};</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">using</span> IWrapperPtr = handle&lt;IWrapper&gt;;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">inline</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">  125</a></span>&#160;std::pair&lt;StateInit, uint256&gt; <a class="code" href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">prepare_wrapper_state_init_and_addr</a>(cell wrapper_code, DWrapper wrapper_data) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  cell wrapper_data_cl = prepare_persistent_data&lt;IWrapper, void, DWrapper&gt;({}, wrapper_data);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  StateInit wrapper_init {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">/*split_depth*/</span>{}, <span class="comment">/*special*/</span>{},</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    wrapper_code, wrapper_data_cl, <span class="comment">/*library*/</span>{}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  };</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  cell wrapper_init_cl = build(wrapper_init).make_cell();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">return</span> { wrapper_init, uint256(tvm_hash(wrapper_init_cl)) };</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html">  136</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1DWrapper.html">DWrapper</a> {</div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a79cfd788b219a7f48068d0e96e5e8e77">  137</a></span>&#160;  <span class="keywordtype">string</span>      <a class="code" href="structtvm_1_1DWrapper.html#a79cfd788b219a7f48068d0e96e5e8e77">name_</a>;                 </div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a20d428844b08cca10fa752393579a4b7">  138</a></span>&#160;  <span class="keywordtype">string</span>      <a class="code" href="structtvm_1_1DWrapper.html#a20d428844b08cca10fa752393579a4b7">symbol_</a>;               </div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#ae08659a927bf720033550d859939fc47">  139</a></span>&#160;  uint8       <a class="code" href="structtvm_1_1DWrapper.html#ae08659a927bf720033550d859939fc47">decimals_</a>;             </div>
-<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#adace34b88f2aa0bf685f076a78b886fd">  140</a></span>&#160;  int8        <a class="code" href="structtvm_1_1DWrapper.html#adace34b88f2aa0bf685f076a78b886fd">workchain_id_</a>;         </div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a2f81a98fe1954d0b8ceef293bce0a610">  141</a></span>&#160;  uint256     <a class="code" href="structtvm_1_1DWrapper.html#a2f81a98fe1954d0b8ceef293bce0a610">root_pubkey_</a>;          </div>
-<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#ad3c1177c911e65d0527d235ca8094b15">  142</a></span>&#160;  uint128     <a class="code" href="structtvm_1_1DWrapper.html#ad3c1177c911e65d0527d235ca8094b15">total_granted_</a>;        </div>
-<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a57a09e2fb591afe7fcc89ae8e14eaef2">  143</a></span>&#160;  optcell     <a class="code" href="structtvm_1_1DWrapper.html#a57a09e2fb591afe7fcc89ae8e14eaef2">internal_wallet_code_</a>; </div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#ace7d9a80545146ad0008a6e170cfd515">  144</a></span>&#160;  Evers       <a class="code" href="structtvm_1_1DWrapper.html#ace7d9a80545146ad0008a6e170cfd515">start_balance_</a>;        </div>
-<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a90dca4dd05d7d744420e9fd2fa6c4efd">  145</a></span>&#160;  address_opt <a class="code" href="structtvm_1_1DWrapper.html#a90dca4dd05d7d744420e9fd2fa6c4efd">flex_</a>;                 </div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structtvm_1_1DWrapper.html#a2b4eaf45189ef0aeaea7068eee43ca2c">  146</a></span>&#160;  opt&lt;ITONTokenWalletPtr&gt; <a class="code" href="structtvm_1_1DWrapper.html#a2b4eaf45189ef0aeaea7068eee43ca2c">wallet_</a>;   </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="structtvm_1_1EWrapper.html">  151</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1EWrapper.html">EWrapper</a> {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;};</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">inline</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">  156</a></span>&#160;std::pair&lt;StateInit, uint256&gt; <a class="code" href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">prepare_wrapper_state_init_and_addr</a>(cell wrapper_code, <a class="code" href="structtvm_1_1DWrapper.html">DWrapper</a> wrapper_data) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  cell wrapper_data_cl = prepare_persistent_data&lt;IWrapper, void, DWrapper&gt;({}, wrapper_data);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  StateInit wrapper_init {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">/*split_depth*/</span>{}, <span class="comment">/*special*/</span>{},</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    wrapper_code, wrapper_data_cl, <span class="comment">/*library*/</span>{}</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  };</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  cell wrapper_init_cl = build(wrapper_init).make_cell();</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordflow">return</span> { wrapper_init, uint256(tvm_hash(wrapper_init_cl)) };</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;} <span class="comment">// namespace tvm</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;} <span class="comment">// namespace tvm</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructtvm_1_1WrapperRet_html_afc98d456edb6218d30c1a7e9a26ab7b4"><div class="ttname"><a href="structtvm_1_1WrapperRet.html#afc98d456edb6218d30c1a7e9a26ab7b4">tvm::WrapperRet::flex_wallet</a></div><div class="ttdeci">address flex_wallet</div><div class="ttdoc">Deployed flex wallet.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:29</div></div>
-<div class="ttc" id="astructtvm_1_1FlexDeployWalletArgs_html_a36b7121209e7361243cd9a59b2e4380b"><div class="ttname"><a href="structtvm_1_1FlexDeployWalletArgs.html#a36b7121209e7361243cd9a59b2e4380b">tvm::FlexDeployWalletArgs::owner</a></div><div class="ttdeci">address_opt owner</div><div class="ttdoc">New wallet's internal owner address.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:35</div></div>
-<div class="ttc" id="astructtvm_1_1WrapperRet_html_a4ccfa0bb65a6d88429170a17c2f14df5"><div class="ttname"><a href="structtvm_1_1WrapperRet.html#a4ccfa0bb65a6d88429170a17c2f14df5">tvm::WrapperRet::err_code</a></div><div class="ttdeci">uint32 err_code</div><div class="ttdoc">Error code (0 if success).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:28</div></div>
-<div class="ttc" id="astructtvm_1_1FlexDeployWalletArgs_html_a873585bb6128ec69e3e0c894fa0a354a"><div class="ttname"><a href="structtvm_1_1FlexDeployWalletArgs.html#a873585bb6128ec69e3e0c894fa0a354a">tvm::FlexDeployWalletArgs::pubkey</a></div><div class="ttdeci">uint256 pubkey</div><div class="ttdoc">New wallet's public key.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:34</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a20d428844b08cca10fa752393579a4b7"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a20d428844b08cca10fa752393579a4b7">tvm::DWrapper::symbol_</a></div><div class="ttdeci">string symbol_</div><div class="ttdoc">Token short symbol.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:138</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html"><div class="ttname"><a href="structtvm_1_1DWrapper.html">tvm::DWrapper</a></div><div class="ttdoc">Wrapper persistent data struct.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:136</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a57a09e2fb591afe7fcc89ae8e14eaef2"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a57a09e2fb591afe7fcc89ae8e14eaef2">tvm::DWrapper::internal_wallet_code_</a></div><div class="ttdeci">optcell internal_wallet_code_</div><div class="ttdoc">Internal (Flex) wallet code.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:143</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_ace7d9a80545146ad0008a6e170cfd515"><div class="ttname"><a href="structtvm_1_1DWrapper.html#ace7d9a80545146ad0008a6e170cfd515">tvm::DWrapper::start_balance_</a></div><div class="ttdeci">Evers start_balance_</div><div class="ttdoc">Start balance of Wrapper (to keep on deploy).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:144</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_adace34b88f2aa0bf685f076a78b886fd"><div class="ttname"><a href="structtvm_1_1DWrapper.html#adace34b88f2aa0bf685f076a78b886fd">tvm::DWrapper::workchain_id_</a></div><div class="ttdeci">int8 workchain_id_</div><div class="ttdoc">Workchain id.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:140</div></div>
-<div class="ttc" id="aWrapper_8hpp_html_a6109b28244ba41beb4d16f27c5fec29b"><div class="ttname"><a href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">tvm::prepare_wrapper_state_init_and_addr</a></div><div class="ttdeci">std::pair&lt; StateInit, uint256 &gt; prepare_wrapper_state_init_and_addr(cell wrapper_code, DWrapper wrapper_data)</div><div class="ttdoc">Prepare Wrapper StateInit structure and expected contract address (hash from StateInit)</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:156</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a90dca4dd05d7d744420e9fd2fa6c4efd"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a90dca4dd05d7d744420e9fd2fa6c4efd">tvm::DWrapper::flex_</a></div><div class="ttdeci">address_opt flex_</div><div class="ttdoc">Flex root.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:145</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html">tvm::wrapper_details_info</a></div><div class="ttdoc">Wrapper details info (for getter).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:40</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_abf84803d16132177b632940449dc2ade"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">tvm::wrapper_details_info::total_granted</a></div><div class="ttdeci">uint128 total_granted</div><div class="ttdoc">Total allocated and granted tokens.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:45</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a7b6545af411d8d10290a26f9d1a28fe0"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">tvm::wrapper_details_info::root_pubkey</a></div><div class="ttdeci">uint256 root_pubkey</div><div class="ttdoc">Public key of the Wrapper.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:44</div></div>
-<div class="ttc" id="astructtvm_1_1FlexDeployWalletArgs_html"><div class="ttname"><a href="structtvm_1_1FlexDeployWalletArgs.html">tvm::FlexDeployWalletArgs</a></div><div class="ttdoc">Arguments to deploy wallet. Should be attached as a payload cell in transfer notification.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:33</div></div>
-<div class="ttc" id="astructtvm_1_1IWrapper_html"><div class="ttname"><a href="structtvm_1_1IWrapper.html">tvm::IWrapper</a></div><div class="ttdoc">Wrapper contract interface.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:56</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a7f0e6f500a8caac3496766fca1a02306"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">tvm::wrapper_details_info::reserve_wallet</a></div><div class="ttdeci">address reserve_wallet</div><div class="ttdoc">Reserve wallet address (to gather fees).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:48</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a6d2d0048a7af7c35e2a8291bee04d633"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">tvm::wrapper_details_info::external_wallet</a></div><div class="ttdeci">address external_wallet</div><div class="ttdoc">External wallet address.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:47</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_ae08659a927bf720033550d859939fc47"><div class="ttname"><a href="structtvm_1_1DWrapper.html#ae08659a927bf720033550d859939fc47">tvm::DWrapper::decimals_</a></div><div class="ttdeci">uint8 decimals_</div><div class="ttdoc">Decimals for ui purposes. ex: balance 100 with decimals 2 will be printed as 1.00.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:139</div></div>
+<div class="ttc" id="aWrapper_8hpp_html_a6109b28244ba41beb4d16f27c5fec29b"><div class="ttname"><a href="Wrapper_8hpp.html#a6109b28244ba41beb4d16f27c5fec29b">tvm::prepare_wrapper_state_init_and_addr</a></div><div class="ttdeci">std::pair&lt; StateInit, uint256 &gt; prepare_wrapper_state_init_and_addr(cell wrapper_code, DWrapper wrapper_data)</div><div class="ttdoc">Prepare Wrapper StateInit structure and expected contract address (hash from StateInit)</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:125</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html">tvm::wrapper_details_info</a></div><div class="ttdoc">Wrapper details info (for getter).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:28</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_abf84803d16132177b632940449dc2ade"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#abf84803d16132177b632940449dc2ade">tvm::wrapper_details_info::total_granted</a></div><div class="ttdeci">uint128 total_granted</div><div class="ttdoc">Total allocated and granted tokens.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:33</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a7b6545af411d8d10290a26f9d1a28fe0"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a7b6545af411d8d10290a26f9d1a28fe0">tvm::wrapper_details_info::root_pubkey</a></div><div class="ttdeci">uint256 root_pubkey</div><div class="ttdoc">Public key of the Wrapper.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:32</div></div>
+<div class="ttc" id="astructtvm_1_1IWrapper_html"><div class="ttname"><a href="structtvm_1_1IWrapper.html">tvm::IWrapper</a></div><div class="ttdoc">Wrapper contract interface.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:44</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a7f0e6f500a8caac3496766fca1a02306"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a7f0e6f500a8caac3496766fca1a02306">tvm::wrapper_details_info::reserve_wallet</a></div><div class="ttdeci">address reserve_wallet</div><div class="ttdoc">Reserve wallet address (to gather fees).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:36</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a6d2d0048a7af7c35e2a8291bee04d633"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a6d2d0048a7af7c35e2a8291bee04d633">tvm::wrapper_details_info::external_wallet</a></div><div class="ttdeci">address external_wallet</div><div class="ttdoc">External wallet address.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:35</div></div>
 <div class="ttc" id="aTONTokenWallet_8hpp_html"><div class="ttname"><a href="TONTokenWallet_8hpp.html">TONTokenWallet.hpp</a></div><div class="ttdoc">TONTokenWallet contract interfaces and data-structs.</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_aa0183fad0a4c5c8a30c8fdc7b81a1279"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">tvm::wrapper_details_info::symbol</a></div><div class="ttdeci">string symbol</div><div class="ttdoc">Token short symbol.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:42</div></div>
-<div class="ttc" id="astructtvm_1_1EWrapper_html"><div class="ttname"><a href="structtvm_1_1EWrapper.html">tvm::EWrapper</a></div><div class="ttdoc">Wrapper events interface.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:151</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_afdb53a6785727c76d2bc343130c52006"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">tvm::wrapper_details_info::flex</a></div><div class="ttdeci">address flex</div><div class="ttdoc">Flex root address.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:49</div></div>
-<div class="ttc" id="astructtvm_1_1FlexDeployWalletArgs_html_ae25d810e33ed3271bd167df43f1feab5"><div class="ttname"><a href="structtvm_1_1FlexDeployWalletArgs.html#ae25d810e33ed3271bd167df43f1feab5">tvm::FlexDeployWalletArgs::evers</a></div><div class="ttdeci">uint128 evers</div><div class="ttdoc">Evers to be sent to the deployable wallet.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:36</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_ad3c1177c911e65d0527d235ca8094b15"><div class="ttname"><a href="structtvm_1_1DWrapper.html#ad3c1177c911e65d0527d235ca8094b15">tvm::DWrapper::total_granted_</a></div><div class="ttdeci">uint128 total_granted_</div><div class="ttdoc">Total allocated and granted tokens.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:142</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a2f81a98fe1954d0b8ceef293bce0a610"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a2f81a98fe1954d0b8ceef293bce0a610">tvm::DWrapper::root_pubkey_</a></div><div class="ttdeci">uint256 root_pubkey_</div><div class="ttdoc">Public key of the Wrapper. Used for address calculation (no external access).</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:141</div></div>
-<div class="ttc" id="astructtvm_1_1WrapperRet_html"><div class="ttname"><a href="structtvm_1_1WrapperRet.html">tvm::WrapperRet</a></div><div class="ttdoc">Wrapper onTip3Transfer answer.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:27</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_abadbcc4882a234c5ab51065d42123223"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">tvm::wrapper_details_info::wallet_code</a></div><div class="ttdeci">cell wallet_code</div><div class="ttdoc">Flex wallet code.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:46</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a2b4eaf45189ef0aeaea7068eee43ca2c"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a2b4eaf45189ef0aeaea7068eee43ca2c">tvm::DWrapper::wallet_</a></div><div class="ttdeci">opt&lt; ITONTokenWalletPtr &gt; wallet_</div><div class="ttdoc">External (wrapped) tip3 wallet, owned by the Wrapper.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:146</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a8ccf841cb59e451791bcb2e1ac4f1edc"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">tvm::wrapper_details_info::name</a></div><div class="ttdeci">string name</div><div class="ttdoc">Token name.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:41</div></div>
-<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a32d3f1bd9efe705faf385836d0b42bce"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">tvm::wrapper_details_info::decimals</a></div><div class="ttdeci">uint8 decimals</div><div class="ttdoc">Decimals for ui purposes. ex: balance 100 with decimals 2 will be printed as 1.00.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:43</div></div>
-<div class="ttc" id="astructtvm_1_1DWrapper_html_a79cfd788b219a7f48068d0e96e5e8e77"><div class="ttname"><a href="structtvm_1_1DWrapper.html#a79cfd788b219a7f48068d0e96e5e8e77">tvm::DWrapper::name_</a></div><div class="ttdeci">string name_</div><div class="ttdoc">Token name.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:137</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_aa0183fad0a4c5c8a30c8fdc7b81a1279"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#aa0183fad0a4c5c8a30c8fdc7b81a1279">tvm::wrapper_details_info::symbol</a></div><div class="ttdeci">string symbol</div><div class="ttdoc">Token short symbol.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:30</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_afdb53a6785727c76d2bc343130c52006"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#afdb53a6785727c76d2bc343130c52006">tvm::wrapper_details_info::flex</a></div><div class="ttdeci">address flex</div><div class="ttdoc">Flex root address.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:37</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_abadbcc4882a234c5ab51065d42123223"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#abadbcc4882a234c5ab51065d42123223">tvm::wrapper_details_info::wallet_code</a></div><div class="ttdeci">cell wallet_code</div><div class="ttdoc">Flex wallet code.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:34</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a8ccf841cb59e451791bcb2e1ac4f1edc"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a8ccf841cb59e451791bcb2e1ac4f1edc">tvm::wrapper_details_info::name</a></div><div class="ttdeci">string name</div><div class="ttdoc">Token name.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:29</div></div>
+<div class="ttc" id="astructtvm_1_1wrapper__details__info_html_a32d3f1bd9efe705faf385836d0b42bce"><div class="ttname"><a href="structtvm_1_1wrapper__details__info.html#a32d3f1bd9efe705faf385836d0b42bce">tvm::wrapper_details_info::decimals</a></div><div class="ttdeci">uint8 decimals</div><div class="ttdoc">Decimals for ui purposes. ex: balance 100 with decimals 2 will be printed as 1.00.</div><div class="ttdef"><b>Definition:</b> Wrapper.hpp:31</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

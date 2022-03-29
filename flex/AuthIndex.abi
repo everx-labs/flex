@@ -1,0 +1,35 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "remove",
+    "inputs": [
+    { "name":"dst", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"pubkey_", "type":"uint256" },
+    { "name":"owner_", "type":"optional(address)" }
+  ],
+  "events": [
+  ]
+}

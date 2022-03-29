@@ -8,6 +8,7 @@
 
 #include "FlexWallet.hpp"
 #include "EversConfig.hpp"
+#include "RationalValue.hpp"
 
 #include <tvm/schema/message.hpp>
 

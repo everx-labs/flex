@@ -1,8 +1,7 @@
 <map id="FlexTransferPayloadArgs.hpp" name="FlexTransferPayloadArgs.hpp">
-<area shape="rect" id="node1" title="Flex transfer payload args structure." alt="" coords="502,5,713,32"/>
+<area shape="rect" id="node1" title="Flex transfer payload args structure." alt="" coords="319,5,530,32"/>
 <area shape="rect" id="node2" href="$PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="237,80,351,107"/>
 <area shape="rect" id="node4" href="$dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="301,229,391,256"/>
-<area shape="rect" id="node9" href="$TONTokenWallet_8cpp.html" title="TONTokenWallet contract implementation Compiles into two contract versions: TONTokenWallet...." alt="" coords="645,80,799,107"/>
 <area shape="rect" id="node3" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="113,304,227,331"/>
 <area shape="rect" id="node5" href="$process__queue__state_8hpp.html" title="Class for keeping iteration state for PriceXchg." alt="" coords="383,155,570,181"/>
 <area shape="rect" id="node6" href="$xchg__iterator_8hpp.html" title="Exchange orders iterator for PriceXchg." alt="" coords="173,155,308,181"/>
