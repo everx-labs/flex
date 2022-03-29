@@ -15,7 +15,7 @@
 <area shape="rect" id="node14" href="$RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="1492,319,1632,345"/>
 <area shape="rect" id="node15" title=" " alt="" coords="776,237,894,263"/>
 <area shape="rect" id="node18" href="$FlexTransferPayloadArgs_8hpp.html" title="Flex transfer payload args structure." alt="" coords="178,155,388,181"/>
-<area shape="rect" id="node19" href="$FlexLendPayloadArgs_8hpp.html" title="Flex lend payload args structure (for onTip3LendOwnership payload)" alt="" coords="412,155,602,181"/>
+<area shape="rect" id="node19" title=" " alt="" coords="412,155,602,181"/>
 <area shape="rect" id="node20" href="$PriceXchgSalt_8hpp.html" title="PriceXchgSalt &#45; configuration structure for PriceXchg (stored in code salt)" alt="" coords="626,155,764,181"/>
 <area shape="rect" id="node16" href="$EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="625,237,752,263"/>
 <area shape="rect" id="node17" href="$ListingConfig_8hpp.html" title="Flex listing configuration (processing costs)" alt="" coords="466,237,601,263"/>

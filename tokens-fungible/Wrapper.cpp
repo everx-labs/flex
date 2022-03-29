@@ -132,7 +132,7 @@ public:
 
     auto [wallet_init, dest] = calc_internal_wallet_init(args.pubkey, args.owner);
     ITONTokenWalletPtr dest_handle(dest);
-    dest_handle.deploy(wallet_init, Evers(args.evers.get())).accept(new_tokens, int_sender(), args.evers);
+    dest_handle.deploy(wallet_init, Evers(args.evers.get())).acceptMint(new_tokens, int_sender(), args.evers);
     total_granted_ += new_tokens;
 
     return { uint32(0), dest_handle.get() };
@@ -153,7 +153,7 @@ public:
             error_code::message_sender_is_not_good_wallet);
     tvm_rawreserve(tvm_balance() - value_gr(), rawreserve_flag::up_to);
     (*wallet_)(0_ev, SEND_ALL_GAS).
-      transferToRecipient(answer_addr, out_pubkey, out_owner, tokens, 0u128, true, 0u128);
+      transferToRecipient(answer_addr, {out_pubkey, out_owner}, tokens, 0u128, true, 0u128, {});
     total_granted_ -= tokens;
   }
 
@@ -168,7 +168,7 @@ public:
     ITONTokenWalletPtr reserve_wallet(getReserveWallet());
     tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
     reserve_wallet(0_ev, SEND_ALL_GAS).
-      transfer(answer_addr_v, to, tokens, 0u128, 0u128);
+      transfer(answer_addr_v, to, tokens, 0u128, 0u128, {});
   }
 
   __always_inline
@@ -237,11 +237,11 @@ public:
   __always_inline static int _on_bounced(cell /*msg*/, slice msg_body) {
     tvm_accept();
 
-    using Args = args_struct_t<&ITONTokenWallet::accept>;
+    using Args = args_struct_t<&ITONTokenWallet::acceptMint>;
     parser p(msg_body);
     require(p.ldi(32) == -1, error_code::wrong_bounced_header);
     auto [opt_hdr, =p] = parse_continue<abiv1::internal_msg_header>(p);
-    require(opt_hdr && opt_hdr->function_id == id_v<&ITONTokenWallet::accept>,
+    require(opt_hdr && opt_hdr->function_id == id_v<&ITONTokenWallet::acceptMint>,
             error_code::wrong_bounced_header);
     auto args = parse<Args>(p, error_code::wrong_bounced_args);
     auto bounced_val = args.tokens;

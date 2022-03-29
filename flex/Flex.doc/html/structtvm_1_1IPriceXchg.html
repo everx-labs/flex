@@ -87,14 +87,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada45f24892629aae0a9ba941a2de4d03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#ada45f24892629aae0a9ba941a2de4d03">processQueue</a> ()</td></tr>
 <tr class="memdesc:ada45f24892629aae0a9ba941a2de4d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process enqueued orders.  <a href="structtvm_1_1IPriceXchg.html#ada45f24892629aae0a9ba941a2de4d03">More...</a><br /></td></tr>
 <tr class="separator:ada45f24892629aae0a9ba941a2de4d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af729dd0955f1a8fe672308f534791d75"><td class="memItemLeft" align="right" valign="top"><a id="af729dd0955f1a8fe672308f534791d75"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#af729dd0955f1a8fe672308f534791d75">cancelSell</a> ()</td></tr>
-<tr class="memdesc:af729dd0955f1a8fe672308f534791d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will cancel all sell orders with this sender's client_addr. <br /></td></tr>
-<tr class="separator:af729dd0955f1a8fe672308f534791d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a396888ac9bbc3416ae38cbc52ac27658"><td class="memItemLeft" align="right" valign="top"><a id="a396888ac9bbc3416ae38cbc52ac27658"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#a396888ac9bbc3416ae38cbc52ac27658">cancelBuy</a> ()</td></tr>
-<tr class="memdesc:a396888ac9bbc3416ae38cbc52ac27658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will cancel all buy orders with this sender's client_addr. <br /></td></tr>
-<tr class="separator:a396888ac9bbc3416ae38cbc52ac27658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f2cf21a19d90f7ead599c5995d1cac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#af5f2cf21a19d90f7ead599c5995d1cac">cancelOrder</a> (bool sell, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="memdesc:af5f2cf21a19d90f7ead599c5995d1cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will cancel all sell/buy orders with this sender's client_addr.  <a href="structtvm_1_1IPriceXchg.html#af5f2cf21a19d90f7ead599c5995d1cac">More...</a><br /></td></tr>
+<tr class="separator:af5f2cf21a19d90f7ead599c5995d1cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88e333c486fbc0bdc3d1b34f5740052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#ac88e333c486fbc0bdc3d1b34f5740052">cancelWalletOrder</a> (bool sell, address owner, uint256 user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="memdesc:ac88e333c486fbc0bdc3d1b34f5740052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will cancel orders, may be requested only from FlexWallet.  <a href="structtvm_1_1IPriceXchg.html#ac88e333c486fbc0bdc3d1b34f5740052">More...</a><br /></td></tr>
+<tr class="separator:ac88e333c486fbc0bdc3d1b34f5740052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ade7b973940aa891576551a7e8421d"><td class="memItemLeft" align="right" valign="top"><a id="a40ade7b973940aa891576551a7e8421d"></a>
 dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IPriceXchg.html#a40ade7b973940aa891576551a7e8421d">getSells</a> ()</td></tr>
 <tr class="memdesc:a40ade7b973940aa891576551a7e8421d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get sells queue. <br /></td></tr>
@@ -112,6 +110,101 @@ dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXch
 <div class="textblock"><p><a class="el" href="classPriceXchg.html">PriceXchg</a> contract interface. </p>
 <p><a class="el" href="classPriceXchg.html">PriceXchg</a> - contract to enqueue and process tip3-tip3 exchange orders at a specific price. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af5f2cf21a19d90f7ead599c5995d1cac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5f2cf21a19d90f7ead599c5995d1cac">&#9670;&nbsp;</a></span>cancelOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cancelOrder </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; uint256 &gt;&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; uint256 &gt;&#160;</td>
+          <td class="paramname"><em>order_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Will cancel all sell/buy orders with this sender's client_addr. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sell</td><td>Cancel sell order(s) </td></tr>
+    <tr><td class="paramname">user_id</td><td>Is user_id is specified, only orders with this user_id will be canceled </td></tr>
+    <tr><td class="paramname">order_id</td><td>Is order_id is specified, only orders with this order_id will be canceled </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac88e333c486fbc0bdc3d1b34f5740052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88e333c486fbc0bdc3d1b34f5740052">&#9670;&nbsp;</a></span>cancelWalletOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cancelWalletOrder </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; uint256 &gt;&#160;</td>
+          <td class="paramname"><em>order_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Will cancel orders, may be requested only from FlexWallet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sell</td><td>Cancel sell order(s) </td></tr>
+    <tr><td class="paramname">owner</td><td>FlexWallet's owner (<a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a>) </td></tr>
+    <tr><td class="paramname">user_id</td><td>FlexWallet's public key (also, it is User Id) </td></tr>
+    <tr><td class="paramname">order_id</td><td>Is order_id is specified, only orders with this order_id will be canceled </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a34871319f9ec2ecb81871a3003855928"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34871319f9ec2ecb81871a3003855928">&#9670;&nbsp;</a></span>onTip3LendOwnership()</h2>
 

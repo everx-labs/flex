@@ -94,12 +94,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a45d7a3d0343566b9b730005a4c09923c">transferReserveTokens</a> (address wrapper, uint128 tokens, address to, uint128 evers)</td></tr>
 <tr class="memdesc:a45d7a3d0343566b9b730005a4c09923c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer of tokens from <a class="el" href="classWrapper.html">Wrapper</a>'s reserve wallet. <br /></td></tr>
 <tr class="separator:a45d7a3d0343566b9b730005a4c09923c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7077ebad426eb183b5f021327e04fbfc"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a7077ebad426eb183b5f021327e04fbfc">registerXchgPair</a> (uint256 pubkey, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, address notify_addr)</td></tr>
-<tr class="memdesc:a7077ebad426eb183b5f021327e04fbfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair)  <a href="structtvm_1_1IFlex.html#a7077ebad426eb183b5f021327e04fbfc">More...</a><br /></td></tr>
-<tr class="separator:a7077ebad426eb183b5f021327e04fbfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a4b9eb1d6dca8c86b55ace8f7b99e6d76">registerXchgPair</a> (uint256 pubkey, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
+<tr class="memdesc:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair)  <a href="structtvm_1_1IFlex.html#a4b9eb1d6dca8c86b55ace8f7b99e6d76">More...</a><br /></td></tr>
+<tr class="separator:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ac13818fd468bdddc5e1eb34f49d6ca7b">registerWrapper</a> (uint256 pubkey, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
 <tr class="memdesc:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register wrapper (returns pre-calculated address of future wrapper)  <a href="structtvm_1_1IFlex.html#ac13818fd468bdddc5e1eb34f49d6ca7b">More...</a><br /></td></tr>
 <tr class="separator:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62bcc39534f5547256e4cfadea014f2"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ac62bcc39534f5547256e4cfadea014f2">registerWrapperEver</a> (uint256 pubkey)</td></tr>
+<tr class="memdesc:ac62bcc39534f5547256e4cfadea014f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register wrapper for Ever (returns pre-calculated address of future wrapper)  <a href="structtvm_1_1IFlex.html#ac62bcc39534f5547256e4cfadea014f2">More...</a><br /></td></tr>
+<tr class="separator:ac62bcc39534f5547256e4cfadea014f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47ce04dc91ac9c8aa75adcda50e052ee"><td class="memItemLeft" align="right" valign="top"><a id="a47ce04dc91ac9c8aa75adcda50e052ee"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a47ce04dc91ac9c8aa75adcda50e052ee">approveXchgPair</a> (uint256 pubkey)</td></tr>
 <tr class="memdesc:a47ce04dc91ac9c8aa75adcda50e052ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve tip3/tip3 exchange pair. <br /></td></tr>
@@ -112,6 +115,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a794ce6f45a8d15fd9912ed7a1460dae7">approveWrapper</a> (uint256 pubkey)</td></tr>
 <tr class="memdesc:a794ce6f45a8d15fd9912ed7a1460dae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve wrapper. <br /></td></tr>
 <tr class="separator:a794ce6f45a8d15fd9912ed7a1460dae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f917682979f12f1937e50a5d024873"><td class="memItemLeft" align="right" valign="top"><a id="af0f917682979f12f1937e50a5d024873"></a>
+address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#af0f917682979f12f1937e50a5d024873">approveWrapperEver</a> (uint256 pubkey)</td></tr>
+<tr class="memdesc:af0f917682979f12f1937e50a5d024873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve wrapper. <br /></td></tr>
+<tr class="separator:af0f917682979f12f1937e50a5d024873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca9062af216200f59fa9728dd881725"><td class="memItemLeft" align="right" valign="top"><a id="a9ca9062af216200f59fa9728dd881725"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a9ca9062af216200f59fa9728dd881725">rejectWrapper</a> (uint256 pubkey)</td></tr>
 <tr class="memdesc:a9ca9062af216200f59fa9728dd881725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reject wrapper. <br /></td></tr>
@@ -254,8 +261,34 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a7077ebad426eb183b5f021327e04fbfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7077ebad426eb183b5f021327e04fbfc">&#9670;&nbsp;</a></span>registerXchgPair()</h2>
+<a id="ac62bcc39534f5547256e4cfadea014f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62bcc39534f5547256e4cfadea014f2">&#9670;&nbsp;</a></span>registerWrapperEver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">address registerWrapperEver </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>pubkey</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Request to register wrapper for Ever (returns pre-calculated address of future wrapper) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pubkey</td><td><a class="el" href="classWrapper.html">Wrapper</a>'s pubkey </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b9eb1d6dca8c86b55ace8f7b99e6d76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9eb1d6dca8c86b55ace8f7b99e6d76">&#9670;&nbsp;</a></span>registerXchgPair()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,6 +332,18 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>minmove</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>price_denum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">address&#160;</td>
           <td class="paramname"><em>notify_addr</em>&#160;</td>
         </tr>
@@ -319,6 +364,8 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">major_tip3cfg</td><td>Major tip3 configuration </td></tr>
     <tr><td class="paramname">minor_tip3cfg</td><td>Minor tip3 configuration </td></tr>
     <tr><td class="paramname">min_amount</td><td>Minimum amount of major tokens for a deal or an order </td></tr>
+    <tr><td class="paramname">minmove</td><td>Minimum move for price. </td></tr>
+    <tr><td class="paramname">price_denum</td><td>Price denominator for the pair. </td></tr>
     <tr><td class="paramname">notify_addr</td><td>Notification address (AMM) </td></tr>
   </table>
   </dd>

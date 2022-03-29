@@ -1,6 +1,5 @@
 <map id="FlexClient" name="FlexClient">
-<area shape="rect" id="node1" title="FlexClient contract. Implements IFlexClient." alt="" coords="90,171,178,197"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,231,121"/>
-<area shape="rect" id="node3" href="$structtvm_1_1DFlexClient.html" title="FlexClient persistent data struct." alt="" coords="255,95,354,121"/>
-<area shape="rect" id="node4" href="$structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="255,5,354,32"/>
+<area shape="rect" id="node1" title="FlexClient contract. Implements IFlexClient." alt="" coords="167,80,255,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,231,32"/>
+<area shape="rect" id="node3" href="$structtvm_1_1DFlexClient.html" title="FlexClient persistent data struct." alt="" coords="255,5,354,32"/>
 </map>

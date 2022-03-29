@@ -19,6 +19,8 @@ struct PriceXchgSalt {
   address     minor_reserve_wallet; ///< Minor reserve wallet.
   EversConfig ev_cfg;               ///< Processing costs configuration of Flex in native funds (evers).
   uint128     min_amount;           ///< Minimum amount of major tokens, allowed to make a deal or an order.
+  uint128     minmove;              ///< Minimum move for price.
+  uint128     price_denum;          ///< Price denominator for the pair.
   uint8       deals_limit;          ///< Limit for processed deals in one request.
   int8        workchain_id;         ///< Workchain id for the related tip3 token wallets.
 };

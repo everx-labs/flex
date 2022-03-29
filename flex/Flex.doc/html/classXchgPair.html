@@ -107,9 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a49cc759cb6f69c80768452237d909df7"><td class="memItemLeft" align="right" valign="top"><a id="a49cc759cb6f69c80768452237d909df7"></a>
 __always_inline StateInit&#160;</td><td class="memItemRight" valign="bottom"><b>getStateInit</b> (const message&lt; anyval &gt; &amp;msg)</td></tr>
 <tr class="separator:a49cc759cb6f69c80768452237d909df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8224f3ce3a0364274ba10c4c61e8fc38"><td class="memItemLeft" align="right" valign="top"><a id="a8224f3ce3a0364274ba10c4c61e8fc38"></a>
-__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>onDeploy</b> (uint128 min_amount, uint128 deploy_value, address notify_addr, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg)</td></tr>
-<tr class="separator:a8224f3ce3a0364274ba10c4c61e8fc38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf1637945fd63e07be6a2a1cec26905"><td class="memItemLeft" align="right" valign="top"><a id="adcf1637945fd63e07be6a2a1cec26905"></a>
+__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>onDeploy</b> (uint128 min_amount, uint128 minmove, uint128 price_denum, uint128 deploy_value, address notify_addr, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg)</td></tr>
+<tr class="separator:adcf1637945fd63e07be6a2a1cec26905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a140d86c0b08b48c48ea74bc9145e8e87"><td class="memItemLeft" align="right" valign="top"><a id="a140d86c0b08b48c48ea74bc9145e8e87"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getFlexAddr</b> ()</td></tr>
 <tr class="separator:a140d86c0b08b48c48ea74bc9145e8e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +122,12 @@ __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:adf2e5dd5772e9034deaa18f4081de3df"><td class="memItemLeft" align="right" valign="top"><a id="adf2e5dd5772e9034deaa18f4081de3df"></a>
 __always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>getMinAmount</b> ()</td></tr>
 <tr class="separator:adf2e5dd5772e9034deaa18f4081de3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d493ee610491a809a0e8b457ad1ba4e"><td class="memItemLeft" align="right" valign="top"><a id="a4d493ee610491a809a0e8b457ad1ba4e"></a>
+__always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>getMinmove</b> ()</td></tr>
+<tr class="separator:a4d493ee610491a809a0e8b457ad1ba4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43930a6b234f6c57d645c54d4590452"><td class="memItemLeft" align="right" valign="top"><a id="ae43930a6b234f6c57d645c54d4590452"></a>
+__always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>getPriceDenum</b> ()</td></tr>
+<tr class="separator:ae43930a6b234f6c57d645c54d4590452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20fee9ec8dd83d20889ae483a0905370"><td class="memItemLeft" align="right" valign="top"><a id="a20fee9ec8dd83d20889ae483a0905370"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getNotifyAddr</b> ()</td></tr>
 <tr class="separator:a20fee9ec8dd83d20889ae483a0905370"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,12 +137,18 @@ __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:ade83e176f2f380fab702d509e5068514"><td class="memItemLeft" align="right" valign="top"><a id="ade83e176f2f380fab702d509e5068514"></a>
 __always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getMinorReserveWallet</b> ()</td></tr>
 <tr class="separator:ade83e176f2f380fab702d509e5068514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7796641eedc1baff8a4cb4f3eb06e71"><td class="memItemLeft" align="right" valign="top"><a id="ad7796641eedc1baff8a4cb4f3eb06e71"></a>
-__always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getXchgPriceCode</b> ()</td></tr>
-<tr class="separator:ad7796641eedc1baff8a4cb4f3eb06e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a138282b109d340a2449916ca2e483db2"><td class="memItemLeft" align="right" valign="top"><a id="a138282b109d340a2449916ca2e483db2"></a>
 __always_inline <a class="el" href="structtvm_1_1XchgPairSalt.html">XchgPairSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getConfig</b> ()</td></tr>
 <tr class="separator:a138282b109d340a2449916ca2e483db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805e8704a70000f599a1a551538b378a"><td class="memItemLeft" align="right" valign="top"><a id="a805e8704a70000f599a1a551538b378a"></a>
+__always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getPriceXchgCode</b> (bool salted)</td></tr>
+<tr class="separator:a805e8704a70000f599a1a551538b378a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bb17ec1b00a546a7f5e09e1e911fe63"><td class="memItemLeft" align="right" valign="top"><a id="a6bb17ec1b00a546a7f5e09e1e911fe63"></a>
+__always_inline cell&#160;</td><td class="memItemRight" valign="bottom"><b>getPriceXchgSalt</b> ()</td></tr>
+<tr class="separator:a6bb17ec1b00a546a7f5e09e1e911fe63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984daa09d6396f0ea7e54baa5539af2a"><td class="memItemLeft" align="right" valign="top"><a id="a984daa09d6396f0ea7e54baa5539af2a"></a>
+__always_inline <a class="el" href="structtvm_1_1PriceXchgSalt.html">PriceXchgSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>preparePriceXchgSalt</b> (<a class="el" href="structtvm_1_1XchgPairSalt.html">XchgPairSalt</a> cfg)</td></tr>
+<tr class="separator:a984daa09d6396f0ea7e54baa5539af2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -168,6 +180,14 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a996c00e2b24a2d5e6f9127f59487f39d">min_amount_</a></td></tr>
 <tr class="memdesc:a996c00e2b24a2d5e6f9127f59487f39d inherit pub_attribs_structtvm_1_1DXchgPair"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum amount of major tokens for a deal or an order. <br /></td></tr>
 <tr class="separator:a996c00e2b24a2d5e6f9127f59487f39d inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd0f426dd4b29ddebd69b7926a833f5 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memItemLeft" align="right" valign="top"><a id="a1cd0f426dd4b29ddebd69b7926a833f5"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a1cd0f426dd4b29ddebd69b7926a833f5">minmove_</a></td></tr>
+<tr class="memdesc:a1cd0f426dd4b29ddebd69b7926a833f5 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum move for price. <br /></td></tr>
+<tr class="separator:a1cd0f426dd4b29ddebd69b7926a833f5 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca218b4cf43985fecea6e111a6966295 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memItemLeft" align="right" valign="top"><a id="aca218b4cf43985fecea6e111a6966295"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#aca218b4cf43985fecea6e111a6966295">price_denum_</a></td></tr>
+<tr class="memdesc:aca218b4cf43985fecea6e111a6966295 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="mdescLeft">&#160;</td><td class="mdescRight">Price denominator for the pair. <br /></td></tr>
+<tr class="separator:aca218b4cf43985fecea6e111a6966295 inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3820c023dae1c3144727a83f8fc6744a inherit pub_attribs_structtvm_1_1DXchgPair"><td class="memItemLeft" align="right" valign="top"><a id="a3820c023dae1c3144727a83f8fc6744a"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a3820c023dae1c3144727a83f8fc6744a">notify_addr_</a></td></tr>
 <tr class="memdesc:a3820c023dae1c3144727a83f8fc6744a inherit pub_attribs_structtvm_1_1DXchgPair"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification address (AMM) <br /></td></tr>

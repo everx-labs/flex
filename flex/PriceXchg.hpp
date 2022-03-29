@@ -52,20 +52,19 @@ std::optional<uint128> minor_cost(uint128 amount, price_t price) {
 
 /// tip3-tip3 exchange order info
 struct OrderInfoXchg {
-  bool    immediate_client; ///< Should this order try to be executed as a client order first (find existing corresponding orders).
-  bool    post_order;       ///< Should this order be enqueued if it doesn't already have corresponding orders.
-  uint128 original_amount;  ///< Original amount of major tokens to buy or sell.
-  uint128 amount;           ///< Current remaining amount of major tokens to buy or sell.
-  uint128 account;          ///< Remaining native funds from client to pay for processing.
-  uint128 lend_amount;      ///< Current remaining amount of lend tokens (major tokens for sell, minor tokens for buy).
+  bool      immediate_client;         ///< Should this order try to be executed as a client order first (find existing corresponding orders).
+  bool      post_order;               ///< Should this order be enqueued if it doesn't already have corresponding orders.
+  uint128   original_amount;          ///< Original amount of major tokens to buy or sell.
+  uint128   amount;                   ///< Current remaining amount of major tokens to buy or sell.
+  uint128   account;                  ///< Remaining native funds from client to pay for processing.
+  uint128   lend_amount;              ///< Current remaining amount of lend tokens (major tokens for sell, minor tokens for buy).
   addr_std_fixed tip3_wallet_provide; ///< Client tip3 wallet to provide tokens (major for sell or minor for buy).
-  addr_std_fixed tip3_wallet_receive; ///< Client tip3 wallet to receive tokens (minor for sell or major for buy).
   addr_std_fixed client_addr;         ///< Client contract address. PriceXchg will execute cancels from this address,
                                       ///<  send notifications and return the remaining native funds (evers) to this address.
-  uint32  order_finish_time;          ///< Order finish time
-  uint256 user_id;                    ///< User id
-  uint256 order_id;                   ///< Order id
-  uint64  ltime;                      ///< Logical time of starting transaction for the order
+  uint32    order_finish_time;        ///< Order finish time
+  uint256   user_id;                  ///< User id
+  uint256   order_id;                 ///< Order id
+  uint64    ltime;                    ///< Logical time of starting transaction for the order
 };
 using OrderInfoXchgWithIdx = std::pair<unsigned, OrderInfoXchg>;
 
@@ -78,7 +77,7 @@ __interface IPriceXchg {
 
   /// \brief Implementation of ITONTokenWalletNotify::onTip3LendOwnership().
   /** Tip3 wallet notifies PriceXchg contract about lent token balance. **/
-  [[internal, noaccept, answer_id]]
+  [[internal, noaccept, answer_id, deploy]]
   OrderRet onTip3LendOwnership(
     uint128     balance,          ///< Lend token balance (amount of tokens to participate in a deal)
     uint32      lend_finish_time, ///< Lend ownership finish time
@@ -92,15 +91,24 @@ __interface IPriceXchg {
   /** This function is called from the PriceXchg itself when onTip3LendOwnership processing hits deals limit.
       Or when processQueue processing hits deals limit also. **/
   [[internal, noaccept]]
-  void processQueue() = 203;
+  void processQueue() = 202;
 
-  /// Will cancel all sell orders with this sender's client_addr.
+  /// Will cancel all sell/buy orders with this sender's client_addr.
   [[internal, noaccept]]
-  void cancelSell() = 204;
+  void cancelOrder(
+    bool         sell,    ///< Cancel sell order(s)
+    opt<uint256> user_id, ///< Is user_id is specified, only orders with this user_id will be canceled
+    opt<uint256> order_id ///< Is order_id is specified, only orders with this order_id will be canceled
+  ) = 203;
 
-  /// Will cancel all buy orders with this sender's client_addr.
+  /// Will cancel orders, may be requested only from FlexWallet
   [[internal, noaccept]]
-  void cancelBuy() = 205;
+  void cancelWalletOrder(
+    bool         sell,    ///< Cancel sell order(s)
+    address      owner,   ///< FlexWallet's owner (FlexClient)
+    uint256      user_id, ///< FlexWallet's public key (also, it is User Id)
+    opt<uint256> order_id ///< Is order_id is specified, only orders with this order_id will be canceled
+  ) = 205;
 
   /// Get sells queue
   [[getter]]
@@ -118,7 +126,7 @@ using IPriceXchgPtr = handle<IPriceXchg>;
 
 /// PriceXchg persistent data struct
 struct DPriceXchg {
-  price_t price_;        ///< Price in minor tokens for one minor token - rational number
+  uint128 price_num_;    ///< Price numerator in minor tokens for one minor token - rational number, denominator kept in config.
   uint128 sells_amount_; ///< Common amount of major tokens to sell.
                          /// \warning May be not strictly actual because of possible expired orders in the queue.
   uint128 buys_amount_;  /// Common amount of major tokens to buy.
@@ -134,16 +142,16 @@ __interface EPriceXchg {
 };
 
 /// Prepare StateInit struct and std address to deploy PriceXchg contract
-__always_inline
-std::pair<StateInit, uint256> prepare_price_xchg_state_init_and_addr(DPriceXchg price_data, cell price_code) {
-  cell price_data_cl = prepare_persistent_data<IPriceXchg, void, DPriceXchg>({}, price_data);
-  StateInit price_init {
-    /*split_depth*/{}, /*special*/{},
-    price_code, price_data_cl, /*library*/{}
-  };
-  cell price_init_cl = build(price_init).make_cell();
-  return { price_init, uint256(tvm_hash(price_init_cl)) };
-}
+template<>
+struct preparer<IPriceXchg, DPriceXchg> {
+  __always_inline
+  static std::pair<StateInit, uint256> execute(DPriceXchg data, cell code) {
+    cell data_cl = prepare_persistent_data<IPriceXchg, void>({}, data);
+    StateInit init { {}, {}, code, data_cl, {} };
+    cell init_cl = build(init).make_cell();
+    return { init, uint256(tvm_hash(init_cl)) };
+  }
+};
 
 } // namespace tvm
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Flex: Member List</title>
+<title>Flex: preparer&lt; IPriceXchg, DPriceXchg &gt; Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,26 +62,35 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tvm</b></li><li class="navelem"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></li>  </ul>
+<li class="navelem"><b>tvm</b></li><li class="navelem"><a class="el" href="structtvm_1_1preparer_3_01IPriceXchg_00_01DPriceXchg_01_4.html">preparer&lt; IPriceXchg, DPriceXchg &gt;</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="structtvm_1_1preparer_3_01IPriceXchg_00_01DPriceXchg_01_4-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">FlexLendPayloadArgs Member List</div>  </div>
+<div class="title">preparer&lt; IPriceXchg, DPriceXchg &gt; Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a81fd0a63449549bae8b00124fa8f306a">amount</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a84bdf6836e33e757688ca30cac530006">client_addr</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a7b90a263db158bb208f0ddab9b13865a">immediate_client</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#ae6d6ebd73a4e155310cabcbbfc421e55">order_id</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a7653b905caff8dda460e5a371b01de54">post_order</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a9917d64bcabebb26d1bfd838ff1c361a">receive_tip3_wallet</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#a6749b0161964dd9693970b50c2125935">sell</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html#af39d2f3a9bbb1aba68fb718896176bda">user_id</a></td><td class="entry"><a class="el" href="structtvm_1_1FlexLendPayloadArgs.html">FlexLendPayloadArgs</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<p>Prepare StateInit struct and std address to deploy <a class="el" href="classPriceXchg.html">PriceXchg</a> contract.  
+ <a href="structtvm_1_1preparer_3_01IPriceXchg_00_01DPriceXchg_01_4.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="PriceXchg_8hpp_source.html">PriceXchg.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a2fb927cd48ca6f0437ed0ba25c79ce46"><td class="memItemLeft" align="right" valign="top"><a id="a2fb927cd48ca6f0437ed0ba25c79ce46"></a>
+static __always_inline std::pair&lt; StateInit, uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>execute</b> (<a class="el" href="structtvm_1_1DPriceXchg.html">DPriceXchg</a> data, cell code)</td></tr>
+<tr class="separator:a2fb927cd48ca6f0437ed0ba25c79ce46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Prepare StateInit struct and std address to deploy <a class="el" href="classPriceXchg.html">PriceXchg</a> contract. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="PriceXchg_8hpp_source.html">PriceXchg.hpp</a></li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

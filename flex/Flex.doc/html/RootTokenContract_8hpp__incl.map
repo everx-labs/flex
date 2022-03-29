@@ -1,10 +1,12 @@
 <map id="RootTokenContract.hpp" name="RootTokenContract.hpp">
-<area shape="rect" id="node1" title="RootTokenContract contract interfaces and data&#45;structs. Compiles into two contract versions: RootToke..." alt="" coords="507,5,679,32"/>
-<area shape="rect" id="node2" href="$TONTokenWallet_8hpp.html" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="515,80,671,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,162,200,189"/>
-<area shape="rect" id="node4" title=" " alt="" coords="225,162,367,189"/>
-<area shape="rect" id="node5" title=" " alt="" coords="391,162,574,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="598,155,813,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="837,162,1016,189"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1040,162,1224,189"/>
+<area shape="rect" id="node1" title="RootTokenContract contract interfaces and data&#45;structs. Compiles into two contract versions: RootToke..." alt="" coords="717,5,889,32"/>
+<area shape="rect" id="node2" href="$TONTokenWallet_8hpp.html" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="627,95,783,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="808,80,995,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,191,200,218"/>
+<area shape="rect" id="node4" title=" " alt="" coords="225,191,367,218"/>
+<area shape="rect" id="node5" title=" " alt="" coords="391,191,574,218"/>
+<area shape="rect" id="node6" title=" " alt="" coords="598,184,813,225"/>
+<area shape="rect" id="node7" title=" " alt="" coords="837,191,1016,218"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1040,191,1224,218"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1248,191,1437,218"/>
 </map>

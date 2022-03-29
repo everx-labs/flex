@@ -11,14 +11,17 @@
 #ifdef TIP3_ENABLE_BURN
 #include "Wrapper.hpp"
 #endif
+#ifdef TIP3_ENABLE_LEND_OWNERSHIP
+#include "PriceXchg.hpp"
+#endif
 
 #include <tvm/contract.hpp>
 #include <tvm/contract_handle.hpp>
 #include <tvm/default_support_functions.hpp>
 #include <tvm/suffixes.hpp>
 #include <tvm/schema/parse_chain_static.hpp>
+#include <tvm/schema/build_chain_static.hpp>
 
-#include "FlexTransferPayloadArgs.hpp"
 #include "FlexLendPayloadArgs.hpp"
 
 using namespace tvm;
@@ -66,66 +69,43 @@ public:
     static constexpr unsigned finish_time_is_out_of_lend_time      = 119; ///< Finish time is out of lend time
     static constexpr unsigned lend_owners_overlimit                = 120; ///< Lend owners overlimit
     static constexpr unsigned zero_lend_balance                    = 121; ///< Zero lend balance
-    static constexpr unsigned wrong_user_id                        = 122; ///< Wrong user id
+    static constexpr unsigned wrong_user_id                        = 122; ///< Wrong user id (differ from wallet's pubkey)
+    static constexpr unsigned wrong_client_addr                    = 123; ///< Wrong client address (differ from wallet's owner)
+    static constexpr unsigned internal_owner_unset                 = 124; ///< Internal (contract) owner is not set
+    static constexpr unsigned restriction_not_set                  = 125; ///< Restriction not set (call setTradeRestriction before)
+    static constexpr unsigned wrong_flex_address                   = 126; ///< Wrong flex address
+    static constexpr unsigned wrong_price_xchg_code                = 127; ///< Wrong PriceXchg code
   };
 
   __always_inline
   void transfer(
-    address answer_addr,
-    address to,
-    uint128 tokens,
-    uint128 evers,
-    uint128 return_ownership
-  ) {
-    transfer_impl(answer_addr, to, tokens, evers, return_ownership, false, builder().endc());
-  }
-
-  __always_inline
-  void transferWithNotify(
-    address answer_addr,
-    address to,
-    uint128 tokens,
-    uint128 evers,
-    uint128 return_ownership,
-    cell    payload
+    address_opt answer_addr,
+    address     to,
+    uint128     tokens,
+    uint128     evers,
+    uint128     return_ownership,
+    opt<cell>   notify_payload
   ) {
     // performing `tail call` - requesting dest to answer to our caller
     temporary_data::setglob(global_id::answer_id, return_func_id()->get());
-    transfer_impl(answer_addr, to, tokens, evers, return_ownership, true, payload);
+    transfer_impl(answer_addr, to, tokens, evers, return_ownership, notify_payload);
   }
 
-#ifdef TIP3_DEPLOY_TRANSFER
   __always_inline
   void transferToRecipient(
-    address     answer_addr,
-    uint256     recipient_pubkey,
-    address_opt recipient_owner,
-    uint128     tokens,
-    uint128     evers,
-    bool        deploy,
-    uint128     return_ownership
-  ) {
-    transfer_to_recipient_impl(answer_addr, recipient_pubkey, recipient_owner,
-                               tokens, evers, deploy, return_ownership, false, builder().endc());
-  }
-
-  __always_inline
-  void transferToRecipientWithNotify(
-    address     answer_addr,
-    uint256     recipient_pubkey,
-    address_opt recipient_owner,
+    address_opt answer_addr,
+    Tip3Creds   to,
     uint128     tokens,
     uint128     evers,
     bool        deploy,
     uint128     return_ownership,
-    cell        payload
+    opt<cell>   notify_payload
   ) {
     // performing `tail call` - requesting dest to answer to our caller
     temporary_data::setglob(global_id::answer_id, return_func_id()->get());
-    transfer_to_recipient_impl(answer_addr, recipient_pubkey, recipient_owner,
-                               tokens, evers, deploy, return_ownership, true, payload);
+    transfer_to_recipient_impl(answer_addr, to.pubkey, to.owner,
+                               tokens, evers, deploy, return_ownership, notify_payload);
   }
-#endif // TIP3_DEPLOY_TRANSFER
 
   __always_inline
   uint128 requestBalance() {
@@ -135,7 +115,7 @@ public:
   }
 
   __always_inline
-  bool accept(
+  bool acceptMint(
     uint128 tokens,
     address answer_addr,
     uint128 keep_evers
@@ -156,13 +136,12 @@ public:
   }
 
   __always_inline
-  void internalTransfer(
+  void acceptTransfer(
     uint128     tokens,
     address     answer_addr,
     uint256     sender_pubkey,
     address_opt sender_owner,
-    bool        notify_receiver,
-    cell        payload
+    opt<cell>   notify_payload
   ) {
     uint256 expected_addr = expected_address(sender_pubkey, sender_owner);
     auto [sender, value_gr] = int_sender_and_value();
@@ -172,11 +151,11 @@ public:
 
     tvm_rawreserve(tvm_balance() - value_gr(), rawreserve_flag::up_to);
     // If notify_receiver is specified, we send notification to the internal owner
-    if (notify_receiver && owner_address_) {
+    if (notify_payload && owner_address_) {
       // performing `tail call` - requesting dest to answer to our caller
       temporary_data::setglob(global_id::answer_id, return_func_id()->get());
       ITONTokenWalletNotifyPtr(*owner_address_)(Evers(0), SEND_ALL_GAS).
-        onTip3Transfer(balance_, tokens, sender_pubkey, sender_owner, payload, answer_addr);
+        onTip3Transfer(balance_, tokens, sender_pubkey, sender_owner, *notify_payload, answer_addr);
     } else {
       // In some cases (allowance request, for example) answer_addr may be this contract
       if (answer_addr != address{tvm_myaddr()})
@@ -248,17 +227,21 @@ public:
   }
 
   __always_inline
-  void lendOwnership(
-    address answer_addr,
-    uint128 evers,
-    address dest,
-    uint128 lend_balance,
-    uint32  lend_finish_time,
-    cell    deploy_init_cl,
-    cell    payload
+  void makeOrder(
+    address_opt         answer_addr,
+    uint128             evers,
+    uint128             lend_balance,
+    uint32              lend_finish_time,
+    uint128             price_num,
+    cell                unsalted_price_code,
+    cell                salt,
+    FlexLendPayloadArgs args
   ) {
     require(lend_finish_time > tvm_now(), error_code::finish_time_must_be_greater_than_now);
     require(lend_balance > 0, error_code::zero_lend_balance);
+    require(!!restriction_, error_code::restriction_not_set);
+    require(parse<address>(salt.ctos()) == restriction_->flex, error_code::wrong_flex_address);
+    require(tvm_hash(unsalted_price_code) == restriction_->unsalted_price_code_hash, error_code::wrong_price_xchg_code);
 
 #ifdef TIP3_ENABLE_ALLOWANCE
     require(!allowance_, error_code::allowance_is_set);
@@ -272,11 +255,24 @@ public:
       .required_tokens                          = lend_balance,
       .required_evers                           = evers + min_transfer_costs
     });
+
+    auto salted_price_code = tvm_add_code_salt_cell(salt, unsalted_price_code);
+
+    DPriceXchg price_data {
+      .price_num_ = price_num,
+      .sells_amount_ = 0u128,
+      .buys_amount_  = 0u128,
+      .sells_ = {},
+      .buys_  = {}
+    };
+    auto [state_init, std_addr] = prepare<IPriceXchg>(price_data, salted_price_code);
+    auto dest = address::make_std(workchain_id_, std_addr);
+
     require(lend_owners_.size() < c_max_lend_owners || lend_owners_.contains({dest}), error_code::lend_owners_overlimit);
 
     auto user_id = wallet_pubkey_;
-    auto args = parse_chain_static<FlexLendPayloadArgs>(parser(payload.ctos()));
     require(args.user_id == user_id, error_code::wrong_user_id);
+    require(owner_address_ && (args.client_addr == *owner_address_), error_code::wrong_client_addr);
 
     auto answer_addr_fxd = fixup_answer_addr(answer_addr);
 
@@ -292,24 +288,30 @@ public:
 
     unsigned msg_flags = prepare_transfer_message_flags(evers);
 
-    auto deploy_init_sl = deploy_init_cl.ctos();
-    StateInit deploy_init;
-    if (!deploy_init_sl.empty())
-      deploy_init = parse<StateInit>(deploy_init_sl);
+    // performing `tail call` - requesting dest to answer to our caller
+    temporary_data::setglob(global_id::answer_id, return_func_id()->get());
+    ITONTokenWalletNotifyPtr(dest).deploy(state_init, Evers(evers.get()), msg_flags).
+      onTip3LendOwnership(lend_balance, lend_finish_time,
+                          wallet_pubkey_, owner_address_, build_chain_static(args), answer_addr_fxd);
+  }
 
-    if (deploy_init.code && deploy_init.data) {
-      // performing `tail call` - requesting dest to answer to our caller
-      temporary_data::setglob(global_id::answer_id, return_func_id()->get());
-      ITONTokenWalletNotifyPtr(dest).deploy(deploy_init, Evers(evers.get()), msg_flags).
-        onTip3LendOwnership(lend_balance, lend_finish_time,
-                            wallet_pubkey_, owner_address_, payload, answer_addr_fxd);
-    } else {
-      // performing `tail call` - requesting dest to answer to our caller
-      temporary_data::setglob(global_id::answer_id, return_func_id()->get());
-      ITONTokenWalletNotifyPtr(dest)(Evers(evers.get()), msg_flags).
-        onTip3LendOwnership(lend_balance, lend_finish_time,
-                            wallet_pubkey_, owner_address_, payload, answer_addr_fxd);
-    }
+  __always_inline
+  void cancelOrder(
+    uint128      evers,
+    address      price,
+    bool         sell,
+    opt<uint256> order_id
+  ) {
+    require(!!owner_address_, error_code::internal_owner_unset);
+    check_owner({
+      .allowed_for_original_owner_in_lend_state = true,
+      .allowed_lend_pubkey                      = true,
+      .allowed_lend_owner                       = false,
+      .required_evers                           = evers
+    });
+    unsigned msg_flags = prepare_transfer_message_flags(evers);
+    IPriceXchgPtr(price)(Evers(evers.get()), msg_flags).
+      cancelWalletOrder(sell, *owner_address_, wallet_pubkey_, order_id);
   }
 
   __always_inline
@@ -331,6 +333,19 @@ public:
       v->lend_balance -= tokens;
       lend_owners_.set_at({sender}, *v);
     }
+  }
+
+  __always_inline
+  void setTradeRestriction(
+    address flex,
+    uint256 unsalted_price_code_hash
+  ) {
+    check_owner({
+      .allowed_for_original_owner_in_lend_state = true,
+      .allowed_lend_pubkey                      = false,
+      .allowed_lend_owner                       = false
+    });
+    restriction_ = {flex, unsalted_price_code_hash};
   }
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
 
@@ -404,34 +419,22 @@ public:
 
   __always_inline
   void transferFrom(
-    address answer_addr,
-    address from,
-    address to,
-    uint128 tokens,
-    uint128 evers
+    address_opt answer_addr,
+    address     from,
+    address     to,
+    uint128     tokens,
+    uint128     evers,
+    opt<cell>   notify_payload
   ) {
-    transfer_from_impl(answer_addr, from, to, tokens, evers, false, builder().endc());
+    transfer_from_impl(answer_addr, from, to, tokens, evers, notify_payload);
   }
 
   __always_inline
-  void transferFromWithNotify(
-    address answer_addr,
-    address from,
-    address to,
-    uint128 tokens,
-    uint128 evers,
-    cell    payload
-  ) {
-    transfer_from_impl(answer_addr, from, to, tokens, evers, true, payload);
-  }
-
-  __always_inline
-  void internalTransferFrom(
-    address answer_addr,
-    address to,
-    uint128 tokens,
-    bool    notify_receiver,
-    cell    payload
+  void acceptTransferFrom(
+    address   answer_addr,
+    address   to,
+    uint128   tokens,
+    opt<cell> notify_payload
   ) {
     require(!!allowance_, error_code::no_allowance_set);
     require(int_sender() == allowance_->spender, error_code::wrong_spender);
@@ -440,8 +443,8 @@ public:
 
     ITONTokenWalletPtr dest_wallet(to);
     tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
-    dest_wallet(Evers(0), SEND_ALL_GAS).
-      internalTransfer(tokens, answer_addr, wallet_pubkey_, owner_address_, notify_receiver, payload);
+    dest_wallet(0_ev, SEND_ALL_GAS).
+      acceptTransfer(tokens, answer_addr, wallet_pubkey_, owner_address_, notify_payload);
 
     allowance_->remainingTokens -= tokens;
     balance_ -= tokens;
@@ -467,9 +470,9 @@ public:
     require(p.ldi(32) == -1, error_code::wrong_bounced_header);
     auto [opt_hdr, =p] = parse_continue<abiv2::internal_msg_header>(p);
     require(!!opt_hdr, error_code::wrong_bounced_header);
-    // If it is bounced internalTransferFrom, do nothing
+    // If it is bounced acceptTransferFrom, do nothing
 #ifdef TIP3_ENABLE_ALLOWANCE
-    if (opt_hdr->function_id == id_v<&ITONTokenWallet::internalTransferFrom>)
+    if (opt_hdr->function_id == id_v<&ITONTokenWallet::acceptTransferFrom>)
       return 0;
 #endif
 
@@ -497,14 +500,14 @@ public:
     if (false) {
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
     } else {
-      // Otherwise, it should be bounced internalTransfer
-      require(opt_hdr->function_id == id_v<&ITONTokenWallet::internalTransfer>,
+      // Otherwise, it should be bounced acceptTransfer
+      require(opt_hdr->function_id == id_v<&ITONTokenWallet::acceptTransfer>,
               error_code::wrong_bounced_header);
-      using Args = args_struct_t<&ITONTokenWallet::internalTransfer>;
+      using Args = args_struct_t<&ITONTokenWallet::acceptTransfer>;
       static_assert(std::is_same_v<decltype(Args{}.tokens), uint128>);
 
       auto [answer_id, =p] = parse_continue<uint32>(p);
-      // Parsing only first tokens variable internalTransfer, other arguments won't fit into bounced response
+      // Parsing only first tokens variable acceptTransfer, other arguments won't fit into bounced response
       auto bounced_val = parse<uint128>(p, error_code::wrong_bounced_args);
       persist.balance_ += bounced_val;
     }
@@ -521,8 +524,8 @@ public:
   DEFAULT_SUPPORT_FUNCTIONS(ITONTokenWallet, wallet_replay_protection_t)
 private:
   __always_inline
-  void transfer_impl(address answer_addr, address to, uint128 tokens, uint128 evers,
-                     uint128 return_ownership, bool send_notify, cell payload) {
+  void transfer_impl(address_opt answer_addr, address to, uint128 tokens, uint128 evers,
+                     uint128 return_ownership, opt<cell> notify_payload) {
     check_transfer_requires(tokens, evers, return_ownership);
     // Transfer to zero address is not allowed.
     require(std::get<addr_std>(to()).address != 0, error_code::transfer_to_zero_address);
@@ -533,16 +536,15 @@ private:
     unsigned msg_flags = prepare_transfer_message_flags(evers);
     ITONTokenWalletPtr dest_wallet(to);
     dest_wallet(Evers(evers.get()), msg_flags).
-      internalTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, send_notify, payload);
+      acceptTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, notify_payload);
     update_spent_balance(tokens);
   }
 
-#ifdef TIP3_DEPLOY_TRANSFER
   __always_inline
-  void transfer_to_recipient_impl(address answer_addr,
+  void transfer_to_recipient_impl(address_opt answer_addr,
                                   uint256 recipient_pubkey, address_opt recipient_owner,
                                   uint128 tokens, uint128 evers, bool deploy,
-                                  uint128 return_ownership, bool send_notify, cell payload) {
+                                  uint128 return_ownership, opt<cell> notify_payload) {
     check_transfer_requires(tokens, evers, return_ownership);
     tvm_accept();
 
@@ -553,19 +555,18 @@ private:
     ITONTokenWalletPtr dest_wallet(dest);
     if (deploy) {
       dest_wallet.deploy(wallet_init, Evers(evers.get()), msg_flags).
-        internalTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, send_notify, payload);
+        acceptTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, notify_payload);
     } else {
       dest_wallet(Evers(evers.get()), msg_flags).
-        internalTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, send_notify, payload);
+        acceptTransfer(tokens, answer_addr_fxd, wallet_pubkey_, owner_address_, notify_payload);
     }
     update_spent_balance(tokens);
   }
-#endif // TIP3_DEPLOY_TRANSFER
 
 #ifdef TIP3_ENABLE_ALLOWANCE
   __always_inline
-  void transfer_from_impl(address answer_addr, address from, address to,
-                          uint128 tokens, uint128 evers, bool send_notify, cell payload) {
+  void transfer_from_impl(address_opt answer_addr, address from, address to,
+                          uint128 tokens, uint128 evers, opt<cell> notify_payload) {
     check_owner({
       .allowed_for_original_owner_in_lend_state = false,
       .allowed_lend_pubkey                      = false,
@@ -578,21 +579,21 @@ private:
 
     ITONTokenWalletPtr dest_wallet(from);
     dest_wallet(Evers(evers.get()), msg_flags).
-      internalTransferFrom(answer_addr_fxd, to, tokens, send_notify, payload);
+      acceptTransferFrom(answer_addr_fxd, to, tokens, notify_payload);
   }
 #endif // TIP3_ENABLE_ALLOWANCE
 
   // If zero answer_addr is specified, it is corrected to incoming sender (for internal message),
   // or this contract address (for external message)
   __always_inline
-  address fixup_answer_addr(address answer_addr) {
-    if (std::get<addr_std>(answer_addr()).address == 0) {
+  address fixup_answer_addr(address_opt answer_addr) {
+    if (!answer_addr) {
       if constexpr (Internal)
         return address{int_sender()};
       else
-        return address{tvm_myaddr()};
+        return tvm_myaddr();
     }
-    return answer_addr;
+    return *answer_addr;
   }
 
   __always_inline
@@ -637,10 +638,7 @@ private:
       0u128, root_pubkey_, root_address_,
       sender_pubkey, sender_owner,
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
-      {}, {},
-#endif
-#ifdef TIP3_DEPLOY_TRANSFER
-      code_,
+      {}, {}, {},
 #endif
       code_hash_, code_depth_,
 #ifdef TIP3_ENABLE_ALLOWANCE
@@ -653,7 +651,6 @@ private:
     return tvm_state_init_hash(code_hash_, uint256(tvm_hash(data_cl)), code_depth_, uint16(data_cl.cdepth()));
   }
 
-#ifdef TIP3_DEPLOY_TRANSFER
   __always_inline
   std::pair<StateInit, address> calc_wallet_init(uint256 pubkey, address_opt owner) {
     DTONTokenWallet wallet_data {
@@ -661,19 +658,17 @@ private:
       0u128, root_pubkey_, root_address_,
       pubkey, owner,
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
-      {}, {},
+      {}, {}, {},
 #endif
-      code_,
       code_hash_, code_depth_,
 #ifdef TIP3_ENABLE_ALLOWANCE
       {},
 #endif
       workchain_id_
     };
-    auto [init, hash] = prepare_wallet_state_init_and_addr(wallet_data, code_);
+    auto [init, hash] = prepare_wallet_state_init_and_addr(wallet_data, tvm_mycode());
     return { init, address::make_std(workchain_id_, hash) };
   }
-#endif // TIP3_DEPLOY_TRANSFER
 
   __always_inline
   std::tuple<opt<lend_pubkey>, lend_owners_array, uint128> filter_lend_arrays() {

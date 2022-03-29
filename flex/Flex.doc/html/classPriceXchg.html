@@ -85,27 +85,27 @@ Collaboration diagram for PriceXchg:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPriceXchg__coll__graph.png" border="0" usemap="#PriceXchg_coll__map" alt="Collaboration graph"/></div>
 <map name="PriceXchg_coll__map" id="PriceXchg_coll__map">
-<area shape="rect" title=" " alt="" coords="89,171,176,197"/>
-<area shape="rect" title=" " alt="" coords="5,95,228,121"/>
-<area shape="rect" href="structtvm_1_1DPriceXchg.html" title="PriceXchg persistent data struct." alt="" coords="253,95,349,121"/>
-<area shape="rect" href="structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="245,5,357,32"/>
+<area shape="rect" title=" " alt="" coords="165,80,252,107"/>
+<area shape="rect" title=" " alt="" coords="5,5,228,32"/>
+<area shape="rect" href="structtvm_1_1DPriceXchg.html" title="PriceXchg persistent data struct." alt="" coords="253,5,349,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6804f6ba10dc09efb77c1f0b803328a8"><td class="memItemLeft" align="right" valign="top"><a id="a6804f6ba10dc09efb77c1f0b803328a8"></a>
-__always_inline <a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onTip3LendOwnership</b> (uint128 balance, uint32 lend_finish_time, uint256 pubkey, address_opt owner, cell payload, address answer_addr)</td></tr>
+__always_inline <a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPriceXchg.html#a6804f6ba10dc09efb77c1f0b803328a8">onTip3LendOwnership</a> (uint128 balance, uint32 lend_finish_time, uint256 pubkey, address_opt owner, cell payload, address answer_addr)</td></tr>
+<tr class="memdesc:a6804f6ba10dc09efb77c1f0b803328a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy is only allowed with [[deploy]] function call. <br /></td></tr>
 <tr class="separator:a6804f6ba10dc09efb77c1f0b803328a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1a239ae5201e1f7df01324ea4dc7fbd"><td class="memItemLeft" align="right" valign="top"><a id="ae1a239ae5201e1f7df01324ea4dc7fbd"></a>
 __always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>processQueue</b> ()</td></tr>
 <tr class="separator:ae1a239ae5201e1f7df01324ea4dc7fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac819007bb52f99ae2a94bdad4f9da70d"><td class="memItemLeft" align="right" valign="top"><a id="ac819007bb52f99ae2a94bdad4f9da70d"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelSell</b> ()</td></tr>
-<tr class="separator:ac819007bb52f99ae2a94bdad4f9da70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8989a235f57f3681794a8154b7d51c17"><td class="memItemLeft" align="right" valign="top"><a id="a8989a235f57f3681794a8154b7d51c17"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelBuy</b> ()</td></tr>
-<tr class="separator:a8989a235f57f3681794a8154b7d51c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a582eea80659afd4ee94985213eecba48"><td class="memItemLeft" align="right" valign="top"><a id="a582eea80659afd4ee94985213eecba48"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelOrder</b> (bool sell, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="separator:a582eea80659afd4ee94985213eecba48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a991166da4b31046f8cb7cba4e1e3c"><td class="memItemLeft" align="right" valign="top"><a id="ad2a991166da4b31046f8cb7cba4e1e3c"></a>
+__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelWalletOrder</b> (bool sell, address owner, uint256 user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="separator:ad2a991166da4b31046f8cb7cba4e1e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cc1bfd7fa4a30252876fa658d964c26"><td class="memItemLeft" align="right" valign="top"><a id="a5cc1bfd7fa4a30252876fa658d964c26"></a>
 __always_inline <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ev_cfg</b> ()</td></tr>
 <tr class="separator:a5cc1bfd7fa4a30252876fa658d964c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,10 +128,10 @@ static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_structtvm_1_1DPriceXchg"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structtvm_1_1DPriceXchg')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structtvm_1_1DPriceXchg.html">DPriceXchg</a></td></tr>
-<tr class="memitem:a37747fafcf14070291c7bc8d17eed84f inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memItemLeft" align="right" valign="top"><a id="a37747fafcf14070291c7bc8d17eed84f"></a>
-<a class="el" href="structtvm_1_1RationalValue.html">price_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DPriceXchg.html#a37747fafcf14070291c7bc8d17eed84f">price_</a></td></tr>
-<tr class="memdesc:a37747fafcf14070291c7bc8d17eed84f inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="mdescLeft">&#160;</td><td class="mdescRight">Price in minor tokens for one minor token - rational number. <br /></td></tr>
-<tr class="separator:a37747fafcf14070291c7bc8d17eed84f inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b6e87081f2ff556fe8d9b7b5565e9c inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memItemLeft" align="right" valign="top"><a id="ae3b6e87081f2ff556fe8d9b7b5565e9c"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DPriceXchg.html#ae3b6e87081f2ff556fe8d9b7b5565e9c">price_num_</a></td></tr>
+<tr class="memdesc:ae3b6e87081f2ff556fe8d9b7b5565e9c inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="mdescLeft">&#160;</td><td class="mdescRight">Price numerator in minor tokens for one minor token - rational number, denominator kept in config. <br /></td></tr>
+<tr class="separator:ae3b6e87081f2ff556fe8d9b7b5565e9c inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a020ccfc1616a4ebe3767b9133780def9 inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memItemLeft" align="right" valign="top">uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DPriceXchg.html#a020ccfc1616a4ebe3767b9133780def9">sells_amount_</a></td></tr>
 <tr class="separator:a020ccfc1616a4ebe3767b9133780def9 inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af681580215a70ec415193d082b4030cb inherit pub_attribs_structtvm_1_1DPriceXchg"><td class="memItemLeft" align="right" valign="top"><a id="af681580215a70ec415193d082b4030cb"></a>

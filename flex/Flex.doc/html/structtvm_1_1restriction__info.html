@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Flex: FlexDeployWalletArgs Struct Reference</title>
+<title>Flex: restriction_info Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,91 +62,71 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tvm</b></li><li class="navelem"><a class="el" href="structtvm_1_1FlexDeployWalletArgs.html">FlexDeployWalletArgs</a></li>  </ul>
+<li class="navelem"><b>tvm</b></li><li class="navelem"><a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structtvm_1_1FlexDeployWalletArgs-members.html">List of all members</a>  </div>
+<a href="structtvm_1_1restriction__info-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">FlexDeployWalletArgs Struct Reference</div>  </div>
+<div class="title">restriction_info Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Arguments to deploy wallet. Should be attached as a payload cell in transfer notification.  
- <a href="structtvm_1_1FlexDeployWalletArgs.html#details">More...</a></p>
+<p>Restrictions to allow orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash.  
+ <a href="structtvm_1_1restriction__info.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Wrapper_8hpp_source.html">Wrapper.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="TONTokenWallet_8hpp_source.html">TONTokenWallet.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a873585bb6128ec69e3e0c894fa0a354a"><td class="memItemLeft" align="right" valign="top"><a id="a873585bb6128ec69e3e0c894fa0a354a"></a>
-uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1FlexDeployWalletArgs.html#a873585bb6128ec69e3e0c894fa0a354a">pubkey</a></td></tr>
-<tr class="memdesc:a873585bb6128ec69e3e0c894fa0a354a"><td class="mdescLeft">&#160;</td><td class="mdescRight">New wallet's public key. <br /></td></tr>
-<tr class="separator:a873585bb6128ec69e3e0c894fa0a354a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b7121209e7361243cd9a59b2e4380b"><td class="memItemLeft" align="right" valign="top"><a id="a36b7121209e7361243cd9a59b2e4380b"></a>
-address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1FlexDeployWalletArgs.html#a36b7121209e7361243cd9a59b2e4380b">owner</a></td></tr>
-<tr class="memdesc:a36b7121209e7361243cd9a59b2e4380b"><td class="mdescLeft">&#160;</td><td class="mdescRight">New wallet's internal owner address. <br /></td></tr>
-<tr class="separator:a36b7121209e7361243cd9a59b2e4380b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae25d810e33ed3271bd167df43f1feab5"><td class="memItemLeft" align="right" valign="top"><a id="ae25d810e33ed3271bd167df43f1feab5"></a>
-uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1FlexDeployWalletArgs.html#ae25d810e33ed3271bd167df43f1feab5">evers</a></td></tr>
-<tr class="memdesc:ae25d810e33ed3271bd167df43f1feab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evers to be sent to the deployable wallet. <br /></td></tr>
-<tr class="separator:ae25d810e33ed3271bd167df43f1feab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdb53a6785727c76d2bc343130c52006"><td class="memItemLeft" align="right" valign="top"><a id="afdb53a6785727c76d2bc343130c52006"></a>
+address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1restriction__info.html#afdb53a6785727c76d2bc343130c52006">flex</a></td></tr>
+<tr class="memdesc:afdb53a6785727c76d2bc343130c52006"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root address. <br /></td></tr>
+<tr class="separator:afdb53a6785727c76d2bc343130c52006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa017e71fb110c82cd780a2b69e19e5e9"><td class="memItemLeft" align="right" valign="top"><a id="aa017e71fb110c82cd780a2b69e19e5e9"></a>
+uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1restriction__info.html#aa017e71fb110c82cd780a2b69e19e5e9">unsalted_price_code_hash</a></td></tr>
+<tr class="memdesc:aa017e71fb110c82cd780a2b69e19e5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classPriceXchg.html">PriceXchg</a> code hash (unsalted) <br /></td></tr>
+<tr class="separator:aa017e71fb110c82cd780a2b69e19e5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Arguments to deploy wallet. Should be attached as a payload cell in transfer notification. </p>
+<div class="textblock"><p>Restrictions to allow orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae25d810e33ed3271bd167df43f1feab5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae25d810e33ed3271bd167df43f1feab5">&#9670;&nbsp;</a></span>evers</h2>
+<a id="afdb53a6785727c76d2bc343130c52006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdb53a6785727c76d2bc343130c52006">&#9670;&nbsp;</a></span>flex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint128 evers</td>
+          <td class="memname">address flex</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Evers to be sent to the deployable wallet. </p>
+<p><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root address. </p>
 
 </div>
 </div>
-<a id="a36b7121209e7361243cd9a59b2e4380b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36b7121209e7361243cd9a59b2e4380b">&#9670;&nbsp;</a></span>owner</h2>
+<a id="aa017e71fb110c82cd780a2b69e19e5e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa017e71fb110c82cd780a2b69e19e5e9">&#9670;&nbsp;</a></span>unsalted_price_code_hash</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">address_opt owner</td>
+          <td class="memname">uint256 unsalted_price_code_hash</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>New wallet's internal owner address. </p>
-
-</div>
-</div>
-<a id="a873585bb6128ec69e3e0c894fa0a354a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a873585bb6128ec69e3e0c894fa0a354a">&#9670;&nbsp;</a></span>pubkey</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint256 pubkey</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>New wallet's public key. </p>
+<p><a class="el" href="classPriceXchg.html">PriceXchg</a> code hash (unsalted) </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="Wrapper_8hpp_source.html">Wrapper.hpp</a></li>
+<li><a class="el" href="TONTokenWallet_8hpp_source.html">TONTokenWallet.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

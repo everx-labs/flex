@@ -87,7 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a9a0ce937d7dd9c43dc0c139af521c92c">deployEmptyWallet</a> (uint256 pubkey, address_opt owner, uint128 evers)</td></tr>
 <tr class="memdesc:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy empty wallet.  <a href="structtvm_1_1IWrapper.html#a9a0ce937d7dd9c43dc0c139af521c92c">More...</a><br /></td></tr>
 <tr class="separator:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtvm_1_1WrapperRet.html">WrapperRet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
+<tr class="memitem:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="memItemLeft" align="right" valign="top">WrapperRet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
 <tr class="memdesc:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31" title="Notification from tip3 wallet to its owner contract about received tokens transfer.">ITONTokenWalletNotify::onTip3Transfer()</a>. Notification about incoming tokens from <a class="el" href="classWrapper.html">Wrapper</a> owned external wallet.  <a href="structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7">More...</a><br /></td></tr>
 <tr class="separator:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edf8ed1fcc2cff07a871a338732f831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a4edf8ed1fcc2cff07a871a338732f831">burn</a> (uint128 tokens, address answer_addr, uint256 sender_pubkey, address_opt sender_owner, uint256 out_pubkey, address_opt out_owner)</td></tr>
@@ -317,7 +317,7 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structtvm_1_1WrapperRet.html">WrapperRet</a> onTip3Transfer </td>
+          <td class="memname">WrapperRet onTip3Transfer </td>
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>balance</em>, </td>
@@ -367,7 +367,7 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">new_tokens</td><td>Amount of tokens received in transfer. </td></tr>
     <tr><td class="paramname">sender_pubkey</td><td>Sender wallet pubkey. </td></tr>
     <tr><td class="paramname">sender_owner</td><td>Sender wallet internal owner. </td></tr>
-    <tr><td class="paramname">payload</td><td>Payload. Must be <a class="el" href="structtvm_1_1FlexDeployWalletArgs.html" title="Arguments to deploy wallet. Should be attached as a payload cell in transfer notification.">FlexDeployWalletArgs</a>. </td></tr>
+    <tr><td class="paramname">payload</td><td>Payload. Must be FlexDeployWalletArgs. </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address (to receive answer and the remaining processing Evers). </td></tr>
   </table>
   </dd>

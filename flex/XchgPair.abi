@@ -12,6 +12,8 @@
     "inputs": [
     { "name":"_answer_id", "type":"uint32" },
     { "name":"min_amount", "type":"uint128" },
+    { "name":"minmove", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
     { "name":"deploy_value", "type":"uint128" },
     { "name":"notify_addr", "type":"address" },
     { "components":[
@@ -71,25 +73,25 @@
     "id": "0xe"
   },
   {
-    "name": "getNotifyAddr",
+    "name": "getMinmove",
     "inputs": [
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
+    { "name":"value0", "type":"uint128" }
     ],
     "id": "0xf"
   },
   {
-    "name": "getMajorReserveWallet",
+    "name": "getPriceDenum",
     "inputs": [
     ],
     "outputs": [
-    { "name":"value0", "type":"address" }
+    { "name":"value0", "type":"uint128" }
     ],
     "id": "0x10"
   },
   {
-    "name": "getMinorReserveWallet",
+    "name": "getNotifyAddr",
     "inputs": [
     ],
     "outputs": [
@@ -98,13 +100,22 @@
     "id": "0x11"
   },
   {
-    "name": "getXchgPriceCode",
+    "name": "getMajorReserveWallet",
     "inputs": [
     ],
     "outputs": [
-    { "name":"value0", "type":"cell" }
+    { "name":"value0", "type":"address" }
     ],
     "id": "0x12"
+  },
+  {
+    "name": "getMinorReserveWallet",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x13"
   },
   {
     "name": "getConfig",
@@ -123,7 +134,26 @@
     { "name":"deals_limit", "type":"uint8" },
     { "name":"xchg_price_code", "type":"cell" }
     ],
-    "id": "0x13"
+    "id": "0x14"
+  },
+  {
+    "name": "getPriceXchgCode",
+    "inputs": [
+    { "name":"salted", "type":"bool" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"cell" }
+    ],
+    "id": "0x15"
+  },
+  {
+    "name": "getPriceXchgSalt",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"cell" }
+    ],
+    "id": "0x16"
   }
   ],
   "fields": [
@@ -131,6 +161,8 @@
     { "name":"tip3_major_root_", "type":"address" },
     { "name":"tip3_minor_root_", "type":"address" },
     { "name":"min_amount_", "type":"uint128" },
+    { "name":"minmove_", "type":"uint128" },
+    { "name":"price_denum_", "type":"uint128" },
     { "name":"notify_addr_", "type":"address" },
     { "name":"major_reserve_wallet_", "type":"address" },
     { "name":"minor_reserve_wallet_", "type":"address" },

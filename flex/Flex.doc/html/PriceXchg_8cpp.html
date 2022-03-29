@@ -107,7 +107,7 @@ Include dependency graph for PriceXchg.cpp:</div>
 <area shape="rect" href="RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="401,497,541,524"/>
 <area shape="rect" title=" " alt="" coords="981,415,1099,442"/>
 <area shape="rect" href="FlexTransferPayloadArgs_8hpp.html" title="Flex transfer payload args structure." alt="" coords="1701,333,1912,360"/>
-<area shape="rect" href="FlexLendPayloadArgs_8hpp.html" title="Flex lend payload args structure (for onTip3LendOwnership payload)" alt="" coords="915,333,1104,360"/>
+<area shape="rect" title=" " alt="" coords="915,333,1104,360"/>
 <area shape="rect" href="PriceXchgSalt_8hpp.html" title="PriceXchgSalt &#45; configuration structure for PriceXchg (stored in code salt)" alt="" coords="1128,333,1267,360"/>
 <area shape="rect" href="EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="505,415,631,442"/>
 <area shape="rect" href="ListingConfig_8hpp.html" title="Flex listing configuration (processing costs)" alt="" coords="655,415,790,442"/>
@@ -131,6 +131,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a71825c718974f8700938e5a97a09baaf"><td class="memItemLeft" align="right" valign="top"><a id="a71825c718974f8700938e5a97a09baaf"></a>
 return d&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (sell_idx, buy_idx)</td></tr>
 <tr class="separator:a71825c718974f8700938e5a97a09baaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f119eb8e2a328221071dcddd196936"><td class="memItemLeft" align="right" valign="top"><a id="ae0f119eb8e2a328221071dcddd196936"></a>
+__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PriceXchg_8cpp.html#ae0f119eb8e2a328221071dcddd196936">is_correct_price</a> (<a class="el" href="structtvm_1_1RationalValue.html">price_t</a> price, uint128 minmove)</td></tr>
+<tr class="memdesc:ae0f119eb8e2a328221071dcddd196936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is it a correct price: price.num % minmove == 0. <br /></td></tr>
+<tr class="separator:ae0f119eb8e2a328221071dcddd196936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73a7e7dc732567886134f5e7b503c89a"><td class="memItemLeft" align="right" valign="top"><a id="a73a7e7dc732567886134f5e7b503c89a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DEFINE_JSON_ABI</b> (<a class="el" href="structtvm_1_1IPriceXchg.html">IPriceXchg</a>, <a class="el" href="structtvm_1_1DPriceXchg.html">DPriceXchg</a>, <a class="el" href="structtvm_1_1EPriceXchg.html">EPriceXchg</a>)</td></tr>
 <tr class="separator:a73a7e7dc732567886134f5e7b503c89a"><td class="memSeparator" colspan="2">&#160;</td></tr>

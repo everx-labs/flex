@@ -8,7 +8,6 @@
  *  TIP3_ENABLE_LEND_OWNERSHIP - enable lend ownership functionality.
  *  TIP3_ENABLE_BURN - enable burn functionality, to transfer tokens back through Wrapper.
  *  TIP3_ENABLE_DESTROY - enable destroy method to self-destruct empty wallet.
- *  TIP3_DEPLOY_TRANSFER - enable transfer with deploy methods (transfer to recipient).
  *  \author Andrew Zhogin
  *  \copyright 2019-2022 (c) TON LABS
  */
@@ -22,6 +21,8 @@
 #include <tvm/replay_attack_protection/timestamp.hpp>
 #include <tvm/smart_switcher.hpp>
 #include <tvm/contract_handle.hpp>
+
+#include "FlexLendPayloadArgs.hpp"
 
 namespace tvm {
 
@@ -151,99 +152,58 @@ __interface ITONTokenWallet {
 
   /// Transfer tokens to another tip3 wallet contract.
   TIP3_EXTERNAL
-  [[internal, noaccept]]
+  [[internal, noaccept, answer_id]]
   void transfer(
-    address answer_addr,     ///< Answer address.
-    address to,              ///< Destination tip3 wallet address.
-    uint128 tokens,          ///< Amount of tokens to transfer.
-    uint128 evers,           ///< Native funds to process.
-                             ///< For internal requests, this value is ignored
-                             ///<  and processing costs will be taken from attached value.
-    uint128 return_ownership ///< Return ownership - to decrease lend ownership provided for the caller contract (additionally).
+    address_opt answer_addr,      ///< Answer address.
+    address     to,               ///< Destination tip3 wallet address.
+    uint128     tokens,           ///< Amount of tokens to transfer.
+    uint128     evers,            ///< Native funds to process.
+                                  ///< For internal requests, this value is ignored
+                                  ///<  and processing costs will be taken from attached value.
+    uint128     return_ownership, ///< Return ownership - to decrease lend ownership provided for the caller contract (additionally).
+    opt<cell>   notify_payload    ///< Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification.
   ) = 10;
 
-  /// Transfer with notify.
-  /// Notify versions have answer_id to provide tail call answer
-  ///  and send notification to the wallet owner contract.
-  TIP3_EXTERNAL
-  [[internal, noaccept, answer_id]]
-  void transferWithNotify(
-    address answer_addr,      ///< Answer address.
-    address to,               ///< Destination tip3 wallet address.
-    uint128 tokens,           ///< Amount of tokens to transfer.
-    uint128 evers,            ///< Native funds to process.
-                              ///< For internal requests, this value is ignored
-                              ///<  and processing costs will be taken from attached value.
-    uint128 return_ownership, ///< Return ownership - to decrease lend ownership provided for the caller contract (additionally).
-    cell    payload           ///< Payload (arbitrary cell) - will be transmitted into owner's notification.
-  ) = 11;
-
-#ifdef TIP3_DEPLOY_TRANSFER
   /// Transfer to recipient.
-  /// "ToRecipient" versions calculate destination wallet address.
+  /// "ToRecipient" version calculate destination wallet address.
   /// using recipient public key and recipient internal owner.
   TIP3_EXTERNAL
-  [[internal, noaccept]]
-  void transferToRecipient(
-    address     answer_addr,      ///< Answer address.
-    uint256     recipient_pubkey, ///< Recipient public key.
-    address_opt recipient_owner,  ///< Recipient internal owner (contract address).
-    uint128     tokens,           ///< Amount of tokens to transfer.
-    uint128     evers,            ///< Native funds to process.
-                                  ///< For internal requests, this value is ignored
-                                  ///<  and processing costs will be taken from attached value.
-    bool        deploy,           ///< Contract will send internalTransfer message with StateInit
-                                  ///<  to also deploy new tip3 wallet (if it doesn't already exist) with
-                                  ///<  the provided recipient_public_key and recipient_internal_owner.
-    uint128     return_ownership  ///< Return ownership - to decrease lend ownership for the caller contract (additionally).
-  ) = 12;
-
-  /// Transfer to recipient with notify.
-  /// "ToRecipient" versions calculate destination wallet address
-  ///  using recipient public key and recipient internal owner.
-  /// Notify versions have answer_id to provide tail call answer
-  ///  and send notification to the wallet owner contract.
-  TIP3_EXTERNAL
   [[internal, noaccept, answer_id]]
-  void transferToRecipientWithNotify(
-    address     answer_addr,      ///< Answer address.
-    uint256     recipient_pubkey, ///< Recipient public key.
-    address_opt recipient_owner,  ///< Recipient internal owner (contract address).
+  void transferToRecipient(
+    address_opt answer_addr,      ///< Answer address.
+    Tip3Creds   to,               ///< Recipient credentials (pubkey + owner)
     uint128     tokens,           ///< Amount of tokens to transfer.
     uint128     evers,            ///< Native funds to process.
                                   ///< For internal requests, this value is ignored
                                   ///<  and processing costs will be taken from attached value.
-    bool        deploy,           ///< Contract will send internalTransfer message with StateInit
+    bool        deploy,           ///< Contract will send acceptTransfer message with StateInit
                                   ///<  to also deploy new tip3 wallet (if it doesn't already exist) with
                                   ///<  the provided recipient_public_key and recipient_internal_owner.
     uint128     return_ownership, ///< Return ownership - to decrease lend ownership for the caller contract (additionally).
-    cell        payload           ///< Payload (arbitrary cell) - will be transmitted into owner's notification.
-  ) = 13;
-#endif // TIP3_DEPLOY_TRANSFER
+    opt<cell>   notify_payload    ///< Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification.
+  ) = 11;
 
   /// Request wallet token balance using internal message (contract-to-contract).
   [[internal, noaccept, answer_id]]
-  uint128 requestBalance() = 14;
+  uint128 requestBalance() = 12;
 
   /// Receive tokens from root (RootTokenContract).
   [[internal, noaccept, answer_id]]
-  bool accept(
+  bool acceptMint(
     uint128 tokens,       ///< Tokens received from RootTokenContract.
     address answer_addr,  ///< Answer address.
     uint128 keep_evers    ///< Native funds that the wallet should keep before returning answer with the remaining funds.
-  ) = 15;
+  ) = 0x4384F298;
 
   /// Receive tokens from another tip3 wallet.
   [[internal, noaccept, answer_id]]
-  void internalTransfer(
+  void acceptTransfer(
     uint128     tokens,          ///< Amount of tokens received from another tip3 token wallet.
     address     answer_addr,     ///< Answer address.
     uint256     sender_pubkey,   ///< Sender wallet pubkey.
     address_opt sender_owner,    ///< Sender wallet internal owner.
-    bool        notify_receiver, ///< If notify_receiver is specified,
-                                 ///<  the wallet should send notification to its internal owner.
-    cell        payload          ///< Payload (arbitrary cell).
-  ) = 16;
+    opt<cell>   payload          ///< Payload (arbitrary cell). If specified, the wallet should send notification to its internal owner.
+  ) = 0x67A0B95F;
 
 #ifdef TIP3_ENABLE_DESTROY
   /// Send the remaining !native! funds to \p dest and destroy the wallet.
@@ -252,7 +212,7 @@ __interface ITONTokenWallet {
   [[internal, noaccept]]
   void destroy(
     address dest ///< Where to send the remaining evers.
-  ) = 17;
+  ) = 13;
 #endif // TIP3_ENABLE_DESTROY
 
 #ifdef TIP3_ENABLE_BURN
@@ -266,53 +226,71 @@ __interface ITONTokenWallet {
                             ///< Where to return external tip3 tokens.
     address_opt out_owner   ///< Internal owner (contract) of external (wrapped) tip3 wallet.
                             ///< Where to return external tip3 tokens.
-  ) = 18;
+  ) = 14;
 #endif // TIP3_ENABLE_BURN
 
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
-  /// Lend ownership to some contract until 'lend_finish_time' for the specified amount of tokens.
+  /// Lend tokens to PriceXchg (to make trade order) until 'lend_finish_time' for the specified amount of tokens.
   /// Allowance is required to be empty and is not permited to set up by temporary owner.
-  /// Will send ITONTokenWalletNotify::onTip3LendOwnership() notification to \p dest.
+  /// Will send ITONTokenWalletNotify::onTip3LendOwnership() notification to PriceXchg contract.
+  /// Returns PriceXchg address.
   FLEX_EXTERNAL
   [[internal, noaccept, answer_id]]
-  void lendOwnership(
-    address answer_addr,      ///< Answer address.
-    uint128 evers,            ///< Native funds to process.
-                              ///< For internal requests, this value is ignored
-                              ///<  and processing costs will be taken from attached value.
-    address dest,             ///< Destination address.
-    uint128 lend_balance,     ///< Amount of tokens to lend ownership.
-    uint32  lend_finish_time, ///< Lend ownership finish time.
-    cell    deploy_init_cl,   ///< Serialized StateInit struct to send a deploy message
-                              ///<  with onTip3LendOwnership notification.
-                              ///< Should be an empty cell or StateInit with empty code or data
-                              ///<  to send non-deploy message.
-    cell    payload           ///< Payload (arbitrary cell). Will be transmitted into onTip3LendOwnership notification.
-  ) = 19;
+  void makeOrder(
+    address_opt answer_addr,         ///< Answer address.
+    uint128     evers,               ///< Native funds to process.
+                                     ///< For internal requests, this value is ignored
+                                     ///<  and processing costs will be taken from attached value.
+    uint128     lend_balance,        ///< Amount of tokens to lend ownership.
+    uint32      lend_finish_time,    ///< Lend ownership finish time.
+    uint128     price_num,           ///< Price numerator for rational price value.
+    cell        unsalted_price_code, ///< Code of PriceXchg contract (unsalted!).
+    cell        salt,                ///< PriceXchg salt.
+    FlexLendPayloadArgs args         ///< Order parameters.
+  ) = 15;
 
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void lendOwnershipPubkey(
     opt<uint256> pubkey,          ///< Lend owner public key. Revoke if empty.
     opt<uint32>  lend_finish_time ///< Lend ownership finish time. If empty, will be taken from the current lend pubkey record.
-  ) = 20;
+  ) = 16;
+
+  FLEX_EXTERNAL
+  [[internal, noaccept]]
+  void cancelOrder(
+    uint128      evers,       ///< Native funds to process.
+                              ///< For internal requests, this value is ignored
+                              ///<  and processing costs will be taken from attached value.
+    address      price,       ///< PriceXchg address.
+    bool         sell,        ///< Is it a sell order.
+    opt<uint256> order_id     ///< Order Id (if not specified, all orders from this user_id in the price will be canceled).
+  ) = 17;
 
   /// Return ownership back to the original owner (for the provided amount of tokens).
   [[internal, noaccept]]
   void returnOwnership(
     uint128 tokens ///< Amount of tokens to return.
-  ) = 21;
+  ) = 18;
+
+  /// Set trade restriction to allow orders only to flex root \p flex.
+  /// And PriceXchg unsalted code hash must be equal to \p unsalted_price_code_hash.
+  [[internal, noaccept]]
+  void setTradeRestriction(
+    address flex,                    ///< Flex root address
+    uint256 unsalted_price_code_hash ///< PriceXchg unsalted code hash
+  ) = 19;
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
 
   // =============================== getters =============================== //
   /// Get info about contract state details.
   [[getter]]
-  details_info getDetails() = 22;
+  details_info getDetails() = 20;
 
 #ifdef TIP3_ENABLE_EXTERNAL
   /// Get contract token balance.
   [[getter]]
-  uint128 getBalance() = 23;
+  uint128 getBalance() = 21;
 #endif // TIP3_ENABLE_EXTERNAL
 
 #ifdef TIP3_ENABLE_ALLOWANCE
@@ -324,52 +302,44 @@ __interface ITONTokenWallet {
     address spender,         ///< Target tip3 wallet.
     uint128 remainingTokens, ///< Currently remaining tokens in allowance.
     uint128 tokens           ///< Amount of tokens to be set up in allowance.
-  ) = 24;
+  ) = 22;
 
   /// Request transfer by allowance from another tip3 wallet \p from to tip3 wallet \p to.
   TIP3_EXTERNAL
   [[internal, noaccept]]
   void transferFrom(
-    address answer_addr, ///< Answer address.
-    address from,        ///< Address of tip3 wallet where allowance is set up to this wallet.
-    address to,          ///< Destination tip3 wallet address.
-    uint128 tokens,      ///< Amount of tokens to transfer.
-    uint128 evers        ///< Native funds to process.
-                         ///< For internal requests, this value is ignored
-                         ///<  and processing costs will be taken from attached value.
-  ) = 25;
-
-  /// "WithNotify" version of transferFrom.
-  /// Request transfer by allowance from another tip3 wallet \p from to tip3 wallet \p to
-  ///  with notification to destination contract's internal owner.
-  TIP3_EXTERNAL
-  [[internal, noaccept]]
-  void transferFromWithNotify(
-    address answer_addr, ///< Answer address.
-    address from,        ///< Address of tip3 wallet where allowance is set up to this wallet.
-    address to,          ///< Destination tip3 wallet address.
-    uint128 tokens,      ///< Amount of tokens to transfer.
-    uint128 evers,       ///< Native funds to process.
-    cell    payload      ///< Payload (arbitrary cell). Will be transmitted into onTip3Transfer notification.
-  ) = 26;
+    address_opt answer_addr, ///< Answer address. Is not specified, sender address will be taken for internal, or this address for external.
+    address     from,        ///< Address of tip3 wallet where allowance is set up to this wallet.
+    address     to,          ///< Destination tip3 wallet address.
+    uint128     tokens,      ///< Amount of tokens to transfer.
+    uint128     evers,       ///< Native funds to process.
+                             ///< For internal requests, this value is ignored
+                             ///<  and processing costs will be taken from attached value.
+    opt<cell> notify_payload ///< Payload (arbitrary cell). If specified, will be transmitted into onTip3Transfer notification.
+  ) = 23;
 
   /// Request of allowance transfer from spender tip3 wallet
   [[internal]]
-  void internalTransferFrom(
-    address answer_addr,     ///< Answer address
-    address to,              ///< Destination tip3 wallet address.
-    uint128 tokens,          ///< Amount of tokens to transfer.
-    bool    notify_receiver, ///< Send onTip3Transfer notification to target's owner contract (if set up)
-    cell    payload          ///< Payload (arbitrary cell). Will be transmitted into onTip3Transfer notification.
-  ) = 27;
+  void acceptTransferFrom(
+    address   answer_addr,   ///< Answer address
+    address   to,            ///< Destination tip3 wallet address.
+    uint128   tokens,        ///< Amount of tokens to transfer.
+    opt<cell> notify_payload ///< Payload (arbitrary cell). If specified, will be transmitted into onTip3Transfer notification.
+  ) = 24;
 
   /// Disapprove allowance
   TIP3_EXTERNAL
   [[internal, noaccept]]
-  void disapprove() = 28;
+  void disapprove() = 25;
 #endif // TIP3_ENABLE_ALLOWANCE
 };
 using ITONTokenWalletPtr = handle<ITONTokenWallet>;
+
+/// Restrictions to allow orders only to specific flex root and with specific unsalted PriceXchg code hash
+struct restriction_info {
+  address flex;                     ///< Flex root address
+  uint256 unsalted_price_code_hash; ///< PriceXchg code hash (unsalted)
+};
 
 /// TONTokenWallet persistent data struct
 struct DTONTokenWallet {
@@ -382,12 +352,11 @@ struct DTONTokenWallet {
   uint256     wallet_pubkey_;     ///< Public key of wallet owner.
   address_opt owner_address_;     ///< Owner contract address for internal ownership.
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
-  opt<lend_pubkey> lend_pubkey_;  ///< Lend ownership pubkey.
-  lend_owners_map  lend_owners_;  ///< Lend ownership map ({service owner, user_id} => lend_owner).
+  opt<lend_pubkey>      lend_pubkey_;  ///< Lend ownership pubkey.
+  lend_owners_map       lend_owners_;  ///< Lend ownership map (service owner => lend_owner).
+  opt<restriction_info> restriction_;  ///< Restriction info to allow trade orders only to specific flex root
+                                       ///<  and with specific unsalted PriceXchg code hash.
 #endif // TIP3_ENABLE_LEND_OWNERSHIP
-#ifdef TIP3_DEPLOY_TRANSFER
-  cell code_;                     ///< Until MYCODE support, we need code for self deploying.
-#endif // TIP3_DEPLOY_TRANSFER
   uint256 code_hash_;             ///< Tip3 wallet code hash to verify other wallets.
   uint16  code_depth_;            ///< Tip3 wallet code depth to verify other wallets.
 #ifdef TIP3_ENABLE_ALLOWANCE
@@ -412,7 +381,6 @@ struct DTONTokenWalletExternal {
   address     root_address_;      ///< Address of the related RootTokenContract.
   uint256     wallet_pubkey_;     ///< Public key of wallet owner.
   address_opt owner_address_;     ///< Owner contract address for internal ownership.
-  cell        code_;              ///< Until MYCODE support, we need code for self deploying.
   uint256     code_hash_;         ///< Tip3 wallet code hash to verify other wallets.
   uint16      code_depth_;        ///< Tip3 wallet code depth to verify other wallets.
   opt<allowance_info> allowance_; ///< Allowance.
@@ -420,19 +388,21 @@ struct DTONTokenWalletExternal {
 };
 
 struct DTONTokenWalletInternal {
-  string      name_;                 ///< Token name.
-  string      symbol_;               ///< Token short symbol.
-  uint8       decimals_;             ///< Decimals for ui purposes. ex: balance 100 with decimals 2 will be printed as 1.00.
-  uint128     balance_;              ///< Token balance of the wallet.
-  uint256     root_pubkey_;          ///< Public key of the related RootTokenContract.
-  address     root_address_;         ///< Address of the related RootTokenContract.
-  uint256     wallet_pubkey_;        ///< Public key of wallet owner.
-  address_opt owner_address_;        ///< Owner contract address for internal ownership.
-  opt<lend_pubkey>  lend_pubkey_;    ///< Lend ownership pubkeys (pubkey => lend_pubkey).
-  lend_owners_map   lend_ownership_; ///< Lend ownership map ({service owner, user_id} => lend_owner).
-  uint256           code_hash_;      ///< Tip3 wallet code hash to verify other wallets.
-  uint16            code_depth_;     ///< Tip3 wallet code depth to verify other wallets.
-  int8              workchain_id_;   ///< Workchain id.
+  string      name_;                  ///< Token name.
+  string      symbol_;                ///< Token short symbol.
+  uint8       decimals_;              ///< Decimals for ui purposes. ex: balance 100 with decimals 2 will be printed as 1.00.
+  uint128     balance_;               ///< Token balance of the wallet.
+  uint256     root_pubkey_;           ///< Public key of the related RootTokenContract.
+  address     root_address_;          ///< Address of the related RootTokenContract.
+  uint256     wallet_pubkey_;         ///< Public key of wallet owner.
+  address_opt owner_address_;         ///< Owner contract address for internal ownership.
+  opt<lend_pubkey>  lend_pubkey_;     ///< Lend ownership pubkeys (pubkey => lend_pubkey).
+  lend_owners_map   lend_owners_;     ///< Lend ownership map (service owner => lend_owner).
+  opt<restriction_info> restriction_; ///< Restriction info to allow trade orders only to specific flex root
+                                      ///<  and with specific unsalted PriceXchg code hash.
+  uint256           code_hash_;       ///< Tip3 wallet code hash to verify other wallets.
+  uint16            code_depth_;      ///< Tip3 wallet code depth to verify other wallets.
+  int8              workchain_id_;    ///< Workchain id.
 };
 
 /// \interface ETONTokenWallet
@@ -446,17 +416,14 @@ DTONTokenWallet prepare_wallet_data(
   string name, string symbol, uint8 decimals,
   uint256 root_pubkey, address root_address,
   uint256 wallet_pubkey, address_opt wallet_owner,
-  uint256 code_hash, uint16 code_depth, int8 workchain_id, cell code
+  uint256 code_hash, uint16 code_depth, int8 workchain_id
 ) {
   return {
     name, symbol, decimals,
     uint128(0), root_pubkey, root_address,
     wallet_pubkey, wallet_owner,
 #ifdef TIP3_ENABLE_LEND_OWNERSHIP
-    {}, {},
-#endif
-#ifdef TIP3_DEPLOY_TRANSFER
-    code,
+    {}, {}, {},
 #endif
     code_hash, code_depth,
 #ifdef TIP3_ENABLE_ALLOWANCE
@@ -472,11 +439,11 @@ __always_inline
 uint256 calc_wallet_init_hash(
   string name, string symbol, uint8 decimals,
   uint256 root_pubkey, address root_address, uint256 wallet_pubkey, address_opt wallet_owner,
-  uint256 code_hash, uint16 code_depth, int8 workchain_id, cell code
+  uint256 code_hash, uint16 code_depth, int8 workchain_id
 ) {
   DTONTokenWallet wallet_data =
     prepare_wallet_data(name, symbol, decimals, root_pubkey, root_address, wallet_pubkey, wallet_owner,
-                        code_hash, code_depth, workchain_id, code);
+                        code_hash, code_depth, workchain_id);
   auto init_hdr = persistent_data_header<ITONTokenWallet, wallet_replay_protection_t>::init();
   cell data_cl = prepare_persistent_data<ITONTokenWallet, wallet_replay_protection_t>(init_hdr, wallet_data);
   return tvm_state_init_hash(code_hash, uint256(tvm_hash(data_cl)), code_depth, uint16(data_cl.cdepth()));
@@ -488,12 +455,12 @@ __always_inline
 uint256 calc_ext_wallet_init_hash(
   string name, string symbol, uint8 decimals,
   uint256 root_pubkey, address root_address, uint256 wallet_pubkey, address_opt wallet_owner,
-  uint256 code_hash, uint16 code_depth, int8 workchain_id, cell code
+  uint256 code_hash, uint16 code_depth, int8 workchain_id
 ) {
   DTONTokenWalletExternal wallet_data {
     name, symbol, decimals,
     uint128(0), root_pubkey, root_address, wallet_pubkey, wallet_owner,
-    code, code_hash, code_depth, {}, workchain_id
+    code_hash, code_depth, {}, workchain_id
   };
   auto init_hdr = persistent_data_header<ITONTokenWallet, wallet_replay_protection_t>::init();
   cell data_cl = prepare_persistent_data<ITONTokenWallet, wallet_replay_protection_t>(init_hdr, wallet_data);
@@ -511,7 +478,7 @@ uint256 calc_int_wallet_init_hash(
   DTONTokenWalletInternal wallet_data {
     name, symbol, decimals,
     uint128(0), root_pubkey, root_address, wallet_pubkey, wallet_owner,
-    {}, {}, code_hash, code_depth, workchain_id
+    {}, {}, {}, code_hash, code_depth, workchain_id
   };
   auto init_hdr = persistent_data_header<ITONTokenWallet, wallet_replay_protection_t>::init();
   cell data_cl = prepare_persistent_data<ITONTokenWallet, wallet_replay_protection_t>(init_hdr, wallet_data);
@@ -546,7 +513,7 @@ std::pair<StateInit, uint256> prepare_external_wallet_state_init_and_addr(
   DTONTokenWalletExternal wallet_data {
     name, symbol, decimals,
     uint128(0), root_pubkey, root_address, wallet_pubkey, wallet_owner,
-    code, code_hash, code_depth, {}, workchain_id
+    code_hash, code_depth, {}, workchain_id
   };
   cell wallet_data_cl =
     prepare_persistent_data<ITONTokenWallet, wallet_replay_protection_t, DTONTokenWalletExternal>(
@@ -572,7 +539,7 @@ std::pair<StateInit, uint256> prepare_internal_wallet_state_init_and_addr(
   DTONTokenWalletInternal wallet_data {
     name, symbol, decimals,
     uint128(0), root_pubkey, root_address, wallet_pubkey, wallet_owner,
-    {}, {}, code_hash, code_depth, workchain_id
+    {}, {}, {}, code_hash, code_depth, workchain_id
   };
   cell wallet_data_cl =
     prepare_persistent_data<ITONTokenWallet, wallet_replay_protection_t, DTONTokenWalletInternal>(

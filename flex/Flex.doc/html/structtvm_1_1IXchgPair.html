@@ -81,9 +81,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1d2ea06b5c5e3f5f1b2439fbd971993e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a1d2ea06b5c5e3f5f1b2439fbd971993e">onDeploy</a> (uint128 min_amount, uint128 deploy_value, address notify_addr, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg)</td></tr>
-<tr class="memdesc:a1d2ea06b5c5e3f5f1b2439fbd971993e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization method, may only be called by <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root.  <a href="structtvm_1_1IXchgPair.html#a1d2ea06b5c5e3f5f1b2439fbd971993e">More...</a><br /></td></tr>
-<tr class="separator:a1d2ea06b5c5e3f5f1b2439fbd971993e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139cc81ef04c22005c091faf3eab7395"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a139cc81ef04c22005c091faf3eab7395">onDeploy</a> (uint128 min_amount, uint128 minmove, uint128 price_denum, uint128 deploy_value, address notify_addr, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg)</td></tr>
+<tr class="memdesc:a139cc81ef04c22005c091faf3eab7395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization method, may only be called by <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root.  <a href="structtvm_1_1IXchgPair.html#a139cc81ef04c22005c091faf3eab7395">More...</a><br /></td></tr>
+<tr class="separator:a139cc81ef04c22005c091faf3eab7395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaebbe5f716569cb8ae6dc453668ab4d"><td class="memItemLeft" align="right" valign="top"><a id="afaebbe5f716569cb8ae6dc453668ab4d"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#afaebbe5f716569cb8ae6dc453668ab4d">getFlexAddr</a> ()</td></tr>
 <tr class="memdesc:afaebbe5f716569cb8ae6dc453668ab4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get address of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root. <br /></td></tr>
@@ -100,6 +100,14 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a6d8365d367107e81a6397770637b6a06">getMinAmount</a> ()</td></tr>
 <tr class="memdesc:a6d8365d367107e81a6397770637b6a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get minimum amount of major tokens for a deal or an order. <br /></td></tr>
 <tr class="separator:a6d8365d367107e81a6397770637b6a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e10de6a0fd588166c1ca99c2cb1d03f"><td class="memItemLeft" align="right" valign="top"><a id="a6e10de6a0fd588166c1ca99c2cb1d03f"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a6e10de6a0fd588166c1ca99c2cb1d03f">getMinmove</a> ()</td></tr>
+<tr class="memdesc:a6e10de6a0fd588166c1ca99c2cb1d03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get minimum move for price. <br /></td></tr>
+<tr class="separator:a6e10de6a0fd588166c1ca99c2cb1d03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb0c89c863c833be866af45c3f1fd55c"><td class="memItemLeft" align="right" valign="top"><a id="abb0c89c863c833be866af45c3f1fd55c"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#abb0c89c863c833be866af45c3f1fd55c">getPriceDenum</a> ()</td></tr>
+<tr class="memdesc:abb0c89c863c833be866af45c3f1fd55c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get price denominator. <br /></td></tr>
+<tr class="separator:abb0c89c863c833be866af45c3f1fd55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf3fa042e439429cf39311e11c2f8cf0"><td class="memItemLeft" align="right" valign="top"><a id="aaf3fa042e439429cf39311e11c2f8cf0"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#aaf3fa042e439429cf39311e11c2f8cf0">getNotifyAddr</a> ()</td></tr>
 <tr class="memdesc:aaf3fa042e439429cf39311e11c2f8cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get notification address (AMM) <br /></td></tr>
@@ -112,20 +120,24 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a9105aa2e6010b5da929b608f0f368836">getMinorReserveWallet</a> ()</td></tr>
 <tr class="memdesc:a9105aa2e6010b5da929b608f0f368836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get minor reserve wallet. <br /></td></tr>
 <tr class="separator:a9105aa2e6010b5da929b608f0f368836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a172210c0010861a3ab498dbde821904f"><td class="memItemLeft" align="right" valign="top"><a id="a172210c0010861a3ab498dbde821904f"></a>
-cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a172210c0010861a3ab498dbde821904f">getXchgPriceCode</a> ()</td></tr>
-<tr class="memdesc:a172210c0010861a3ab498dbde821904f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classPriceXchg.html">PriceXchg</a> contract code with configuration salt added. <br /></td></tr>
-<tr class="separator:a172210c0010861a3ab498dbde821904f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d832c16ec998a49c55d280e5f8ae6c4"><td class="memItemLeft" align="right" valign="top"><a id="a5d832c16ec998a49c55d280e5f8ae6c4"></a>
 <a class="el" href="structtvm_1_1XchgPairSalt.html">XchgPairSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a5d832c16ec998a49c55d280e5f8ae6c4">getConfig</a> ()</td></tr>
-<tr class="memdesc:a5d832c16ec998a49c55d280e5f8ae6c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> configuration from code salt (common for all pairs of one flex). <br /></td></tr>
+<tr class="memdesc:a5d832c16ec998a49c55d280e5f8ae6c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> configuration from code salt (common for all pairs of one flex) <br /></td></tr>
 <tr class="separator:a5d832c16ec998a49c55d280e5f8ae6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436e8d8a020c51300a19e61520060e17"><td class="memItemLeft" align="right" valign="top"><a id="a436e8d8a020c51300a19e61520060e17"></a>
+cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#a436e8d8a020c51300a19e61520060e17">getPriceXchgCode</a> (bool salted)</td></tr>
+<tr class="memdesc:a436e8d8a020c51300a19e61520060e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classPriceXchg.html">PriceXchg</a> contract code with configuration salt added. <br /></td></tr>
+<tr class="separator:a436e8d8a020c51300a19e61520060e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5dba04ca6fe7036295ce0b61eb66d8c"><td class="memItemLeft" align="right" valign="top"><a id="ad5dba04ca6fe7036295ce0b61eb66d8c"></a>
+cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IXchgPair.html#ad5dba04ca6fe7036295ce0b61eb66d8c">getPriceXchgSalt</a> ()</td></tr>
+<tr class="memdesc:ad5dba04ca6fe7036295ce0b61eb66d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classPriceXchg.html">PriceXchg</a> salt (configuration) for this pair. <br /></td></tr>
+<tr class="separator:ad5dba04ca6fe7036295ce0b61eb66d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> contract interface. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1d2ea06b5c5e3f5f1b2439fbd971993e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d2ea06b5c5e3f5f1b2439fbd971993e">&#9670;&nbsp;</a></span>onDeploy()</h2>
+<a id="a139cc81ef04c22005c091faf3eab7395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139cc81ef04c22005c091faf3eab7395">&#9670;&nbsp;</a></span>onDeploy()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -135,6 +147,18 @@ cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>min_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>minmove</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>price_denum</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -172,6 +196,8 @@ cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">min_amount</td><td>Minimum amount of major tokens for a deal or an order </td></tr>
+    <tr><td class="paramname">minmove</td><td>Minimum move for price </td></tr>
+    <tr><td class="paramname">price_denum</td><td>Price denominator for the pair </td></tr>
     <tr><td class="paramname">deploy_value</td><td>Crystals to be kept in the contract </td></tr>
     <tr><td class="paramname">notify_addr</td><td>Notification address (AMM) </td></tr>
     <tr><td class="paramname">major_tip3cfg</td><td>Major tip3 configuration </td></tr>

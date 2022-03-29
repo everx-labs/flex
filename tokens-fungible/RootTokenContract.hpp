@@ -101,32 +101,36 @@ __interface IRootTokenContract {
   [[getter]]
   uint256 getRootKey() = 20;
 
+  /// Get owner contract address of the Root (optional)
+  [[getter]]
+  address_opt getRootOwner() = 21;
+
   /// Get total supply (allocated tokens)
   [[getter]]
-  uint128 getTotalSupply() = 21;
+  uint128 getTotalSupply() = 22;
 
   /// Get total granted tokens
   [[getter]]
-  uint128 getTotalGranted() = 22;
+  uint128 getTotalGranted() = 23;
 
   /// Is wallet code already initialized (by IRootTokenContract::setWalletCode())
   [[getter]]
-  bool hasWalletCode() = 23;
+  bool hasWalletCode() = 24;
 
   /// Get wallet code
   [[getter]]
-  cell getWalletCode() = 24;
+  cell getWalletCode() = 25;
 
   /// Calculate wallet address using (pubkey, owner) pair.
   [[getter]]
   address getWalletAddress(
     uint256     pubkey, ///< Public key of the wallet.
     address_opt owner   ///< Internal owner address of the wallet.
-  ) = 25;
+  ) = 26;
 
   /// Get wallet code hash.
   [[getter]]
-  uint256 getWalletCodeHash() = 26;
+  uint256 getWalletCodeHash() = 27;
 };
 using IRootTokenContractPtr = handle<IRootTokenContract>;
 
@@ -148,18 +152,18 @@ struct ERootTokenContract {
 };
 
 /// Prepare Root StateInit structure and expected contract address (hash from StateInit)
-inline
-std::pair<StateInit, uint256> prepare_root_state_init_and_addr(cell root_code, DRootTokenContract root_data) {
-  cell root_data_cl =
-    prepare_persistent_data<IRootTokenContract, root_replay_protection_t>(
-      root_replay_protection_t::init(), root_data);
-  StateInit root_init {
-    /*split_depth*/{}, /*special*/{},
-    root_code, root_data_cl, /*library*/{}
-  };
-  cell root_init_cl = build(root_init).make_cell();
-  return { root_init, uint256(tvm_hash(root_init_cl)) };
-}
+template<>
+struct preparer<IRootTokenContract, DRootTokenContract> {
+  __always_inline
+  static std::pair<StateInit, uint256> execute(DRootTokenContract root_data, cell root_code) {
+    cell root_data_cl =
+      prepare_persistent_data<IRootTokenContract, root_replay_protection_t>(
+        root_replay_protection_t::init(), root_data);
+    StateInit root_init { {}, {}, root_code, root_data_cl, {} };
+    cell root_init_cl = build(root_init).make_cell();
+    return { root_init, uint256(tvm_hash(root_init_cl)) };
+  }
+};
 
 } // namespace tvm
 

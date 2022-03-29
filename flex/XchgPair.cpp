@@ -39,7 +39,7 @@ public:
   }
 
   __always_inline
-  bool onDeploy(uint128 min_amount, uint128 deploy_value, address notify_addr,
+  bool onDeploy(uint128 min_amount, uint128 minmove, uint128 price_denum, uint128 deploy_value, address notify_addr,
                 Tip3Config major_tip3cfg, Tip3Config minor_tip3cfg) {
     require(int_value().get() > deploy_value, error_code::not_enough_crystals);
     require(!min_amount_, error_code::double_deploy);
@@ -64,6 +64,8 @@ public:
     minor_tip3cfg_ = minor_tip3cfg;
 
     min_amount_ = min_amount;
+    minmove_ = minmove;
+    price_denum_ = price_denum;
     notify_addr_ = notify_addr;
     tvm_rawreserve(deploy_value.get(), rawreserve_flag::up_to);
     set_int_return_flag(SEND_ALL_GAS);
@@ -91,6 +93,16 @@ public:
   }
 
   __always_inline
+  uint128 getMinmove() {
+    return minmove_;
+  }
+
+  __always_inline
+  uint128 getPriceDenum() {
+    return price_denum_;
+  }
+
+  __always_inline
   address getNotifyAddr() {
     return notify_addr_;
   }
@@ -106,12 +118,31 @@ public:
   }
 
   __always_inline
-  cell getXchgPriceCode() {
+  XchgPairSalt getConfig() {
+    return parse_chain_static<XchgPairSalt>(parser(tvm_code_salt()));
+  }
+
+  __always_inline
+  cell getPriceXchgCode(bool salted) {
     auto cfg = getConfig();
-    auto price_code_sl = cfg.xchg_price_code.ctos();
+    require(major_tip3cfg_ && minor_tip3cfg_, error_code::not_initialized);
+    if (salted)
+      return tvm_add_code_salt(preparePriceXchgSalt(cfg), cfg.xchg_price_code);
+    else
+      return cfg.xchg_price_code;
+  }
+
+  __always_inline
+  cell getPriceXchgSalt() {
+    auto cfg = getConfig();
     require(major_tip3cfg_ && minor_tip3cfg_, error_code::not_initialized);
 
-    PriceXchgSalt price_cfg {
+    return build_chain_static(preparePriceXchgSalt(cfg));
+  }
+
+  __always_inline
+  PriceXchgSalt preparePriceXchgSalt(XchgPairSalt cfg) {
+    return {
       .flex                 = cfg.flex,
       .pair                 = tvm_myaddr(),
       .notify_addr          = getNotifyAddr(),
@@ -121,16 +152,11 @@ public:
       .minor_reserve_wallet = getMinorReserveWallet(),
       .ev_cfg               = cfg.ev_cfg,
       .min_amount           = getMinAmount(),
+      .minmove              = getMinmove(),
+      .price_denum          = getPriceDenum(),
       .deals_limit          = cfg.deals_limit,
       .workchain_id         = std::get<addr_std>(tvm_myaddr().val()).workchain_id
     };
-    cell salt = build_chain_static(price_cfg);
-    return builder().stslice(price_code_sl).stref(salt).endc();
-  }
-
-  __always_inline
-  XchgPairSalt getConfig() {
-    return parse_chain_static<XchgPairSalt>(parser(tvm_code_salt()));
   }
 
   // =============== Support functions ==================

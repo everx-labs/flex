@@ -81,46 +81,68 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a074bcb7c5d89b4e2cb18021ef8177dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a074bcb7c5d89b4e2cb18021ef8177dd6">constructor</a> (uint256 pubkey, uint256 user_id)</td></tr>
-<tr class="memdesc:a074bcb7c5d89b4e2cb18021ef8177dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of the <a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a>.  <a href="structtvm_1_1IFlexClient.html#a074bcb7c5d89b4e2cb18021ef8177dd6">More...</a><br /></td></tr>
-<tr class="separator:a074bcb7c5d89b4e2cb18021ef8177dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d7ce6789d87d4a70f94130afa6c6122"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a1d7ce6789d87d4a70f94130afa6c6122">setFlexCfg</a> (<a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, address flex)</td></tr>
-<tr class="memdesc:a1d7ce6789d87d4a70f94130afa6c6122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set flex address and evers configuration.  <a href="structtvm_1_1IFlexClient.html#a1d7ce6789d87d4a70f94130afa6c6122">More...</a><br /></td></tr>
-<tr class="separator:a1d7ce6789d87d4a70f94130afa6c6122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b47e03a97a5c0b4b643237e950bb3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a14b47e03a97a5c0b4b643237e950bb3e">constructor</a> (uint256 pubkey)</td></tr>
+<tr class="memdesc:a14b47e03a97a5c0b4b643237e950bb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of the <a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a>.  <a href="structtvm_1_1IFlexClient.html#a14b47e03a97a5c0b4b643237e950bb3e">More...</a><br /></td></tr>
+<tr class="separator:a14b47e03a97a5c0b4b643237e950bb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4946722b460ff63b99753214c7b3788"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ac4946722b460ff63b99753214c7b3788">setFlexCfg</a> (address flex)</td></tr>
+<tr class="memdesc:ac4946722b460ff63b99753214c7b3788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set flex address and evers configuration.  <a href="structtvm_1_1IFlexClient.html#ac4946722b460ff63b99753214c7b3788">More...</a><br /></td></tr>
+<tr class="separator:ac4946722b460ff63b99753214c7b3788"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f1dd4de250ba39ec63ba2b5e25b51b4"><td class="memItemLeft" align="right" valign="top"><a id="a1f1dd4de250ba39ec63ba2b5e25b51b4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a1f1dd4de250ba39ec63ba2b5e25b51b4">setFlexWalletCode</a> (cell flex_wallet_code)</td></tr>
 <tr class="memdesc:a1f1dd4de250ba39ec63ba2b5e25b51b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set flex wallet code for deployEmptyFlexWallet calls. <br /></td></tr>
 <tr class="separator:a1f1dd4de250ba39ec63ba2b5e25b51b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13ef68e3ae0d0ffd43e8efc8429c4c34"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a13ef68e3ae0d0ffd43e8efc8429c4c34">deployPriceXchg</a> (bool sell, bool immediate_client, bool post_order, uint128 price_num, uint128 price_denum, uint128 amount, uint128 lend_amount, uint32 lend_finish_time, uint128 evers, cell xchg_price_code, address my_tip3_addr, address receive_wallet, uint256 order_id)</td></tr>
-<tr class="memdesc:a13ef68e3ae0d0ffd43e8efc8429c4c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy tip3-tip3 <a class="el" href="classPriceXchg.html">PriceXchg</a> contract with sell or buy order.  <a href="structtvm_1_1IFlexClient.html#a13ef68e3ae0d0ffd43e8efc8429c4c34">More...</a><br /></td></tr>
-<tr class="separator:a13ef68e3ae0d0ffd43e8efc8429c4c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa44de7d4a8d0223e79085687705e368"><td class="memItemLeft" align="right" valign="top"><a id="afa44de7d4a8d0223e79085687705e368"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#afa44de7d4a8d0223e79085687705e368">setAuthIndexCode</a> (cell auth_index_code)</td></tr>
+<tr class="memdesc:afa44de7d4a8d0223e79085687705e368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set AuthIndex code. <br /></td></tr>
+<tr class="separator:afa44de7d4a8d0223e79085687705e368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275f424a736966a10c6b6479aad08417"><td class="memItemLeft" align="right" valign="top"><a id="a275f424a736966a10c6b6479aad08417"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a275f424a736966a10c6b6479aad08417">setUserIdIndexCode</a> (cell user_id_index_code)</td></tr>
+<tr class="memdesc:a275f424a736966a10c6b6479aad08417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set UserIdIndex code. <br /></td></tr>
+<tr class="separator:a275f424a736966a10c6b6479aad08417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3418a4ed7a11d314d93b7be43c22bd30"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a3418a4ed7a11d314d93b7be43c22bd30">deployPriceXchg</a> (bool sell, bool immediate_client, bool post_order, uint128 price_num, uint128 amount, uint128 lend_amount, uint32 lend_finish_time, uint128 evers, cell unsalted_price_code, cell price_salt, address my_tip3_addr, uint256 user_id, uint256 order_id)</td></tr>
+<tr class="memdesc:a3418a4ed7a11d314d93b7be43c22bd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy tip3-tip3 <a class="el" href="classPriceXchg.html">PriceXchg</a> contract with sell or buy order.  <a href="structtvm_1_1IFlexClient.html#a3418a4ed7a11d314d93b7be43c22bd30">More...</a><br /></td></tr>
+<tr class="separator:a3418a4ed7a11d314d93b7be43c22bd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe0306d07fd5c0e3bd18b5fb817e8afa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#abe0306d07fd5c0e3bd18b5fb817e8afa">lendOwnershipPubkey</a> (address my_tip3_addr, uint256 pubkey, uint256 user_id, uint128 evers, uint32 lend_finish_time)</td></tr>
 <tr class="memdesc:abe0306d07fd5c0e3bd18b5fb817e8afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership to an external owner (pubkey)  <a href="structtvm_1_1IFlexClient.html#abe0306d07fd5c0e3bd18b5fb817e8afa">More...</a><br /></td></tr>
 <tr class="separator:abe0306d07fd5c0e3bd18b5fb817e8afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd4a26e6c18dbda88178ee77373555c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a0fd4a26e6c18dbda88178ee77373555c">reLendOwnershipPubkey</a> (address my_tip3_addr, uint256 user_id, opt&lt; uint256 &gt; new_key, uint128 evers)</td></tr>
 <tr class="memdesc:a0fd4a26e6c18dbda88178ee77373555c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re-lend ownership to an external owner (pubkey), or revoke.  <a href="structtvm_1_1IFlexClient.html#a0fd4a26e6c18dbda88178ee77373555c">More...</a><br /></td></tr>
 <tr class="separator:a0fd4a26e6c18dbda88178ee77373555c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d81a0950ab54f87a8d3cfbd0b322b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ae9d81a0950ab54f87a8d3cfbd0b322b4">forgetUserId</a> (uint256 user_id)</td></tr>
-<tr class="memdesc:ae9d81a0950ab54f87a8d3cfbd0b322b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forget user id.  <a href="structtvm_1_1IFlexClient.html#ae9d81a0950ab54f87a8d3cfbd0b322b4">More...</a><br /></td></tr>
-<tr class="separator:ae9d81a0950ab54f87a8d3cfbd0b322b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7faf00c15985cece006e20c7166c87da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a7faf00c15985cece006e20c7166c87da">cancelXchgOrder</a> (bool sell, uint128 price_num, uint128 price_denum, uint128 value, cell xchg_price_code)</td></tr>
-<tr class="memdesc:a7faf00c15985cece006e20c7166c87da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancel tip3-tip sell or buy order.  <a href="structtvm_1_1IFlexClient.html#a7faf00c15985cece006e20c7166c87da">More...</a><br /></td></tr>
-<tr class="separator:a7faf00c15985cece006e20c7166c87da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb990b32355b069445dae559cca46507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#afb990b32355b069445dae559cca46507">cancelXchgOrder</a> (bool sell, uint128 price_num, uint128 value, cell salted_price_code, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="memdesc:afb990b32355b069445dae559cca46507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancel tip3-tip sell or buy order.  <a href="structtvm_1_1IFlexClient.html#afb990b32355b069445dae559cca46507">More...</a><br /></td></tr>
+<tr class="separator:afb990b32355b069445dae559cca46507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98baee797a67ae421762e13ced66fccb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a98baee797a67ae421762e13ced66fccb">transfer</a> (address dest, uint128 value, bool bounce)</td></tr>
 <tr class="memdesc:a98baee797a67ae421762e13ced66fccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer evers.  <a href="structtvm_1_1IFlexClient.html#a98baee797a67ae421762e13ced66fccb">More...</a><br /></td></tr>
 <tr class="separator:a98baee797a67ae421762e13ced66fccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438c1406cfb47ada41d3e7e034a4f09c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a438c1406cfb47ada41d3e7e034a4f09c">transferTokens</a> (address src, address dst, uint128 tokens, uint128 evers)</td></tr>
+<tr class="memdesc:a438c1406cfb47ada41d3e7e034a4f09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer tokens.  <a href="structtvm_1_1IFlexClient.html#a438c1406cfb47ada41d3e7e034a4f09c">More...</a><br /></td></tr>
+<tr class="separator:a438c1406cfb47ada41d3e7e034a4f09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae423a42976d62a5c8ef12505bb4b8a27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ae423a42976d62a5c8ef12505bb4b8a27">registerWrapper</a> (uint256 wrapper_pubkey, uint128 value, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
 <tr class="memdesc:ae423a42976d62a5c8ef12505bb4b8a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request wrapper registration from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> Root.  <a href="structtvm_1_1IFlexClient.html#ae423a42976d62a5c8ef12505bb4b8a27">More...</a><br /></td></tr>
 <tr class="separator:ae423a42976d62a5c8ef12505bb4b8a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74deed53ffdf36135840d10e55f48a53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a74deed53ffdf36135840d10e55f48a53">registerXchgPair</a> (uint256 request_pubkey, uint128 value, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, address notify_addr)</td></tr>
-<tr class="memdesc:a74deed53ffdf36135840d10e55f48a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request xchg pair registration from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> Root.  <a href="structtvm_1_1IFlexClient.html#a74deed53ffdf36135840d10e55f48a53">More...</a><br /></td></tr>
-<tr class="separator:a74deed53ffdf36135840d10e55f48a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a126cd98718fdedd1cdc7a8dd730dda0b"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a126cd98718fdedd1cdc7a8dd730dda0b">deployEmptyFlexWallet</a> (uint256 pubkey, uint128 evers_to_wallet, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
-<tr class="memdesc:a126cd98718fdedd1cdc7a8dd730dda0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy an empty flex tip3 token wallet, owned by <a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a> contract.  <a href="structtvm_1_1IFlexClient.html#a126cd98718fdedd1cdc7a8dd730dda0b">More...</a><br /></td></tr>
-<tr class="separator:a126cd98718fdedd1cdc7a8dd730dda0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281cb0e474d6ffe04bed05a15f2a6918"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a281cb0e474d6ffe04bed05a15f2a6918">registerWrapperEver</a> (uint256 wrapper_pubkey, uint128 value)</td></tr>
+<tr class="memdesc:a281cb0e474d6ffe04bed05a15f2a6918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request wrapper registration from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> Root.  <a href="structtvm_1_1IFlexClient.html#a281cb0e474d6ffe04bed05a15f2a6918">More...</a><br /></td></tr>
+<tr class="separator:a281cb0e474d6ffe04bed05a15f2a6918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9527b49b66d98cbfe8ca346af69c3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a5b9527b49b66d98cbfe8ca346af69c3e">registerXchgPair</a> (uint256 request_pubkey, uint128 value, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
+<tr class="memdesc:a5b9527b49b66d98cbfe8ca346af69c3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request xchg pair registration from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> Root.  <a href="structtvm_1_1IFlexClient.html#a5b9527b49b66d98cbfe8ca346af69c3e">More...</a><br /></td></tr>
+<tr class="separator:a5b9527b49b66d98cbfe8ca346af69c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0068f9387501756e0a927156ee46449"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ac0068f9387501756e0a927156ee46449">deployEmptyFlexWallet</a> (uint256 pubkey, uint128 evers_to_wallet, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg, opt&lt; <a class="el" href="structtvm_1_1client__lend__info.html">client_lend_info</a> &gt; lend_info)</td></tr>
+<tr class="memdesc:ac0068f9387501756e0a927156ee46449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy an empty flex tip3 token wallet, owned by <a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a> contract.  <a href="structtvm_1_1IFlexClient.html#ac0068f9387501756e0a927156ee46449">More...</a><br /></td></tr>
+<tr class="separator:ac0068f9387501756e0a927156ee46449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a660259981de87b78ead0299aacd2d11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a660259981de87b78ead0299aacd2d11e">deployIndex</a> (uint256 user_id, uint256 <a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a>, string name, uint128 evers_all, uint128 evers_to_auth_idx)</td></tr>
+<tr class="memdesc:a660259981de87b78ead0299aacd2d11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy UserIdIndex contract.  <a href="structtvm_1_1IFlexClient.html#a660259981de87b78ead0299aacd2d11e">More...</a><br /></td></tr>
+<tr class="separator:a660259981de87b78ead0299aacd2d11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377fe6d163aadb4846bfaa22c2270c6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a377fe6d163aadb4846bfaa22c2270c6e">reLendIndex</a> (uint256 user_id, uint256 new_lend_pubkey, dict_array&lt; address &gt; wallets, uint128 evers_relend_call, uint128 evers_each_wallet_call, uint128 evers_to_remove, uint128 evers_to_auth_idx)</td></tr>
+<tr class="memdesc:a377fe6d163aadb4846bfaa22c2270c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change <a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a> into UserIdIndex contract(call UserIdIndex.reLendPubkey). Set new_lend_pubkey for every wallet from wallets.  <a href="structtvm_1_1IFlexClient.html#a377fe6d163aadb4846bfaa22c2270c6e">More...</a><br /></td></tr>
+<tr class="separator:a377fe6d163aadb4846bfaa22c2270c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf956f266018f4410e66ee17042f2a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a7bf956f266018f4410e66ee17042f2a8">destroyIndex</a> (uint256 user_id, uint128 evers)</td></tr>
+<tr class="memdesc:a7bf956f266018f4410e66ee17042f2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove UserIdIndex contract.  <a href="structtvm_1_1IFlexClient.html#a7bf956f266018f4410e66ee17042f2a8">More...</a><br /></td></tr>
+<tr class="separator:a7bf956f266018f4410e66ee17042f2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa758ea8ee5a1a0ec1c0ff19481461186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#aa758ea8ee5a1a0ec1c0ff19481461186">burnWallet</a> (uint128 evers_value, uint256 out_pubkey, address_opt out_owner, address my_tip3_addr)</td></tr>
 <tr class="memdesc:aa758ea8ee5a1a0ec1c0ff19481461186"><td class="mdescLeft">&#160;</td><td class="mdescRight">To convert flex tip3 tokens back to external tip3 tokens.  <a href="structtvm_1_1IFlexClient.html#aa758ea8ee5a1a0ec1c0ff19481461186">More...</a><br /></td></tr>
 <tr class="separator:aa758ea8ee5a1a0ec1c0ff19481461186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af654b517499e5649acd4a9ad0150c784"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#af654b517499e5649acd4a9ad0150c784">setTradeRestriction</a> (uint128 evers, address my_tip3_addr, address flex, uint256 unsalted_price_code_hash)</td></tr>
+<tr class="separator:af654b517499e5649acd4a9ad0150c784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab9b3b94681091cde513e519dd354fc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#aab9b3b94681091cde513e519dd354fc3">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
 <tr class="separator:aab9b3b94681091cde513e519dd354fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed29ae5d2dd1ef945df6625993b11530"><td class="memItemLeft" align="right" valign="top"><a id="aed29ae5d2dd1ef945df6625993b11530"></a>
@@ -135,22 +157,22 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ab1352f04a083b0d1c51a5ac641c2ff5c">hasFlexWalletCode</a> ()</td></tr>
 <tr class="memdesc:ab1352f04a083b0d1c51a5ac641c2ff5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is flex token wallet code initialized. <br /></td></tr>
 <tr class="separator:ab1352f04a083b0d1c51a5ac641c2ff5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a747bf06d29a79f3409e5f59d8bdf68b1"><td class="memItemLeft" align="right" valign="top"><a id="a747bf06d29a79f3409e5f59d8bdf68b1"></a>
-uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a747bf06d29a79f3409e5f59d8bdf68b1">getUserId</a> ()</td></tr>
-<tr class="memdesc:a747bf06d29a79f3409e5f59d8bdf68b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get user id for main user. <br /></td></tr>
-<tr class="separator:a747bf06d29a79f3409e5f59d8bdf68b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85c24269c1e388d1cc9d9e3d1d7ad452"><td class="memItemLeft" align="right" valign="top"><a id="a85c24269c1e388d1cc9d9e3d1d7ad452"></a>
-lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a85c24269c1e388d1cc9d9e3d1d7ad452">getLendUserIds</a> ()</td></tr>
-<tr class="memdesc:a85c24269c1e388d1cc9d9e3d1d7ad452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get lend user ids and lend infos. <br /></td></tr>
-<tr class="separator:a85c24269c1e388d1cc9d9e3d1d7ad452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f749240a04c885ff8429e8a8746685"><td class="memItemLeft" align="right" valign="top"><a id="a23f749240a04c885ff8429e8a8746685"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a23f749240a04c885ff8429e8a8746685">hasAuthIndexCode</a> ()</td></tr>
+<tr class="memdesc:a23f749240a04c885ff8429e8a8746685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is AuthIndex code initialized. <br /></td></tr>
+<tr class="separator:a23f749240a04c885ff8429e8a8746685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac769b367a9eddd12079c102acb4f3f88"><td class="memItemLeft" align="right" valign="top"><a id="ac769b367a9eddd12079c102acb4f3f88"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ac769b367a9eddd12079c102acb4f3f88">hasUserIdIndexCode</a> ()</td></tr>
+<tr class="memdesc:ac769b367a9eddd12079c102acb4f3f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is UserIdIndex code initialized. <br /></td></tr>
+<tr class="separator:ac769b367a9eddd12079c102acb4f3f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab43b9a79d6b97b40cb1a94fb68a09ad7"><td class="memItemLeft" align="right" valign="top">cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ab43b9a79d6b97b40cb1a94fb68a09ad7">getPayloadForDeployInternalWallet</a> (uint256 owner_pubkey, address_opt owner_addr, uint128 evers)</td></tr>
 <tr class="separator:ab43b9a79d6b97b40cb1a94fb68a09ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a5c5ad023c99da963fedad5eab05b56"><td class="memItemLeft" align="right" valign="top">cell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a0a5c5ad023c99da963fedad5eab05b56">getPayloadForPriceXchg</a> (bool sell, bool immediate_client, bool post_order, uint128 amount, address receive_tip3_wallet, address client_addr, uint256 user_id, uint256 order_id)</td></tr>
-<tr class="memdesc:a0a5c5ad023c99da963fedad5eab05b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare payload for lendOwnership to <a class="el" href="classPriceXchg.html">PriceXchg</a> contract.  <a href="structtvm_1_1IFlexClient.html#a0a5c5ad023c99da963fedad5eab05b56">More...</a><br /></td></tr>
-<tr class="separator:a0a5c5ad023c99da963fedad5eab05b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7790fbbef5c9a404dbf26ec157d7eac9"><td class="memItemLeft" align="right" valign="top">std::pair&lt; cell, address &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#a7790fbbef5c9a404dbf26ec157d7eac9">getStateInitForPriceXchg</a> (uint128 price_num, uint128 price_denum, cell xchg_price_code)</td></tr>
-<tr class="memdesc:a7790fbbef5c9a404dbf26ec157d7eac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare StateInit cell and destination address for lendOwnership to <a class="el" href="classPriceXchg.html">PriceXchg</a> contract.  <a href="structtvm_1_1IFlexClient.html#a7790fbbef5c9a404dbf26ec157d7eac9">More...</a><br /></td></tr>
-<tr class="separator:a7790fbbef5c9a404dbf26ec157d7eac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a853f73ca3e422e7cfff10503b30f2"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#ab6a853f73ca3e422e7cfff10503b30f2">getPriceXchgAddress</a> (uint128 price_num, cell salted_price_code)</td></tr>
+<tr class="memdesc:ab6a853f73ca3e422e7cfff10503b30f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classPriceXchg.html">PriceXchg</a> address.  <a href="structtvm_1_1IFlexClient.html#ab6a853f73ca3e422e7cfff10503b30f2">More...</a><br /></td></tr>
+<tr class="separator:ab6a853f73ca3e422e7cfff10503b30f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9146a47f3b225ef3a000c1737b6c979"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexClient.html#af9146a47f3b225ef3a000c1737b6c979">getUserIdIndex</a> (uint256 user_id)</td></tr>
+<tr class="memdesc:af9146a47f3b225ef3a000c1737b6c979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return UserIdIndex address.  <a href="structtvm_1_1IFlexClient.html#af9146a47f3b225ef3a000c1737b6c979">More...</a><br /></td></tr>
+<tr class="separator:af9146a47f3b225ef3a000c1737b6c979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFlexClient.html" title="FlexClient contract. Implements IFlexClient.">FlexClient</a> is client contract for <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a>. </p>
@@ -207,8 +229,8 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a id="a7faf00c15985cece006e20c7166c87da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7faf00c15985cece006e20c7166c87da">&#9670;&nbsp;</a></span>cancelXchgOrder()</h2>
+<a id="afb990b32355b069445dae559cca46507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb990b32355b069445dae559cca46507">&#9670;&nbsp;</a></span>cancelXchgOrder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,19 +251,25 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>price_denum</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">cell&#160;</td>
-          <td class="paramname"><em>xchg_price_code</em>&#160;</td>
+          <td class="paramname"><em>salted_price_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; uint256 &gt;&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; uint256 &gt;&#160;</td>
+          <td class="paramname"><em>order_id</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -256,17 +284,18 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
   <table class="params">
     <tr><td class="paramname">sell</td><td>Is it a sell order </td></tr>
     <tr><td class="paramname">price_num</td><td>Price numerator for rational price value </td></tr>
-    <tr><td class="paramname">price_denum</td><td>Price denominator for rational price value </td></tr>
     <tr><td class="paramname">value</td><td>Processing evers </td></tr>
-    <tr><td class="paramname">xchg_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract </td></tr>
+    <tr><td class="paramname">salted_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract (salted) </td></tr>
+    <tr><td class="paramname">user_id</td><td>Is user_id is specified, only orders with this user_id will be canceled </td></tr>
+    <tr><td class="paramname">order_id</td><td>Is order_id is specified, only orders with this order_id will be canceled </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a074bcb7c5d89b4e2cb18021ef8177dd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a074bcb7c5d89b4e2cb18021ef8177dd6">&#9670;&nbsp;</a></span>constructor()</h2>
+<a id="a14b47e03a97a5c0b4b643237e950bb3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b47e03a97a5c0b4b643237e950bb3e">&#9670;&nbsp;</a></span>constructor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,18 +304,8 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
           <td class="memname">void constructor </td>
           <td>(</td>
           <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>pubkey</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>pubkey</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>user_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -295,15 +314,14 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pubkey</td><td>Owner's public key </td></tr>
-    <tr><td class="paramname">user_id</td><td>User id </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a126cd98718fdedd1cdc7a8dd730dda0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a126cd98718fdedd1cdc7a8dd730dda0b">&#9670;&nbsp;</a></span>deployEmptyFlexWallet()</h2>
+<a id="ac0068f9387501756e0a927156ee46449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0068f9387501756e0a927156ee46449">&#9670;&nbsp;</a></span>deployEmptyFlexWallet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +342,13 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
-          <td class="paramname"><em>tip3cfg</em>&#160;</td>
+          <td class="paramname"><em>tip3cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; <a class="el" href="structtvm_1_1client__lend__info.html">client_lend_info</a> &gt;&#160;</td>
+          <td class="paramname"><em>lend_info</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -340,14 +364,73 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
     <tr><td class="paramname">pubkey</td><td>Public key (for identification only) </td></tr>
     <tr><td class="paramname">evers_to_wallet</td><td>Evers to the wallet </td></tr>
     <tr><td class="paramname">tip3cfg</td><td>Tip3 token configuration </td></tr>
+    <tr><td class="paramname">lend_info</td><td>Info for lendOwnershipPubkey call if specified. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a13ef68e3ae0d0ffd43e8efc8429c4c34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13ef68e3ae0d0ffd43e8efc8429c4c34">&#9670;&nbsp;</a></span>deployPriceXchg()</h2>
+<a id="a660259981de87b78ead0299aacd2d11e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a660259981de87b78ead0299aacd2d11e">&#9670;&nbsp;</a></span>deployIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deployIndex </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>lend_pubkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_all</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_to_auth_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deploy UserIdIndex contract. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a></td><td>Lend public key </td></tr>
+    <tr><td class="paramname">name</td><td>User name (encoded) </td></tr>
+    <tr><td class="paramname">evers_all</td><td>Evers for all processing: UserIdIndex deploy and included AuthIndex deploy </td></tr>
+    <tr><td class="paramname">evers_to_auth_idx</td><td>Evers to AuthIndex deploy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3418a4ed7a11d314d93b7be43c22bd30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3418a4ed7a11d314d93b7be43c22bd30">&#9670;&nbsp;</a></span>deployPriceXchg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -380,12 +463,6 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>price_denum</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>amount</em>, </td>
         </tr>
         <tr>
@@ -410,7 +487,13 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">cell&#160;</td>
-          <td class="paramname"><em>xchg_price_code</em>, </td>
+          <td class="paramname"><em>unsalted_price_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cell&#160;</td>
+          <td class="paramname"><em>price_salt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -421,8 +504,8 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>receive_wallet</em>, </td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -445,14 +528,14 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
     <tr><td class="paramname">immediate_client</td><td>Should this order try to be executed as a client order first (find existing corresponding orders). </td></tr>
     <tr><td class="paramname">post_order</td><td>Should this order be enqueued if it doesn't already have corresponding orders. </td></tr>
     <tr><td class="paramname">price_num</td><td>Price numerator for rational price value </td></tr>
-    <tr><td class="paramname">price_denum</td><td>Price denominator for rational price value </td></tr>
     <tr><td class="paramname">amount</td><td>Amount of major tip3 tokens to sell or buy </td></tr>
     <tr><td class="paramname">lend_amount</td><td>Lend amount. For sell, it should be amount of major tokens, for buy - minor. </td></tr>
-    <tr><td class="paramname">lend_finish_time</td><td>Lend finish time (order finish time also) </td></tr>
+    <tr><td class="paramname">lend_finish_time</td><td>Lend finish time (order finish time also will be lend_finish_time - safe_period) </td></tr>
     <tr><td class="paramname">evers</td><td>Processing evers </td></tr>
-    <tr><td class="paramname">xchg_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract </td></tr>
+    <tr><td class="paramname">unsalted_price_code</td><td>Unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code </td></tr>
+    <tr><td class="paramname">price_salt</td><td><a class="el" href="classPriceXchg.html">PriceXchg</a> code salt (configuration) </td></tr>
     <tr><td class="paramname">my_tip3_addr</td><td>Address of flex tip3 token wallet to provide tokens </td></tr>
-    <tr><td class="paramname">receive_wallet</td><td>Address of flex tip3 token wallet to receive tokens </td></tr>
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
     <tr><td class="paramname">order_id</td><td>Order id </td></tr>
   </table>
   </dd>
@@ -460,26 +543,37 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a id="ae9d81a0950ab54f87a8d3cfbd0b322b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9d81a0950ab54f87a8d3cfbd0b322b4">&#9670;&nbsp;</a></span>forgetUserId()</h2>
+<a id="a7bf956f266018f4410e66ee17042f2a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bf956f266018f4410e66ee17042f2a8">&#9670;&nbsp;</a></span>destroyIndex()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void forgetUserId </td>
+          <td class="memname">void destroyIndex </td>
           <td>(</td>
           <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>user_id</em></td><td>)</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Forget user id. </p>
+<p>Remove UserIdIndex contract. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">user_id</td><td>User id to be removed. Wallet's revokes should be performed before this call. </td></tr>
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
+    <tr><td class="paramname">evers</td><td>Evers to send to `UserIdIndex-&gt;remove`, inside - to `AuthIndex-&gt;remove`. The remaining will return. </td></tr>
   </table>
   </dd>
 </dl>
@@ -529,93 +623,14 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a id="a0a5c5ad023c99da963fedad5eab05b56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a5c5ad023c99da963fedad5eab05b56">&#9670;&nbsp;</a></span>getPayloadForPriceXchg()</h2>
+<a id="ab6a853f73ca3e422e7cfff10503b30f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a853f73ca3e422e7cfff10503b30f2">&#9670;&nbsp;</a></span>getPriceXchgAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cell getPayloadForPriceXchg </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>sell</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>immediate_client</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>post_order</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>amount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>receive_tip3_wallet</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>client_addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>user_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>order_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prepare payload for lendOwnership to <a class="el" href="classPriceXchg.html">PriceXchg</a> contract. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sell</td><td>Sell order if true, buy order if false. </td></tr>
-    <tr><td class="paramname">immediate_client</td><td>Should this order try to be executed as a client order first (find existing corresponding orders). </td></tr>
-    <tr><td class="paramname">post_order</td><td>Should this order be enqueued if it doesn't already have corresponding orders. </td></tr>
-    <tr><td class="paramname">amount</td><td>Amount of major tokens to buy or sell. </td></tr>
-    <tr><td class="paramname">receive_tip3_wallet</td><td>Client tip3 wallet to receive tokens (minor for sell or major for buy) </td></tr>
-    <tr><td class="paramname">client_addr</td><td>Client contract address. <a class="el" href="classPriceXchg.html">PriceXchg</a> will execute cancels from this address, send notifications and return the remaining native funds (evers) to this address. </td></tr>
-    <tr><td class="paramname">user_id</td><td>User id for client purposes. </td></tr>
-    <tr><td class="paramname">order_id</td><td>Order id for client purposes. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a7790fbbef5c9a404dbf26ec157d7eac9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7790fbbef5c9a404dbf26ec157d7eac9">&#9670;&nbsp;</a></span>getStateInitForPriceXchg()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::pair&lt;cell, address&gt; getStateInitForPriceXchg </td>
+          <td class="memname">address getPriceXchgAddress </td>
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>price_num</em>, </td>
@@ -623,14 +638,8 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>price_denum</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">cell&#160;</td>
-          <td class="paramname"><em>xchg_price_code</em>&#160;</td>
+          <td class="paramname"><em>salted_price_code</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -640,12 +649,37 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
       </table>
 </div><div class="memdoc">
 
-<p>Prepare StateInit cell and destination address for lendOwnership to <a class="el" href="classPriceXchg.html">PriceXchg</a> contract. </p>
+<p>Get <a class="el" href="classPriceXchg.html">PriceXchg</a> address. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">price_num</td><td>Price numerator for rational price value </td></tr>
-    <tr><td class="paramname">price_denum</td><td>Price denominator for rational price value </td></tr>
-    <tr><td class="paramname">xchg_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract </td></tr>
+    <tr><td class="paramname">salted_price_code</td><td>Code of <a class="el" href="classPriceXchg.html">PriceXchg</a> contract (salted!). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af9146a47f3b225ef3a000c1737b6c979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9146a47f3b225ef3a000c1737b6c979">&#9670;&nbsp;</a></span>getUserIdIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">address getUserIdIndex </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return UserIdIndex address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
   </table>
   </dd>
 </dl>
@@ -818,8 +852,45 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a id="a74deed53ffdf36135840d10e55f48a53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74deed53ffdf36135840d10e55f48a53">&#9670;&nbsp;</a></span>registerXchgPair()</h2>
+<a id="a281cb0e474d6ffe04bed05a15f2a6918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281cb0e474d6ffe04bed05a15f2a6918">&#9670;&nbsp;</a></span>registerWrapperEver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void registerWrapperEver </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>wrapper_pubkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Request wrapper registration from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> Root. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wrapper_pubkey</td><td><a class="el" href="classWrapper.html">Wrapper</a>'s public key </td></tr>
+    <tr><td class="paramname">value</td><td>Processing evers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b9527b49b66d98cbfe8ca346af69c3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9527b49b66d98cbfe8ca346af69c3e">&#9670;&nbsp;</a></span>registerXchgPair()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -869,6 +940,18 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>minmove</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>price_denum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">address&#160;</td>
           <td class="paramname"><em>notify_addr</em>&#160;</td>
         </tr>
@@ -890,7 +973,81 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
     <tr><td class="paramname">major_tip3cfg</td><td>Major tip3 configuration </td></tr>
     <tr><td class="paramname">minor_tip3cfg</td><td>Minor tip3 configuration </td></tr>
     <tr><td class="paramname">min_amount</td><td>Minimum amount of major tokens to buy or sell </td></tr>
+    <tr><td class="paramname">minmove</td><td>Minimum move for price </td></tr>
+    <tr><td class="paramname">price_denum</td><td>Price denominator for the pair </td></tr>
     <tr><td class="paramname">notify_addr</td><td>Notification address (AMM) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a377fe6d163aadb4846bfaa22c2270c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377fe6d163aadb4846bfaa22c2270c6e">&#9670;&nbsp;</a></span>reLendIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reLendIndex </td>
+          <td>(</td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>new_lend_pubkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dict_array&lt; address &gt;&#160;</td>
+          <td class="paramname"><em>wallets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_relend_call</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_each_wallet_call</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_to_remove</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_to_auth_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change <a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a> into UserIdIndex contract(call UserIdIndex.reLendPubkey). Set new_lend_pubkey for every wallet from wallets. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user_id</td><td>User id </td></tr>
+    <tr><td class="paramname">new_lend_pubkey</td><td>New lend public key </td></tr>
+    <tr><td class="paramname">wallets</td><td>Array of wallet addresses </td></tr>
+    <tr><td class="paramname">evers_relend_call</td><td>Evers for `UserIdIndex-&gt;reLendPubkey` call </td></tr>
+    <tr><td class="paramname">evers_each_wallet_call</td><td>Evers for each `FlexWallet-&gt;lendOwnershipPubkey` call </td></tr>
+    <tr><td class="paramname">evers_to_remove</td><td>Evers to send in `AuthIndex-&gt;remove` call inside `UserIdIndex-&gt;reLendPubkey` </td></tr>
+    <tr><td class="paramname">evers_to_auth_idx</td><td>Evers to send in new AuthIndex deploy call inside `UserIdIndex-&gt;reLendPubkey` </td></tr>
   </table>
   </dd>
 </dl>
@@ -948,8 +1105,8 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
-<a id="a1d7ce6789d87d4a70f94130afa6c6122"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d7ce6789d87d4a70f94130afa6c6122">&#9670;&nbsp;</a></span>setFlexCfg()</h2>
+<a id="ac4946722b460ff63b99753214c7b3788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4946722b460ff63b99753214c7b3788">&#9670;&nbsp;</a></span>setFlexCfg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -957,14 +1114,52 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
         <tr>
           <td class="memname">void setFlexCfg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td>
-          <td class="paramname"><em>ev_cfg</em>, </td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>flex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set flex address and evers configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flex</td><td>Address of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root contract </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af654b517499e5649acd4a9ad0150c784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af654b517499e5649acd4a9ad0150c784">&#9670;&nbsp;</a></span>setTradeRestriction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setTradeRestriction </td>
+          <td>(</td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>flex</em>&#160;</td>
+          <td class="paramname"><em>my_tip3_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>flex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>unsalted_price_code_hash</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -973,12 +1168,12 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set flex address and evers configuration. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ev_cfg</td><td>Evers configuration of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> </td></tr>
-    <tr><td class="paramname">flex</td><td>Address of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root contract </td></tr>
+    <tr><td class="paramname">evers</td><td>Processing evers </td></tr>
+    <tr><td class="paramname">my_tip3_addr</td><td>Address of flex tip3 token wallet </td></tr>
+    <tr><td class="paramname">flex</td><td><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root address </td></tr>
+    <tr><td class="paramname">unsalted_price_code_hash</td><td><a class="el" href="classPriceXchg.html">PriceXchg</a> unsalted code hash </td></tr>
   </table>
   </dd>
 </dl>
@@ -1023,6 +1218,57 @@ lend_user_ids_array&#160;</td><td class="memItemRight" valign="bottom"><a class=
     <tr><td class="paramname">dest</td><td>Destination address </td></tr>
     <tr><td class="paramname">value</td><td>Amount of evers </td></tr>
     <tr><td class="paramname">bounce</td><td>Bounce flag </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a438c1406cfb47ada41d3e7e034a4f09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a438c1406cfb47ada41d3e7e034a4f09c">&#9670;&nbsp;</a></span>transferTokens()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void transferTokens </td>
+          <td>(</td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>tokens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transfer tokens. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Source address </td></tr>
+    <tr><td class="paramname">dst</td><td>Destination address </td></tr>
+    <tr><td class="paramname">tokens</td><td>Amount of tokens </td></tr>
+    <tr><td class="paramname">evers</td><td>Amount of processing evers </td></tr>
   </table>
   </dd>
 </dl>

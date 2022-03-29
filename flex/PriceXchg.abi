@@ -35,19 +35,26 @@
     ],
     "outputs": [
     ],
-    "id": "0xcb"
+    "id": "0xca"
   },
   {
-    "name": "cancelSell",
+    "name": "cancelOrder",
     "inputs": [
+    { "name":"sell", "type":"bool" },
+    { "name":"user_id", "type":"optional(uint256)" },
+    { "name":"order_id", "type":"optional(uint256)" }
     ],
     "outputs": [
     ],
-    "id": "0xcc"
+    "id": "0xcb"
   },
   {
-    "name": "cancelBuy",
+    "name": "cancelWalletOrder",
     "inputs": [
+    { "name":"sell", "type":"bool" },
+    { "name":"owner", "type":"address" },
+    { "name":"user_id", "type":"uint256" },
+    { "name":"order_id", "type":"optional(uint256)" }
     ],
     "outputs": [
     ],
@@ -69,10 +76,6 @@
         { "name":"workchain_id", "type":"int8" },
         { "name":"address", "type":"uint256" }
       ], "name":"tip3_wallet_provide", "type":"tuple" },
-      { "components":[
-        { "name":"workchain_id", "type":"int8" },
-        { "name":"address", "type":"uint256" }
-      ], "name":"tip3_wallet_receive", "type":"tuple" },
       { "components":[
         { "name":"workchain_id", "type":"int8" },
         { "name":"address", "type":"uint256" }
@@ -101,10 +104,6 @@
         { "name":"workchain_id", "type":"int8" },
         { "name":"address", "type":"uint256" }
       ], "name":"tip3_wallet_provide", "type":"tuple" },
-      { "components":[
-        { "name":"workchain_id", "type":"int8" },
-        { "name":"address", "type":"uint256" }
-      ], "name":"tip3_wallet_receive", "type":"tuple" },
       { "components":[
         { "name":"workchain_id", "type":"int8" },
         { "name":"address", "type":"uint256" }
@@ -150,6 +149,8 @@
       { "name":"send_notify", "type":"uint128" }
     ], "name":"ev_cfg", "type":"tuple" },
     { "name":"min_amount", "type":"uint128" },
+    { "name":"minmove", "type":"uint128" },
+    { "name":"price_denum", "type":"uint128" },
     { "name":"deals_limit", "type":"uint8" },
     { "name":"workchain_id", "type":"int8" }
     ],
@@ -158,10 +159,7 @@
   ],
   "fields": [
     { "name":"__uninitialized", "type":"bool" },
-    { "components":[
-      { "name":"num", "type":"uint128" },
-      { "name":"denum", "type":"uint128" }
-    ], "name":"price_", "type":"tuple" },
+    { "name":"price_num_", "type":"uint128" },
     { "name":"sells_amount_", "type":"uint128" },
     { "name":"buys_amount_", "type":"uint128" },
     { "components":[
