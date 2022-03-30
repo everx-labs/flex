@@ -35,11 +35,8 @@
 ## Links
 
 * [Flex Contracts Reference](https://tonlabs.github.io/flex/)
-* [Flex Core Reference](https://tonlabs.github.io/flex/)
-* [Flex decentralized browser](https://flex.ton.surf)
-* [TIP3 specifications](https://github.com/everscale-org/docs/blob/main/src/Standard/TIP-3/1.md)
 * [Flex on GitHub](https://github.com/tonlabs/flex)
+* [TIP3 specifications](https://github.com/everscale-org/docs/blob/main/src/Standard/TIP-3/1.md)
 * [Everscale Developer Tools](https://github.com/tonlabs/everdev)
-* [Everscale Developer Tools](https://github.com/tonlabs/tondev)
 * [If you need to write more DeBots](https://github.com/tonlabs/debots)
 * [Everscale Dev on Telegram](https://t.me/everdev)
