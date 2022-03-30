@@ -19,14 +19,14 @@
 ## Technical Description
 
 * [Overview](technical-description/overview.md)
+* [Glossary](technical-description/glossary.md)
+* [DApp Authorization](technical-description/client-app-authorization.md)
+* [Flex API](technical-description/flex-sdk-api.md)
 * [Flex DeBots](technical-description/flex-debots/README.md)
   * [FlexDebot](technical-description/flex-debots/flexdebot.md)
   * [FlexHelperDebot](technical-description/flex-debots/flexhelperdebot.md)
   * [FlexTip3Tip3Debot](technical-description/flex-debots/flextip3tip3debot.md)
   * [Tip3Debot](technical-description/flex-debots/tip3debot.md)
-* [Flex SDK API](technical-description/flex-sdk-api.md)
-* [Client App Authorization](technical-description/client-app-authorization.md)
-* [GUI Example](technical-description/gui-example.md)
 
 ## AMM and Liquidity Pools
 
@@ -34,9 +34,12 @@
 
 ## Links
 
+* [Flex Contracts Reference](https://tonlabs.github.io/flex/)
 * [Flex Core Reference](https://tonlabs.github.io/flex/)
 * [Flex decentralized browser](https://flex.ton.surf)
+* [TIP3 specifications](https://github.com/everscale-org/docs/blob/main/src/Standard/TIP-3/1.md)
 * [Flex on GitHub](https://github.com/tonlabs/flex)
+* [Everscale Developer Tools](https://github.com/tonlabs/everdev)
 * [Everscale Developer Tools](https://github.com/tonlabs/tondev)
 * [If you need to write more DeBots](https://github.com/tonlabs/debots)
 * [Everscale Dev on Telegram](https://t.me/everdev)

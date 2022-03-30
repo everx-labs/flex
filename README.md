@@ -8,7 +8,6 @@ Flex is an Everscale decentralized and distributed limit order book (DLOB) with 
 
 **Core documentation:** [https://tonlabs.github.io/flex/](https://tonlabs.github.io/flex/)
 
-**Decentralized Browser Interface:** [https://flex.ton.surf](https://flex.ton.surf)\
-A standalone decentralized browser uses [DeBot](https://github.com/tonlabs/debots) Bundle to render a user interface locally.
+A standalone decentralized browser uses Flex API and API [DeBot](https://github.com/tonlabs/debots) Bundle to render a user interface locally.
 
-**DeBot Interface:** All DeBots work in the [TON Surf Browser](https://ton.surf). Look for DeBot addresses in [Guides](broken-reference) section.
+**DeBot Interface:** Flex DeBots work in the [Ever Surf Browser](https://ever.surf).
