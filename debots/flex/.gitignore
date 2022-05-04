@@ -1,6 +1,6 @@
 .solc_imports
 *.log
+!address.log
 *.code
-*.json
-*.sh
-*.tvc
+*.keys.json
+compile.sh

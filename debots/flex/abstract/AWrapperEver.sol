@@ -1,6 +1,6 @@
 pragma ton-solidity >=0.53.0;
 
-abstract contract AWrapper {
+abstract contract AWrapperEver {
     function getDetails() public functionID(0x10) returns(
         bytes name,
         bytes symbol,
@@ -8,7 +8,6 @@ abstract contract AWrapper {
         uint256 root_pubkey,
         uint128 total_granted,
         TvmCell wallet_code,
-        address external_wallet,
         address reserve_wallet,
         address flex
         ) {}

@@ -11,8 +11,11 @@ import "../abstract/AMSig.sol";
 import "../abstract/AFlex.sol";
 import "../abstract/AFlexClient.sol";
 import "../abstract/AWrapper.sol";
+import "../abstract/AWrapperEver.sol";
 import "../interface/IFlexDebot.sol";
 import "../interface/IFlexHelperDebot.sol";
+import "../constants/WrapperInfo.sol";
+import "../abstract/AFlexWallet.sol";
 
 contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
 
@@ -27,16 +30,15 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
     mapping (uint8=>address) m_addr;
 
     string m_t3Symbol;
-    uint256 m_masterPubKey;
+    uint256 m_masterPubkey;
     uint32 m_signingBox;
     TvmCell m_flexClientCode;
     uint128 m_tradingPairDeploy;
     TvmCell m_sendMsg;
-    TvmCell m_tradingPairCode;
     TvmCell m_xchgPairCode;
     TvmCell m_flexWalletCode;
     uint128 m_dealTons;
-    FlexTonCfg m_flexTonCfg;
+    EversConfig m_flexEverCfg;
     uint128 m_minTradeAmount;
     uint8 m_flexDealsLimit;
 
@@ -52,6 +54,13 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
         m_flexWalletCode = code;
     }
 
+    function setABIBytes(bytes dabi) public {
+        require(tvm.pubkey() == msg.pubkey(), 100);
+        tvm.accept();
+        m_options |= DEBOT_ABI;
+        m_debotAbi = dabi;
+    }
+
     function start() public override {
         Terminal.print(0,"Sorry, I can't help you. Bye!");
     }
@@ -63,89 +72,47 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
     }
 
     function getPublicKey(uint256 value) public {
-        m_masterPubKey = value;
+        m_masterPubkey = value;
         UserInfo.getSigningBox(tvm.functionId(getSigningBox));
+    }
+
+    function onGetMethodError(uint32 sdkError, uint32 exitCode) public {
+        Terminal.print(0, format("Get method error. Sdk error = {}, Error code = {}",sdkError, exitCode));
     }
 
     function getSigningBox(uint32 handle) public {
         m_signingBox = handle;
-        getTradingPairCode();
-    }
-
-    function getTradingPairCode() public view {
+        //todo get details from parce acc data
         optional(uint256) none;
-        AFlex(m_addr[ADDR_FLEX]).getTradingPairCode{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(setTradingPairCode),
-            onErrorId: 0,
+        AFlex(m_addr[ADDR_FLEX]).getDetails{
+            callbackId: setFlexDetails,
+            onErrorId: onGetMethodError,
             time: 0,
             expire: 0,
             sign: false,
             pubkey: none
-        }();
+        }().extMsg;
     }
 
-    function setTradingPairCode(TvmCell value0) public {
-        m_tradingPairCode = value0;
-        optional(uint256) none;
-        AFlex(m_addr[ADDR_FLEX]).getXchgPairCode{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(setXchgPairCode),
-            onErrorId: 0,
-            time: 0,
-            expire: 0,
-            sign: false,
-            pubkey: none
-        }();
-    }
+    function setFlexDetails(
+        bool initialized,
+        EversConfig ev_cfg,
+        ListingConfig listing_cfg,
+        TvmCell xchg_pair_code,
+        TvmCell wrapper_code,
+        TvmCell wrapper_ever_code,
+        uint8 deals_limit,
+        uint256 unsalted_price_code_hash,
+        FlexOwnershipInfo ownership,
+        WrapperListingRequestWithPubkey[] wrapper_listing_requests,
+        XchgPairListingRequestWithPubkey[] xchg_pair_listing_requests
+    ) public {
+        initialized;listing_cfg;wrapper_code;ownership;wrapper_listing_requests;xchg_pair_listing_requests;
+        m_flexEverCfg = ev_cfg;
+        m_flexDealsLimit = deals_limit;
+        m_xchgPairCode = xchg_pair_code;
 
-    function setXchgPairCode(TvmCell value0) public {
-            m_xchgPairCode = value0;
-            getFlexTonsCfg();
-    }
-
-    function getFlexTonsCfg() view public {
-        optional(uint256) none;
-        AFlex(m_addr[ADDR_FLEX]).getTonsCfg{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(setFlexTonsCfg),
-            onErrorId: 0,
-            time: 0,
-            expire: 0,
-            sign: false,
-            pubkey: none
-        }();
-    }
-
-    function setFlexTonsCfg(uint128 transfer_tip3, uint128 return_ownership, uint128 trading_pair_deploy,
-                             uint128 order_answer, uint128 process_queue, uint128 send_notify) public {
-        m_flexTonCfg.transfer_tip3 = transfer_tip3;
-        m_flexTonCfg.return_ownership = return_ownership;
-        m_flexTonCfg.trading_pair_deploy = trading_pair_deploy;
-        m_flexTonCfg.order_answer = order_answer;
-        m_flexTonCfg.process_queue = process_queue;
-        m_flexTonCfg.send_notify = send_notify;
-
-        optional(uint256) none;
-        AFlex(m_addr[ADDR_FLEX]).getDealsLimit{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(getFlexDealsLimit),
-            onErrorId: 0,
-            time: 0,
-            expire: 0,
-            sign: false,
-            pubkey: none
-        }();
-    }
-
-    function getFlexDealsLimit(uint8 value0) public {
-        m_flexDealsLimit = value0;
-
-        TvmCell deployState = tvm.insertPubkey(m_flexClientCode, m_masterPubKey);
+        TvmCell deployState = tvm.insertPubkey(m_flexClientCode, m_masterPubkey);
         m_addr[ADDR_FLEX_CLIENT] = address.makeAddrStd(0, tvm.hash(deployState));
         Sdk.getAccountType(tvm.functionId(FlexClientAccType), m_addr[ADDR_FLEX_CLIENT]);
     }
@@ -164,7 +131,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
 
     function deployFlexClient(address value) public {
         m_addr[ADDR_MSIG] = value;
-        Terminal.print(0,format("TONs will be transfered from your multisig wallet {}",m_addr[ADDR_MSIG]));
+        Terminal.print(0,format("EVERs will be transfered from your multisig wallet {}",m_addr[ADDR_MSIG]));
         Sdk.getAccountType(tvm.functionId(clientAccType), m_addr[ADDR_MSIG]);
     }
 
@@ -178,9 +145,9 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
 
     function getClientBalance(uint128 nanotokens) public {
         if (nanotokens>2 ton) {
-            AmountInput.get(tvm.functionId(getBalanceToSend), "How many tons you want to send to FlexClient for trade operations:",9,1 ton,nanotokens-1 ton);
+            AmountInput.get(tvm.functionId(getBalanceToSend), "How many evers you want to send to FlexClient for trade operations:",9,1 ever,nanotokens-1 ton);
         } else {
-            Terminal.print(0, "Error: Your msig balance should be more than 2 TONs!");
+            Terminal.print(0, "Error: Your msig balance should be more than 2 EVERs!");
         }
     }
 
@@ -193,8 +160,6 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
         optional(uint256) none;
         TvmCell payload;
         AMSig(m_addr[ADDR_MSIG]).submitTransaction{
-                abiVer: 2,
-                extMsg: true,
                 callbackId: tvm.functionId(onFCGrantSuccess),
                 onErrorId: tvm.functionId(onFCGrantError),
                 time: 0,
@@ -202,7 +167,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
                 sign: true,
                 signBoxHandle: m_signingBox,
                 pubkey: none
-            }(m_addr[ADDR_FLEX_CLIENT], m_dealTons, false, false, payload);
+            }(m_addr[ADDR_FLEX_CLIENT], m_dealTons, false, false, payload).extMsg;
     }
 
     function onFCGrantSuccess (uint64 transId)  public  {
@@ -219,10 +184,9 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
     function deployFlexClientCode(bool value) public {
         if (value)
         {
-            TvmCell image = tvm.insertPubkey(m_flexClientCode, m_masterPubKey);
+            TvmCell image = tvm.insertPubkey(m_flexClientCode, m_masterPubkey);
             optional(uint256) none;
             TvmCell deployMsg = tvm.buildExtMsg({
-                abiVer: 2,
                 dest: m_addr[ADDR_FLEX_CLIENT],
                 callbackId: tvm.functionId(onSuccessFCDeployed),
                 onErrorId: tvm.functionId(onDeployFCFailed),
@@ -232,7 +196,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
                 signBoxHandle: m_signingBox,
                 pubkey: none,
                 stateInit: image,
-                call: {AFlexClient,m_masterPubKey,m_tradingPairCode,m_xchgPairCode}
+                call: {AFlexClient,m_masterPubkey}
             });
             tvm.sendrawmsg(deployMsg, 1);
         }else
@@ -251,7 +215,6 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
     function flexClientSetStockCfg() public view {
         optional(uint256) none;
         TvmCell sendMsg = tvm.buildExtMsg({
-            abiVer: 2,
             dest: m_addr[ADDR_FLEX_CLIENT],
             callbackId: tvm.functionId(onSuccessFCSetTonsCfg),
             onErrorId: tvm.functionId(onFCSetTonsCfgError),
@@ -260,131 +223,124 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
             sign: true,
             signBoxHandle: m_signingBox,
             pubkey: none,
-            call: {AFlexClient.setFlexCfg,m_flexTonCfg,m_addr[ADDR_FLEX]}
+            call: {AFlexClient.setFlexCfg,m_addr[ADDR_FLEX]}
         });
         tvm.sendrawmsg(sendMsg, 1);
     }
 
     function onSuccessFCSetTonsCfg() public {
-        Terminal.print(0, "Success!");
-        this.hasFlexWalletCode(false);
-    }
-    function onGetFCWalletCode() public view {
-        optional(uint256) none;
-        AFlexClient(m_addr[ADDR_FLEX_CLIENT]).hasFlexWalletCode{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(hasFlexWalletCode),
-            onErrorId: 0,
-            time: 0,
-            expire: 0,
-            sign: false,
-            pubkey: none
-        }();
-    }
-
-    function hasFlexWalletCode(bool value0) public {
-        if (value0) {
-            onGetFCAddressAndKeys();
-        }else{
-            Terminal.print(tvm.functionId(flexClientSetWalletCode), "We need to set wallet code for you flex client..");
-        }
-    }
-
-    function flexClientSetWalletCode() public view {
-        optional(uint256) none;
-        TvmCell sendMsg = tvm.buildExtMsg({
-            abiVer: 2,
-            dest: m_addr[ADDR_FLEX_CLIENT],
-            callbackId: tvm.functionId(onSuccessFCSetFlexWalletCode),
-            onErrorId: tvm.functionId(onFCSetFlexWalletCodeError),
-            time: 0,
-            expire: 0,
-            sign: true,
-            signBoxHandle: m_signingBox,
-            pubkey: none,
-            call: {AFlexClient.setFlexWalletCode,m_flexWalletCode}
-        });
-        tvm.sendrawmsg(sendMsg, 1);
-    }
-
-    function onSuccessFCSetFlexWalletCode() public {
-        Terminal.print(tvm.functionId(onGetFCAddressAndKeys), "Success!");
-    }
-
-    function onFCSetFlexWalletCodeError(uint32 sdkError, uint32 exitCode) public {
-        Terminal.print(0, format("setFlexWalletCode failed. Sdk error = {}, Error code = {}", sdkError, exitCode));
-        Terminal.print(tvm.functionId(flexClientSetWalletCode), "Retrying..");
+        onGetFCAddressAndKeys();
     }
 
     function onFCSetTonsCfgError(uint32 sdkError, uint32 exitCode) public {
-        Terminal.print(0, format("setTonsCfg failed. Sdk error = {}, Error code = {}", sdkError, exitCode));
+        Terminal.print(0, format("setCrystalCfg failed. Sdk error = {}, Error code = {}", sdkError, exitCode));
         Terminal.print(tvm.functionId(flexClientSetStockCfg), "Retrying..");
     }
 
     function checkFlexClientStockCfg() public view {
         optional(uint256) none;
         AFlexClient(m_addr[ADDR_FLEX_CLIENT]).getFlex{
-            abiVer: 2,
-            extMsg: true,
             callbackId: tvm.functionId(getFlexFlex),
-            onErrorId: 0,
+            onErrorId: onGetMethodError,
             time: 0,
             expire: 0,
             sign: false,
             pubkey: none
-        }();
+        }().extMsg;
     }
 
     function getFlexFlex(address value0) public {
         if (value0!=m_addr[ADDR_FLEX]){
             Terminal.print(tvm.functionId(flexClientSetStockCfg), "We need to set config for you flex client..");
         }else{
-            onGetFCWalletCode();
+            onGetFCAddressAndKeys();
         }
     }
 
     function onGetFCAddressAndKeys() public {
-        IFlexDebot(m_addr[ADDR_SENDER]).onGetFCAddressAndKeys(m_addr[ADDR_FLEX_CLIENT],m_signingBox,m_flexDealsLimit,m_flexTonCfg,m_tradingPairCode,m_xchgPairCode);
+        IFlexDebot(m_addr[ADDR_SENDER]).onGetFCAddressAndKeys(m_addr[ADDR_FLEX_CLIENT],m_signingBox,m_masterPubkey,m_flexDealsLimit,m_flexEverCfg,m_xchgPairCode);
         m_addr[ADDR_SENDER] = address(0);
     }
 
 //get tip3 wallet address
-    function getTip3WalletAddress(address flex, uint32 signingBox, address tip3root, address flexClient, FlexTonCfg tonCfg) public override {
-        m_addr[ADDR_FLEX] = flex;
+    function getTip3WalletAddress(uint32 signingBox, uint256 pubkey, address tip3root, address flexClient) public override {
         m_signingBox = signingBox;
+        m_masterPubkey = pubkey;
         m_addr[ADDR_TIP3_ROOT] = tip3root;
         m_addr[ADDR_FLEX_CLIENT] = flexClient;
-        m_flexTonCfg = tonCfg;
         m_addr[ADDR_SENDER] = msg.sender;
 
-        optional(uint256) none;
-        AWrapper(m_addr[ADDR_TIP3_ROOT]).getDetails{
-            abiVer: 2,
-            extMsg: true,
-            callbackId: tvm.functionId(setTip3WrapperSymbol),
-            onErrorId: 0,
-            time: 0,
-            expire: 0,
-            sign: false,
-            pubkey: none
-        }();
+        Sdk.getAccountCodeHash(tvm.functionId(getTip3WrapperCodeHash),m_addr[ADDR_TIP3_ROOT]);
     }
 
-    function setTip3WrapperSymbol(bytes name, bytes symbol, uint8 decimals, uint256 root_public_key, uint128 total_granted, TvmCell wallet_code, address owner_address, address external_wallet) public {
-        name;decimals;root_public_key;total_granted;wallet_code;owner_address;external_wallet;//disable compile warnings
+    function getTip3WrapperCodeHash(uint256 code_hash) public {
+        optional(uint256) none;
+        if (code_hash == WrapperInfo.TIP3_WRAPPER_CH){
+            AWrapper(m_addr[ADDR_TIP3_ROOT]).getDetails{
+                callbackId: getTip3WrapperWalletSymbol,
+                onErrorId: onGetMethodError,
+                time: 0,
+                expire: 0,
+                sign: false,
+                pubkey: none
+            }().extMsg;
+        }else if (code_hash == WrapperInfo.EVER_WRAPPER_CH){
+            AWrapperEver(m_addr[ADDR_TIP3_ROOT]).getDetails{
+                callbackId: getEverWrapperWalletSymbol,
+                onErrorId: onGetMethodError,
+                time: 0,
+                expire: 0,
+                sign: false,
+                pubkey: none
+            }().extMsg;
+        }else {
+            Terminal.print(0,"ERROR symbol unknown!");
+        }
+    }
+
+    function getTip3WrapperWalletSymbol(
+        bytes name,
+        bytes symbol,
+        uint8 decimals,
+        uint256 root_pubkey,
+        uint128 total_granted,
+        TvmCell wallet_code,
+        address external_wallet,
+        address reserve_wallet,
+        address flex)
+    public {
         m_t3Symbol = symbol;
+        m_addr[ADDR_FLEX] = flex;
+        setTip3WrapperSymbol();
+    }
+
+    function getEverWrapperWalletSymbol(
+        bytes name,
+        bytes symbol,
+        uint8 decimals,
+        uint256 root_pubkey,
+        uint128 total_granted,
+        TvmCell wallet_code,
+        address reserve_wallet,
+        address flex)
+    public {
+        m_t3Symbol = symbol;
+        m_addr[ADDR_FLEX] = flex;
+        setTip3WrapperSymbol();
+    }
+
+    function setTip3WrapperSymbol() public {
+        optional(address) opt;
+        opt.set(m_addr[ADDR_FLEX_CLIENT]);
         optional(uint256) none;
         AWrapper(m_addr[ADDR_TIP3_ROOT]).getWalletAddress{
-            abiVer: 2,
-            extMsg: true,
             callbackId: tvm.functionId(setTip3WalletAddress),
             onErrorId: 0,
             time: 0,
             expire: 0,
             sign: false,
             pubkey: none
-        }(0x0,m_addr[ADDR_FLEX_CLIENT]);
+        }(m_masterPubkey,opt).extMsg;
     }
 
     function setTip3WalletAddress(address value0) public {
@@ -397,7 +353,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
             Terminal.print(0,format("You don't have {} tip3 wallet. Let deploy it",m_t3Symbol));
             UserInfo.getAccount(tvm.functionId(enterMsigAddr));
         }else if (acc_type==1){
-            onGetTip3WalletAddress();
+            this.isWalletRestrictionSet();
         } else if (acc_type==2){
             Terminal.print(0, format("{} tip3 wallet {} is frozen.",m_t3Symbol,m_addr[ADDR_FLEX_CLIENT]));
         }
@@ -405,7 +361,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
 
     function enterMsigAddr(address value) public {
         m_addr[ADDR_MSIG] = value;
-        Terminal.print(0,format("TONs will be transfered from your multisig wallet {}",m_addr[ADDR_MSIG]));
+        Terminal.print(0,format("EVERs will be transfered from your multisig wallet {}",m_addr[ADDR_MSIG]));
         Sdk.getAccountType(tvm.functionId(getDeplotT3WClientAccType), m_addr[ADDR_MSIG]);
     }
 
@@ -419,9 +375,9 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
 
     function getDeplotT3WClientBalance(uint128 nanotokens) public {
         if (nanotokens>3 ton) {
-            AmountInput.get(tvm.functionId(enterMsigTons), "How many tons you want to send to FlexClient for trade operations (1 additional ton will transafered for execution fee, not used part will be returned):",9,1 ton,nanotokens-1 ton);
+            AmountInput.get(tvm.functionId(enterMsigTons), "How many evers you want to send to FlexWallet for trade operations (1 additional ton will transafered for execution fee, not used part will be returned):",9,1 ton,nanotokens-1 ton);
         } else {
-            Terminal.print(0, "Error: Your msig balance should be more than 3 TONs!");
+            Terminal.print(0, "Error: Your msig balance should be more than 3 EVER!");
         }
     }
 
@@ -431,12 +387,10 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
     }
 
     function deployEmptyWallet() view public {
-        TvmCell payload = tvm.encodeBody(AWrapper.deployEmptyWallet, 0, 0x0, m_addr[ADDR_FLEX_CLIENT], m_dealTons);
+        TvmCell payload = tvm.encodeBody(AWrapper.deployEmptyWallet, 0, m_masterPubkey, m_addr[ADDR_FLEX_CLIENT], m_dealTons);
         optional(uint256) none;
         uint128 amount = m_dealTons+1000000000;
         AMSig(m_addr[ADDR_MSIG]).submitTransaction{
-                abiVer: 2,
-                extMsg: true,
                 callbackId: tvm.functionId(onDEWSuccess),
                 onErrorId: tvm.functionId(onDEWError),
                 time: 0,
@@ -444,7 +398,7 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
                 sign: true,
                 signBoxHandle: m_signingBox,
                 pubkey: none
-            }(m_addr[ADDR_TIP3_ROOT], amount, true, false, payload);
+            }(m_addr[ADDR_TIP3_ROOT], amount, true, false, payload).extMsg;
     }
 
     function onDEWSuccess (uint64 transId) public pure {
@@ -467,10 +421,88 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
         if ((acc_type==-1)||(acc_type==0)) {
             ConfirmInput.get(tvm.functionId(checkT3WWait),"Please wait a little. Continue?");
         }else if (acc_type==1){
-            onGetTip3WalletAddress();
+            getUnsaltedPriceCodeHash();
         } else {
             Terminal.print(0, "Unexpected error.");
         }
+    }
+
+    function isWalletRestrictionSet() public {
+        optional(uint256) none;
+        AFlexWallet(m_addr[ADDR_TIP3_WALLET]).getDetails{
+            callbackId: getWalletRestrictions,
+            onErrorId: onGetMethodError,
+            time: 0,
+            expire: 0,
+            sign: false,
+            pubkey: none
+        }().extMsg;
+    }
+
+    function getWalletRestrictions(
+        string name, string symbol, uint8 decimals, uint128 balance,
+        uint256 root_public_key, address root_address, uint256 wallet_public_key,
+        address owner_address,
+        optional(lend_pubkey_array_record) lend_pubkey,
+        lend_owner_array_record[] lend_owners,
+        optional(restriction_info) restriction,
+        uint128 lend_balance,
+        uint256 code_hash,
+        uint16 code_depth,
+        Allowance allowance,
+        int8 workchain_id
+    ) public {
+        if (restriction.hasValue()&&restriction.get().flex==m_addr[ADDR_FLEX]) {
+            this.onGetTip3WalletAddress();
+        }else{
+            this.getUnsaltedPriceCodeHash();
+        }
+    }
+
+    function getUnsaltedPriceCodeHash() public {
+        optional(uint256) none;
+        AFlex(m_addr[ADDR_FLEX]).getDetails{
+            callbackId: setUnsaltedPriceCodeHash,
+            onErrorId: onGetMethodError,
+            time: 0,
+            expire: 0,
+            sign: false,
+            pubkey: none
+        }().extMsg;
+    }
+
+    function setUnsaltedPriceCodeHash(
+        bool initialized,
+        EversConfig ev_cfg,
+        ListingConfig listing_cfg,
+        TvmCell xchg_pair_code,
+        TvmCell wrapper_code,
+        TvmCell wrapper_ever_code,
+        uint8 deals_limit,
+        uint256 unsalted_price_code_hash,
+        FlexOwnershipInfo ownership,
+        WrapperListingRequestWithPubkey[] wrapper_listing_requests,
+        XchgPairListingRequestWithPubkey[] xchg_pair_listing_requests
+    ) public {
+        optional(uint256) none;
+
+        AFlexClient(m_addr[ADDR_FLEX_CLIENT]).setTradeRestriction{
+                callbackId: tvm.functionId(onSetTradeRestrictionSuccess),
+                onErrorId: tvm.functionId(onSetTradeRestrictionError),
+                time: 0,
+                expire: 0,
+                sign: true,
+                signBoxHandle: m_signingBox,
+                pubkey: none
+            }(0.5 ever, m_addr[ADDR_TIP3_WALLET], m_addr[ADDR_FLEX], unsalted_price_code_hash).extMsg;
+    }
+
+    function onSetTradeRestrictionSuccess () public pure {
+        this.onGetTip3WalletAddress();
+    }
+
+    function onSetTradeRestrictionError(uint32 sdkError, uint32 exitCode) public {
+        Terminal.print(0, format("ERROR setTradeRestriction failed. Sdk error = {}, Error code = {}",sdkError, exitCode));
     }
 
     function onGetTip3WalletAddress() public {
@@ -478,64 +510,63 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
         m_addr[ADDR_SENDER] = address(0);
     }
 
-
-//withdraw tons
-    function withdrawTons(address fclient, uint32 signingBox) public override {
-        m_addr[ADDR_FLEX_CLIENT] = fclient;
-        m_signingBox = signingBox;
+//get wrapper symbol
+    function getWrapperSymbol(address wrapper) public override {
+        m_addr[ADDR_TIP3_ROOT] = wrapper;
         m_addr[ADDR_SENDER] = msg.sender;
-        Sdk.getBalance(tvm.functionId(getFlexClientBalance), m_addr[ADDR_FLEX_CLIENT]);
+        Sdk.getAccountCodeHash(tvm.functionId(getWrapperCodeHash),m_addr[ADDR_TIP3_ROOT]);
     }
 
-    function getFlexClientBalance(uint128 nanotokens) public {
-        Terminal.print(0,format("Your flex client address balance is {:t}",nanotokens));
-        if (nanotokens>1 ton) {
-            AmountInput.get(tvm.functionId(enterWithdrawalTons),"Please enter amount of tons you want to withdraw",9,1,nanotokens-1 ton);
-        } else {
-            Terminal.print(tvm.functionId(onWithdrawTons), "Error: Your flex client balance should be more than 1 TON!");
-        }
-    }
-    function enterWithdrawalTons(uint128 value) public {
-        m_dealTons = value;
-        AddressInput.get(tvm.functionId(enterWithdrawalAddr),"Please enter your withdrawal address");
-    }
-
-    function enterWithdrawalAddr(address value) public {
-        m_addr[ADDR_MSIG] = value;
+    function getWrapperCodeHash(uint256 code_hash) public {
         optional(uint256) none;
-        m_sendMsg =  tvm.buildExtMsg({
-                abiVer: 2,
-                dest: m_addr[ADDR_FLEX_CLIENT],
-                callbackId: tvm.functionId(onWithdrawSuccess),
-                onErrorId: tvm.functionId(onWithdrawError),
+        if (code_hash == WrapperInfo.TIP3_WRAPPER_CH){
+            AWrapper(m_addr[ADDR_TIP3_ROOT]).getDetails{
+                callbackId: getTip3WrapperSymbol,
+                onErrorId: onGetMethodError,
                 time: 0,
                 expire: 0,
-                sign: true,
-                pubkey: none,
-                signBoxHandle: m_signingBox,
-                call: {AFlexClient.transfer, m_addr[ADDR_MSIG], m_dealTons, true}
-            });
-
-        ConfirmInput.get(tvm.functionId(confirmWithdrawTons),format("Do you want to transfer {:t} tons from your flex client to address {}?",m_dealTons,m_addr[ADDR_MSIG]));
-    }
-
-    function confirmWithdrawTons(bool value) public {
-        if (value) {
-            tvm.sendrawmsg(m_sendMsg, 1);
+                sign: false,
+                pubkey: none
+            }().extMsg;
+        }else if (code_hash == WrapperInfo.EVER_WRAPPER_CH){
+            AWrapperEver(m_addr[ADDR_TIP3_ROOT]).getDetails{
+                callbackId: getEverWrapperSymbol,
+                onErrorId: onGetMethodError,
+                time: 0,
+                expire: 0,
+                sign: false,
+                pubkey: none
+            }().extMsg;
         }else {
-            onWithdrawTons();
+            IFlexDebot(m_addr[ADDR_SENDER]).onGetWrapperSymbol("---");
         }
     }
-    function onWithdrawSuccess ()  public  {
-        Terminal.print(tvm.functionId(onWithdrawTons),"Success!");
+
+    function getTip3WrapperSymbol(
+        bytes name,
+        bytes symbol,
+        uint8 decimals,
+        uint256 root_pubkey,
+        uint128 total_granted,
+        TvmCell wallet_code,
+        address external_wallet,
+        address reserve_wallet,
+        address flex)
+    public {
+        IFlexDebot(m_addr[ADDR_SENDER]).onGetWrapperSymbol(symbol);
     }
-    function onWithdrawError(uint32 sdkError, uint32 exitCode) public {
-        Terminal.print(0, format("Transfer failed. Sdk error = {}, Error code = {}",sdkError, exitCode));
-        ConfirmInput.get(tvm.functionId(confirmWithdrawTons),"Do you want ot retry?");
-    }
-    function onWithdrawTons() public {
-        IFlexDebot(m_addr[ADDR_SENDER]).updateTradingPairs();
-        m_addr[ADDR_SENDER] = address(0);
+
+    function getEverWrapperSymbol(
+        bytes name,
+        bytes symbol,
+        uint8 decimals,
+        uint256 root_pubkey,
+        uint128 total_granted,
+        TvmCell wallet_code,
+        address reserve_wallet,
+        address flex)
+    public {
+        IFlexDebot(m_addr[ADDR_SENDER]).onGetWrapperSymbol(symbol);
     }
 
     /*
@@ -546,10 +577,10 @@ contract FlexHelperDebot is Debot, Upgradable, Transferable, IFlexHelperDebot {
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "Flex Helper Debot";
-        version = "0.2.2";
-        publisher = "TON Labs";
+        version = "0.4.0";
+        publisher = "";
         key = "Helps Flex to calculate addresses and collect data";
-        author = "TON Labs";
+        author = "";
         support = address.makeAddrStd(0, 0x0);
         hello = "Hello, i'am a Flex Helper DeBot.";
         language = "en";
