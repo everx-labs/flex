@@ -4,109 +4,178 @@ Flex API allows to develop Flex client apps that query Flex contracts directly o
 
 ## Flex API
 
+[Flex Glossary](glossary.md#flex-glossary)
+
+Flex API is GraphQL API that is defined by GraphQL schema, described below.
+
+All the fields descriptions are given in the code snippets.
+
+### Root `flex` query
+
+Here is the Root `flex` query that returns the main `FlexQuery` type.
+
 ```graphql
 # Query
 type Query {
-    flex(root: String): Flex
+    flex(
+      " Default address is the latest Super Root "
+      superRoot: String
+      """ 
+	    Default is `releaseConfig` address of superRoot.
+      If superRoot is omitted and globalConfig is specified, then all flex data will be related to globalConfig except FlexQuery root fields related to Super root (releaseConfig, betaConfig, etc)
+      """
+      globalConfig: address
+    ): FlexQuery 
 }
 
-type Flex {
-    info: FlexInfo
-		migrations: FlexMigration[],
-    tokens(
-        tickerSubstringFilter: String,
-        limit: Int,
-        offset: Int
-    ): [FlexToken]
-    getToken(tokenTicker: String, tokenAddress: String): FlexToken
-
-    pairs(
-        tickerSubstringFilter: String,
-        limit: Int,
-        offset: Int
-    ): [FlexPair]
-    getPair(pairTicker: String, pairAddress: String): FlexPair
-    market(pairTicker: String, pairAddress: String): FlexMarket
+type FlexQuery {
+	  " Flex release version from Super Root"
+		releaseConfig: FlexGlobalConfig 
+    " Flex beta version from Super Root"
+		betaConfig: FlexGlobalConfig
+    " globalConfig specified in the `flex` parameters "
+    config: FlexGlobalConfig 
+	  " Super Root version "
+		revision: Int
+		"""
+		Flag that indicates that a bug was found in Exchange contracts, you should stop trading and cancel all your orders. Keep funds on your wallets, they are okay.
+		"""
+    stopTrade: Boolean
+		"""
+		Flag that indicates that a bug was found that encorages everyone to cancel their orders and withdraw their funds from Flex wallets asap
+		"""
+		abandonShip: Boolean 
+		"""
+		True means the beginning of upgrade process which forbids to list/unlist new wrappers and pairs. Flag is reset to false when upgrade process is over. 
+		False means the dex is not in the upgrade process and one can list/unlist new wrappers and pairs.
+		"""
+		updateStarted: Boolean 
+		" Get all the listed tokens"  
+    tokens(...): [FlexToken] 
+		" Get information about one token "
+    getToken(...): FlexToken 
+		" Get all the listed pairs "
+    pairs(...): [FlexPair] 
+	  " Get information about one pair "
+    getPair(...): FlexPair 
+    " Get information about the market "
+    market(...): FlexMarket 
+		" User wallets "
+		wallets(...): [FlexWallet!]!
+		userTrades(...): [FlexUserTrade!]!
+		userOrders(...): [FlexUserOrder!]!
 }
 ```
 
-### migrations
+### FlexGlobalConfig
+
+For now we store only a structure with each group version and Exchange Config for UI purposes.
+
+Will extend it with User and Wrapper configs in future if it will be needed.
 
 ```graphql
-type FlexMigration {
-	update_no: UInt
-	address: string # config contract address
+type FlexQuery {
+		...
+		releaseConfig: FlexGlobalConfig
+		betaConfig: FlexGlobalConfig
+    config: FlexGlobalConfig
+		...
+}
 
-	# all the data below is parsed from Config Contract data
-	wallet_group_version: UInt
-	exchange_group_version: Uint
-	user_group_version: UInt
-	root_addr: string,
-	user_config_addr: string
+type FlexGlobalConfig {
+		" Global config address "
+		address: String 
+		" Wallet, Exchange and User versions structure "
+    version: FlexVersion
+    "  Exchange Group version info "
+		exchange: ExchangeConfig
+    wrapper: WrapperConfig
+	  user: UserConfig
+}
+
+type FlexVersion {
+    " Version of token wrappers and wallets contracts "
+    wallet: Int
+    " Version of exchange contracts (flex, pair, price) "  
+    exchange: Int
+    " Version of user contracts and debots (FlexClient, etc) "
+    user: Int
+}
+
+type ExchangeConfig{
+    " Version of exchange contracts (flex, pair, price) "  	
+		version: Int
+    fees: FlexFeesConfig
+}
+
+type FlexFeesConfig{
+	" For executing tip3 transfer "
+  transfer_tip3: Int
+	"  To return tip3 ownership "
+  return_ownership: Int
+	" To send answer message from PriceXchg "
+  order_answer: Int
+	""" 
+	To process processQueue function 
+	Also is used for buyTip3 / onTip3LendOwnership / cancelSell / cancelBuy estimations.
+	"""
+  process_queue: Int
+  " To send notification about completed deals (IFlexNotify) "
+  send_notify: Int;
+  """ 
+	Amount of EVERs transfered to the recipient tip3 wallet during all token transfers. Needed to support wallet auto-deploy, so that the deployed wallet has enough funds to procees. Auto-deploy happens when tokens are transfered to a not existing wallet.
+  """
+  dest_wallet_keep_evers: Int
 }
 ```
-
-Parse Super Root contract for migration sequence and Config Contracts for each migration version
-
-### info
-
-```graphql
-type FlexInfo {
-    name: String # FlexOwnershipInfo
-    address: String
-    feesConfig: FeesConfig
-    listingConfig: ListingConfig
-}
-
-type FeesConfig {
-    ...
-}
-```
-
-Flex info query returns Flex DEX setup parameters used by its contract system. wrapper\_code\_hash, pair\_code\_hash
-
-These parameters are stored in flex root contract data (`root` parameter).&#x20;
-
-It is deployed once when exchange is created and does not change over time. Whenever there are updates in any of exchange contracts, Flex is redeployed from scratch.
 
 ### tokens
 
+This method returns all tokens, listed on Flex.
+
 ```graphql
+type FlexQuery {
+		tokens(
+			" To find tokens by Ticker subscring "
+      tickerSubstringFilter: String
+			" Pagination parameters "
+      limit: Int
+      offset: Int
+): FlexToken
+}
 type FlexToken {
-    # Flex Tip3 root address (wrapper address)
+    " Wrapper address "
     address: String
-    # Full name
+    " Full name "
     name: String
-    # Token ticker, i.e. 'EVER'
+    " Token ticker, i.e. 'EVER' "
     ticker: String
-    # defines the number of decimal places
+    " defines the number of decimal places "
     decimals: Int
-    # total_granted in tokens
+    " total_granted in tokens "
     totalAllocated: Float
-    # in contract - total_granted field in units
+    " in contract - total_granted field in units "
     totalAllocatedUnits: String
-    #flex tip3 wallet code hash
+    " flex tip3 wallet code hash "
     walletCodeHash: String
-
-		wrapperType: enum {TIP3, WEVER, native(NEVER, etc),..., BroxusTip3}
-
-****    # Account that locks and stores all external tokens
-    # for WEVER - empty
+	****	" Original token type identifyer. 1 - EVER token wrapper "
+****		wrapperType: Int 
+**~~~~**
+    """ 
+		Account that locks and stores all external tokens
+	  for WEVER wrapper type - empty
+		"""
     externalAddress: String
 }
 ```
 
-This method returns all tokens, listed on Flex.
+Token information is stored in so-called wrapper contracts, that wrap ever/broxus tip3/potentially other tokens and act as a root contract that deploys Flex wallets for those wrapped tokens.
 
-Token information is stored in so-called wrapper contracts, that wrap original tip3 contracts and represent a root contract that deploys Flex wallets for a certain Token.
-
-Code of wrapper contract is here
-
-Hash of Wrapper contract can be retrieved from Flex root contract and it is the same for all Flex wrappers. So, to retrieve a list of tokens, we need to filter accounts by wrapper code\_hash, decode them and get all the required information about tokens. See the `Token` type description.
-
-Flex root has hash code of wEver wrapper.
+Whenever a new version of Flex is deployed, a new Wrapper Index Contract is deployed for each wrapper. These contracts are used to find wrappers that belong to the specified Flex version.
 
 ### getToken
+
+Query that returns info of a particular token by its wrapper address or token symbol string.
 
 ```graphql
 type Flex(root: address) {
@@ -114,9 +183,9 @@ type Flex(root: address) {
 }
 ```
 
-Query that returns info of a particular token by its wrapper address or token symbol string.
-
 ### pairs
+
+This query retrieves listed trading pairs on Flex.
 
 ```graphql
 type Flex {
@@ -130,202 +199,185 @@ type Flex {
 type FlexPair {
     " Flex Pair account address "
     address: String
-
     """
     Abbrevation used to identify pair.
     Derived from major and minor root tickers, i.e. 'EVER/SOL'
     """
     ticker: String
-
     " Major token of the pair "
     major: FlexToken
-
     " Minor token of the pair "
     minor: FlexToken
-
 		"""
-    Min amount of major token required for an order creation
-    in token units.
+    Min amount of major token required for an order creation in token units.
     """
     minAmount: Float
-
 		" minAmount in major token units "
     minAmountUnits: String
-
     " Code hash of price contracts for the pair "
     priceCodeHash: String
-
-    " notification contract address "
+    " Notification contract address. Receives notification for each executed trade "
     notifyAddress: String
-
-		**NEW!! price_scale: number,
-		NEW!! price_scale_units: number,
-		NEW!! min_move: number,**
-    price_code_hash: string,
+		" Token price denominator. Format: 10eN where N - number of digits after the decimal point "
+		priceScale: number,
+		" Unit price denominator "
+		priceScale_units: number,
+		" Price tick size numerator "
+		min_move: number,
+		" Code hash of price contract "
+****    priceCodeHash: string,
+		" Code of price contract "
+		priceCode: string
 }
 ```
-
-Query example:
-
-```graphql
-# Request
-
-query {
-   flex(root: "0:11111") {
-      info { name }
-      getPair(ticker: "EVER/USD") {
-         majorToken {
-            name
-         }
-         minorToken {
-            name
-         }
-      }
-   }
-}
-
-# Response
-
-{
-    "info": { "name": "TONLabs Flex Exchange" },
-    "getPair": {
-        "majorToken": { "name": "Everscale" },
-        "minorToken": { "name": "US Dollar" }
-    }
-}
-```
-
-This query retrieves a list of trading pairs on Flex.
-
-All Trading Pair contracts have the same code hash that is stored in Flex Root contract.
-
-Later, to query Flex Orderbook, we will need to collect all Price contracts (which accept, store and process buy/sell orders from users). Price contract hash code can be calculated from Flex Root getmethod (_it is not stored in Flex Root data, calculated with getmethod only_). Each Trading Pair has its own Price Contract hash.
-
-**Tick size definition:** `tick_size (MinimalPossiblePriceChange) = minmov / pricescale`, where
-
-`pricescale` defines the number of decimal places in the quote currency (minor token). It is 10^number-of-decimal-places. If a price is displayed as 1.01, pricescale is 100; If it is displayed as 1.005, pricescale is 1000.
-
-`minmov` is the amount of price precision steps for 1 tick.
 
 ### getPair
 
 Query that returns info of a particular Symbol (pair) by its Trading Pair contract address or Pair Symbol string.
 
+```graphql
+type FlexQuery {
+	    getPair(
+        pairTicker: String
+        pairAddress: String
+    ): FlexPair
+}
+```
+
 ### Market
 
 Market - all the data, relevant for 1 Trading Pair.
 
-All queries inside a Market return data filtered by the relevant `pair_ticket` string or address
+All queries inside a Market return data filtered by the relevant `pairTicker` or `pairAddress`.
 
 ```graphql
-type Market {
-    pair: FlexPair
-    orderbook(limit: Int): FlexOrderbook
-    recentTrades(after: String): [FlexTrade]
-    priceHistory(
-        resolution,
-        startTime, endTime,...
-    ): [FlexPriceSummary], # bars
+type FlexQuery
+{
+market(
+	pairTicker: String
+	pairAddress: String
+): FlexMarketQuery
+		
+type FlexMarketQuery
+{
+	pair: FlexPair
+	recentTrades(...): [FlexTrade!]!
+	priceHistoryResolutions: [Int!]!
+	priceHistory(...): FlexPriceHistory!
+	orderBook(...): FlexOrderBook!
+	last24H: FlexPriceSummary!
+	price: Float
+	}
 }
 ```
 
 #### recentTrades
 
-```graphql
-type FlexTrade {
-    side: TradeSide
-    time: Int
+Returns 50 trades of the market .
 
+```graphql
+type FlexMarketQuery{
+	recentTrades(
+    " Limit the number of returned trades but no more than 50 "
+    limit: Int
+	): [FlexTrade!]!
+}
+
+type FlexTrade {
+    " Taker's side in the trade "
+    side: FlexTradeSide
+    time: Int
     sellToken: FlexToken
     buyToken: FlexToken
-
-    # = sum_deals_amount_ / 10^(MajorToken.decimals)
+    " Major tokens amount "
     amount: Float
+		" Major units amount "
     amountUnits: String
-
-    # = (price_num/price_denum) * 10^(major.decimals-minor.decimals)
+    " Price of the major token in tokens "
     price: Float
+		" Price numenator "
     priceNum: String
+    " Token price denomenator  "
     priceScale: String
+    " Unit price denomenator "
     priceScaleUnits: String
-    cursor: String
+    " Cursor for pagination "
 }
-```
 
-This query allows to get 50 recent trades of a Trading Pair.
-
-When user wants to trade one token for another, they send an order to Price Contract.
-
-For each Trading Pair there are many Price Contracts for each price. These contracts aggregate and process orders with that price.
-
-An order has such fields as amount and expiration time. One order can be fulfilled fully or partially with 1 or more trades.
-
-Whenever an order is fully or partially executed (i.e. trade has happened), Price Contract sends an `onXchgDealCompleted` message to Trading Pair Notification Contract (`pair.notify_addr`).
-
-So, to collect all trades for a Trading Pair we need to query all `onXchgDealCompleted` messages and parse them.
-
-`side` field is Taker's side in the trade, now we implement artificial algorithm:
-
-```graphql
-if (trade_price > prev_trade_price) then side = "buy", else side = "sell"
+enum FlexTradeSide {
+	BUY
+	SELL
+}
 ```
 
 #### priceHistory
 
-Price and volume history is needed by trading applications to draw so-called bars or candles.
+Price and volume history is needed by trading applications to draw so-called bars or candles displaying price history of a trading pair.
 
 ```graphql
-type Market {
-    priceHistory(
-        # in seconds, i.e. 60, 300, 3600, 86400 
-        resolution: Int
-        # (inclusive end)
-        startTime: Int
-        # (not inclusive)
-        endTime: Int
-        # this field defines minimum number of returned bars,
-        # and has priority over start_time parameter,
-        # i.e. you must return data in the range `[from, to)`,
-        # but the number of bars should not be less than `countBack`.
-        countBack: Int
-    ): FlexPriceHistory
+type FlexMarketQuery{
+	" Supported time resolutions"
+	priceHistoryResolutions: [Int!]!
+	priceHistory(
+	  " Time resolution in seconds"
+		resolution: Int
+		" Inclusive "
+		startTime: Int
+	  " Exclusive "
+		endTime: Int
+    """ 
+		This field defines minimum number of returned bars,
+    and has priority over startTime parameter,
+    i.e. you must return data in the range `[from, to)`,
+    but the number of bars should not be less than 
+    `countBack`
+		"""
+		countBack: Int
+	): FlexPriceHistory!
 }
 
 type FlexPriceHistory {
+    " Price information for the resolution time range "
     prices: [FlexPriceSummary]
+    """
+		Returns next available time before the requested time range. Returns null if there is no more prices.
+    """
     nextTime: Int
 }
 
 type FlexPriceSummary {
+    " Start time of resolution time range. Range end time is time + resolution "
     time: Int
+    " The first price in range (opening price) "
     open: Float
+    " The last price in range (closing price) "
     close: Float
+    " Minimal price in range "
     low: Float
+    " Maximal price in range "
     high: Float
+    " Total amount of all trades in range "
     volume: Float
 }
 ```
 
 This data is collected from trades. Each dot on the graph should have such data as open, close, highest and lowest price and volume for each period starting from `start_time`. Period length is defined by `resolution` parameter.
 
-**Prices in contracts represent price of major minimum fraction for an amount of minor minimum fraction. We convert them to the price of 1 Major Token in X Minor Tokens.**
-
-Use this formula:
-
-```graphql
-price = (price_num/price_denum) * 10^(major.decimals-minor.decimals)
-volume = (total amount)/ 10^(Pair.MajorToken.decimals)
-```
-
-From and to need to be aligned by resolution.
-
 We do not show `getEmptyBars` parameter and assume it as false. We do not return empty bars.
 
-📚 Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
-
-Example 2: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
+> 📚 **Example 1**: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
+>
+> **Example 2**: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
 
 #### orderbook
+
+Orderbook is a list of available Trading Pair liquidity for buying and selling aggregated by price:
+
+Return top 50 bids and asks.
+
+bids are sorted by price DESC
+
+asks are sorted by price DESC
 
 ```graphql
 type Market {
@@ -333,179 +385,211 @@ type Market {
 }
 
 type FlexOrderBook {
+    " Liquidity for buying "
 		bids: [FlexOrderbookItem]
+    " Liquidity for selling "
 		asks: [FlexOrderbookItem]
 	}
 
 type FlexOrderbookItem {
-    # pric of 1 major token denominated in minor token with precision 
-    # of minor.decimals:
-    # priceNum/price_denom * 10^(major.decimals-minor.decimals)
+    """ 
+    Price of 1 major token denominated in minor token with precision of Pair's pricescale
+    """
 		price : Float
+    " Token price numerator "
 		priceNum: String
+    " Token price denomerator "
 		priceScale: String
+    " Unit price denomerator "
 		priceScaleUnits: String
-    # amount of major token with Pair.token.decimals precision:
-    # amount_in_contract / 10^(Pair.MajorToken.decimals)
+    " Amount of major tokens "
 		amount: Float
+		" Amount of major units "
 		amountUnits: String
 }
 ```
-
-Orderbook is a list of available Trading Pair pools for buying and selling aggregated by price.
-
-Each Price Contract has information about available amount for buying and selling of a particular Pair for that price.
-
-So, in order to calculate an orderbook for a Market, we need to collect all Price Contracts and parse their data to retrieve sell amount, buy amount and the price itself and group this data by price.
-
-bid - buys
-
-ask - sells
-
-bids are sorted by price DESC
-
-asks are sorted by price DESC
-
-Return top 50 bids and asks.
 
 #### Statistics
 
 ```graphql
 type Market {
-    # Latest trade's price
+    " Latest trade's price "
     price: Float
-    # price and volume stats for the last 24 hours
+    " Price and volume stats for the last 24 hours "
     last24H: FlexPriceSummary
+}
+
+type FlexPriceSummary {
+	time: Int
+	open: Float
+	close: Float
+	low: Float
+	high: Float
+	volume: Float
 }
 ```
 
-## User data
+### User data
 
-[Glossary](glossary.md)
+[User data glossary](glossary.md#user-data-glossary)
 
 #### wallets
 
 ```graphql
 type Flex(root: address) {
-    wallets(
-        clientAddress: String!,
-        userId: String,
-        dappPubkey: String,
-        after: String
-    ): FlexWallet[]
+	wallets(
+		" Flex Client contract address "
+		clientAddress: String!
+    " Wallet token "
+		token: FlexToken
+    " User ID "
+		userId: String
+    " DApp public key "
+		dappPubkey: String
+    " After cursor field "
+		after: String
+		limit: Int
+	): [FlexWallet!]!
 } 
 
 type FlexWallet {
-    # flex wallet address
+    " Flex wallet address
     address: String
-    # flex client contract address
+    " Flex Client contract address
     clientAddress: String
-    # walletPubkey
+    " userId of the Trader "
     userId: String
-    #
+    " DApp pubkey "
     dappPubkey: String 
-    # by root_address_ (wrapper)
+    " Token information"
     token: FlexToken
-    #
-    lendFinishTime: Int
-
-    # balance of native currency of the wallet (in nanoevers)
+    " balance of native currency of the wallet (in evers) "
     nativeCurrencyBalance: Float
-    #
+    " balance of native currency of the wallet (in nanoevers) "
     nativeCurrencyBalanceUnits: String
-    # balance_ field
+    " Tokens balance of the wallet in tokens "
     totalBalance: Float
-    # balance_ field // Token balance of the wallet
+    " Total balance of the wallet in units "
     totalBalanceUnits: String
-    # balance_- lended_owners balance
+    " Balance in tokens reduced by amount in orders "
     availableBalance: Float
-    #
+    " Balance in units reduced by amount in orders "
     availableBalanceUnits: String
-    #
+    " Balance in tokens placed into orders "
     balanceInOrders: String
+    " Balance in units placed into orders "
 		balanceInOrdersUnits: String
-
+    " Tokens lend finish time  "
+    lendFinishTime: Int
     # Cursor that can be used for pagination
     cursor: String
 }
 ```
 
-All user wallets are salted with flex root address, so we return all wallets that belong to this root.
+Wrapper contract stores user wallet code.
 
-Flex wallets are deployed by Flex Client contract which becomes their owner. So, `owner_address_` is flex client address. Therefore, we need to use flex client addresses to search for all the client’s wallets.
-
-Flex Client can lend some amount of tokens to another user with userId = contract.wallet\_pubkey for some period of time = lendFinishTime.
+Flex wallets are deployed by Flex Client contract which becomes their owner. Therefore, we need to use flex client addresses to search for all the client’s wallets.
 
 #### userOrders
 
-[Glossary](glossary.md)
+Shows all User’s open and expired orders.
+
+Sort by price ASC, order\_id. Returns top 50 records.
 
 ```graphql
-type Flex {
-    userOrders(userId: String): [FlexUserOrder]
+type FlexQuery {
+    userOrders(
+			userId: String
+      after: String
+		  limit: Int
+		  offset: Int
+		): [FlexUserOrder]
 }
 
 type FlexUserOrder {
     pair: FlexPair
     side: FlexTradeSide
+    " Order amount in tokens left "
 	  amountLeft: Float
+    " Order amount in units left"
 	  amountLeftUnits: String
+    " Order amount in tokens that has been processed "
 	  amountProcessed: Float
+    " Order amount in units that has been processed "
     amountProcessedUnits: String
+		" Order price in tokens"
     price: Float
+    " Price numerator "
     priceNum: String
+    " Token price denomerator "
     priceScale: String
+    " Unit price denomerator "
     priceScaleUnits: String
+    "  User ID of the DApp "
     ****userId: String
+		" Optional. Order ID. "
     orderId: String
+		" Order finish (expiration) time "
     finishTime: Int
 ****}
 ```
 
-Sort by price ASC, order\_id. Returns top 50 records.
-
-In this API we show only not executed or partially executed orders that sit in Price contracts. You can retrieve them by get methods getBuys, getSells.
-
 #### userTrades
 
-```graphql
-type Flex {
-    userTrades(
-        userId: String
-        limit: Int
-        offset: Int
-    ): [FlexUserTrade]
-}
+User trades list returns all user trades history on all markets.
 
-enum FlexTradeLiquidity {
-    TAKER
-    MAKER
+```graphql
+type FlexQuery {
+    userTrades(
+			userId: String!
+			after: String
+			limit: Int
+			offset: Int
+		): [FlexUserTrade!]!
 }
 
 type FlexUserTrade {
     pair: FlexPair
     side: FlexTradeSide
+		" Major tokens amount"
     amount: Float
+		" Major tokens amount in units"
     amountUnits: String
+		" Order price in tokens"
     price: Float
+    " Price numerator "
     priceNum: String
+    " Token price denomerator "
     priceScale: String
+    " Unit price denomerator "
     priceScaleUnits: String
     time: Int
+		" User position in the trade "
     liquidity: FlexTradeLiquidity
+		"""
+		User fees for this trade. Measured in major tokens.
+		
+		If the user is a maker then fees is a value received by user as a bonus for making order. Note that in this case the fees is a negative value.
+		
+		If the user is a taker then fees is a value that the user pays to the exchange and maker.
+		"""
     fees: Float
     feesUnits: String
     cursor: String
 }
+
+"""
+Determines the users position in trade. Maker or taker. Maker is a trade counterparty whose order was earlier. Taker is a counterparty with a later order.
+"""
+enum FlexTradeLiquidity {
+    TAKER
+    MAKER
+}
 ```
 
-User trades list returns all user trades history on all markets.
+#### userEquity (not implemented yet)
 
-Retrieved from onTip3Transfer(balance\_, tokens, sender\_pubkey, sender\_owner, payload, answer\_addr, price\_num, price\_denom ) event of Flex Wallets sent to Flex Client
-
-#### userEquity
-
-Equity - total balance of all tokens converted to EVER currency price
+Equity - total balance of all tokens converted to EVER or USD currency price
 
 ```graphql
 type userEquity(pubkey: string): TUserData {
@@ -526,7 +610,7 @@ type Flex(root: address) {
 }
 ```
 
-## Subscriptions
+### Subscriptions
 
 #### Orderbook, recentTrades, priceHistory
 
@@ -613,5 +697,48 @@ subscription {
 				dappPubkey: String,
         after: String # after cursor
     ): FlexWallet[]
+}
+```
+
+#### userOrderUpdates (not implemented yet)
+
+Sends notifications when an order changing its status
+
+Need to add notifications when order is
+
+* created,
+* creation failed,
+* canceled
+* executed successfully
+* closed
+
+All these statuses are returned in `OrderRet` structure via different internal messages.&#x20;
+
+```graphql
+subscription {
+    """
+			Sends order status updates for user orders. Contains informarion about new order status, and order info about trading pair, side, amount and price in tokens and nanotokens
+    """
+    flexUserOrderUpdates(
+        userId: String
+    ): FlexUserOrderUpdate[]
+
+type FlexUserOrderUpdate {
+		timestamp: uint
+		majorToken: FlexToken, 
+		minorToken: FlexToken,
+		# from orderRet errorCode , depends on the message, see here <https://www.notion.so/tonlabs/Tasks-47e704afcc9f41a8810450ccef98fbfa#4da3118d03ba4538812e2de8a8096524> 
+		status: enum {CANCELED, EXECUTED, CREATED, CREATION_FAILED, CLOSED}, 
+		amountEnqueued: Float # enqueued/major_decimals
+		amountEnqueuedUnits: String # enqueued
+		amountProcessed: Float # processed/major_decimals
+		amountProcessedUnits: String # processed
+		price: Float # price_num/priceScale
+		priceNum: String #price_num
+		priceScale: String # price_denum * 10^(minor_decimals - major_decimals)
+		priceScaleUnits: String # price_denum 
+		side: enum {BUY, SELL} 
+		userId: string
+		orderId: string
 }
 ```

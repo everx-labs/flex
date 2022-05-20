@@ -20,8 +20,8 @@
 
 * [Overview](technical-description/overview.md)
 * [Glossary](technical-description/glossary.md)
-* [DApp Authorization](technical-description/client-app-authorization.md)
 * [Flex API](technical-description/flex-sdk-api.md)
+* [DApp Authorization](technical-description/client-app-authorization.md)
 * [Flex DeBots](technical-description/flex-debots/README.md)
   * [FlexDebot](technical-description/flex-debots/flexdebot.md)
   * [FlexHelperDebot](technical-description/flex-debots/flexhelperdebot.md)
