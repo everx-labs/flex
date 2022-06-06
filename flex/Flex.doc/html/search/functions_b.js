@@ -1,21 +1,12 @@
 var searchData=
 [
-  ['on_5fdeal_655',['on_deal',['../classtvm_1_1xchg_1_1xchg__iterator.html#a15d3b51789c935fb1f12746177066d57',1,'tvm::xchg::xchg_iterator::on_deal()'],['../classtvm_1_1xchg_1_1process__queue__state.html#aa7421333ceb9d5dc0d6b9509d99be663',1,'tvm::xchg::process_queue_state::on_deal()']]],
-  ['on_5fexpired_656',['on_expired',['../classtvm_1_1xchg_1_1process__queue__state.html#a3f63fbe92aeed6671b57723131cbef61',1,'tvm::xchg::process_queue_state']]],
-  ['on_5fno_5fpost_5forder_5fdone_657',['on_no_post_order_done',['../classtvm_1_1xchg_1_1process__queue__state.html#a11ebf4e7465f90c99dcae21ea5d38968',1,'tvm::xchg::process_queue_state']]],
-  ['on_5forder_5fdone_658',['on_order_done',['../classtvm_1_1xchg_1_1process__queue__state.html#a260f743d4ad059a4556a10fbf62569bf',1,'tvm::xchg::process_queue_state']]],
-  ['on_5fout_5fof_5fevers_659',['on_out_of_evers',['../classtvm_1_1xchg_1_1process__queue__state.html#a19dabc8bc51dd8b67258a28ea3bfe32a',1,'tvm::xchg::process_queue_state']]],
-  ['ondeploy_660',['onDeploy',['../structtvm_1_1IXchgPair.html#a139cc81ef04c22005c091faf3eab7395',1,'tvm::IXchgPair']]],
-  ['onorderfinished_661',['onOrderFinished',['../structtvm_1_1IPriceCallback.html#ab52025b120bceaa0affe5545de870939',1,'tvm::IPriceCallback']]],
-  ['ontip3lendownership_662',['onTip3LendOwnership',['../structtvm_1_1IPriceXchg.html#a34871319f9ec2ecb81871a3003855928',1,'tvm::IPriceXchg::onTip3LendOwnership()'],['../classPriceXchg.html#a6804f6ba10dc09efb77c1f0b803328a8',1,'PriceXchg::onTip3LendOwnership()'],['../structtvm_1_1ITONTokenWalletNotify.html#a343541a0029067533bbac895784c1252',1,'tvm::ITONTokenWalletNotify::onTip3LendOwnership()']]],
-  ['ontip3transfer_663',['onTip3Transfer',['../structtvm_1_1IFlexClient.html#aab9b3b94681091cde513e519dd354fc3',1,'tvm::IFlexClient::onTip3Transfer()'],['../classFlexClient.html#aceba5522985b37e506db2e2d374b4b9e',1,'FlexClient::onTip3Transfer()'],['../structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31',1,'tvm::ITONTokenWalletNotify::onTip3Transfer()'],['../structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7',1,'tvm::IWrapper::onTip3Transfer()']]],
-  ['onwrapperapproved_664',['onWrapperApproved',['../structtvm_1_1IListingAnswer.html#a26da0f05b7cd3951a207c9d11ce93367',1,'tvm::IListingAnswer']]],
-  ['onwrapperrejected_665',['onWrapperRejected',['../structtvm_1_1IListingAnswer.html#a88693359f53597e9722cb988ae32ee9c',1,'tvm::IListingAnswer']]],
-  ['onxchgdealcompleted_666',['onXchgDealCompleted',['../structtvm_1_1IFlexNotify.html#ad7c97f69294f2c27d12ddbdb23f68992',1,'tvm::IFlexNotify']]],
-  ['onxchgorderadded_667',['onXchgOrderAdded',['../structtvm_1_1IFlexNotify.html#ad61ab5465c47cd6b4b091a1cbecefa79',1,'tvm::IFlexNotify']]],
-  ['onxchgordercanceled_668',['onXchgOrderCanceled',['../structtvm_1_1IFlexNotify.html#a43a09fb1378e3f1853adb211f778b882',1,'tvm::IFlexNotify']]],
-  ['onxchgpairapproved_669',['onXchgPairApproved',['../structtvm_1_1IListingAnswer.html#acc578470007c29d1f5c5154fca578210',1,'tvm::IListingAnswer']]],
-  ['onxchgpairrejected_670',['onXchgPairRejected',['../structtvm_1_1IListingAnswer.html#ac0e2a0c916eb6e32e4d8691ca1068b8e',1,'tvm::IListingAnswer']]],
-  ['orders_5fqueue_5fcached_671',['orders_queue_cached',['../classtvm_1_1xchg_1_1orders__queue__cached.html#ae610561781a6d9f9df6e7f6e590f9586',1,'tvm::xchg::orders_queue_cached']]],
-  ['overlimit_672',['overlimit',['../classtvm_1_1xchg_1_1process__queue__state.html#aba5b511c7a4730b9a34e968c2d24f20b',1,'tvm::xchg::process_queue_state']]]
+  ['pop_936',['pop',['../classtvm_1_1xchg_1_1orders__queue__cached.html#a312e7f6c761a199c1369fbe651e084f0',1,'tvm::xchg::orders_queue_cached']]],
+  ['prepare_5fexternal_5fwallet_5fstate_5finit_5fand_5faddr_937',['prepare_external_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#a6f70ed2f85266d0cf7f22c048fdfc633',1,'tvm']]],
+  ['prepare_5finternal_5fwallet_5fstate_5finit_5fand_5faddr_938',['prepare_internal_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#a7ce4112a7c6d474be7389c379c3c7e83',1,'tvm']]],
+  ['prepare_5fwallet_5fdata_939',['prepare_wallet_data',['../TONTokenWallet_8hpp.html#aa40f05632a1da45e6aaaf2ca6cbe2f25',1,'tvm']]],
+  ['prepare_5fwallet_5fstate_5finit_5fand_5faddr_940',['prepare_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#aa0f8f155455bebd6b09be21fbcac83d1',1,'tvm']]],
+  ['process_941',['process',['../classtvm_1_1xchg_1_1dealer.html#a5e04ea542a14b55b71d3208872283e17',1,'tvm::xchg::dealer']]],
+  ['process_5fqueue_5fstate_942',['process_queue_state',['../classtvm_1_1xchg_1_1process__queue__state.html#af1109ec0f3b4eda7221f46d1c3b51ebe',1,'tvm::xchg::process_queue_state']]],
+  ['processqueue_943',['processQueue',['../structtvm_1_1IPriceXchg.html#ada45f24892629aae0a9ba941a2de4d03',1,'tvm::IPriceXchg']]],
+  ['proxy_944',['proxy',['../structtvm_1_1ISuperRoot.html#ae3f63e43622590b72d3d0d5a70e4af3f',1,'tvm::ISuperRoot']]]
 ];

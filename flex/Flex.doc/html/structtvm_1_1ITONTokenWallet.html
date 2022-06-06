@@ -84,18 +84,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e6bba8f5cb774c1813857703a4d61cd"><td class="memItemLeft" align="right" valign="top">TIP3_EXTERNAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a2e6bba8f5cb774c1813857703a4d61cd">transfer</a> (address_opt answer_addr, address to, uint128 tokens, uint128 evers, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
 <tr class="memdesc:a2e6bba8f5cb774c1813857703a4d61cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer tokens to another tip3 wallet contract.  <a href="structtvm_1_1ITONTokenWallet.html#a2e6bba8f5cb774c1813857703a4d61cd">More...</a><br /></td></tr>
 <tr class="separator:a2e6bba8f5cb774c1813857703a4d61cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d07bb8bff14a19b58dee9dd077f9fa8"><td class="memItemLeft" align="right" valign="top">TIP3_EXTERNAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a8d07bb8bff14a19b58dee9dd077f9fa8">transferToRecipient</a> (address_opt answer_addr, Tip3Creds to, uint128 tokens, uint128 evers, bool deploy, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
-<tr class="separator:a8d07bb8bff14a19b58dee9dd077f9fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a284924e3f50efa13271a9f0a6f04ab97"><td class="memItemLeft" align="right" valign="top"><a id="a284924e3f50efa13271a9f0a6f04ab97"></a>
-uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a284924e3f50efa13271a9f0a6f04ab97">requestBalance</a> ()</td></tr>
-<tr class="memdesc:a284924e3f50efa13271a9f0a6f04ab97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request wallet token balance using internal message (contract-to-contract). <br /></td></tr>
-<tr class="separator:a284924e3f50efa13271a9f0a6f04ab97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67e51c5e7e9ec047930a624188390f89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a67e51c5e7e9ec047930a624188390f89">acceptMint</a> (uint128 tokens, address answer_addr, uint128 keep_evers)=0x4384F298</td></tr>
-<tr class="memdesc:a67e51c5e7e9ec047930a624188390f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive tokens from root (<a class="el" href="classRootTokenContract.html">RootTokenContract</a>).  <a href="structtvm_1_1ITONTokenWallet.html#a67e51c5e7e9ec047930a624188390f89">More...</a><br /></td></tr>
-<tr class="separator:a67e51c5e7e9ec047930a624188390f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc7e9acb1e4960c0b48b0b432031d9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#affc7e9acb1e4960c0b48b0b432031d9c">acceptTransfer</a> (uint128 tokens, address answer_addr, uint256 sender_pubkey, address_opt sender_owner, opt&lt; cell &gt; payload)=0x67A0B95F</td></tr>
-<tr class="memdesc:affc7e9acb1e4960c0b48b0b432031d9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive tokens from another tip3 wallet.  <a href="structtvm_1_1ITONTokenWallet.html#affc7e9acb1e4960c0b48b0b432031d9c">More...</a><br /></td></tr>
-<tr class="separator:affc7e9acb1e4960c0b48b0b432031d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af31dcd78ac22d4e27ce29efa5064c2de"><td class="memItemLeft" align="right" valign="top">TIP3_EXTERNAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#af31dcd78ac22d4e27ce29efa5064c2de">transferToRecipient</a> (address_opt answer_addr, Tip3Creds to, uint128 tokens, uint128 evers, uint128 keep_evers, bool deploy, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
+<tr class="separator:af31dcd78ac22d4e27ce29efa5064c2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab788b6231c71f918f3da22133e90af79"><td class="memItemLeft" align="right" valign="top"><a id="ab788b6231c71f918f3da22133e90af79"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#ab788b6231c71f918f3da22133e90af79">balance</a> ()</td></tr>
+<tr class="memdesc:ab788b6231c71f918f3da22133e90af79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request wallet token balance using internal message (contract-to-contract). <br /></td></tr>
+<tr class="separator:ab788b6231c71f918f3da22133e90af79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d5303644a4018a9f78fc355dc85178a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a6d5303644a4018a9f78fc355dc85178a">acceptMint</a> (uint128 _value, address answer_addr, uint128 keep_evers, opt&lt; cell &gt; notify_payload)=0x4384F298</td></tr>
+<tr class="memdesc:a6d5303644a4018a9f78fc355dc85178a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive tokens from root (<a class="el" href="classRootTokenContract.html">RootTokenContract</a>).  <a href="structtvm_1_1ITONTokenWallet.html#a6d5303644a4018a9f78fc355dc85178a">More...</a><br /></td></tr>
+<tr class="separator:a6d5303644a4018a9f78fc355dc85178a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb8834ea28c1a953f7cea2665e48498"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#abdb8834ea28c1a953f7cea2665e48498">acceptTransfer</a> (uint128 _value, address answer_addr, uint128 keep_evers, uint256 sender_pubkey, address_opt sender_owner, opt&lt; cell &gt; payload)=0x67A0B95F</td></tr>
+<tr class="memdesc:abdb8834ea28c1a953f7cea2665e48498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive tokens from another tip3 wallet.  <a href="structtvm_1_1ITONTokenWallet.html#abdb8834ea28c1a953f7cea2665e48498">More...</a><br /></td></tr>
+<tr class="separator:abdb8834ea28c1a953f7cea2665e48498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aae760d74ff1765d00088136b1b376e"><td class="memItemLeft" align="right" valign="top"><a id="a6aae760d74ff1765d00088136b1b376e"></a>
+<a class="el" href="structtvm_1_1details__info.html">details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#a6aae760d74ff1765d00088136b1b376e">details</a> ()</td></tr>
+<tr class="memdesc:a6aae760d74ff1765d00088136b1b376e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request info about contract state details (from another contract). <br /></td></tr>
+<tr class="separator:a6aae760d74ff1765d00088136b1b376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdf43d4b26f055a829fce28dc1e3bf42"><td class="memItemLeft" align="right" valign="top"><a id="abdf43d4b26f055a829fce28dc1e3bf42"></a>
 <a class="el" href="structtvm_1_1details__info.html">details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html#abdf43d4b26f055a829fce28dc1e3bf42">getDetails</a> ()</td></tr>
 <tr class="memdesc:abdf43d4b26f055a829fce28dc1e3bf42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get info about contract state details. <br /></td></tr>
@@ -104,8 +108,8 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TON Token wallet contract interface. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a67e51c5e7e9ec047930a624188390f89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67e51c5e7e9ec047930a624188390f89">&#9670;&nbsp;</a></span>acceptMint()</h2>
+<a id="a6d5303644a4018a9f78fc355dc85178a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d5303644a4018a9f78fc355dc85178a">&#9670;&nbsp;</a></span>acceptMint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,10 +118,10 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool acceptMint </td>
+          <td class="memname">void acceptMint </td>
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>tokens</em>, </td>
+          <td class="paramname"><em>_value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -129,7 +133,13 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>keep_evers</em>&#160;</td>
+          <td class="paramname"><em>keep_evers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; cell &gt;&#160;</td>
+          <td class="paramname"><em>notify_payload</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -147,17 +157,18 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <p>Receive tokens from root (<a class="el" href="classRootTokenContract.html">RootTokenContract</a>). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tokens</td><td>Tokens received from <a class="el" href="classRootTokenContract.html">RootTokenContract</a>. </td></tr>
+    <tr><td class="paramname">_value</td><td>Tokens received from <a class="el" href="classRootTokenContract.html">RootTokenContract</a>. </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address. </td></tr>
     <tr><td class="paramname">keep_evers</td><td>Native funds that the wallet should keep before returning answer with the remaining funds. </td></tr>
+    <tr><td class="paramname">notify_payload</td><td>Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="affc7e9acb1e4960c0b48b0b432031d9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc7e9acb1e4960c0b48b0b432031d9c">&#9670;&nbsp;</a></span>acceptTransfer()</h2>
+<a id="abdb8834ea28c1a953f7cea2665e48498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb8834ea28c1a953f7cea2665e48498">&#9670;&nbsp;</a></span>acceptTransfer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,13 +180,19 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td class="memname">void acceptTransfer </td>
           <td>(</td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>tokens</em>, </td>
+          <td class="paramname"><em>_value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">address&#160;</td>
           <td class="paramname"><em>answer_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>keep_evers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -211,8 +228,9 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <p>Receive tokens from another tip3 wallet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tokens</td><td>Amount of tokens received from another tip3 token wallet. </td></tr>
+    <tr><td class="paramname">_value</td><td>Amount of tokens received from another tip3 token wallet. </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address. </td></tr>
+    <tr><td class="paramname">keep_evers</td><td>Native funds that the wallet should keep before returning answer with the remaining funds. </td></tr>
     <tr><td class="paramname">sender_pubkey</td><td>Sender wallet pubkey. </td></tr>
     <tr><td class="paramname">sender_owner</td><td>Sender wallet internal owner. </td></tr>
     <tr><td class="paramname">payload</td><td>Payload (arbitrary cell). If specified, the wallet should send notification to its internal owner. </td></tr>
@@ -287,8 +305,8 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a8d07bb8bff14a19b58dee9dd077f9fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d07bb8bff14a19b58dee9dd077f9fa8">&#9670;&nbsp;</a></span>transferToRecipient()</h2>
+<a id="af31dcd78ac22d4e27ce29efa5064c2de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af31dcd78ac22d4e27ce29efa5064c2de">&#9670;&nbsp;</a></span>transferToRecipient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,6 +334,12 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td></td>
           <td class="paramtype">uint128&#160;</td>
           <td class="paramname"><em>evers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>keep_evers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -349,6 +373,7 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">to</td><td>Recipient credentials (pubkey + owner) </td></tr>
     <tr><td class="paramname">tokens</td><td>Amount of tokens to transfer. </td></tr>
     <tr><td class="paramname">evers</td><td>Native funds to process. For internal requests, this value is ignored and processing costs will be taken from attached value. </td></tr>
+    <tr><td class="paramname">keep_evers</td><td>Evers to keep in destination wallet </td></tr>
     <tr><td class="paramname">deploy</td><td>Contract will send acceptTransfer message with StateInit to also deploy new tip3 wallet (if it doesn't already exist) with the provided recipient_public_key and recipient_internal_owner. </td></tr>
     <tr><td class="paramname">return_ownership</td><td>Return ownership - to decrease lend ownership for the caller contract (additionally). </td></tr>
     <tr><td class="paramname">notify_payload</td><td>Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification. </td></tr>

@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,6 +60,11 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_20221acc3490166a5adbbcc6c35e1911.html">exchange</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">FlexTransferPayloadArgs.hpp</div>  </div>
@@ -83,8 +87,8 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#ab18a9d42399378124213d3611b38f3d8">   21</a></span>&#160;  uint128    <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#ab18a9d42399378124213d3611b38f3d8">taker_fee</a>;         </div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#a405db60ef80c7f92859cec7d293f3f92">   22</a></span>&#160;  uint128    <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#a405db60ef80c7f92859cec7d293f3f92">maker_vig</a>;         </div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#a4b70f818aa6520eb74ae6cce1a0c15b2">   23</a></span>&#160;  address    <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#a4b70f818aa6520eb74ae6cce1a0c15b2">pair</a>;              </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#ad40b5f388fea7553d8d9e999e55ed9cd">   24</a></span>&#160;  <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a> <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#ad40b5f388fea7553d8d9e999e55ed9cd">major_tip3cfg</a>;     </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#ac03834ec27abef1f62a7a3d8a3dd3969">   25</a></span>&#160;  <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a> <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#ac03834ec27abef1f62a7a3d8a3dd3969">minor_tip3cfg</a>;     </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#ad40b5f388fea7553d8d9e999e55ed9cd">   24</a></span>&#160;  Tip3Config <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#ad40b5f388fea7553d8d9e999e55ed9cd">major_tip3cfg</a>;     </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexTransferPayloadArgs.html#ac03834ec27abef1f62a7a3d8a3dd3969">   25</a></span>&#160;  Tip3Config <a class="code" href="structtvm_1_1FlexTransferPayloadArgs.html#ac03834ec27abef1f62a7a3d8a3dd3969">minor_tip3cfg</a>;     </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// namespace tvm</span></div>
@@ -95,7 +99,6 @@ $(function() {
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_ace69f4677b5ff0a1c2f00e8719b1c039"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#ace69f4677b5ff0a1c2f00e8719b1c039">tvm::FlexTransferPayloadArgs::price_denum</a></div><div class="ttdeci">uint128 price_denum</div><div class="ttdoc">Price denominator.</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:20</div></div>
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_a06bf4f608c5531df6bd92abdc01ea7da"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#a06bf4f608c5531df6bd92abdc01ea7da">tvm::FlexTransferPayloadArgs::another_tip3_root</a></div><div class="ttdeci">address another_tip3_root</div><div class="ttdoc">Address of another tip3 root (Wrapper) in trading pair.</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:18</div></div>
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_ac03834ec27abef1f62a7a3d8a3dd3969"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#ac03834ec27abef1f62a7a3d8a3dd3969">tvm::FlexTransferPayloadArgs::minor_tip3cfg</a></div><div class="ttdeci">Tip3Config minor_tip3cfg</div><div class="ttdoc">Configuration of the minor tip3 token.</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:25</div></div>
-<div class="ttc" id="astructtvm_1_1Tip3Config_html"><div class="ttname"><a href="structtvm_1_1Tip3Config.html">tvm::Tip3Config</a></div><div class="ttdoc">Tip3 token configuration.</div><div class="ttdef"><b>Definition:</b> TONTokenWallet.hpp:52</div></div>
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_a14a73c5fe173dffb99beb0b5434ca27d"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#a14a73c5fe173dffb99beb0b5434ca27d">tvm::FlexTransferPayloadArgs::sender_taker</a></div><div class="ttdeci">bool sender_taker</div><div class="ttdoc">Sender is a taker in deal (and pays fees)</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:14</div></div>
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_ab18a9d42399378124213d3611b38f3d8"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#ab18a9d42399378124213d3611b38f3d8">tvm::FlexTransferPayloadArgs::taker_fee</a></div><div class="ttdeci">uint128 taker_fee</div><div class="ttdoc">Tokens taken (fee) from taker.</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:21</div></div>
 <div class="ttc" id="astructtvm_1_1FlexTransferPayloadArgs_html_a4b70f818aa6520eb74ae6cce1a0c15b2"><div class="ttname"><a href="structtvm_1_1FlexTransferPayloadArgs.html#a4b70f818aa6520eb74ae6cce1a0c15b2">tvm::FlexTransferPayloadArgs::pair</a></div><div class="ttdeci">address pair</div><div class="ttdoc">Address of XchgPair contract.</div><div class="ttdef"><b>Definition:</b> FlexTransferPayloadArgs.hpp:23</div></div>

@@ -85,49 +85,48 @@ Collaboration diagram for process_queue_state:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtvm_1_1xchg_1_1process__queue__state__coll__graph.png" border="0" usemap="#process__queue__state_coll__map" alt="Collaboration graph"/></div>
 <map name="process__queue__state_coll__map" id="process__queue__state_coll__map">
-<area shape="rect" title="Processing orders queue state for PriceXchg." alt="" coords="111,109,270,136"/>
+<area shape="rect" title="Processing orders queue state for PriceXchg." alt="" coords="46,95,205,121"/>
 <area shape="rect" href="structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="5,5,117,32"/>
 <area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="141,5,240,32"/>
-<area shape="rect" href="structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="264,5,355,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e0657c5de5a24864d39a2d9636319cb"><td class="memItemLeft" align="right" valign="top">__always_inline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a5e0657c5de5a24864d39a2d9636319cb">process_queue_state</a> (<a class="el" href="structtvm_1_1RationalValue.html">price_t</a> price, address pair, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, uint128 min_amount, unsigned deals_limit, unsigned msgs_limit, IFlexNotifyPtr notify_addr, unsigned sell_idx, unsigned buy_idx)</td></tr>
-<tr class="separator:a5e0657c5de5a24864d39a2d9636319cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f63fbe92aeed6671b57723131cbef61"><td class="memItemLeft" align="right" valign="top">__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a3f63fbe92aeed6671b57723131cbef61">on_expired</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
-<tr class="separator:a3f63fbe92aeed6671b57723131cbef61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19dabc8bc51dd8b67258a28ea3bfe32a"><td class="memItemLeft" align="right" valign="top">__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a19dabc8bc51dd8b67258a28ea3bfe32a">on_out_of_evers</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
-<tr class="separator:a19dabc8bc51dd8b67258a28ea3bfe32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a260f743d4ad059a4556a10fbf62569bf"><td class="memItemLeft" align="right" valign="top"><a id="a260f743d4ad059a4556a10fbf62569bf"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a260f743d4ad059a4556a10fbf62569bf">on_order_done</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
-<tr class="memdesc:a260f743d4ad059a4556a10fbf62569bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">When order is done. <br /></td></tr>
-<tr class="separator:a260f743d4ad059a4556a10fbf62569bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11ebf4e7465f90c99dcae21ea5d38968"><td class="memItemLeft" align="right" valign="top"><a id="a11ebf4e7465f90c99dcae21ea5d38968"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a11ebf4e7465f90c99dcae21ea5d38968">on_no_post_order_done</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
-<tr class="memdesc:a11ebf4e7465f90c99dcae21ea5d38968"><td class="mdescLeft">&#160;</td><td class="mdescRight">When we have order without post-order flag and other side queue is empty. <br /></td></tr>
-<tr class="separator:a11ebf4e7465f90c99dcae21ea5d38968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecff5c9f13f8ab5ae6bb7f540b811ac9"><td class="memItemLeft" align="right" valign="top"><a id="aecff5c9f13f8ab5ae6bb7f540b811ac9"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#aecff5c9f13f8ab5ae6bb7f540b811ac9">check_ret</a> (bool sell, unsigned idx, <a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a> ret)</td></tr>
-<tr class="memdesc:aecff5c9f13f8ab5ae6bb7f540b811ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check that order is the current requested order and we need to save return value. <br /></td></tr>
-<tr class="separator:aecff5c9f13f8ab5ae6bb7f540b811ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7421333ceb9d5dc0d6b9509d99be663"><td class="memItemLeft" align="right" valign="top"><a id="aa7421333ceb9d5dc0d6b9509d99be663"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#aa7421333ceb9d5dc0d6b9509d99be663">on_deal</a> (bool seller_taker, uint128 deal_amount)</td></tr>
-<tr class="memdesc:aa7421333ceb9d5dc0d6b9509d99be663"><td class="mdescLeft">&#160;</td><td class="mdescRight">When a deal is processed. <br /></td></tr>
-<tr class="separator:aa7421333ceb9d5dc0d6b9509d99be663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad70e45dcaa7d1cb165f5069f33e5b720"><td class="memItemLeft" align="right" valign="top"><a id="ad70e45dcaa7d1cb165f5069f33e5b720"></a>
-__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#ad70e45dcaa7d1cb165f5069f33e5b720">is_order_done</a> (<a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> ord) const</td></tr>
-<tr class="memdesc:ad70e45dcaa7d1cb165f5069f33e5b720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the order done? Means the remaining amount is less than min_amount or minor_cost can't be calculated. <br /></td></tr>
-<tr class="separator:ad70e45dcaa7d1cb165f5069f33e5b720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba5b511c7a4730b9a34e968c2d24f20b"><td class="memItemLeft" align="right" valign="top"><a id="aba5b511c7a4730b9a34e968c2d24f20b"></a>
-__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#aba5b511c7a4730b9a34e968c2d24f20b">overlimit</a> () const</td></tr>
-<tr class="memdesc:aba5b511c7a4730b9a34e968c2d24f20b"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we hit deals or messages limit. <br /></td></tr>
-<tr class="separator:aba5b511c7a4730b9a34e968c2d24f20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b01d65fa48caf895b738c143fff3dec"><td class="memItemLeft" align="right" valign="top"><a id="a4b01d65fa48caf895b738c143fff3dec"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a4b01d65fa48caf895b738c143fff3dec">finalize</a> (IFlexNotifyPtr notify_addr, uint128 rest_sell_amount, uint128 rest_buy_amount)</td></tr>
-<tr class="memdesc:a4b01d65fa48caf895b738c143fff3dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize state - send AMM notifications about processed deals and canceled orders. <br /></td></tr>
-<tr class="separator:a4b01d65fa48caf895b738c143fff3dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1109ec0f3b4eda7221f46d1c3b51ebe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#af1109ec0f3b4eda7221f46d1c3b51ebe">process_queue_state</a> (<a class="el" href="structtvm_1_1RationalValue.html">price_t</a> price, address pair, Tip3Config major_tip3cfg, Tip3Config minor_tip3cfg, <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, uint128 min_amount, unsigned deals_limit, unsigned msgs_limit, IFlexNotifyPtr notify_addr, unsigned sell_idx, unsigned buy_idx)</td></tr>
+<tr class="separator:af1109ec0f3b4eda7221f46d1c3b51ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2543b06dd5edf660681a7d4b837c0a72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a2543b06dd5edf660681a7d4b837c0a72">on_expired</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
+<tr class="separator:a2543b06dd5edf660681a7d4b837c0a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e9ed2dfd6a0951294e07691f519786"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a75e9ed2dfd6a0951294e07691f519786">on_out_of_evers</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
+<tr class="separator:a75e9ed2dfd6a0951294e07691f519786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35969c588f291f8c3006e42ad3959595"><td class="memItemLeft" align="right" valign="top"><a id="a35969c588f291f8c3006e42ad3959595"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a35969c588f291f8c3006e42ad3959595">on_order_done</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
+<tr class="memdesc:a35969c588f291f8c3006e42ad3959595"><td class="mdescLeft">&#160;</td><td class="mdescRight">When order is done. <br /></td></tr>
+<tr class="separator:a35969c588f291f8c3006e42ad3959595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b1641c564983bac26bce28202eb6f4"><td class="memItemLeft" align="right" valign="top"><a id="a38b1641c564983bac26bce28202eb6f4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a38b1641c564983bac26bce28202eb6f4">on_no_post_order_done</a> (OrderInfoXchgWithIdx ord_idx, bool sell)</td></tr>
+<tr class="memdesc:a38b1641c564983bac26bce28202eb6f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">When we have order without post-order flag and other side queue is empty. <br /></td></tr>
+<tr class="separator:a38b1641c564983bac26bce28202eb6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65db0d9c2f10618a1170709291d630e0"><td class="memItemLeft" align="right" valign="top"><a id="a65db0d9c2f10618a1170709291d630e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a65db0d9c2f10618a1170709291d630e0">check_ret</a> (bool sell, unsigned idx, <a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a> ret)</td></tr>
+<tr class="memdesc:a65db0d9c2f10618a1170709291d630e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check that order is the current requested order and we need to save return value. <br /></td></tr>
+<tr class="separator:a65db0d9c2f10618a1170709291d630e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfc6818590321bc698e3a0118ebe5cbe"><td class="memItemLeft" align="right" valign="top"><a id="abfc6818590321bc698e3a0118ebe5cbe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#abfc6818590321bc698e3a0118ebe5cbe">on_deal</a> (bool seller_taker, uint128 deal_amount)</td></tr>
+<tr class="memdesc:abfc6818590321bc698e3a0118ebe5cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">When a deal is processed. <br /></td></tr>
+<tr class="separator:abfc6818590321bc698e3a0118ebe5cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6c3545fd27ee779c1abe4ffa82baab7"><td class="memItemLeft" align="right" valign="top"><a id="ab6c3545fd27ee779c1abe4ffa82baab7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#ab6c3545fd27ee779c1abe4ffa82baab7">is_order_done</a> (<a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> ord) const</td></tr>
+<tr class="memdesc:ab6c3545fd27ee779c1abe4ffa82baab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the order done? Means the remaining amount is less than min_amount or minor_cost can't be calculated. <br /></td></tr>
+<tr class="separator:ab6c3545fd27ee779c1abe4ffa82baab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f783231e63e06f5fce4731ceb48df5"><td class="memItemLeft" align="right" valign="top"><a id="a25f783231e63e06f5fce4731ceb48df5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a25f783231e63e06f5fce4731ceb48df5">overlimit</a> () const</td></tr>
+<tr class="memdesc:a25f783231e63e06f5fce4731ceb48df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we hit deals or messages limit. <br /></td></tr>
+<tr class="separator:a25f783231e63e06f5fce4731ceb48df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701080d138ef2e1f97b909b88126a0f8"><td class="memItemLeft" align="right" valign="top"><a id="a701080d138ef2e1f97b909b88126a0f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a701080d138ef2e1f97b909b88126a0f8">finalize</a> (uint128 rest_sell_amount, uint128 rest_buy_amount)</td></tr>
+<tr class="memdesc:a701080d138ef2e1f97b909b88126a0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize state - send AMM notifications about processed deals and canceled orders. <br /></td></tr>
+<tr class="separator:a701080d138ef2e1f97b909b88126a0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -140,11 +139,11 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:aab8f28d245fffde9b3cac563d390e12b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> contract. <br /></td></tr>
 <tr class="separator:aab8f28d245fffde9b3cac563d390e12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40e529a6c61ae37d31f830034beb0773"><td class="memItemLeft" align="right" valign="top"><a id="a40e529a6c61ae37d31f830034beb0773"></a>
-<a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a40e529a6c61ae37d31f830034beb0773">major_tip3cfg_</a></td></tr>
+Tip3Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#a40e529a6c61ae37d31f830034beb0773">major_tip3cfg_</a></td></tr>
 <tr class="memdesc:a40e529a6c61ae37d31f830034beb0773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Major tip3 configuration. <br /></td></tr>
 <tr class="separator:a40e529a6c61ae37d31f830034beb0773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4dad265e75c658625e2d1277969bcb6"><td class="memItemLeft" align="right" valign="top"><a id="aa4dad265e75c658625e2d1277969bcb6"></a>
-<a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#aa4dad265e75c658625e2d1277969bcb6">minor_tip3cfg_</a></td></tr>
+Tip3Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html#aa4dad265e75c658625e2d1277969bcb6">minor_tip3cfg_</a></td></tr>
 <tr class="memdesc:aa4dad265e75c658625e2d1277969bcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minor tip3 configuration. <br /></td></tr>
 <tr class="separator:aa4dad265e75c658625e2d1277969bcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa99cb959b3a7f6e47d21d223e190930d"><td class="memItemLeft" align="right" valign="top"><a id="aa99cb959b3a7f6e47d21d223e190930d"></a>
@@ -250,8 +249,8 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Processing orders queue state for <a class="el" href="classPriceXchg.html">PriceXchg</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5e0657c5de5a24864d39a2d9636319cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e0657c5de5a24864d39a2d9636319cb">&#9670;&nbsp;</a></span>process_queue_state()</h2>
+<a id="af1109ec0f3b4eda7221f46d1c3b51ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1109ec0f3b4eda7221f46d1c3b51ebe">&#9670;&nbsp;</a></span>process_queue_state()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,7 +259,7 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline <a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html">process_queue_state</a> </td>
+          <td class="memname"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html">process_queue_state</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structtvm_1_1RationalValue.html">price_t</a>&#160;</td>
           <td class="paramname"><em>price</em>, </td>
@@ -274,13 +273,13 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>major_tip3cfg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>minor_tip3cfg</em>, </td>
         </tr>
         <tr>
@@ -357,8 +356,8 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3f63fbe92aeed6671b57723131cbef61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f63fbe92aeed6671b57723131cbef61">&#9670;&nbsp;</a></span>on_expired()</h2>
+<a id="a2543b06dd5edf660681a7d4b837c0a72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2543b06dd5edf660681a7d4b837c0a72">&#9670;&nbsp;</a></span>on_expired()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,7 +366,7 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline void on_expired </td>
+          <td class="memname">void on_expired </td>
           <td>(</td>
           <td class="paramtype">OrderInfoXchgWithIdx&#160;</td>
           <td class="paramname"><em>ord_idx</em>, </td>
@@ -390,12 +389,12 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
   </tr>
 </table>
 </div><div class="memdoc">
-<p>When order is expired, sending <a class="el" href="structtvm_1_1IPriceCallback.html#ab52025b120bceaa0affe5545de870939">IPriceCallback::onOrderFinished()</a> notification with the remaining balance. We don't need to call returnOwnership. </p>
+<p>When order is expired, sending <a class="el" href="structtvm_1_1IPriceCallback.html#a28b0d73bbb96c598f63f00444cefa26c">IPriceCallback::onOrderFinished()</a> notification with the remaining balance. We don't need to call returnOwnership. </p>
 
 </div>
 </div>
-<a id="a19dabc8bc51dd8b67258a28ea3bfe32a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19dabc8bc51dd8b67258a28ea3bfe32a">&#9670;&nbsp;</a></span>on_out_of_evers()</h2>
+<a id="a75e9ed2dfd6a0951294e07691f519786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e9ed2dfd6a0951294e07691f519786">&#9670;&nbsp;</a></span>on_out_of_evers()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -404,7 +403,7 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline void on_out_of_evers </td>
+          <td class="memname">void on_out_of_evers </td>
           <td>(</td>
           <td class="paramtype">OrderInfoXchgWithIdx&#160;</td>
           <td class="paramname"><em>ord_idx</em>, </td>
@@ -427,7 +426,7 @@ static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a 
   </tr>
 </table>
 </div><div class="memdoc">
-<p>When order has not enough evers to process deals, sending <a class="el" href="structtvm_1_1IPriceCallback.html#ab52025b120bceaa0affe5545de870939">IPriceCallback::onOrderFinished()</a> notification and calling ITONTokenWallet::returnOwnership() to unlock tip3 tokens in the client wallet. </p>
+<p>When order has not enough evers to process deals, sending <a class="el" href="structtvm_1_1IPriceCallback.html#a28b0d73bbb96c598f63f00444cefa26c">IPriceCallback::onOrderFinished()</a> notification and calling ITONTokenWallet::returnOwnership() to unlock tip3 tokens in the client wallet. </p>
 
 </div>
 </div>

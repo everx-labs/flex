@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['error_5fcode_2ehpp_554',['error_code.hpp',['../error__code_8hpp.html',1,'']]],
-  ['eversconfig_2ehpp_555',['EversConfig.hpp',['../EversConfig_8hpp.html',1,'']]]
+  ['dealer_2ehpp_794',['dealer.hpp',['../dealer_8hpp.html',1,'']]]
 ];

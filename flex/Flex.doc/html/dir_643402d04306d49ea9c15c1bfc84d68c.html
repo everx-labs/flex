@@ -70,6 +70,18 @@ $(function() {
 <div class="title">fungible Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Directory dependency graph for fungible:</div>
+<div class="dyncontent">
+<div class="center"><img src="dir_643402d04306d49ea9c15c1bfc84d68c_dep.png" border="0" usemap="#dir__643402d04306d49ea9c15c1bfc84d68c__dep" alt="fungible"/></div>
+<map name="dir__643402d04306d49ea9c15c1bfc84d68c__dep" id="dir__643402d04306d49ea9c15c1bfc84d68c__dep">
+<area shape="rect" href="dir_643402d04306d49ea9c15c1bfc84d68c.html" title="fungible" alt="" coords="27,52,101,100"/>
+<area shape="rect" href="dir_218a9adf5b6f25f69e908069c8064677.html" title="immutable" alt="" coords="17,148,111,196"/>
+<area shape="rect" href="dir_000005_000001.html" title="2" alt="" coords="59,122,68,137"/>
+<area shape="rect" href="dir_000001_000005.html" title="2" alt="" coords="60,112,69,126"/>
+<area shape="rect" href="dir_6ec4448c0aad6f299270288fc304f022.html" title="tokens" alt="" coords="16,16,112,111"/>
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -89,7 +101,13 @@ Files</h2></td></tr>
 <tr class="memdesc:Wrapper_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapper.html">Wrapper</a> contract implementation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:Wrapper_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Wrapper_8hpp.html">Wrapper.hpp</a> <a href="Wrapper_8hpp_source.html">[code]</a></td></tr>
-<tr class="memdesc:Wrapper_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapper.html">Wrapper</a> contract interfaces and data-structs. <a class="el" href="classWrapper.html">Wrapper</a> contract performes conversion of external tip3 wallet tokens into flex tip3 wallet tokens. <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> tip3 wallet supports only internal ownership (by some contract), and supports lend ownership to temporary grant ownership of tokens to Price / <a class="el" href="classPriceXchg.html">PriceXchg</a> contracts for trading. Macroses TIP3_WRAPPER_WALLET_CODE_HASH / TIP3_WRAPPER_WALLET_CODE_DEPTH must be defined in compilation (code hash and code depth of FlexWallet). Use tonos-cli to get those values : tonos-cli decode stateinit &ndash;tvc FlexWallet.tvc ... "code_hash": "daf8d5fab85a9698fc9546e1beefbe0f1373f24d7980294bf26c0d5793cf1338", "data_hash": "55a703465a160dce20481375de2e5b830c841c2787303835eb5821d62d65ca9d", "code_depth": "20", "data_depth": "1", ... <br /></td></tr>
+<tr class="memdesc:Wrapper_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapper.html">Wrapper</a> contract interfaces and data-structs. <a class="el" href="classWrapper.html">Wrapper</a> contract performes conversion of external tip3 wallet tokens into flex tip3 wallet tokens. <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> tip3 wallet supports only internal ownership (by some contract), and supports lend ownership to temporary grant ownership of tokens to <a class="el" href="classPriceXchg.html">PriceXchg</a> contract for trading. Macroses TIP3_WALLET_CODE_HASH / TIP3_WALLET_CODE_DEPTH must be defined in compilation (code hash and code depth of FlexWallet). Use tonos-cli to get those values : tonos-cli decode stateinit &ndash;tvc FlexWallet.tvc ... "code_hash": "daf8d5fab85a9698fc9546e1beefbe0f1373f24d7980294bf26c0d5793cf1338", "data_hash": "55a703465a160dce20481375de2e5b830c841c2787303835eb5821d62d65ca9d", "code_depth": "20", "data_depth": "1", ... <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:WrapperEver_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="WrapperEver_8cpp.html">WrapperEver.cpp</a></td></tr>
+<tr class="memdesc:WrapperEver_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapperEver.html">WrapperEver</a> contract implementation. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:WrapperEver_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="WrapperEver_8hpp.html">WrapperEver.hpp</a> <a href="WrapperEver_8hpp_source.html">[code]</a></td></tr>
+<tr class="memdesc:WrapperEver_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapperEver.html">WrapperEver</a> contract interfaces and data-structs. <a class="el" href="classWrapperEver.html">WrapperEver</a> contract performes conversion of Everscale native tokens (Evers) into flex tip3 wallet tokens. <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> tip3 wallet supports only internal ownership (by some contract), and supports lend ownership to temporary grant ownership of tokens to Price / <a class="el" href="classPriceXchg.html">PriceXchg</a> contracts for trading. Macroses TIP3_WRAPPER_WALLET_CODE_HASH / TIP3_WRAPPER_WALLET_CODE_DEPTH must be defined in compilation (code hash and code depth of FlexWallet). Use tonos-cli to get those values : tonos-cli decode stateinit &ndash;tvc FlexWallet.tvc ... "code_hash": "daf8d5fab85a9698fc9546e1beefbe0f1373f24d7980294bf26c0d5793cf1338", "data_hash": "55a703465a160dce20481375de2e5b830c841c2787303835eb5821d62d65ca9d", "code_depth": "20", "data_depth": "1", ... <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

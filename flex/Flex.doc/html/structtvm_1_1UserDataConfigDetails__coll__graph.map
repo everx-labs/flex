@@ -1,0 +1,5 @@
+<map id="UserDataConfigDetails" name="UserDataConfigDetails">
+<area shape="rect" id="node1" title="UserDataConfig details for getter." alt="" coords="27,95,197,121"/>
+<area shape="rect" id="node2" href="$structtvm_1_1FlexVersion.html" title="Flex version triplet." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node3" href="$structtvm_1_1bind__info.html" title="Binding to allow orders only to specific flex root and with specific unsalted PriceXchg code hash." alt="" coords="128,5,211,32"/>
+</map>

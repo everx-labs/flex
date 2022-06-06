@@ -85,11 +85,10 @@ Collaboration diagram for dealer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtvm_1_1xchg_1_1dealer__coll__graph.png" border="0" usemap="#dealer_coll__map" alt="Collaboration graph"/></div>
 <map name="dealer_coll__map" id="dealer_coll__map">
-<area shape="rect" title="Class for iterating queue and processing deals." alt="" coords="230,109,293,136"/>
+<area shape="rect" title="Class for iterating queue and processing deals." alt="" coords="166,109,229,136"/>
 <area shape="rect" href="structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="5,5,117,32"/>
 <area shape="rect" href="classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="142,5,253,32"/>
 <area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="277,5,376,32"/>
-<area shape="rect" href="structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="400,5,491,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -99,21 +98,21 @@ Classes</h2></td></tr>
 <tr class="memdesc:structtvm_1_1xchg_1_1dealer_1_1deal__result"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of make_deal.  <a href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1deal__result">More...</a><br /></td></tr>
 <tr class="separator:structtvm_1_1xchg_1_1dealer_1_1deal__result"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structtvm_1_1xchg_1_1dealer_1_1process__result"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1process__result">process_result</a></td></tr>
-<tr class="memdesc:structtvm_1_1xchg_1_1dealer_1_1process__result"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of <a class="el" href="classtvm_1_1xchg_1_1dealer.html#a335760e0757a595569300ed9a2bbf8fb" title="Process order queues and make deals.">process()</a> call.  <a href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1process__result">More...</a><br /></td></tr>
+<tr class="memdesc:structtvm_1_1xchg_1_1dealer_1_1process__result"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of <a class="el" href="classtvm_1_1xchg_1_1dealer.html#a5e04ea542a14b55b71d3208872283e17" title="Process order queues and make deals.">process()</a> call.  <a href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1process__result">More...</a><br /></td></tr>
 <tr class="separator:structtvm_1_1xchg_1_1dealer_1_1process__result"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aed94696bf12961450ad85c72b88c75c7"><td class="memItemLeft" align="right" valign="top">__always_inline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#aed94696bf12961450ad85c72b88c75c7">dealer</a> (<a class="el" href="structtvm_1_1RationalValue.html">price_t</a> price, address pair, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, <a class="el" href="classtvm_1_1xchg_1_1orders__queue.html">orders_queue</a> sells, <a class="el" href="classtvm_1_1xchg_1_1orders__queue.html">orders_queue</a> buys, uint128 min_amount, unsigned deals_limit, unsigned msgs_limit, IFlexNotifyPtr notify_addr, address major_reserve_wallet, address minor_reserve_wallet)</td></tr>
-<tr class="separator:aed94696bf12961450ad85c72b88c75c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a335760e0757a595569300ed9a2bbf8fb"><td class="memItemLeft" align="right" valign="top"><a id="a335760e0757a595569300ed9a2bbf8fb"></a>
-__always_inline <a class="el" href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1process__result">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#a335760e0757a595569300ed9a2bbf8fb">process</a> (unsigned sell_idx, unsigned buy_idx)</td></tr>
-<tr class="memdesc:a335760e0757a595569300ed9a2bbf8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process order queues and make deals. <br /></td></tr>
-<tr class="separator:a335760e0757a595569300ed9a2bbf8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbaa8ec2955f072a592887e1d0fa8474"><td class="memItemLeft" align="right" valign="top"><a id="acbaa8ec2955f072a592887e1d0fa8474"></a>
-__always_inline <a class="el" href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1deal__result">deal_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#acbaa8ec2955f072a592887e1d0fa8474">make_deal</a> (<a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> sell, <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> buy)</td></tr>
-<tr class="memdesc:acbaa8ec2955f072a592887e1d0fa8474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make tip3/tip exchange deal. <br /></td></tr>
-<tr class="separator:acbaa8ec2955f072a592887e1d0fa8474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2a9da6e08079b45ad66fd5d417db07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#aab2a9da6e08079b45ad66fd5d417db07">dealer</a> (<a class="el" href="structtvm_1_1RationalValue.html">price_t</a> price, address pair, Tip3Config major_tip3cfg, Tip3Config minor_tip3cfg, <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, <a class="el" href="classtvm_1_1xchg_1_1orders__queue.html">orders_queue</a> sells, <a class="el" href="classtvm_1_1xchg_1_1orders__queue.html">orders_queue</a> buys, uint128 min_amount, unsigned deals_limit, unsigned msgs_limit, IFlexNotifyPtr notify_addr, address major_reserve_wallet, address minor_reserve_wallet)</td></tr>
+<tr class="separator:aab2a9da6e08079b45ad66fd5d417db07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e04ea542a14b55b71d3208872283e17"><td class="memItemLeft" align="right" valign="top"><a id="a5e04ea542a14b55b71d3208872283e17"></a>
+<a class="el" href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1process__result">process_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#a5e04ea542a14b55b71d3208872283e17">process</a> (unsigned sell_idx, unsigned buy_idx)</td></tr>
+<tr class="memdesc:a5e04ea542a14b55b71d3208872283e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process order queues and make deals. <br /></td></tr>
+<tr class="separator:a5e04ea542a14b55b71d3208872283e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60adad93e8427e1c1696ce758c22e5a4"><td class="memItemLeft" align="right" valign="top"><a id="a60adad93e8427e1c1696ce758c22e5a4"></a>
+<a class="el" href="classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1deal__result">deal_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#a60adad93e8427e1c1696ce758c22e5a4">make_deal</a> (<a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> sell, <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> buy)</td></tr>
+<tr class="memdesc:a60adad93e8427e1c1696ce758c22e5a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make tip3/tip exchange deal. <br /></td></tr>
+<tr class="separator:a60adad93e8427e1c1696ce758c22e5a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -126,11 +125,11 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:aab8f28d245fffde9b3cac563d390e12b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> contract. <br /></td></tr>
 <tr class="separator:aab8f28d245fffde9b3cac563d390e12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40e529a6c61ae37d31f830034beb0773"><td class="memItemLeft" align="right" valign="top"><a id="a40e529a6c61ae37d31f830034beb0773"></a>
-<a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#a40e529a6c61ae37d31f830034beb0773">major_tip3cfg_</a></td></tr>
+Tip3Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#a40e529a6c61ae37d31f830034beb0773">major_tip3cfg_</a></td></tr>
 <tr class="memdesc:a40e529a6c61ae37d31f830034beb0773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Major tip3 configuration. <br /></td></tr>
 <tr class="separator:a40e529a6c61ae37d31f830034beb0773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4dad265e75c658625e2d1277969bcb6"><td class="memItemLeft" align="right" valign="top"><a id="aa4dad265e75c658625e2d1277969bcb6"></a>
-<a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#aa4dad265e75c658625e2d1277969bcb6">minor_tip3cfg_</a></td></tr>
+Tip3Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1dealer.html#aa4dad265e75c658625e2d1277969bcb6">minor_tip3cfg_</a></td></tr>
 <tr class="memdesc:aa4dad265e75c658625e2d1277969bcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minor tip3 configuration. <br /></td></tr>
 <tr class="separator:aa4dad265e75c658625e2d1277969bcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa99cb959b3a7f6e47d21d223e190930d"><td class="memItemLeft" align="right" valign="top"><a id="aa99cb959b3a7f6e47d21d223e190930d"></a>
@@ -262,7 +261,7 @@ Seller is a taker in deal. </td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"><p>Result of <a class="el" href="classtvm_1_1xchg_1_1dealer.html#a335760e0757a595569300ed9a2bbf8fb" title="Process order queues and make deals.">process()</a> call. </p>
+<div class="textblock"><p>Result of <a class="el" href="classtvm_1_1xchg_1_1dealer.html#a5e04ea542a14b55b71d3208872283e17" title="Process order queues and make deals.">process()</a> call. </p>
 </div><div class="dynheader">
 Collaboration diagram for dealer::process_result:</div>
 <div class="dyncontent">
@@ -297,8 +296,8 @@ Sell orders queue. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aed94696bf12961450ad85c72b88c75c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed94696bf12961450ad85c72b88c75c7">&#9670;&nbsp;</a></span>dealer()</h2>
+<a id="aab2a9da6e08079b45ad66fd5d417db07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2a9da6e08079b45ad66fd5d417db07">&#9670;&nbsp;</a></span>dealer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,7 +306,7 @@ Sell orders queue. </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline <a class="el" href="classtvm_1_1xchg_1_1dealer.html">dealer</a> </td>
+          <td class="memname"><a class="el" href="classtvm_1_1xchg_1_1dealer.html">dealer</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structtvm_1_1RationalValue.html">price_t</a>&#160;</td>
           <td class="paramname"><em>price</em>, </td>
@@ -321,13 +320,13 @@ Sell orders queue. </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>major_tip3cfg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>minor_tip3cfg</em>, </td>
         </tr>
         <tr>

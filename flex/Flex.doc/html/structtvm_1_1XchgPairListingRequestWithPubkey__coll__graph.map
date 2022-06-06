@@ -1,5 +1,0 @@
-<map id="XchgPairListingRequestWithPubkey" name="XchgPairListingRequestWithPubkey">
-<area shape="rect" id="node1" title="Request to deploy exchange pair (tip3/tip3) with public key (for getter)" alt="" coords="5,199,209,240"/>
-<area shape="rect" id="node2" href="$structtvm_1_1XchgPairListingRequest.html" title="Request to deploy exchange pair (tip3/tip3)" alt="" coords="20,109,195,136"/>
-<area shape="rect" id="node3" href="$structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="62,5,153,32"/>
-</map>

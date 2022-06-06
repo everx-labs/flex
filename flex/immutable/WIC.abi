@@ -1,0 +1,96 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"keep_evers", "type":"uint128" },
+    { "name":"old_wrappers_cfg", "type":"optional(address)" },
+    { "name":"old_wrapper", "type":"optional(address)" },
+    { "name":"keep_wrapper", "type":"bool" },
+    { "name":"deployer", "type":"address" },
+    { "name":"type", "type":"uint8" },
+    { "name":"init_args", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "setNext",
+    "inputs": [
+    { "name":"old_wrappers_cfg", "type":"optional(address)" },
+    { "name":"next_symbol", "type":"optional(string)" },
+    { "name":"next", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  },
+  {
+    "name": "cloneUpgrade",
+    "inputs": [
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"wic_keep", "type":"uint128" }
+    ], "name":"evers", "type":"tuple" },
+    { "name":"first_clone", "type":"optional(address)" },
+    { "name":"last_clone", "type":"optional(address)" },
+    { "name":"prev_symbol", "type":"optional(string)" },
+    { "name":"wic_count", "type":"uint32" },
+    { "name":"token_version", "type":"uint32" },
+    { "name":"new_wrappers_cfg", "type":"address" },
+    { "name":"wrapper_deployers", "type":"address[]" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xc"
+  },
+  {
+    "name": "unlist",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xd"
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"symbol", "type":"string" },
+    { "name":"workchain_id", "type":"int8" },
+    { "name":"deployer", "type":"optional(address)" },
+    { "name":"wrapper", "type":"optional(address)" },
+    { "name":"type", "type":"optional(uint8)" },
+    { "name":"init_args", "type":"optional(cell)" },
+    { "name":"next", "type":"optional(address)" },
+    { "name":"unlisted", "type":"bool" }
+    ],
+    "id": "0xe"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"__await_next_id", "type":"uint32" },
+    { "name":"__await_dict", "type":"optional(cell)" },
+    { "name":"symbol_", "type":"string" },
+    { "name":"workchain_id_", "type":"int8" },
+    { "name":"deployer_", "type":"optional(address)" },
+    { "name":"wrapper_", "type":"optional(address)" },
+    { "name":"type_", "type":"optional(uint8)" },
+    { "name":"init_args_", "type":"optional(cell)" },
+    { "name":"next_", "type":"optional(address)" },
+    { "name":"unlisted_", "type":"bool" }
+  ],
+  "events": [
+  ]
+}

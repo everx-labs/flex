@@ -65,12 +65,18 @@ $(function() {
 &#160;
 
 <h3><a id="index_o"></a>- o -</h3><ul>
-<li>obsolete_lend_pubkey
-: <a class="el" href="structTONTokenWallet_1_1error__code.html#af10e3c32fa188b0c70beb7fb4334ee28">TONTokenWallet&lt; Internal &gt;::error_code</a>
+<li>only_client_may_deploy_me
+: <a class="el" href="structUserIdIndex_1_1error__code.html#ab7398321897333e68ed3ac6ba64375e3">UserIdIndex::error_code</a>
 </li>
 <li>only_flex_may_deploy_me
-: <a class="el" href="structWrapper_1_1error__code.html#a3850445ac517b0a80a39a2fdb5e7a04b">Wrapper::error_code</a>
-, <a class="el" href="structXchgPair_1_1error__code.html#a3850445ac517b0a80a39a2fdb5e7a04b">XchgPair::error_code</a>
+: <a class="el" href="structXchgPair_1_1error__code.html#a3850445ac517b0a80a39a2fdb5e7a04b">XchgPair::error_code</a>
+</li>
+<li>only_one_packet_burning_may_be_processed_at_a_time
+: <a class="el" href="structFlexClient_1_1error__code.html#ad62256a772ad546535dee4b56c9e340e">FlexClient::error_code</a>
+</li>
+<li>only_super_root_may_deploy_me
+: <a class="el" href="structGlobalConfig_1_1error__code.html#aa434ae8abcc4d73a96556018c2df3537">GlobalConfig::error_code</a>
+, <a class="el" href="structWrappersConfig_1_1error__code.html#aa434ae8abcc4d73a96556018c2df3537">WrappersConfig::error_code</a>
 </li>
 <li>order_answer
 : <a class="el" href="structtvm_1_1EversConfig.html#a55c54e3b2f42166e32dbf5e66e82a348">EversConfig</a>
@@ -95,29 +101,34 @@ $(function() {
 <li>out_of_tons
 : <a class="el" href="structtvm_1_1xchg_1_1ec.html#ab729810d6c03732945245f7fa04fef6a">ec</a>
 </li>
+<li>out_owner
+: <a class="el" href="structtvm_1_1BurnInfo.html#ac43473ee5ffb9a645d0f2c277f03b314">BurnInfo</a>
+</li>
+<li>out_pubkey
+: <a class="el" href="structtvm_1_1BurnInfo.html#a754d2aef463755624a054b4f49c44e1b">BurnInfo</a>
+</li>
 <li>owner
-: <a class="el" href="structtvm_1_1FlexOwnershipInfo.html#a36b7121209e7361243cd9a59b2e4380b">FlexOwnershipInfo</a>
+: <a class="el" href="structtvm_1_1FlexClientDetails.html#aa3d755cb20addd66ddfccb6f52c52788">FlexClientDetails</a>
+, <a class="el" href="structtvm_1_1FlexOwnershipInfo.html#a36b7121209e7361243cd9a59b2e4380b">FlexOwnershipInfo</a>
+, <a class="el" href="structtvm_1_1SuperRootDetails.html#aca8867abe4d2053e26a2f160a43a7f3b">SuperRootDetails</a>
+, <a class="el" href="structtvm_1_1UserIdIndexSalt.html#aca8867abe4d2053e26a2f160a43a7f3b">UserIdIndexSalt</a>
 </li>
 <li>owner_
-: <a class="el" href="structtvm_1_1DFlexClient.html#a29df690c000b7db791280f38b23c09f2">DFlexClient</a>
+: <a class="el" href="structtvm_1_1DAuthIndex.html#afe14d8667ca945b07125ceed11e4e323">DAuthIndex</a>
+, <a class="el" href="structtvm_1_1DFlexClient1.html#a29df690c000b7db791280f38b23c09f2">DFlexClient1</a>
+, <a class="el" href="structtvm_1_1DFlexClientStub.html#a29df690c000b7db791280f38b23c09f2">DFlexClientStub</a>
+, <a class="el" href="structtvm_1_1DSuperRoot.html#afb53e1cdc2cc90c7dd0e95a0ef4452a3">DSuperRoot</a>
 </li>
 <li>owner_address
-: <a class="el" href="structtvm_1_1details__info.html#a949d1825276fd333d8461c9b1ad6ea30">details_info</a>
+: <a class="el" href="structtvm_1_1details__info.html#a552934d997225c3db358d7173ace5854">details_info</a>
 </li>
 <li>owner_address_
-: <a class="el" href="structtvm_1_1DFlex.html#a1e03bc8b743a6d663489cceacc1082fc">DFlex</a>
-, <a class="el" href="structtvm_1_1DTONTokenWallet.html#a1e03bc8b743a6d663489cceacc1082fc">DTONTokenWallet</a>
+: <a class="el" href="structtvm_1_1DTONTokenWallet.html#a1e03bc8b743a6d663489cceacc1082fc">DTONTokenWallet</a>
 , <a class="el" href="structtvm_1_1DTONTokenWalletExternal.html#a1e03bc8b743a6d663489cceacc1082fc">DTONTokenWalletExternal</a>
 , <a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#a1e03bc8b743a6d663489cceacc1082fc">DTONTokenWalletInternal</a>
 </li>
-<li>ownership
-: <a class="el" href="structtvm_1_1FlexDetails.html#a5348b9a6e8a1f5da46aebea4d0534c83">FlexDetails</a>
-</li>
 <li>ownership_description
 : <a class="el" href="structtvm_1_1FlexOwnershipInfo.html#a6ec8313764a985c76150e1f410f76f23">FlexOwnershipInfo</a>
-</li>
-<li>ownership_description_
-: <a class="el" href="structtvm_1_1DFlex.html#a17c40d68fa44de79b6007e34ee12985c">DFlex</a>
 </li>
 </ul>
 </div><!-- contents -->

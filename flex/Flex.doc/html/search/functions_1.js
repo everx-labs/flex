@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['burn_584',['burn',['../structtvm_1_1IWrapper.html#a4edf8ed1fcc2cff07a871a338732f831',1,'tvm::IWrapper']]],
-  ['burnwallet_585',['burnWallet',['../structtvm_1_1IFlexClient.html#aa758ea8ee5a1a0ec1c0ff19481461186',1,'tvm::IFlexClient']]]
+  ['balance_848',['balance',['../structtvm_1_1ITONTokenWallet.html#ab788b6231c71f918f3da22133e90af79',1,'tvm::ITONTokenWallet']]],
+  ['bindwallet_849',['bindWallet',['../structtvm_1_1IFlexClient.html#afb3bb1bb1eb24e97428cd3636f7d728c',1,'tvm::IFlexClient::bindWallet(uint128 evers, address my_tip3_addr, bool set_binding, opt&lt; bind_info &gt; binding, bool set_trader, opt&lt; uint256 &gt; trader)'],['../structtvm_1_1IFlexClient.html#afb3bb1bb1eb24e97428cd3636f7d728c',1,'tvm::IFlexClient::bindWallet(uint128 evers, address my_tip3_addr, bool set_binding, opt&lt; bind_info &gt; binding, bool set_trader, opt&lt; uint256 &gt; trader)']]],
+  ['burn_850',['burn',['../structtvm_1_1IWrapper.html#a6df9106b9edc56937e17895771f9ac7e',1,'tvm::IWrapper::burn()'],['../structtvm_1_1IWrapperEver.html#a6df9106b9edc56937e17895771f9ac7e',1,'tvm::IWrapperEver::burn()']]],
+  ['burnthemall_851',['burnThemAll',['../structtvm_1_1IFlexClient.html#a20482151746dea16174735d5efb31eee',1,'tvm::IFlexClient::burnThemAll(uint128 burn_ev, dict_array&lt; BurnInfo &gt; burns)'],['../structtvm_1_1IFlexClient.html#a20482151746dea16174735d5efb31eee',1,'tvm::IFlexClient::burnThemAll(uint128 burn_ev, dict_array&lt; BurnInfo &gt; burns)']]],
+  ['burnwallet_852',['burnWallet',['../structtvm_1_1IFlexClient.html#a31f2080890b8c62ed40e1f9aca3e8253',1,'tvm::IFlexClient::burnWallet(uint128 evers_value, uint256 out_pubkey, address_opt out_owner, address my_tip3_addr, opt&lt; cell &gt; notify)'],['../structtvm_1_1IFlexClient.html#a31f2080890b8c62ed40e1f9aca3e8253',1,'tvm::IFlexClient::burnWallet(uint128 evers_value, uint256 out_pubkey, address_opt out_owner, address my_tip3_addr, opt&lt; cell &gt; notify)']]]
 ];

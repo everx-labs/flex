@@ -1,0 +1,127 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"keep_evers", "type":"uint128" },
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"wic_keep", "type":"uint128" }
+    ], "name":"evers", "type":"optional(tuple)" },
+    { "name":"old_token_version", "type":"optional(uint32)" },
+    { "name":"wrapper_deployers", "type":"address[]" },
+    { "name":"first_wic", "type":"optional(address)" },
+    { "name":"last_wic", "type":"optional(address)" },
+    { "name":"wic_count", "type":"uint32" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "onWICsCloned",
+    "inputs": [
+    { "name":"first_wic", "type":"optional(address)" },
+    { "name":"last_wic", "type":"optional(address)" },
+    { "name":"wic_count", "type":"uint32" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "addWrapperType",
+    "inputs": [
+    { "name":"keep_evers", "type":"uint128" },
+    { "name":"type", "type":"uint8" },
+    { "name":"wrapper_deployer", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "addWrapper",
+    "inputs": [
+    { "name":"keep_evers", "type":"uint128" },
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"wic_keep", "type":"uint128" }
+    ], "name":"evers", "type":"tuple" },
+    { "name":"symbol", "type":"string" },
+    { "name":"type", "type":"uint8" },
+    { "name":"init_args", "type":"cell" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "unlistWrapper",
+    "inputs": [
+    { "name":"wic", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "cloneUpgrade",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"answer_addr", "type":"optional(address)" },
+    { "name":"keep_evers", "type":"uint128" },
+    { "name":"clone_deploy_evers", "type":"uint128" },
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"wic_keep", "type":"uint128" }
+    ], "name":"evers", "type":"tuple" },
+    { "name":"new_token_version", "type":"uint32" },
+    { "name":"wrapper_deployers", "type":"address[]" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ]
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"token_version", "type":"uint32" },
+    { "name":"wrapper_deployers", "type":"address[]" },
+    { "name":"first_wic", "type":"optional(address)" },
+    { "name":"last_wic", "type":"optional(address)" },
+    { "name":"wic_count", "type":"uint32" },
+    { "name":"salted_wic_hash", "type":"uint256" }
+    ]
+  },
+  {
+    "name": "getConfig",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"super_root", "type":"address" },
+    { "name":"wic_code", "type":"cell" }
+    ]
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"token_version_", "type":"uint32" },
+    { "name":"deployed_", "type":"bool" },
+    { "name":"keep_evers_", "type":"uint128" },
+    { "name":"workchain_id_", "type":"int8" },
+    { "name":"wrapper_deployers_", "type":"address[]" },
+    { "name":"first_wic_", "type":"optional(address)" },
+    { "name":"last_wic_", "type":"optional(address)" },
+    { "name":"wic_count_", "type":"uint32" }
+  ],
+  "events": [
+  ]
+}

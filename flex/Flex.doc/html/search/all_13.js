@@ -1,21 +1,6 @@
 var searchData=
 [
-  ['xchg_5fiterator_460',['xchg_iterator',['../classtvm_1_1xchg_1_1xchg__iterator.html',1,'xchg_iterator'],['../classtvm_1_1xchg_1_1xchg__iterator.html#ae2782306a55fa68d00284987fe5fe9bc',1,'tvm::xchg::xchg_iterator::xchg_iterator()']]],
-  ['xchg_5fiterator_2ehpp_461',['xchg_iterator.hpp',['../xchg__iterator_8hpp.html',1,'']]],
-  ['xchg_5fpair_5fcode_462',['xchg_pair_code',['../structtvm_1_1FlexDetails.html#a8620045b95c0e1e18db3952536c85558',1,'tvm::FlexDetails']]],
-  ['xchg_5fpair_5fcode_5f_463',['xchg_pair_code_',['../structtvm_1_1DFlex.html#ad1c9d636996f22fadde54c1cdacf8cb6',1,'tvm::DFlex']]],
-  ['xchg_5fpair_5flisting_5frequests_464',['xchg_pair_listing_requests',['../structtvm_1_1FlexDetails.html#afb7bc237768aefbd6a7b31a8c06e9f73',1,'tvm::FlexDetails']]],
-  ['xchg_5fpair_5fnot_5frequested_465',['xchg_pair_not_requested',['../structFlex_1_1error__code.html#a2d58b79c7392840865efe4419af79a8e',1,'Flex::error_code']]],
-  ['xchg_5fpair_5fwith_5fsuch_5fpubkey_5falready_5frequested_466',['xchg_pair_with_such_pubkey_already_requested',['../structFlex_1_1error__code.html#abff78b81ca62540750d2c8e4249da004',1,'Flex::error_code']]],
-  ['xchg_5fpairs_5fmap_467',['xchg_pairs_map',['../structtvm_1_1DFlex.html#ae1c208a126e7bc6f1992afef3fd81c38',1,'tvm::DFlex']]],
-  ['xchg_5fprice_5fcode_468',['xchg_price_code',['../structtvm_1_1XchgPairSalt.html#ae009da869fd276d34443dc9208ac9837',1,'tvm::XchgPairSalt']]],
-  ['xchg_5fprice_5fcode_5f_469',['xchg_price_code_',['../structtvm_1_1DFlex.html#acda1f92e1ddf444e50aabc2908fff730',1,'tvm::DFlex']]],
-  ['xchg_5fprice_5fcode_5fundefined_470',['xchg_price_code_undefined',['../structFlex_1_1error__code.html#ad136a25422972aaeffcafd75aa85fa24',1,'Flex::error_code']]],
-  ['xchgpair_471',['XchgPair',['../classXchgPair.html',1,'']]],
-  ['xchgpair_2ecpp_472',['XchgPair.cpp',['../XchgPair_8cpp.html',1,'']]],
-  ['xchgpair_2ehpp_473',['XchgPair.hpp',['../XchgPair_8hpp.html',1,'']]],
-  ['xchgpairlistingrequest_474',['XchgPairListingRequest',['../structtvm_1_1XchgPairListingRequest.html',1,'tvm']]],
-  ['xchgpairlistingrequestwithpubkey_475',['XchgPairListingRequestWithPubkey',['../structtvm_1_1XchgPairListingRequestWithPubkey.html',1,'tvm']]],
-  ['xchgpairsalt_476',['XchgPairSalt',['../structtvm_1_1XchgPairSalt.html',1,'tvm']]],
-  ['xchgpairsalt_2ehpp_477',['XchgPairSalt.hpp',['../XchgPairSalt_8hpp.html',1,'']]]
+  ['version_587',['version',['../structtvm_1_1GlobalConfigDetails.html#a29cace0a29614006609b66099dab6d2e',1,'tvm::GlobalConfigDetails::version()'],['../structtvm_1_1SuperRootDetails.html#af10790041771fbf45e2a7285e7ee5afe',1,'tvm::SuperRootDetails::version()']]],
+  ['version_5f_588',['version_',['../structtvm_1_1DGlobalConfig.html#a870f6a407c98fc5b835bdee0d574f6d1',1,'tvm::DGlobalConfig::version_()'],['../structtvm_1_1DSuperRoot.html#a799407d4efb44cf7602e9cab72113f8d',1,'tvm::DSuperRoot::version_()']]],
+  ['version_5funset_589',['version_unset',['../structSuperRoot_1_1error__code.html#a73643ca2876914161f002f8be6d7a6b4',1,'SuperRoot::error_code']]]
 ];

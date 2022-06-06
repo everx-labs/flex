@@ -1,4 +1,4 @@
 <map id="DFlex" name="DFlex">
-<area shape="rect" id="node1" title="Flex persistent data struct." alt="" coords="41,5,101,32"/>
-<area shape="rect" id="node2" href="$classFlex.html" title="Implements tvm::IFlex interface." alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node1" title="Flex persistent data struct." alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node2" href="$classFlex.html" title="Implements tvm::IFlex interface." alt="" coords="10,80,61,107"/>
 </map>

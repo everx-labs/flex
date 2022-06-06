@@ -1,5 +1,4 @@
 <map id="PriceXchgSalt" name="PriceXchgSalt">
-<area shape="rect" id="node1" title="Price configuration data (common for prices of one pair). Stored in code salt." alt="" coords="58,109,169,136"/>
-<area shape="rect" id="node2" href="$structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="5,5,104,32"/>
-<area shape="rect" id="node3" href="$structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="128,5,219,32"/>
+<area shape="rect" id="node1" title="Price configuration data (common for prices of one pair). Stored in code salt." alt="" coords="5,95,116,121"/>
+<area shape="rect" id="node2" href="$structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="11,5,110,32"/>
 </map>
