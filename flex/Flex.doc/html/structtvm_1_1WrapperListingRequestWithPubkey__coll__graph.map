@@ -1,5 +1,0 @@
-<map id="WrapperListingRequestWithPubkey" name="WrapperListingRequestWithPubkey">
-<area shape="rect" id="node1" title="Request to deploy wrapper with public key (for getter)" alt="" coords="5,184,208,225"/>
-<area shape="rect" id="node2" href="$structtvm_1_1WrapperListingRequest.html" title="Request to deploy wrapper." alt="" coords="20,95,193,121"/>
-<area shape="rect" id="node3" href="$structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="61,5,152,32"/>
-</map>

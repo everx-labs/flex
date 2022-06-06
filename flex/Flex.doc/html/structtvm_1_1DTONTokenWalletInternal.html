@@ -108,16 +108,16 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#a1e03bc8b743a6d663489cceacc1082fc">owner_address_</a></td></tr>
 <tr class="memdesc:a1e03bc8b743a6d663489cceacc1082fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owner contract address for internal ownership. <br /></td></tr>
 <tr class="separator:a1e03bc8b743a6d663489cceacc1082fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7447313397799ae5b64b64a5c207b50"><td class="memItemLeft" align="right" valign="top"><a id="ae7447313397799ae5b64b64a5c207b50"></a>
-opt&lt; <a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#ae7447313397799ae5b64b64a5c207b50">lend_pubkey_</a></td></tr>
-<tr class="memdesc:ae7447313397799ae5b64b64a5c207b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership pubkeys (pubkey =&gt; <a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a>). <br /></td></tr>
-<tr class="separator:ae7447313397799ae5b64b64a5c207b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58cc80078194c69ba032ac9868d8d2d5"><td class="memItemLeft" align="right" valign="top"><a id="a58cc80078194c69ba032ac9868d8d2d5"></a>
+opt&lt; uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#a58cc80078194c69ba032ac9868d8d2d5">lend_pubkey_</a></td></tr>
+<tr class="memdesc:a58cc80078194c69ba032ac9868d8d2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership pubkey. <br /></td></tr>
+<tr class="separator:a58cc80078194c69ba032ac9868d8d2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd47133b52d4eb6dbc10070dd894e197"><td class="memItemLeft" align="right" valign="top"><a id="acd47133b52d4eb6dbc10070dd894e197"></a>
 <a class="el" href="TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d">lend_owners_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#acd47133b52d4eb6dbc10070dd894e197">lend_owners_</a></td></tr>
 <tr class="memdesc:acd47133b52d4eb6dbc10070dd894e197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership map (service owner =&gt; <a class="el" href="structtvm_1_1lend__owner.html" title="Lend ownership record (for usage in address-&gt;lend_owner_record map).">lend_owner</a>). <br /></td></tr>
 <tr class="separator:acd47133b52d4eb6dbc10070dd894e197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc6bf6070834ae9479510e6cf9e0a64d"><td class="memItemLeft" align="right" valign="top">opt&lt; <a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#abc6bf6070834ae9479510e6cf9e0a64d">restriction_</a></td></tr>
-<tr class="separator:abc6bf6070834ae9479510e6cf9e0a64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e2f5a3689dfa9af1bdd5da80a08bcfe"><td class="memItemLeft" align="right" valign="top">opt&lt; <a class="el" href="structtvm_1_1bind__info.html">bind_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#a7e2f5a3689dfa9af1bdd5da80a08bcfe">binding_</a></td></tr>
+<tr class="separator:a7e2f5a3689dfa9af1bdd5da80a08bcfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac31a987d16b72f568284c569e81df390"><td class="memItemLeft" align="right" valign="top"><a id="ac31a987d16b72f568284c569e81df390"></a>
 uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWalletInternal.html#ac31a987d16b72f568284c569e81df390">code_hash_</a></td></tr>
 <tr class="memdesc:ac31a987d16b72f568284c569e81df390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tip3 wallet code hash to verify other wallets. <br /></td></tr>
@@ -145,6 +145,21 @@ int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </div><div class="memdoc">
 
 <p>Token balance of the wallet. </p>
+
+</div>
+</div>
+<a id="a7e2f5a3689dfa9af1bdd5da80a08bcfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e2f5a3689dfa9af1bdd5da80a08bcfe">&#9670;&nbsp;</a></span>binding_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">opt&lt;<a class="el" href="structtvm_1_1bind__info.html">bind_info</a>&gt; binding_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Binding info to allow trade orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash. </p>
 
 </div>
 </div>
@@ -212,19 +227,19 @@ int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 
 </div>
 </div>
-<a id="ae7447313397799ae5b64b64a5c207b50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7447313397799ae5b64b64a5c207b50">&#9670;&nbsp;</a></span>lend_pubkey_</h2>
+<a id="a58cc80078194c69ba032ac9868d8d2d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58cc80078194c69ba032ac9868d8d2d5">&#9670;&nbsp;</a></span>lend_pubkey_</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">opt&lt;<a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a>&gt; lend_pubkey_</td>
+          <td class="memname">opt&lt;uint256&gt; lend_pubkey_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lend ownership pubkeys (pubkey =&gt; <a class="el" href="structtvm_1_1lend__pubkey.html" title="Lend ownership pubkey record.">lend_pubkey</a>). </p>
+<p>Lend ownership pubkey. </p>
 
 </div>
 </div>
@@ -257,21 +272,6 @@ int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </div><div class="memdoc">
 
 <p>Owner contract address for internal ownership. </p>
-
-</div>
-</div>
-<a id="abc6bf6070834ae9479510e6cf9e0a64d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc6bf6070834ae9479510e6cf9e0a64d">&#9670;&nbsp;</a></span>restriction_</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">opt&lt;<a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a>&gt; restriction_</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Restriction info to allow trade orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash. </p>
 
 </div>
 </div>

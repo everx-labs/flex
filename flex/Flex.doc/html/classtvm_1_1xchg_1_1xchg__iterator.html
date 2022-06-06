@@ -84,38 +84,37 @@ Collaboration diagram for xchg_iterator:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtvm_1_1xchg_1_1xchg__iterator__coll__graph.png" border="0" usemap="#xchg__iterator_coll__map" alt="Collaboration graph"/></div>
 <map name="xchg__iterator_coll__map" id="xchg__iterator_coll__map">
-<area shape="rect" title="Tip3/tip3 exchange orders iterator." alt="" coords="125,199,233,225"/>
-<area shape="rect" href="classtvm_1_1xchg_1_1orders__queue__cached.html" title="Working version of orders_queue with cached head order." alt="" coords="5,109,168,136"/>
-<area shape="rect" href="classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="11,5,122,32"/>
-<area shape="rect" href="classtvm_1_1xchg_1_1process__queue__state.html" title="Processing orders queue state for PriceXchg." alt="" coords="233,109,391,136"/>
-<area shape="rect" href="structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="147,5,259,32"/>
-<area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="283,5,381,32"/>
-<area shape="rect" href="structtvm_1_1Tip3Config.html" title="Tip3 token configuration." alt="" coords="405,5,496,32"/>
+<area shape="rect" title="Tip3/tip3 exchange orders iterator." alt="" coords="125,184,233,211"/>
+<area shape="rect" href="classtvm_1_1xchg_1_1orders__queue__cached.html" title="Working version of orders_queue with cached head order." alt="" coords="5,95,168,121"/>
+<area shape="rect" href="classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="31,5,142,32"/>
+<area shape="rect" href="classtvm_1_1xchg_1_1process__queue__state.html" title="Processing orders queue state for PriceXchg." alt="" coords="193,95,351,121"/>
+<area shape="rect" href="structtvm_1_1RationalValue.html" title="Rational value &#45; numerator/denominator." alt="" coords="191,5,303,32"/>
+<area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="327,5,425,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae2782306a55fa68d00284987fe5fe9bc"><td class="memItemLeft" align="right" valign="top">__always_inline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#ae2782306a55fa68d00284987fe5fe9bc">xchg_iterator</a> (<a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html">process_queue_state</a> &amp;state, <a class="el" href="classtvm_1_1xchg_1_1orders__queue__cached.html">orders_queue_cached</a> &amp;orders, uint128 deal_costs, bool sell)</td></tr>
-<tr class="separator:ae2782306a55fa68d00284987fe5fe9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ee8c9a04a3985f1afa6ce6f7ce75449"><td class="memItemLeft" align="right" valign="top"><a id="a8ee8c9a04a3985f1afa6ce6f7ce75449"></a>
-__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#a8ee8c9a04a3985f1afa6ce6f7ce75449">first_active</a> ()</td></tr>
-<tr class="memdesc:a8ee8c9a04a3985f1afa6ce6f7ce75449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move to the first active order in the queue. <br /></td></tr>
-<tr class="separator:a8ee8c9a04a3985f1afa6ce6f7ce75449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2326929319879c6aff91fa35e22eb87d"><td class="memItemLeft" align="right" valign="top"><a id="a2326929319879c6aff91fa35e22eb87d"></a>
-__always_inline OrderInfoXchgWithIdx &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>cur</b> ()</td></tr>
-<tr class="separator:a2326929319879c6aff91fa35e22eb87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace6b9bd564108bcc9a1b70d0593aee00"><td class="memItemLeft" align="right" valign="top"><a id="ace6b9bd564108bcc9a1b70d0593aee00"></a>
-__always_inline <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> ()</td></tr>
-<tr class="separator:ace6b9bd564108bcc9a1b70d0593aee00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15d3b51789c935fb1f12746177066d57"><td class="memItemLeft" align="right" valign="top"><a id="a15d3b51789c935fb1f12746177066d57"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#a15d3b51789c935fb1f12746177066d57">on_deal</a> (uint128 deal_amount, uint128 costs, uint128 lend_spent)</td></tr>
-<tr class="memdesc:a15d3b51789c935fb1f12746177066d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">When deal is completed. <br /></td></tr>
-<tr class="separator:a15d3b51789c935fb1f12746177066d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d29e214649eb9df7409ad3d67cda818"><td class="memItemLeft" align="right" valign="top"><a id="a9d29e214649eb9df7409ad3d67cda818"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#a9d29e214649eb9df7409ad3d67cda818">drop_with_ooc</a> ()</td></tr>
-<tr class="memdesc:a9d29e214649eb9df7409ad3d67cda818"><td class="mdescLeft">&#160;</td><td class="mdescRight">When order is out-of-evers. <br /></td></tr>
-<tr class="separator:a9d29e214649eb9df7409ad3d67cda818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e42d1f20216270cd223185897cf3743"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#a6e42d1f20216270cd223185897cf3743">xchg_iterator</a> (<a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html">process_queue_state</a> &amp;state, <a class="el" href="classtvm_1_1xchg_1_1orders__queue__cached.html">orders_queue_cached</a> &amp;orders, uint128 deal_costs, bool sell)</td></tr>
+<tr class="separator:a6e42d1f20216270cd223185897cf3743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac62b5c7781f2db081babc52259efb2b"><td class="memItemLeft" align="right" valign="top"><a id="aac62b5c7781f2db081babc52259efb2b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#aac62b5c7781f2db081babc52259efb2b">first_active</a> ()</td></tr>
+<tr class="memdesc:aac62b5c7781f2db081babc52259efb2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move to the first active order in the queue. <br /></td></tr>
+<tr class="separator:aac62b5c7781f2db081babc52259efb2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b4783da2aac63dc02d06cb87cfeadee"><td class="memItemLeft" align="right" valign="top"><a id="a0b4783da2aac63dc02d06cb87cfeadee"></a>
+OrderInfoXchgWithIdx &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>cur</b> ()</td></tr>
+<tr class="separator:a0b4783da2aac63dc02d06cb87cfeadee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40bbeff0666eebcf7ae46dd3670287f9"><td class="memItemLeft" align="right" valign="top"><a id="a40bbeff0666eebcf7ae46dd3670287f9"></a>
+<a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> ()</td></tr>
+<tr class="separator:a40bbeff0666eebcf7ae46dd3670287f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9af6b99e28601bd09c658232ef80fcb2"><td class="memItemLeft" align="right" valign="top"><a id="a9af6b99e28601bd09c658232ef80fcb2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#a9af6b99e28601bd09c658232ef80fcb2">on_deal</a> (uint128 deal_amount, uint128 costs, uint128 lend_spent)</td></tr>
+<tr class="memdesc:a9af6b99e28601bd09c658232ef80fcb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">When deal is completed. <br /></td></tr>
+<tr class="separator:a9af6b99e28601bd09c658232ef80fcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7613b3613198b5f92bdb1a8763026ff"><td class="memItemLeft" align="right" valign="top"><a id="af7613b3613198b5f92bdb1a8763026ff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html#af7613b3613198b5f92bdb1a8763026ff">drop_with_ooc</a> ()</td></tr>
+<tr class="memdesc:af7613b3613198b5f92bdb1a8763026ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">When order is out-of-evers. <br /></td></tr>
+<tr class="separator:af7613b3613198b5f92bdb1a8763026ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -140,8 +139,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <div class="textblock"><p>Tip3/tip3 exchange orders iterator. </p>
 <p>Skips expired and out-of-evers orders. Notifies <a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html" title="Processing orders queue state for PriceXchg.">process_queue_state</a> about such orders. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae2782306a55fa68d00284987fe5fe9bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2782306a55fa68d00284987fe5fe9bc">&#9670;&nbsp;</a></span>xchg_iterator()</h2>
+<a id="a6e42d1f20216270cd223185897cf3743"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e42d1f20216270cd223185897cf3743">&#9670;&nbsp;</a></span>xchg_iterator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,7 +149,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__always_inline <a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html">xchg_iterator</a> </td>
+          <td class="memname"><a class="el" href="classtvm_1_1xchg_1_1xchg__iterator.html">xchg_iterator</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classtvm_1_1xchg_1_1process__queue__state.html">process_queue_state</a> &amp;&#160;</td>
           <td class="paramname"><em>state</em>, </td>

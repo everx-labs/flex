@@ -81,50 +81,23 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8a44cb908826ce7a336c28c8cda53866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a8a44cb908826ce7a336c28c8cda53866">constructor</a> (uint256 deployer_pubkey, string ownership_description, address_opt owner_address, <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a> ev_cfg, uint8 deals_limit, <a class="el" href="structtvm_1_1ListingConfig.html">ListingConfig</a> listing_cfg)</td></tr>
-<tr class="memdesc:a8a44cb908826ce7a336c28c8cda53866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a>.  <a href="structtvm_1_1IFlex.html#a8a44cb908826ce7a336c28c8cda53866">More...</a><br /></td></tr>
-<tr class="separator:a8a44cb908826ce7a336c28c8cda53866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a0b0383e63a5d6166fd0f0a43adf7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ac7a0b0383e63a5d6166fd0f0a43adf7c">setSpecificCode</a> (uint8 type, cell code)</td></tr>
-<tr class="separator:ac7a0b0383e63a5d6166fd0f0a43adf7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ce77f62b47225c12c9ef76d219d15aa"><td class="memItemLeft" align="right" valign="top"><a id="a9ce77f62b47225c12c9ef76d219d15aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a9ce77f62b47225c12c9ef76d219d15aa">transfer</a> (address to, uint128 evers)</td></tr>
-<tr class="memdesc:a9ce77f62b47225c12c9ef76d219d15aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer of native funds to destination contract. <br /></td></tr>
-<tr class="separator:a9ce77f62b47225c12c9ef76d219d15aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d7a3d0343566b9b730005a4c09923c"><td class="memItemLeft" align="right" valign="top"><a id="a45d7a3d0343566b9b730005a4c09923c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a45d7a3d0343566b9b730005a4c09923c">transferReserveTokens</a> (address wrapper, uint128 tokens, address to, uint128 evers)</td></tr>
-<tr class="memdesc:a45d7a3d0343566b9b730005a4c09923c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer of tokens from <a class="el" href="classWrapper.html">Wrapper</a>'s reserve wallet. <br /></td></tr>
-<tr class="separator:a45d7a3d0343566b9b730005a4c09923c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a4b9eb1d6dca8c86b55ace8f7b99e6d76">registerXchgPair</a> (uint256 pubkey, address tip3_major_root, address tip3_minor_root, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
-<tr class="memdesc:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair)  <a href="structtvm_1_1IFlex.html#a4b9eb1d6dca8c86b55ace8f7b99e6d76">More...</a><br /></td></tr>
-<tr class="separator:a4b9eb1d6dca8c86b55ace8f7b99e6d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ac13818fd468bdddc5e1eb34f49d6ca7b">registerWrapper</a> (uint256 pubkey, <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg)</td></tr>
-<tr class="memdesc:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register wrapper (returns pre-calculated address of future wrapper)  <a href="structtvm_1_1IFlex.html#ac13818fd468bdddc5e1eb34f49d6ca7b">More...</a><br /></td></tr>
-<tr class="separator:ac13818fd468bdddc5e1eb34f49d6ca7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62bcc39534f5547256e4cfadea014f2"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ac62bcc39534f5547256e4cfadea014f2">registerWrapperEver</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:ac62bcc39534f5547256e4cfadea014f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to register wrapper for Ever (returns pre-calculated address of future wrapper)  <a href="structtvm_1_1IFlex.html#ac62bcc39534f5547256e4cfadea014f2">More...</a><br /></td></tr>
-<tr class="separator:ac62bcc39534f5547256e4cfadea014f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47ce04dc91ac9c8aa75adcda50e052ee"><td class="memItemLeft" align="right" valign="top"><a id="a47ce04dc91ac9c8aa75adcda50e052ee"></a>
-address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a47ce04dc91ac9c8aa75adcda50e052ee">approveXchgPair</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:a47ce04dc91ac9c8aa75adcda50e052ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve tip3/tip3 exchange pair. <br /></td></tr>
-<tr class="separator:a47ce04dc91ac9c8aa75adcda50e052ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad00f366d9703195a6825ad05fdaf6527"><td class="memItemLeft" align="right" valign="top"><a id="ad00f366d9703195a6825ad05fdaf6527"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#ad00f366d9703195a6825ad05fdaf6527">rejectXchgPair</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:ad00f366d9703195a6825ad05fdaf6527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reject tip3/tip3 exchange pair. <br /></td></tr>
-<tr class="separator:ad00f366d9703195a6825ad05fdaf6527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a794ce6f45a8d15fd9912ed7a1460dae7"><td class="memItemLeft" align="right" valign="top"><a id="a794ce6f45a8d15fd9912ed7a1460dae7"></a>
-address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a794ce6f45a8d15fd9912ed7a1460dae7">approveWrapper</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:a794ce6f45a8d15fd9912ed7a1460dae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve wrapper. <br /></td></tr>
-<tr class="separator:a794ce6f45a8d15fd9912ed7a1460dae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f917682979f12f1937e50a5d024873"><td class="memItemLeft" align="right" valign="top"><a id="af0f917682979f12f1937e50a5d024873"></a>
-address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#af0f917682979f12f1937e50a5d024873">approveWrapperEver</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:af0f917682979f12f1937e50a5d024873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approve wrapper. <br /></td></tr>
-<tr class="separator:af0f917682979f12f1937e50a5d024873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ca9062af216200f59fa9728dd881725"><td class="memItemLeft" align="right" valign="top"><a id="a9ca9062af216200f59fa9728dd881725"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a9ca9062af216200f59fa9728dd881725">rejectWrapper</a> (uint256 pubkey)</td></tr>
-<tr class="memdesc:a9ca9062af216200f59fa9728dd881725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reject wrapper. <br /></td></tr>
-<tr class="separator:a9ca9062af216200f59fa9728dd881725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eb24f3db36003c367e2ac84d2b79050"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a1eb24f3db36003c367e2ac84d2b79050">isFullyInitialized</a> ()</td></tr>
-<tr class="separator:a1eb24f3db36003c367e2ac84d2b79050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17ee7a16d8d8eb91d1ca7c040f5bc467"><td class="memItemLeft" align="right" valign="top">resumable&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a17ee7a16d8d8eb91d1ca7c040f5bc467">onDeploy</a> (uint128 flex_keep_evers, <a class="el" href="structtvm_1_1PairCloneEvers.html">PairCloneEvers</a> evers, address_opt old_flex)</td></tr>
+<tr class="memdesc:a17ee7a16d8d8eb91d1ca7c040f5bc467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a>.  <a href="structtvm_1_1IFlex.html#a17ee7a16d8d8eb91d1ca7c040f5bc467">More...</a><br /></td></tr>
+<tr class="separator:a17ee7a16d8d8eb91d1ca7c040f5bc467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017d1430431d938493ffc4d1f94644d0"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a017d1430431d938493ffc4d1f94644d0">addXchgPair</a> (<a class="el" href="structtvm_1_1PairCloneEvers.html">PairCloneEvers</a> evers, Tip3Config major_tip3cfg, Tip3Config minor_tip3cfg, uint128 min_amount, uint128 minmove, uint128 price_denum, address notify_addr)</td></tr>
+<tr class="memdesc:a017d1430431d938493ffc4d1f94644d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair)  <a href="structtvm_1_1IFlex.html#a017d1430431d938493ffc4d1f94644d0">More...</a><br /></td></tr>
+<tr class="separator:a017d1430431d938493ffc4d1f94644d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad709748010dbf75616500e266929977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#aad709748010dbf75616500e266929977">unlistXchgPair</a> (address pair)</td></tr>
+<tr class="memdesc:aad709748010dbf75616500e266929977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlist tip3/tip3 xchg pair.  <a href="structtvm_1_1IFlex.html#aad709748010dbf75616500e266929977">More...</a><br /></td></tr>
+<tr class="separator:aad709748010dbf75616500e266929977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c866d62a6a72728598c2b6f0a9619d6"><td class="memItemLeft" align="right" valign="top"><a id="a9c866d62a6a72728598c2b6f0a9619d6"></a>
+<a class="el" href="structtvm_1_1PairsRange.html">PairsRange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a9c866d62a6a72728598c2b6f0a9619d6">requestPairs</a> ()</td></tr>
+<tr class="memdesc:a9c866d62a6a72728598c2b6f0a9619d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request first/last pair in list. <br /></td></tr>
+<tr class="separator:a9c866d62a6a72728598c2b6f0a9619d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a247e768c3d8d69b179b6c29963d94542"><td class="memItemLeft" align="right" valign="top"><a id="a247e768c3d8d69b179b6c29963d94542"></a>
+<a class="el" href="structtvm_1_1FlexSalt.html">FlexSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#a247e768c3d8d69b179b6c29963d94542">getConfig</a> ()</td></tr>
+<tr class="memdesc:a247e768c3d8d69b179b6c29963d94542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> configuration from code salt. <br /></td></tr>
+<tr class="separator:a247e768c3d8d69b179b6c29963d94542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb77b286847835829bf4619192b674d2"><td class="memItemLeft" align="right" valign="top"><a id="aeb77b286847835829bf4619192b674d2"></a>
 <a class="el" href="structtvm_1_1FlexDetails.html">FlexDetails</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html#aeb77b286847835829bf4619192b674d2">getDetails</a> ()</td></tr>
 <tr class="memdesc:aeb77b286847835829bf4619192b674d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get contract state details. <br /></td></tr>
@@ -141,186 +114,28 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root contract interface. <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> is a root contract for exchange system. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8a44cb908826ce7a336c28c8cda53866"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a44cb908826ce7a336c28c8cda53866">&#9670;&nbsp;</a></span>constructor()</h2>
+<a id="a017d1430431d938493ffc4d1f94644d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017d1430431d938493ffc4d1f94644d0">&#9670;&nbsp;</a></span>addXchgPair()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void constructor </td>
+          <td class="memname">address addXchgPair </td>
           <td>(</td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>deployer_pubkey</em>, </td>
+          <td class="paramtype"><a class="el" href="structtvm_1_1PairCloneEvers.html">PairCloneEvers</a>&#160;</td>
+          <td class="paramname"><em>evers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>ownership_description</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address_opt&#160;</td>
-          <td class="paramname"><em>owner_address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td>
-          <td class="paramname"><em>ev_cfg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8&#160;</td>
-          <td class="paramname"><em>deals_limit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1ListingConfig.html">ListingConfig</a>&#160;</td>
-          <td class="paramname"><em>listing_cfg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructor of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">deployer_pubkey</td><td>Deployer's public key. If <code>owner_address</code> is not specified, will also be an owner. </td></tr>
-    <tr><td class="paramname">ownership_description</td><td>Ownership description </td></tr>
-    <tr><td class="paramname">owner_address</td><td>Owner contract address (optional) </td></tr>
-    <tr><td class="paramname">ev_cfg</td><td>Native funds (processing costs) configuration </td></tr>
-    <tr><td class="paramname">deals_limit</td><td>Deals limit for one transaction </td></tr>
-    <tr><td class="paramname">listing_cfg</td><td>Listing configuration (listing processing costs) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a1eb24f3db36003c367e2ac84d2b79050"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1eb24f3db36003c367e2ac84d2b79050">&#9670;&nbsp;</a></span>isFullyInitialized()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isFullyInitialized </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Is <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> completely initialized. Means setSpecificCode for all code types executed. </p>
-
-</div>
-</div>
-<a id="ac13818fd468bdddc5e1eb34f49d6ca7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac13818fd468bdddc5e1eb34f49d6ca7b">&#9670;&nbsp;</a></span>registerWrapper()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">address registerWrapper </td>
-          <td>(</td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>pubkey</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
-          <td class="paramname"><em>tip3cfg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Request to register wrapper (returns pre-calculated address of future wrapper) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pubkey</td><td><a class="el" href="classWrapper.html">Wrapper</a>'s pubkey </td></tr>
-    <tr><td class="paramname">tip3cfg</td><td>Configuration of external tip3 wallet </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac62bcc39534f5547256e4cfadea014f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac62bcc39534f5547256e4cfadea014f2">&#9670;&nbsp;</a></span>registerWrapperEver()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">address registerWrapperEver </td>
-          <td>(</td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>pubkey</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Request to register wrapper for Ever (returns pre-calculated address of future wrapper) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pubkey</td><td><a class="el" href="classWrapper.html">Wrapper</a>'s pubkey </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4b9eb1d6dca8c86b55ace8f7b99e6d76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b9eb1d6dca8c86b55ace8f7b99e6d76">&#9670;&nbsp;</a></span>registerXchgPair()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">address registerXchgPair </td>
-          <td>(</td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>pubkey</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>tip3_major_root</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>tip3_minor_root</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>major_tip3cfg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a>&#160;</td>
+          <td class="paramtype">Tip3Config&#160;</td>
           <td class="paramname"><em>minor_tip3cfg</em>, </td>
         </tr>
         <tr>
@@ -355,17 +170,15 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
       </table>
 </div><div class="memdoc">
 
-<p>Request to register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair) </p>
+<p>Register tip3/tip3 xchg pair (returns pre-calculated address of future xchg pair) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pubkey</td><td>Public key of the request (just for id) </td></tr>
-    <tr><td class="paramname">tip3_major_root</td><td>Address of <a class="el" href="classRootTokenContract.html">RootTokenContract</a> for the major tip3 token </td></tr>
-    <tr><td class="paramname">tip3_minor_root</td><td>Address of <a class="el" href="classRootTokenContract.html">RootTokenContract</a> for the minor tip3 token </td></tr>
+    <tr><td class="paramname">evers</td><td>Evers configuration for cloning procedure </td></tr>
     <tr><td class="paramname">major_tip3cfg</td><td>Major tip3 configuration </td></tr>
     <tr><td class="paramname">minor_tip3cfg</td><td>Minor tip3 configuration </td></tr>
     <tr><td class="paramname">min_amount</td><td>Minimum amount of major tokens for a deal or an order </td></tr>
-    <tr><td class="paramname">minmove</td><td>Minimum move for price. </td></tr>
-    <tr><td class="paramname">price_denum</td><td>Price denominator for the pair. </td></tr>
+    <tr><td class="paramname">minmove</td><td>Minimum move for price </td></tr>
+    <tr><td class="paramname">price_denum</td><td>Price denominator for the pair </td></tr>
     <tr><td class="paramname">notify_addr</td><td>Notification address (AMM) </td></tr>
   </table>
   </dd>
@@ -373,23 +186,29 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="ac7a0b0383e63a5d6166fd0f0a43adf7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7a0b0383e63a5d6166fd0f0a43adf7c">&#9670;&nbsp;</a></span>setSpecificCode()</h2>
+<a id="a17ee7a16d8d8eb91d1ca7c040f5bc467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17ee7a16d8d8eb91d1ca7c040f5bc467">&#9670;&nbsp;</a></span>onDeploy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void setSpecificCode </td>
+          <td class="memname">resumable&lt;void&gt; onDeploy </td>
           <td>(</td>
-          <td class="paramtype">uint8&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>flex_keep_evers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cell&#160;</td>
-          <td class="paramname"><em>code</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structtvm_1_1PairCloneEvers.html">PairCloneEvers</a>&#160;</td>
+          <td class="paramname"><em>evers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">address_opt&#160;</td>
+          <td class="paramname"><em>old_flex</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -398,7 +217,42 @@ uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
         </tr>
       </table>
 </div><div class="memdoc">
-<p>To fit message size limit, we need to set specific code in separate function (not in constructor). To set pairs, wrapper, wallets, prices contract codes. /p <code>type</code> should be code_type enum. </p>
+
+<p>Constructor of <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flex_keep_evers</td><td>Evers to keep in <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> </td></tr>
+    <tr><td class="paramname">evers</td><td>Evers configuration for each pair cloning procedure </td></tr>
+    <tr><td class="paramname">old_flex</td><td>Old <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> to clone pairs from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aad709748010dbf75616500e266929977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad709748010dbf75616500e266929977">&#9670;&nbsp;</a></span>unlistXchgPair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void unlistXchgPair </td>
+          <td>(</td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>pair</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unlist tip3/tip3 xchg pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pair</td><td><a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> address </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

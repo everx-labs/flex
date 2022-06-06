@@ -1,0 +1,306 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"global_config_code", "type":"cell" },
+    { "name":"flex_client_stub", "type":"cell" },
+    { "name":"prev_super_root", "type":"optional(address)" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "update",
+    "inputs": [
+    { "name":"cfg_deploy_evers", "type":"uint128" },
+    { "name":"cfg_keep_evers", "type":"uint128" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version", "type":"tuple" },
+    { "name":"wrappers_cfg", "type":"address" },
+    { "name":"flex", "type":"address" },
+    { "name":"user_cfg", "type":"address" },
+    { "name":"description", "type":"string" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  },
+  {
+    "name": "updateConfirmed",
+    "inputs": [
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version", "type":"tuple" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xc"
+  },
+  {
+    "name": "release",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xd"
+  },
+  {
+    "name": "proxy",
+    "inputs": [
+    { "name":"msg", "type":"cell" },
+    { "name":"cant_work_during_update", "type":"bool" },
+    { "name":"starting_update", "type":"bool" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xe"
+  },
+  {
+    "name": "deployWrappersConfig",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"deploy_evers", "type":"uint128" },
+    { "name":"wrappers_cfg_keep_evers", "type":"uint128" },
+    { "name":"token_version", "type":"uint32" },
+    { "name":"wrappers_cfg_code", "type":"cell" },
+    { "name":"wic_code", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0xf"
+  },
+  {
+    "name": "deployFlex",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"deploy_evers", "type":"uint128" },
+    { "name":"keep_evers", "type":"uint128" },
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"pair_keep", "type":"uint128" }
+    ], "name":"evers", "type":"tuple" },
+    { "name":"old_flex", "type":"optional(address)" },
+    { "name":"exchange_version", "type":"uint32" },
+    { "name":"flex_code", "type":"cell" },
+    { "name":"xchg_pair_code", "type":"cell" },
+    { "name":"xchg_price_code", "type":"cell" },
+    { "components":[
+      { "name":"transfer_tip3", "type":"uint128" },
+      { "name":"return_ownership", "type":"uint128" },
+      { "name":"order_answer", "type":"uint128" },
+      { "name":"process_queue", "type":"uint128" },
+      { "name":"send_notify", "type":"uint128" },
+      { "name":"dest_wallet_keep_evers", "type":"uint128" }
+    ], "name":"ev_cfg", "type":"tuple" },
+    { "name":"deals_limit", "type":"uint8" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x10"
+  },
+  {
+    "name": "deployUserDataConfig",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"deploy_evers", "type":"uint128" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"triplet", "type":"tuple" },
+    { "components":[
+      { "name":"flex", "type":"address" },
+      { "name":"unsalted_price_code_hash", "type":"uint256" }
+    ], "name":"binding", "type":"tuple" },
+    { "name":"user_data_cfg_code", "type":"cell" },
+    { "name":"flex_client_code", "type":"cell" },
+    { "name":"auth_index_code", "type":"cell" },
+    { "name":"user_id_index_code", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x11"
+  },
+  {
+    "name": "cloneWrappersConfig",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"wrappers_cfg", "type":"address" },
+    { "name":"wrapper_cfg_keep_evers", "type":"uint128" },
+    { "name":"clone_deploy_evers", "type":"uint128" },
+    { "components":[
+      { "name":"deploy", "type":"uint128" },
+      { "name":"setnext", "type":"uint128" },
+      { "name":"wic_keep", "type":"uint128" }
+    ], "name":"wic_evers", "type":"tuple" },
+    { "name":"new_token_version", "type":"uint32" },
+    { "name":"wrapper_deployers", "type":"address[]" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x12"
+  },
+  {
+    "name": "transfer",
+    "inputs": [
+    { "name":"to", "type":"address" },
+    { "name":"evers", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x13"
+  },
+  {
+    "name": "transferReserveTokens",
+    "inputs": [
+    { "name":"wrapper", "type":"address" },
+    { "name":"tokens", "type":"uint128" },
+    { "name":"to", "type":"address" },
+    { "name":"evers", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x14"
+  },
+  {
+    "name": "setFlags",
+    "inputs": [
+    { "name":"stop_trade", "type":"optional(bool)" },
+    { "name":"abandon_ship", "type":"optional(bool)" },
+    { "name":"update_started", "type":"optional(bool)" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x15"
+  },
+  {
+    "name": "setOwner",
+    "inputs": [
+    { "name":"owner", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x16"
+  },
+  {
+    "name": "setUpdateTeam",
+    "inputs": [
+    { "name":"team", "type":"optional(address)" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x17"
+  },
+  {
+    "name": "setNextSuperRoot",
+    "inputs": [
+    { "name":"next_super_root", "type":"address" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x18"
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"stop_trade_", "type":"bool" },
+    { "name":"abandon_ship_", "type":"bool" },
+    { "name":"update_started_", "type":"bool" },
+    { "name":"owner", "type":"address" },
+    { "name":"update_team", "type":"optional(address)" },
+    { "name":"global_config_code", "type":"cell" },
+    { "name":"global_config_hash", "type":"uint256" },
+    { "name":"workchain_id", "type":"int8" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version", "type":"optional(tuple)" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"beta_version", "type":"optional(tuple)" },
+    { "name":"deploying_cfg", "type":"optional(address)" },
+    { "name":"cur_cfg", "type":"optional(address)" },
+    { "name":"beta_cfg", "type":"optional(address)" },
+    { "name":"prev_super_root", "type":"optional(address)" },
+    { "name":"next_super_root", "type":"optional(address)" },
+    { "name":"revision", "type":"uint32" }
+    ],
+    "id": "0x19"
+  },
+  {
+    "name": "getGlobalConfig",
+    "inputs": [
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version", "type":"tuple" }
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x1a"
+  },
+  {
+    "name": "getCurrentGlobalConfig",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"value0", "type":"address" }
+    ],
+    "id": "0x1b"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"pubkey_", "type":"uint256" },
+    { "name":"stop_trade_", "type":"bool" },
+    { "name":"abandon_ship_", "type":"bool" },
+    { "name":"update_started_", "type":"bool" },
+    { "name":"owner_", "type":"address" },
+    { "name":"update_team_", "type":"optional(address)" },
+    { "name":"global_config_code_", "type":"optional(cell)" },
+    { "name":"flex_client_stub_", "type":"optional(cell)" },
+    { "name":"workchain_id_", "type":"int8" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version_", "type":"optional(tuple)" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"beta_version_", "type":"optional(tuple)" },
+    { "name":"deploying_cfg_", "type":"optional(address)" },
+    { "name":"prev_super_root_", "type":"optional(address)" },
+    { "name":"next_super_root_", "type":"optional(address)" },
+    { "name":"revision_", "type":"uint32" }
+  ],
+  "events": [
+  ]
+}

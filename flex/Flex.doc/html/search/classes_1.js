@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['client_5flend_5finfo_486',['client_lend_info',['../structtvm_1_1client__lend__info.html',1,'tvm']]]
+  ['bind_5finfo_664',['bind_info',['../structtvm_1_1bind__info.html',1,'tvm']]],
+  ['burninfo_665',['BurnInfo',['../structtvm_1_1BurnInfo.html',1,'tvm']]]
 ];

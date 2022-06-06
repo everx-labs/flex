@@ -1,0 +1,61 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "name":"keep_evers", "type":"uint128" },
+    { "name":"wrappers_cfg", "type":"address" },
+    { "name":"flex", "type":"address" },
+    { "name":"user_cfg", "type":"address" },
+    { "name":"description", "type":"string" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
+    "name": "getDetails",
+    "inputs": [
+    ],
+    "outputs": [
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version", "type":"tuple" },
+    { "name":"wrappers_cfg", "type":"address" },
+    { "name":"flex", "type":"address" },
+    { "name":"user_cfg", "type":"address" },
+    { "name":"description", "type":"string" }
+    ]
+  },
+  {
+    "name": "getConfig",
+    "inputs": [
+    ],
+    "outputs": [
+    { "name":"super_root", "type":"address" }
+    ]
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"version_", "type":"tuple" },
+    { "name":"wrappers_cfg_", "type":"optional(address)" },
+    { "name":"flex_", "type":"optional(address)" },
+    { "name":"user_cfg_", "type":"optional(address)" },
+    { "name":"description_", "type":"optional(string)" }
+  ],
+  "events": [
+  ]
+}

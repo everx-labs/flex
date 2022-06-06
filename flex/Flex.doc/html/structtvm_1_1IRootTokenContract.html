@@ -85,12 +85,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6217a96e2ad518449116ce08b4d7ff10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad08ac49c7e8c17023021cfe5b89568f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#ad08ac49c7e8c17023021cfe5b89568f3">setWalletCode</a> (cell wallet_code)</td></tr>
 <tr class="separator:ad08ac49c7e8c17023021cfe5b89568f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e0347830cbbe5dc41c8504dde02aafb"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#a6e0347830cbbe5dc41c8504dde02aafb">deployWallet</a> (uint256 pubkey, address_opt owner, uint128 tokens, uint128 evers)</td></tr>
-<tr class="separator:a6e0347830cbbe5dc41c8504dde02aafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc37c57a82a25d599bdc1c1ea981f6a5"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#abc37c57a82a25d599bdc1c1ea981f6a5">deployWallet</a> (uint256 pubkey, address_opt owner, uint128 tokens, uint128 evers, opt&lt; cell &gt; notify)</td></tr>
+<tr class="separator:abc37c57a82a25d599bdc1c1ea981f6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#a9a0ce937d7dd9c43dc0c139af521c92c">deployEmptyWallet</a> (uint256 pubkey, address_opt owner, uint128 evers)</td></tr>
 <tr class="separator:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a445b24ff8e95e079f194978fb5ca1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#a9a445b24ff8e95e079f194978fb5ca1c">grant</a> (address dest, uint128 tokens, uint128 evers)</td></tr>
-<tr class="separator:a9a445b24ff8e95e079f194978fb5ca1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406b2f7546ad567efbb102fcea812399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#a406b2f7546ad567efbb102fcea812399">grant</a> (address dest, uint128 tokens, uint128 evers, opt&lt; cell &gt; notify)</td></tr>
+<tr class="separator:a406b2f7546ad567efbb102fcea812399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66ad342fdab91341b4aa6ae5691a8518"><td class="memItemLeft" align="right" valign="top"><a id="a66ad342fdab91341b4aa6ae5691a8518"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IRootTokenContract.html#a66ad342fdab91341b4aa6ae5691a8518">mint</a> (uint128 tokens)</td></tr>
 <tr class="memdesc:a66ad342fdab91341b4aa6ae5691a8518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mint tokens. Allocates new tokens (increases total_supply_). <br /></td></tr>
@@ -253,8 +253,8 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a6e0347830cbbe5dc41c8504dde02aafb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e0347830cbbe5dc41c8504dde02aafb">&#9670;&nbsp;</a></span>deployWallet()</h2>
+<a id="abc37c57a82a25d599bdc1c1ea981f6a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc37c57a82a25d599bdc1c1ea981f6a5">&#9670;&nbsp;</a></span>deployWallet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +281,13 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>evers</em>&#160;</td>
+          <td class="paramname"><em>evers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; cell &gt;&#160;</td>
+          <td class="paramname"><em>notify</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -297,6 +303,7 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">owner</td><td>New wallet's internal owner address. </td></tr>
     <tr><td class="paramname">tokens</td><td>Amount of tokens to be granted to the wallet. </td></tr>
     <tr><td class="paramname">evers</td><td>Evers to be sent to the deployable wallet. </td></tr>
+    <tr><td class="paramname">notify</td><td>Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification. </td></tr>
   </table>
   </dd>
 </dl>
@@ -340,8 +347,8 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a9a445b24ff8e95e079f194978fb5ca1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a445b24ff8e95e079f194978fb5ca1c">&#9670;&nbsp;</a></span>grant()</h2>
+<a id="a406b2f7546ad567efbb102fcea812399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406b2f7546ad567efbb102fcea812399">&#9670;&nbsp;</a></span>grant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -362,7 +369,13 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint128&#160;</td>
-          <td class="paramname"><em>evers</em>&#160;</td>
+          <td class="paramname"><em>evers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; cell &gt;&#160;</td>
+          <td class="paramname"><em>notify</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -377,6 +390,7 @@ uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">dest</td><td>Token wallet address </td></tr>
     <tr><td class="paramname">tokens</td><td>Amount of tokens to be granted. </td></tr>
     <tr><td class="paramname">evers</td><td>Amount of evers to be attached to message. If the method called by internal message, will be ignored (rest attached evers will be transmitted). </td></tr>
+    <tr><td class="paramname">notify</td><td>Payload (arbitrary cell) - if specified, will be transmitted into dest owner's notification. </td></tr>
   </table>
   </dd>
 </dl>

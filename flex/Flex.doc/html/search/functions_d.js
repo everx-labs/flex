@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['registerwrapper_683',['registerWrapper',['../structtvm_1_1IFlex.html#ac13818fd468bdddc5e1eb34f49d6ca7b',1,'tvm::IFlex::registerWrapper()'],['../structtvm_1_1IFlexClient.html#ae423a42976d62a5c8ef12505bb4b8a27',1,'tvm::IFlexClient::registerWrapper()']]],
-  ['registerwrapperever_684',['registerWrapperEver',['../structtvm_1_1IFlex.html#ac62bcc39534f5547256e4cfadea014f2',1,'tvm::IFlex::registerWrapperEver()'],['../structtvm_1_1IFlexClient.html#a281cb0e474d6ffe04bed05a15f2a6918',1,'tvm::IFlexClient::registerWrapperEver()']]],
-  ['registerxchgpair_685',['registerXchgPair',['../structtvm_1_1IFlex.html#a4b9eb1d6dca8c86b55ace8f7b99e6d76',1,'tvm::IFlex::registerXchgPair()'],['../structtvm_1_1IFlexClient.html#a5b9527b49b66d98cbfe8ca346af69c3e',1,'tvm::IFlexClient::registerXchgPair()']]],
-  ['rejectwrapper_686',['rejectWrapper',['../structtvm_1_1IFlex.html#a9ca9062af216200f59fa9728dd881725',1,'tvm::IFlex']]],
-  ['rejectxchgpair_687',['rejectXchgPair',['../structtvm_1_1IFlex.html#ad00f366d9703195a6825ad05fdaf6527',1,'tvm::IFlex']]],
-  ['relendindex_688',['reLendIndex',['../structtvm_1_1IFlexClient.html#a377fe6d163aadb4846bfaa22c2270c6e',1,'tvm::IFlexClient']]],
-  ['relendownershippubkey_689',['reLendOwnershipPubkey',['../structtvm_1_1IFlexClient.html#a0fd4a26e6c18dbda88178ee77373555c',1,'tvm::IFlexClient']]],
-  ['requestbalance_690',['requestBalance',['../structtvm_1_1ITONTokenWallet.html#a284924e3f50efa13271a9f0a6f04ab97',1,'tvm::ITONTokenWallet']]],
-  ['requesttotalgranted_691',['requestTotalGranted',['../structtvm_1_1IRootTokenContract.html#a07b9992e7029c3d6330f8bf5f7749ed7',1,'tvm::IRootTokenContract::requestTotalGranted()'],['../structtvm_1_1IWrapper.html#a07b9992e7029c3d6330f8bf5f7749ed7',1,'tvm::IWrapper::requestTotalGranted()']]]
+  ['setcloned_954',['setCloned',['../structtvm_1_1IWrapper.html#a52c856b90fe9f2605de8a4b26ab518d3',1,'tvm::IWrapper::setCloned()'],['../structtvm_1_1IWrapperEver.html#a52c856b90fe9f2605de8a4b26ab518d3',1,'tvm::IWrapperEver::setCloned()']]],
+  ['setcode_955',['setCode',['../structtvm_1_1ISuperRootOwner.html#ac69969c8a0a21bc3cf36213b02d48236',1,'tvm::ISuperRootOwner']]],
+  ['setflags_956',['setFlags',['../structtvm_1_1ISuperRootOwner.html#a7d0c98792c3d84f95c0808180b1bbe52',1,'tvm::ISuperRootOwner::setFlags()'],['../structtvm_1_1ISuperRoot.html#a9614d7011cfefa46208941f4247050eb',1,'tvm::ISuperRoot::setFlags()']]],
+  ['setnext_957',['setNext',['../classWIC.html#a79256518783a3c5b8ab1f76cdef8c3c7',1,'WIC::setNext()'],['../structtvm_1_1IWIC.html#a79256518783a3c5b8ab1f76cdef8c3c7',1,'tvm::IWIC::setNext()'],['../structtvm_1_1IXchgPair.html#a04f44307030c6bc063985e6b8a1a2eb3',1,'tvm::IXchgPair::setNext()']]],
+  ['setnextsuperroot_958',['setNextSuperRoot',['../structtvm_1_1ISuperRootOwner.html#a54212c3c713dec59dc0873e2fab2e64c',1,'tvm::ISuperRootOwner::setNextSuperRoot()'],['../structtvm_1_1ISuperRoot.html#aa6ddc510e3d8b439d6e8b6c13b0b1b0d',1,'tvm::ISuperRoot::setNextSuperRoot()']]],
+  ['setowner_959',['setOwner',['../structtvm_1_1ISuperRootOwner.html#ad1825799bcfea5e7058a072ccbb45281',1,'tvm::ISuperRootOwner::setOwner()'],['../structtvm_1_1ISuperRoot.html#a9fa3cbe978e63446feb0f58629a2cf0d',1,'tvm::ISuperRoot::setOwner()']]],
+  ['setrefillwallet_960',['setRefillWallet',['../structtvm_1_1IUserIdIndex.html#abd53657f75714a0c3274b81ec3fa6592',1,'tvm::IUserIdIndex']]],
+  ['setupdateteam_961',['setUpdateTeam',['../structtvm_1_1ISuperRootOwner.html#abacd45f9e49fdfb3b3b051c590d4d1fd',1,'tvm::ISuperRootOwner::setUpdateTeam()'],['../structtvm_1_1ISuperRoot.html#a35c9b719c59fa723bb8d161450b79458',1,'tvm::ISuperRoot::setUpdateTeam()']]],
+  ['setwalletcode_962',['setWalletCode',['../structtvm_1_1IRootTokenContract.html#ad08ac49c7e8c17023021cfe5b89568f3',1,'tvm::IRootTokenContract']]]
 ];

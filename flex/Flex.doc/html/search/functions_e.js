@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['setauthindexcode_692',['setAuthIndexCode',['../structtvm_1_1IFlexClient.html#afa44de7d4a8d0223e79085687705e368',1,'tvm::IFlexClient']]],
-  ['setflexcfg_693',['setFlexCfg',['../structtvm_1_1IFlexClient.html#ac4946722b460ff63b99753214c7b3788',1,'tvm::IFlexClient']]],
-  ['setflexwalletcode_694',['setFlexWalletCode',['../structtvm_1_1IFlexClient.html#a1f1dd4de250ba39ec63ba2b5e25b51b4',1,'tvm::IFlexClient']]],
-  ['setspecificcode_695',['setSpecificCode',['../structtvm_1_1IFlex.html#ac7a0b0383e63a5d6166fd0f0a43adf7c',1,'tvm::IFlex']]],
-  ['settraderestriction_696',['setTradeRestriction',['../structtvm_1_1IFlexClient.html#af654b517499e5649acd4a9ad0150c784',1,'tvm::IFlexClient']]],
-  ['setuseridindexcode_697',['setUserIdIndexCode',['../structtvm_1_1IFlexClient.html#a275f424a736966a10c6b6479aad08417',1,'tvm::IFlexClient']]],
-  ['setwalletcode_698',['setWalletCode',['../structtvm_1_1IRootTokenContract.html#ad08ac49c7e8c17023021cfe5b89568f3',1,'tvm::IRootTokenContract']]]
+  ['transfer_963',['transfer',['../structtvm_1_1ISuperRootOwner.html#aecced050c499f610de74a7f096145102',1,'tvm::ISuperRootOwner::transfer()'],['../structtvm_1_1ISuperRoot.html#a9ce77f62b47225c12c9ef76d219d15aa',1,'tvm::ISuperRoot::transfer()'],['../structtvm_1_1IFlexClient.html#a98baee797a67ae421762e13ced66fccb',1,'tvm::IFlexClient::transfer(address dest, uint128 value, bool bounce)'],['../structtvm_1_1IFlexClient.html#a98baee797a67ae421762e13ced66fccb',1,'tvm::IFlexClient::transfer(address dest, uint128 value, bool bounce)'],['../structtvm_1_1IUserIdIndex.html#a98baee797a67ae421762e13ced66fccb',1,'tvm::IUserIdIndex::transfer()'],['../structtvm_1_1ITONTokenWallet.html#a2e6bba8f5cb774c1813857703a4d61cd',1,'tvm::ITONTokenWallet::transfer()']]],
+  ['transferfromreservewallet_964',['transferFromReserveWallet',['../structtvm_1_1IWrapper.html#a42479349cfa83e83144553ae060927d4',1,'tvm::IWrapper::transferFromReserveWallet()'],['../structtvm_1_1IWrapperEver.html#a42479349cfa83e83144553ae060927d4',1,'tvm::IWrapperEver::transferFromReserveWallet()']]],
+  ['transferreservetokens_965',['transferReserveTokens',['../structtvm_1_1ISuperRootOwner.html#ae2a89c016ea0ec5461d0d12188247791',1,'tvm::ISuperRootOwner::transferReserveTokens()'],['../structtvm_1_1ISuperRoot.html#a45d7a3d0343566b9b730005a4c09923c',1,'tvm::ISuperRoot::transferReserveTokens()']]],
+  ['transfertokens_966',['transferTokens',['../structtvm_1_1IFlexClient.html#ad354c121784c3c34af59d1066393f245',1,'tvm::IFlexClient::transferTokens(address src, Tip3Creds dst, uint128 tokens, uint128 evers, uint128 keep_evers)'],['../structtvm_1_1IFlexClient.html#ad354c121784c3c34af59d1066393f245',1,'tvm::IFlexClient::transferTokens(address src, Tip3Creds dst, uint128 tokens, uint128 evers, uint128 keep_evers)']]],
+  ['transfertorecipient_967',['transferToRecipient',['../structtvm_1_1ITONTokenWallet.html#af31dcd78ac22d4e27ce29efa5064c2de',1,'tvm::ITONTokenWallet']]]
 ];

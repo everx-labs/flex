@@ -85,19 +85,27 @@ $(function() {
 <code>#include &lt;tvm/smart_switcher.hpp&gt;</code><br />
 <code>#include &lt;tvm/contract_handle.hpp&gt;</code><br />
 <code>#include &quot;FlexLendPayloadArgs.hpp&quot;</code><br />
+<code>#include &quot;Tip3Config.hpp&quot;</code><br />
+<code>#include &quot;Tip3Creds.hpp&quot;</code><br />
+<code>#include &quot;bind_info.hpp&quot;</code><br />
+<code>#include &quot;immutable_ids.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for TONTokenWallet.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="TONTokenWallet_8hpp__incl.png" border="0" usemap="#TONTokenWallet_8hpp" alt=""/></div>
 <map name="TONTokenWallet_8hpp" id="TONTokenWallet_8hpp">
-<area shape="rect" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="627,5,783,32"/>
-<area shape="rect" title=" " alt="" coords="5,87,200,114"/>
-<area shape="rect" title=" " alt="" coords="225,87,367,114"/>
-<area shape="rect" title=" " alt="" coords="391,87,574,114"/>
-<area shape="rect" title=" " alt="" coords="598,80,813,121"/>
-<area shape="rect" title=" " alt="" coords="837,87,1016,114"/>
-<area shape="rect" title=" " alt="" coords="1040,87,1224,114"/>
-<area shape="rect" title=" " alt="" coords="1248,87,1437,114"/>
+<area shape="rect" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="857,5,1013,32"/>
+<area shape="rect" title=" " alt="" coords="699,169,893,196"/>
+<area shape="rect" title=" " alt="" coords="27,87,170,114"/>
+<area shape="rect" title=" " alt="" coords="194,87,377,114"/>
+<area shape="rect" title=" " alt="" coords="401,80,615,121"/>
+<area shape="rect" title=" " alt="" coords="640,87,819,114"/>
+<area shape="rect" title=" " alt="" coords="843,87,1027,114"/>
+<area shape="rect" title=" " alt="" coords="1051,87,1240,114"/>
+<area shape="rect" title=" " alt="" coords="1265,87,1383,114"/>
+<area shape="rect" title=" " alt="" coords="1408,87,1523,114"/>
+<area shape="rect" href="bind__info_8hpp_source.html" title=" " alt="" coords="1547,87,1658,114"/>
+<area shape="rect" href="immutable__ids_8hpp_source.html" title=" " alt="" coords="1683,87,1829,114"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -105,14 +113,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="TONTokenWallet_8hpp__dep__incl.png" border="0" usemap="#TONTokenWallet_8hppdep" alt=""/></div>
 <map name="TONTokenWallet_8hppdep" id="TONTokenWallet_8hppdep">
-<area shape="rect" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="252,5,408,32"/>
-<area shape="rect" href="RootTokenContract_8hpp.html" title="RootTokenContract contract interfaces and data&#45;structs. Compiles into two contract versions: RootToke..." alt="" coords="5,80,177,107"/>
-<area shape="rect" href="RootTokenContract_8cpp.html" title="RootTokenContract contract implementation Compiles into two contract versions: RootTokenContract...." alt="" coords="67,155,238,181"/>
-<area shape="rect" href="TONTokenWallet_8cpp.html" title="TONTokenWallet contract implementation Compiles into two contract versions: TONTokenWallet...." alt="" coords="253,80,407,107"/>
-<area shape="rect" href="Wrapper_8hpp.html" title="Wrapper contract interfaces and data&#45;structs. Wrapper contract performes conversion of external tip3 ..." alt="" coords="431,80,535,107"/>
-<area shape="rect" href="Wrapper_8cpp.html" title="Wrapper contract implementation." alt="" coords="553,155,656,181"/>
-<area shape="rect" href="Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="313,155,390,181"/>
-<area shape="rect" href="FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="414,155,529,181"/>
+<area shape="rect" title="TONTokenWallet contract interfaces and data&#45;structs." alt="" coords="595,5,751,32"/>
+<area shape="rect" href="RootTokenContract_8hpp.html" title="RootTokenContract contract interfaces and data&#45;structs. Compiles into two contract versions: RootToke..." alt="" coords="53,80,225,107"/>
+<area shape="rect" href="RootTokenContract_8cpp.html" title="RootTokenContract contract implementation Compiles into two contract versions: RootTokenContract...." alt="" coords="5,155,176,181"/>
+<area shape="rect" href="TONTokenWallet_8cpp.html" title="TONTokenWallet contract implementation Compiles into two contract versions: TONTokenWallet...." alt="" coords="443,80,597,107"/>
+<area shape="rect" href="Wrapper_8hpp.html" title="Wrapper contract interfaces and data&#45;structs. Wrapper contract performes conversion of external tip3 ..." alt="" coords="621,80,725,107"/>
+<area shape="rect" href="Wrapper_8cpp.html" title="Wrapper contract implementation." alt="" coords="791,155,894,181"/>
+<area shape="rect" href="WrapperEver_8hpp.html" title="WrapperEver contract interfaces and data&#45;structs. WrapperEver contract performes conversion of Eversc..." alt="" coords="891,80,1024,107"/>
+<area shape="rect" href="WrapperEver_8cpp.html" title="WrapperEver contract implementation." alt="" coords="1021,155,1153,181"/>
+<area shape="rect" href="SuperRoot_8cpp.html" title="SuperRoot contract implementation." alt="" coords="201,155,317,181"/>
+<area shape="rect" href="WIC_8cpp.html" title="Wrapper Index Contract implementation." alt="" coords="341,155,416,181"/>
+<area shape="rect" href="FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="440,155,555,181"/>
+<area shape="rect" href="FlexClientTestUpdate_8cpp.html" title="FlexClientTestUpdate contract implementation." alt="" coords="579,155,767,181"/>
+<area shape="rect" href="Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="919,155,996,181"/>
 </map>
 </div>
 </div>
@@ -120,15 +133,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tip3 token configuration.  <a href="structtvm_1_1Tip3Config.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1allowance__info.html">allowance_info</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allowance info.  <a href="structtvm_1_1allowance__info.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lend ownership pubkey record.  <a href="structtvm_1_1lend__pubkey.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1lend__owner__key.html">lend_owner_key</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complex key for lend owners mapping.  <a href="structtvm_1_1lend__owner__key.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,9 +150,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWallet.html">ITONTokenWallet</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">TON Token wallet contract interface.  <a href="structtvm_1_1ITONTokenWallet.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1restriction__info.html">restriction_info</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restrictions to allow orders only to specific flex root and with specific unsalted <a class="el" href="classPriceXchg.html">PriceXchg</a> code hash.  <a href="structtvm_1_1restriction__info.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DTONTokenWallet.html">DTONTokenWallet</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classTONTokenWallet.html" title="Implementation of TONTokenWallet contract.">TONTokenWallet</a> persistent data struct.  <a href="structtvm_1_1DTONTokenWallet.html#details">More...</a><br /></td></tr>
@@ -188,8 +189,8 @@ DTONTokenWallet&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr class="separator:a3767fb5755e2e90e826bb23351734996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1a7e61c4e00681b8ae8fdb5d60ff3ae"><td class="memItemLeft" align="right" valign="top">__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TONTokenWallet_8hpp.html#af1a7e61c4e00681b8ae8fdb5d60ff3ae">calc_ext_wallet_init_hash</a> (string name, string symbol, uint8 decimals, uint256 root_pubkey, address root_address, uint256 wallet_pubkey, address_opt wallet_owner, uint256 code_hash, uint16 code_depth, int8 workchain_id)</td></tr>
 <tr class="separator:af1a7e61c4e00681b8ae8fdb5d60ff3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dabf8c96b2658f452481097f50cca4b"><td class="memItemLeft" align="right" valign="top">__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TONTokenWallet_8hpp.html#a5dabf8c96b2658f452481097f50cca4b">calc_int_wallet_init_hash</a> (string name, string symbol, uint8 decimals, uint256 root_pubkey, address root_address, uint256 wallet_pubkey, address_opt wallet_owner, uint256 code_hash, uint16 code_depth, int8 workchain_id)</td></tr>
-<tr class="separator:a5dabf8c96b2658f452481097f50cca4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a739564f9539f4bbb3e8317289a583dce"><td class="memItemLeft" align="right" valign="top">__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TONTokenWallet_8hpp.html#a739564f9539f4bbb3e8317289a583dce">calc_int_wallet_init_hash</a> (Tip3Config tip3cfg, uint256 wallet_pubkey, address_opt wallet_owner, uint256 code_hash, uint16 code_depth, int8 workchain_id)</td></tr>
+<tr class="separator:a739564f9539f4bbb3e8317289a583dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0f8f155455bebd6b09be21fbcac83d1"><td class="memItemLeft" align="right" valign="top">std::pair&lt; StateInit, uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TONTokenWallet_8hpp.html#aa0f8f155455bebd6b09be21fbcac83d1">prepare_wallet_state_init_and_addr</a> (DTONTokenWallet wallet_data, cell code)</td></tr>
 <tr class="separator:aa0f8f155455bebd6b09be21fbcac83d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f70ed2f85266d0cf7f22c048fdfc633"><td class="memItemLeft" align="right" valign="top">std::pair&lt; StateInit, uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TONTokenWallet_8hpp.html#a6f70ed2f85266d0cf7f22c048fdfc633">prepare_external_wallet_state_init_and_addr</a> (string name, string symbol, uint8 decimals, uint256 root_pubkey, address root_address, uint256 wallet_pubkey, address_opt wallet_owner, uint256 code_hash, uint16 code_depth, int8 workchain_id, cell code)</td></tr>
@@ -199,7 +200,7 @@ DTONTokenWallet&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classTONTokenWallet.html" title="Implementation of TONTokenWallet contract.">TONTokenWallet</a> contract interfaces and data-structs. </p>
-<p>Compiles into two contract versions: TONTokenWallet.tvc (external wallet) and FlexWallet.tvc (internal wallet). With different macroses. TIP3_ENABLE_EXTERNAL - enable external method calls (by key signature). TIP3_ENABLE_ALLOWANCE - enable allowance functionality. TIP3_ENABLE_LEND_OWNERSHIP - enable lend ownership functionality. TIP3_ENABLE_BURN - enable burn functionality, to transfer tokens back through <a class="el" href="classWrapper.html">Wrapper</a>. TIP3_ENABLE_DESTROY - enable destroy method to self-destruct empty wallet. </p><dl class="section author"><dt>Author</dt><dd>Andrew Zhogin </dd></dl>
+<p>Compiles into two contract versions: TONTokenWallet.tvc (external wallet) and FlexWallet.tvc (internal wallet). With different macroses. TIP3_ENABLE_EXTERNAL - enable external method calls (by key signature). TIP3_ENABLE_LEND_OWNERSHIP - enable lend ownership functionality. TIP3_ENABLE_BURN - enable burn functionality, to transfer tokens back through <a class="el" href="classWrapper.html">Wrapper</a>. TIP3_ENABLE_DESTROY - enable destroy method to self-destruct empty wallet. </p><dl class="section author"><dt>Author</dt><dd>Andrew Zhogin </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>2019-2022 (c) TON LABS </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af1a7e61c4e00681b8ae8fdb5d60ff3ae"></a>
@@ -279,8 +280,8 @@ DTONTokenWallet&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 
 </div>
 </div>
-<a id="a5dabf8c96b2658f452481097f50cca4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dabf8c96b2658f452481097f50cca4b">&#9670;&nbsp;</a></span>calc_int_wallet_init_hash()</h2>
+<a id="a739564f9539f4bbb3e8317289a583dce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a739564f9539f4bbb3e8317289a583dce">&#9670;&nbsp;</a></span>calc_int_wallet_init_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,32 +289,8 @@ DTONTokenWallet&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
         <tr>
           <td class="memname">__always_inline uint256 tvm::calc_int_wallet_init_hash </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>symbol</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8&#160;</td>
-          <td class="paramname"><em>decimals</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>root_pubkey</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address&#160;</td>
-          <td class="paramname"><em>root_address</em>, </td>
+          <td class="paramtype">Tip3Config&#160;</td>
+          <td class="paramname"><em>tip3cfg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -81,18 +81,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3fd275fa93a2ddc213d54e6a956ecafb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a3fd275fa93a2ddc213d54e6a956ecafb">init</a> (address external_wallet, uint128 reserve_wallet_evers, cell internal_wallet_code)</td></tr>
-<tr class="memdesc:a3fd275fa93a2ddc213d54e6a956ecafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional initialization on deploy.  <a href="structtvm_1_1IWrapper.html#a3fd275fa93a2ddc213d54e6a956ecafb">More...</a><br /></td></tr>
-<tr class="separator:a3fd275fa93a2ddc213d54e6a956ecafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebbd6180231d557b954218bdbb48ffc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a3ebbd6180231d557b954218bdbb48ffc">init</a> (address external_wallet, uint128 reserve_wallet_evers, cell internal_wallet_code)</td></tr>
+<tr class="memdesc:a3ebbd6180231d557b954218bdbb48ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional initialization on deploy.  <a href="structtvm_1_1IWrapper.html#a3ebbd6180231d557b954218bdbb48ffc">More...</a><br /></td></tr>
+<tr class="separator:a3ebbd6180231d557b954218bdbb48ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memItemLeft" align="right" valign="top">address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a9a0ce937d7dd9c43dc0c139af521c92c">deployEmptyWallet</a> (uint256 pubkey, address_opt owner, uint128 evers)</td></tr>
 <tr class="memdesc:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy empty wallet.  <a href="structtvm_1_1IWrapper.html#a9a0ce937d7dd9c43dc0c139af521c92c">More...</a><br /></td></tr>
 <tr class="separator:a9a0ce937d7dd9c43dc0c139af521c92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="memItemLeft" align="right" valign="top">WrapperRet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
-<tr class="memdesc:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31" title="Notification from tip3 wallet to its owner contract about received tokens transfer.">ITONTokenWalletNotify::onTip3Transfer()</a>. Notification about incoming tokens from <a class="el" href="classWrapper.html">Wrapper</a> owned external wallet.  <a href="structtvm_1_1IWrapper.html#a25949acaf140e0f2d2c0d6bf378d03c7">More...</a><br /></td></tr>
-<tr class="separator:a25949acaf140e0f2d2c0d6bf378d03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4edf8ed1fcc2cff07a871a338732f831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a4edf8ed1fcc2cff07a871a338732f831">burn</a> (uint128 tokens, address answer_addr, uint256 sender_pubkey, address_opt sender_owner, uint256 out_pubkey, address_opt out_owner)</td></tr>
-<tr class="memdesc:a4edf8ed1fcc2cff07a871a338732f831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Burn internal tokens.  <a href="structtvm_1_1IWrapper.html#a4edf8ed1fcc2cff07a871a338732f831">More...</a><br /></td></tr>
-<tr class="separator:a4edf8ed1fcc2cff07a871a338732f831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487aedbe22b1bd46375dc1e5eac27a24"><td class="memItemLeft" align="right" valign="top">WrapperRet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a487aedbe22b1bd46375dc1e5eac27a24">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint128 evers_balance, Tip3Config tip3cfg, opt&lt; Tip3Creds &gt; sender, Tip3Creds receiver, cell payload, address answer_addr)</td></tr>
+<tr class="memdesc:a487aedbe22b1bd46375dc1e5eac27a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#ad54c44f6e51d1796f30f90af83bc7f4f" title="Notification from tip3 wallet to its owner contract about received tokens transfer.">ITONTokenWalletNotify::onTip3Transfer()</a>. Notification about incoming tokens from <a class="el" href="classWrapper.html">Wrapper</a> owned external wallet.  <a href="structtvm_1_1IWrapper.html#a487aedbe22b1bd46375dc1e5eac27a24">More...</a><br /></td></tr>
+<tr class="separator:a487aedbe22b1bd46375dc1e5eac27a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df9106b9edc56937e17895771f9ac7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a6df9106b9edc56937e17895771f9ac7e">burn</a> (uint128 tokens, address answer_addr, uint256 sender_pubkey, address_opt sender_owner, uint256 out_pubkey, address_opt out_owner, opt&lt; cell &gt; notify)</td></tr>
+<tr class="memdesc:a6df9106b9edc56937e17895771f9ac7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Burn internal tokens.  <a href="structtvm_1_1IWrapper.html#a6df9106b9edc56937e17895771f9ac7e">More...</a><br /></td></tr>
+<tr class="separator:a6df9106b9edc56937e17895771f9ac7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42479349cfa83e83144553ae060927d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a42479349cfa83e83144553ae060927d4">transferFromReserveWallet</a> (address_opt answer_addr, address to, uint128 tokens)</td></tr>
 <tr class="memdesc:a42479349cfa83e83144553ae060927d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfer gathered fees from reserve wallet to other wallet. Request allowed only from <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root.  <a href="structtvm_1_1IWrapper.html#a42479349cfa83e83144553ae060927d4">More...</a><br /></td></tr>
 <tr class="separator:a42479349cfa83e83144553ae060927d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,10 +100,21 @@ Public Member Functions</h2></td></tr>
 uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a07b9992e7029c3d6330f8bf5f7749ed7">requestTotalGranted</a> ()</td></tr>
 <tr class="memdesc:a07b9992e7029c3d6330f8bf5f7749ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request total granted tokens. <br /></td></tr>
 <tr class="separator:a07b9992e7029c3d6330f8bf5f7749ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34359ad2d0152978209d6853e97d23a"><td class="memItemLeft" align="right" valign="top"><a id="ab34359ad2d0152978209d6853e97d23a"></a>
+std::pair&lt; address_opt, uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#ab34359ad2d0152978209d6853e97d23a">cloned</a> ()</td></tr>
+<tr class="memdesc:ab34359ad2d0152978209d6853e97d23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request cloned wrapper address. <br /></td></tr>
+<tr class="separator:ab34359ad2d0152978209d6853e97d23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c856b90fe9f2605de8a4b26ab518d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a52c856b90fe9f2605de8a4b26ab518d3">setCloned</a> (address_opt <a class="el" href="structtvm_1_1IWrapper.html#ab34359ad2d0152978209d6853e97d23a">cloned</a>, uint256 cloned_pubkey, address wrappers_cfg, uint256 wrappers_cfg_code_hash, uint16 wrappers_cfg_code_depth)</td></tr>
+<tr class="memdesc:a52c856b90fe9f2605de8a4b26ab518d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set cloned wrapper address.  <a href="structtvm_1_1IWrapper.html#a52c856b90fe9f2605de8a4b26ab518d3">More...</a><br /></td></tr>
+<tr class="separator:a52c856b90fe9f2605de8a4b26ab518d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d86590337eeb843caea95e27ee0bfe"><td class="memItemLeft" align="right" valign="top"><a id="a17d86590337eeb843caea95e27ee0bfe"></a>
-<a class="el" href="structtvm_1_1wrapper__details__info.html">wrapper_details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a17d86590337eeb843caea95e27ee0bfe">getDetails</a> ()</td></tr>
+wrapper_details_info&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a17d86590337eeb843caea95e27ee0bfe">getDetails</a> ()</td></tr>
 <tr class="memdesc:a17d86590337eeb843caea95e27ee0bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get info about contract state details. <br /></td></tr>
 <tr class="separator:a17d86590337eeb843caea95e27ee0bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e634a8560bae2a6688ad2f712e68bb2"><td class="memItemLeft" align="right" valign="top"><a id="a7e634a8560bae2a6688ad2f712e68bb2"></a>
+Tip3Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#a7e634a8560bae2a6688ad2f712e68bb2">getTip3Config</a> ()</td></tr>
+<tr class="memdesc:a7e634a8560bae2a6688ad2f712e68bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Tip3 configuration. <br /></td></tr>
+<tr class="separator:a7e634a8560bae2a6688ad2f712e68bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc83610853a9a7d193127e5980892ba1"><td class="memItemLeft" align="right" valign="top"><a id="afc83610853a9a7d193127e5980892ba1"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IWrapper.html#afc83610853a9a7d193127e5980892ba1">hasInternalWalletCode</a> ()</td></tr>
 <tr class="memdesc:afc83610853a9a7d193127e5980892ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">If internal wallet code was set up. <br /></td></tr>
@@ -119,8 +130,8 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classWrapper.html">Wrapper</a> contract interface. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4edf8ed1fcc2cff07a871a338732f831"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4edf8ed1fcc2cff07a871a338732f831">&#9670;&nbsp;</a></span>burn()</h2>
+<a id="a6df9106b9edc56937e17895771f9ac7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df9106b9edc56937e17895771f9ac7e">&#9670;&nbsp;</a></span>burn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +170,13 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">address_opt&#160;</td>
-          <td class="paramname"><em>out_owner</em>&#160;</td>
+          <td class="paramname"><em>out_owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; cell &gt;&#160;</td>
+          <td class="paramname"><em>notify</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -179,6 +196,7 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
     <tr><td class="paramname">sender_owner</td><td>Sender wallet internal owner. </td></tr>
     <tr><td class="paramname">out_pubkey</td><td>Pubkey of external (wrapped) tip3 wallet. Where to return external tip3 tokens. </td></tr>
     <tr><td class="paramname">out_owner</td><td>Internal owner (contract) of external (wrapped) tip3 wallet. Where to return external tip3 tokens. </td></tr>
+    <tr><td class="paramname">notify</td><td>Notification payload to the destination wallet's owner </td></tr>
   </table>
   </dd>
 </dl>
@@ -266,14 +284,14 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a3fd275fa93a2ddc213d54e6a956ecafb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fd275fa93a2ddc213d54e6a956ecafb">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a3ebbd6180231d557b954218bdbb48ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebbd6180231d557b954218bdbb48ffc">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool init </td>
+          <td class="memname">void init </td>
           <td>(</td>
           <td class="paramtype">address&#160;</td>
           <td class="paramname"><em>external_wallet</em>, </td>
@@ -310,8 +328,8 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 
 </div>
 </div>
-<a id="a25949acaf140e0f2d2c0d6bf378d03c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25949acaf140e0f2d2c0d6bf378d03c7">&#9670;&nbsp;</a></span>onTip3Transfer()</h2>
+<a id="a487aedbe22b1bd46375dc1e5eac27a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487aedbe22b1bd46375dc1e5eac27a24">&#9670;&nbsp;</a></span>onTip3Transfer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,14 +349,26 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>sender_pubkey</em>, </td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_balance</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">address_opt&#160;</td>
-          <td class="paramname"><em>sender_owner</em>, </td>
+          <td class="paramtype">Tip3Config&#160;</td>
+          <td class="paramname"><em>tip3cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; Tip3Creds &gt;&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tip3Creds&#160;</td>
+          <td class="paramname"><em>receiver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -360,15 +390,75 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
       </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31" title="Notification from tip3 wallet to its owner contract about received tokens transfer.">ITONTokenWalletNotify::onTip3Transfer()</a>. Notification about incoming tokens from <a class="el" href="classWrapper.html">Wrapper</a> owned external wallet. </p>
+<p>Implements <a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#ad54c44f6e51d1796f30f90af83bc7f4f" title="Notification from tip3 wallet to its owner contract about received tokens transfer.">ITONTokenWalletNotify::onTip3Transfer()</a>. Notification about incoming tokens from <a class="el" href="classWrapper.html">Wrapper</a> owned external wallet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">balance</td><td>New balance of the wallet. </td></tr>
     <tr><td class="paramname">new_tokens</td><td>Amount of tokens received in transfer. </td></tr>
-    <tr><td class="paramname">sender_pubkey</td><td>Sender wallet pubkey. </td></tr>
-    <tr><td class="paramname">sender_owner</td><td>Sender wallet internal owner. </td></tr>
+    <tr><td class="paramname">evers_balance</td><td>Evers balance of the wallet </td></tr>
+    <tr><td class="paramname">tip3cfg</td><td>Tip3 config </td></tr>
+    <tr><td class="paramname">sender</td><td>Sender wallet's credentials (pubkey + owner). Empty if mint received from root/wrapper. </td></tr>
+    <tr><td class="paramname">receiver</td><td>Receiver wallet's credentials (pubkey + owner). </td></tr>
     <tr><td class="paramname">payload</td><td>Payload. Must be FlexDeployWalletArgs. </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address (to receive answer and the remaining processing Evers). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a52c856b90fe9f2605de8a4b26ab518d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c856b90fe9f2605de8a4b26ab518d3">&#9670;&nbsp;</a></span>setCloned()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setCloned </td>
+          <td>(</td>
+          <td class="paramtype">address_opt&#160;</td>
+          <td class="paramname"><em>cloned</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>cloned_pubkey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">address&#160;</td>
+          <td class="paramname"><em>wrappers_cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint256&#160;</td>
+          <td class="paramname"><em>wrappers_cfg_code_hash</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16&#160;</td>
+          <td class="paramname"><em>wrappers_cfg_code_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set cloned wrapper address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cloned</td><td>Cloned <a class="el" href="classWrapper.html">Wrapper</a> of this </td></tr>
+    <tr><td class="paramname">cloned_pubkey</td><td>Cloned <a class="el" href="classWrapper.html">Wrapper</a>'s pubkey </td></tr>
+    <tr><td class="paramname">wrappers_cfg</td><td><a class="el" href="classWrappersConfig.html" title="WrappersConfig contract implementation.">WrappersConfig</a> address </td></tr>
+    <tr><td class="paramname">wrappers_cfg_code_hash</td><td><a class="el" href="classWrappersConfig.html" title="WrappersConfig contract implementation.">WrappersConfig</a> salted code hash (for recognition of the next <a class="el" href="classWrappersConfig.html" title="WrappersConfig contract implementation.">WrappersConfig</a>) </td></tr>
+    <tr><td class="paramname">wrappers_cfg_code_depth</td><td><a class="el" href="classWrappersConfig.html" title="WrappersConfig contract implementation.">WrappersConfig</a> salted code depth (for recognition of the next <a class="el" href="classWrappersConfig.html" title="WrappersConfig contract implementation.">WrappersConfig</a>) </td></tr>
   </table>
   </dd>
 </dl>

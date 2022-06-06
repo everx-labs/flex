@@ -1,6 +1,9 @@
 <map id="Wrapper.hpp" name="Wrapper.hpp">
-<area shape="rect" id="node1" title="Wrapper contract interfaces and data&#45;structs. Wrapper contract performes conversion of external tip3 ..." alt="" coords="112,5,216,32"/>
-<area shape="rect" id="node2" href="$Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="5,80,83,107"/>
-<area shape="rect" id="node3" href="$FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="107,80,221,107"/>
-<area shape="rect" id="node4" href="$Wrapper_8cpp.html" title="Wrapper contract implementation." alt="" coords="246,80,349,107"/>
+<area shape="rect" id="node1" title="Wrapper contract interfaces and data&#45;structs. Wrapper contract performes conversion of external tip3 ..." alt="" coords="338,5,442,32"/>
+<area shape="rect" id="node2" href="$SuperRoot_8cpp.html" title="SuperRoot contract implementation." alt="" coords="5,80,121,107"/>
+<area shape="rect" id="node3" href="$WIC_8cpp.html" title="Wrapper Index Contract implementation." alt="" coords="146,80,221,107"/>
+<area shape="rect" id="node4" href="$FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="245,80,359,107"/>
+<area shape="rect" id="node5" href="$FlexClientTestUpdate_8cpp.html" title="FlexClientTestUpdate contract implementation." alt="" coords="384,80,572,107"/>
+<area shape="rect" id="node6" href="$Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="597,80,674,107"/>
+<area shape="rect" id="node7" href="$Wrapper_8cpp.html" title="Wrapper contract implementation." alt="" coords="699,80,801,107"/>
 </map>

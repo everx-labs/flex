@@ -1,0 +1,80 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "constructor",
+    "inputs": [
+    { "name":"pubkey", "type":"uint256" },
+    { "name":"wrapper_pubkey", "type":"uint256" },
+    { "name":"super_root", "type":"address" },
+    { "name":"wrapper_deploy_value", "type":"uint128" },
+    { "name":"wrapper_keep_balance", "type":"uint128" },
+    { "name":"reserve_wallet_value", "type":"uint128" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "setWrapperEverCode",
+    "inputs": [
+    { "name":"code", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  },
+  {
+    "name": "setExtWalletCode",
+    "inputs": [
+    { "name":"code", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xc"
+  },
+  {
+    "name": "setFlexWalletCode",
+    "inputs": [
+    { "name":"code", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xd"
+  },
+  {
+    "name": "deploy",
+    "inputs": [
+    { "name":"_answer_id", "type":"uint32" },
+    { "name":"init_args", "type":"cell" },
+    { "name":"wic_unsalted_code", "type":"cell" }
+    ],
+    "outputs": [
+    { "name":"first", "type":"address" },
+    { "name":"second", "type":"uint256" }
+    ],
+    "id": "0x1111"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"pubkey_", "type":"uint256" },
+    { "name":"wrapper_pubkey_", "type":"uint256" },
+    { "name":"ext_wallet_value_", "type":"uint128" },
+    { "name":"wrapper_deploy_value_", "type":"uint128" },
+    { "name":"wrapper_keep_balance_", "type":"uint128" },
+    { "name":"reserve_wallet_value_", "type":"uint128" },
+    { "name":"super_root_", "type":"address" },
+    { "name":"wrapper_code_", "type":"optional(cell)" },
+    { "name":"ext_wallet_code_", "type":"optional(cell)" },
+    { "name":"flex_wallet_code_", "type":"optional(cell)" }
+  ],
+  "events": [
+  ]
+}

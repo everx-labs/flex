@@ -1,11 +1,13 @@
 <map id="PriceXchgSalt.hpp" name="PriceXchgSalt.hpp">
-<area shape="rect" id="node1" title="PriceXchgSalt &#45; configuration structure for PriceXchg (stored in code salt)" alt="" coords="55,5,193,32"/>
-<area shape="rect" id="node2" href="$XchgPair_8cpp.html" title="Exchange pair contract implementation." alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node3" href="$PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="133,80,248,107"/>
-<area shape="rect" id="node4" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="43,304,157,331"/>
-<area shape="rect" id="node5" href="$dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="100,229,191,256"/>
-<area shape="rect" id="node6" href="$process__queue__state_8hpp.html" title="Class for keeping iteration state for PriceXchg." alt="" coords="97,155,284,181"/>
-<area shape="rect" id="node7" href="$xchg__iterator_8hpp.html" title="Exchange orders iterator for PriceXchg." alt="" coords="309,155,443,181"/>
-<area shape="rect" id="node8" href="$FlexClient_8hpp.html" title="FlexClient contract interfaces and data&#45;structs." alt="" coords="467,155,583,181"/>
-<area shape="rect" id="node9" href="$FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="468,229,583,256"/>
+<area shape="rect" id="node1" title="PriceXchgSalt &#45; configuration structure for PriceXchg (stored in code salt)" alt="" coords="395,5,534,32"/>
+<area shape="rect" id="node2" href="$PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="341,80,455,107"/>
+<area shape="rect" id="node11" href="$XchgPair_8cpp.html" title="Exchange pair contract implementation." alt="" coords="479,80,583,107"/>
+<area shape="rect" id="node3" href="$FlexClient_8hpp.html" title="FlexClient contract interfaces and data&#45;structs." alt="" coords="5,155,121,181"/>
+<area shape="rect" id="node5" href="$FlexClientTestUpdate_8hpp.html" title="FlexClientTestUpdate contract interfaces and data&#45;structs." alt="" coords="146,155,335,181"/>
+<area shape="rect" id="node7" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="357,304,471,331"/>
+<area shape="rect" id="node8" href="$dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="459,229,550,256"/>
+<area shape="rect" id="node9" href="$process__queue__state_8hpp.html" title="Class for keeping iteration state for PriceXchg." alt="" coords="461,155,647,181"/>
+<area shape="rect" id="node10" href="$xchg__iterator_8hpp.html" title="Exchange orders iterator for PriceXchg." alt="" coords="672,155,807,181"/>
+<area shape="rect" id="node4" href="$FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="6,229,121,256"/>
+<area shape="rect" id="node6" href="$FlexClientTestUpdate_8cpp.html" title="FlexClientTestUpdate contract implementation." alt="" coords="147,229,335,256"/>
 </map>

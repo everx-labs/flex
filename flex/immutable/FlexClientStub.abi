@@ -1,0 +1,64 @@
+{
+  "ABI version": 2,
+  "version": "2.2.0",
+  "header": [
+    "pubkey",
+    "time",
+    "expire"
+  ],
+  "functions": [
+  {
+    "name": "onDeploy",
+    "inputs": [
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"triplet", "type":"tuple" },
+    { "components":[
+      { "name":"flex", "type":"address" },
+      { "name":"unsalted_price_code_hash", "type":"uint256" }
+    ], "name":"binding", "type":"tuple" },
+    { "name":"flex_client_code", "type":"cell" },
+    { "name":"auth_index_code", "type":"cell" },
+    { "name":"user_id_index_code", "type":"cell" }
+    ],
+    "outputs": [
+    ],
+    "id": "0xa"
+  },
+  {
+    "name": "unused",
+    "inputs": [
+    ],
+    "outputs": [
+    ],
+    "id": "0xb"
+  }
+  ],
+  "fields": [
+    { "name":"__uninitialized", "type":"bool" },
+    { "name":"__replay", "type":"uint64" },
+    { "name":"__await_next_id", "type":"uint32" },
+    { "name":"__await_dict", "type":"optional(cell)" },
+    { "name":"owner_", "type":"uint256" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"triplet_", "type":"tuple" },
+    { "components":[
+      { "name":"wallet", "type":"uint32" },
+      { "name":"exchange", "type":"uint32" },
+      { "name":"user", "type":"uint32" }
+    ], "name":"ex_triplet_", "type":"tuple" },
+    { "name":"auth_index_code_", "type":"optional(cell)" },
+    { "name":"user_id_index_code_", "type":"optional(cell)" },
+    { "components":[
+      { "name":"flex", "type":"address" },
+      { "name":"unsalted_price_code_hash", "type":"uint256" }
+    ], "name":"binding_", "type":"optional(tuple)" }
+  ],
+  "events": [
+  ]
+}

@@ -92,11 +92,11 @@ Inheritance diagram for DXchgPair:</div>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5c98d7ea684b782139ed0c085fb1ad45"><td class="memItemLeft" align="right" valign="top"><a id="a5c98d7ea684b782139ed0c085fb1ad45"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a5c98d7ea684b782139ed0c085fb1ad45">tip3_major_root_</a></td></tr>
-<tr class="memdesc:a5c98d7ea684b782139ed0c085fb1ad45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classRootTokenContract.html">RootTokenContract</a> for major tip3 token. <br /></td></tr>
+<tr class="memdesc:a5c98d7ea684b782139ed0c085fb1ad45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classWrapper.html">Wrapper</a> for major tip3 token. Used for address calculation. <br /></td></tr>
 <tr class="separator:a5c98d7ea684b782139ed0c085fb1ad45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89f30662f1c2172f473ed1833478be7e"><td class="memItemLeft" align="right" valign="top"><a id="a89f30662f1c2172f473ed1833478be7e"></a>
 address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a89f30662f1c2172f473ed1833478be7e">tip3_minor_root_</a></td></tr>
-<tr class="memdesc:a89f30662f1c2172f473ed1833478be7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classRootTokenContract.html">RootTokenContract</a> for minor tip3 token. <br /></td></tr>
+<tr class="memdesc:a89f30662f1c2172f473ed1833478be7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of <a class="el" href="classWrapper.html">Wrapper</a> for minor tip3 token. Used for address calculation. <br /></td></tr>
 <tr class="separator:a89f30662f1c2172f473ed1833478be7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996c00e2b24a2d5e6f9127f59487f39d"><td class="memItemLeft" align="right" valign="top"><a id="a996c00e2b24a2d5e6f9127f59487f39d"></a>
 uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a996c00e2b24a2d5e6f9127f59487f39d">min_amount_</a></td></tr>
@@ -123,13 +123,21 @@ address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <tr class="memdesc:aeeacaf591fb8bda5c54e1b46fa2ef730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minor reserve wallet. <br /></td></tr>
 <tr class="separator:aeeacaf591fb8bda5c54e1b46fa2ef730"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67f73ed09f79ae5e1d57e42072a26c30"><td class="memItemLeft" align="right" valign="top"><a id="a67f73ed09f79ae5e1d57e42072a26c30"></a>
-opt&lt; <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a67f73ed09f79ae5e1d57e42072a26c30">major_tip3cfg_</a></td></tr>
+opt&lt; Tip3Config &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a67f73ed09f79ae5e1d57e42072a26c30">major_tip3cfg_</a></td></tr>
 <tr class="memdesc:a67f73ed09f79ae5e1d57e42072a26c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration of the major tip3 token. <br /></td></tr>
 <tr class="separator:a67f73ed09f79ae5e1d57e42072a26c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93be3c29fa2df287a8099bf21c60357a"><td class="memItemLeft" align="right" valign="top"><a id="a93be3c29fa2df287a8099bf21c60357a"></a>
-opt&lt; <a class="el" href="structtvm_1_1Tip3Config.html">Tip3Config</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a93be3c29fa2df287a8099bf21c60357a">minor_tip3cfg_</a></td></tr>
+opt&lt; Tip3Config &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a93be3c29fa2df287a8099bf21c60357a">minor_tip3cfg_</a></td></tr>
 <tr class="memdesc:a93be3c29fa2df287a8099bf21c60357a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration of the minor tip3 token. <br /></td></tr>
 <tr class="separator:a93be3c29fa2df287a8099bf21c60357a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665414993975dc6cb6fb6b76d86ec0f9"><td class="memItemLeft" align="right" valign="top"><a id="a665414993975dc6cb6fb6b76d86ec0f9"></a>
+opt&lt; address &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#a665414993975dc6cb6fb6b76d86ec0f9">next_</a></td></tr>
+<tr class="memdesc:a665414993975dc6cb6fb6b76d86ec0f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> address. <br /></td></tr>
+<tr class="separator:a665414993975dc6cb6fb6b76d86ec0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46b5548834270c95894f0ce18ea233b"><td class="memItemLeft" align="right" valign="top"><a id="ac46b5548834270c95894f0ce18ea233b"></a>
+bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DXchgPair.html#ac46b5548834270c95894f0ce18ea233b">unlisted_</a></td></tr>
+<tr class="memdesc:ac46b5548834270c95894f0ce18ea233b"><td class="mdescLeft">&#160;</td><td class="mdescRight">If pair is unlisted. <br /></td></tr>
+<tr class="separator:ac46b5548834270c95894f0ce18ea233b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> persistent data struct. </p>

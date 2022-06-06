@@ -1,5 +1,5 @@
 <map id="FlexClient" name="FlexClient">
 <area shape="rect" id="node1" title="FlexClient contract. Implements IFlexClient." alt="" coords="167,80,255,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,231,32"/>
-<area shape="rect" id="node3" href="$structtvm_1_1DFlexClient.html" title="FlexClient persistent data struct." alt="" coords="255,5,354,32"/>
+<area shape="rect" id="node3" href="$structtvm_1_1DFlexClient1.html" title="FlexClient persistent data struct." alt="" coords="255,5,354,32"/>
 </map>

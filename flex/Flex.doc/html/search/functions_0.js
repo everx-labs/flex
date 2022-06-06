@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['acceptmint_579',['acceptMint',['../structtvm_1_1ITONTokenWallet.html#a67e51c5e7e9ec047930a624188390f89',1,'tvm::ITONTokenWallet']]],
-  ['accepttransfer_580',['acceptTransfer',['../structtvm_1_1ITONTokenWallet.html#affc7e9acb1e4960c0b48b0b432031d9c',1,'tvm::ITONTokenWallet']]],
-  ['approvewrapper_581',['approveWrapper',['../structtvm_1_1IFlex.html#a794ce6f45a8d15fd9912ed7a1460dae7',1,'tvm::IFlex']]],
-  ['approvewrapperever_582',['approveWrapperEver',['../structtvm_1_1IFlex.html#af0f917682979f12f1937e50a5d024873',1,'tvm::IFlex']]],
-  ['approvexchgpair_583',['approveXchgPair',['../structtvm_1_1IFlex.html#a47ce04dc91ac9c8aa75adcda50e052ee',1,'tvm::IFlex']]]
+  ['acceptmint_843',['acceptMint',['../structtvm_1_1ITONTokenWallet.html#a6d5303644a4018a9f78fc355dc85178a',1,'tvm::ITONTokenWallet']]],
+  ['accepttransfer_844',['acceptTransfer',['../structtvm_1_1ITONTokenWallet.html#abdb8834ea28c1a953f7cea2665e48498',1,'tvm::ITONTokenWallet']]],
+  ['addwrapper_845',['addWrapper',['../structtvm_1_1ISuperRootOwner.html#abc1ab16cb01b4c6f2be1d3edd5ac89fd',1,'tvm::ISuperRootOwner::addWrapper()'],['../structtvm_1_1IWrappersConfig.html#ac67e8560e0413291425c14580bc8df84',1,'tvm::IWrappersConfig::addWrapper()']]],
+  ['addwrappertype_846',['addWrapperType',['../structtvm_1_1ISuperRootOwner.html#a91355daba9daf69c3536707fdf3674e7',1,'tvm::ISuperRootOwner::addWrapperType()'],['../structtvm_1_1IWrappersConfig.html#aaa52fe978c7fcb3d791552375e7763ab',1,'tvm::IWrappersConfig::addWrapperType()']]],
+  ['addxchgpair_847',['addXchgPair',['../structtvm_1_1ISuperRootOwner.html#ab49bc50874ebac111d4dc09ca42a15c9',1,'tvm::ISuperRootOwner::addXchgPair()'],['../structtvm_1_1IFlex.html#a017d1430431d938493ffc4d1f94644d0',1,'tvm::IFlex::addXchgPair()']]]
 ];

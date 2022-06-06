@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,6 +60,11 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bd0947221b40a4287a0a9e16626649b1.html">ui</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">FlexClient.hpp</div>  </div>
@@ -74,247 +78,249 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;tvm/contract_handle.hpp&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="PriceXchg_8hpp.html">PriceXchg.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>tvm {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structtvm_1_1client__lend__info.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1client__lend__info.html">client_lend_info</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structtvm_1_1client__lend__info.html#a873585bb6128ec69e3e0c894fa0a354a">   19</a></span>&#160;  uint256 <a class="code" href="structtvm_1_1client__lend__info.html#a873585bb6128ec69e3e0c894fa0a354a">pubkey</a>;           </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structtvm_1_1client__lend__info.html#a27ee3d01058cf1de55c7cac1893796c3">   20</a></span>&#160;  uint32  <a class="code" href="structtvm_1_1client__lend__info.html#a27ee3d01058cf1de55c7cac1893796c3">lend_finish_time</a>; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FlexVersion_8hpp.html">FlexVersion.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FlexClientStub_8hpp.html">FlexClientStub.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;EverReTransferArgs.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>tvm {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="FlexClient_8hpp.html#a43b078c580aa195a7e94d8d690c7d8ed">   21</a></span>&#160;<span class="keyword">using</span> <a class="code" href="structtvm_1_1DFlexClientStub.html">DFlexClient0</a> = <a class="code" href="structtvm_1_1DFlexClientStub.html">DFlexClientStub</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structtvm_1_1IFlexClient.html">   27</a></span>&#160;__interface <a class="code" href="structtvm_1_1IFlexClient.html">IFlexClient</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  [[external]]</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> constructor(</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    uint256 pubkey </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  ) = 10;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> setFlexCfg(</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    address        flex    </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  ) = 11;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1FlexClientDetails.html">FlexClientDetails</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html#aa3d755cb20addd66ddfccb6f52c52788">   25</a></span>&#160;  uint256          <a class="code" href="structtvm_1_1FlexClientDetails.html#aa3d755cb20addd66ddfccb6f52c52788">owner</a>;              </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html#a1ca08fe3ef3e29eeb7514884420ea3b3">   26</a></span>&#160;  <a class="code" href="structtvm_1_1FlexVersion.html">FlexVersion</a>      <a class="code" href="structtvm_1_1FlexClientDetails.html#a1ca08fe3ef3e29eeb7514884420ea3b3">triplet</a>;            </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html#ac116b961808aba57dbcd81764fe9fb77">   27</a></span>&#160;  opt&lt;FlexVersion&gt; <a class="code" href="structtvm_1_1FlexClientDetails.html#ac116b961808aba57dbcd81764fe9fb77">ex_triplet</a>;         </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html#a9a6ac767ca6e1d0c44edfcd3e4d0adf4">   28</a></span>&#160;  cell             <a class="code" href="structtvm_1_1FlexClientDetails.html#a9a6ac767ca6e1d0c44edfcd3e4d0adf4">auth_index_code</a>;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structtvm_1_1FlexClientDetails.html#a60e852565a802af309f924c0523fcbf3">   29</a></span>&#160;  cell             <a class="code" href="structtvm_1_1FlexClientDetails.html#a60e852565a802af309f924c0523fcbf3">user_id_index_code</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structtvm_1_1BurnInfo.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1BurnInfo.html">BurnInfo</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structtvm_1_1BurnInfo.html#a754d2aef463755624a054b4f49c44e1b">   34</a></span>&#160;  uint256     <a class="code" href="structtvm_1_1BurnInfo.html#a754d2aef463755624a054b4f49c44e1b">out_pubkey</a>; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structtvm_1_1BurnInfo.html#ac43473ee5ffb9a645d0f2c277f03b314">   35</a></span>&#160;  address_opt <a class="code" href="structtvm_1_1BurnInfo.html#ac43473ee5ffb9a645d0f2c277f03b314">out_owner</a>;  </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structtvm_1_1BurnInfo.html#acab45a660bae100fa4212e2b69db53cd">   36</a></span>&#160;  address     <a class="code" href="structtvm_1_1BurnInfo.html#acab45a660bae100fa4212e2b69db53cd">wallet</a>;     </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structtvm_1_1BurnInfo.html#ae1472a67495e09378f7d060243420ba6">   37</a></span>&#160;  opt&lt;cell&gt;   <a class="code" href="structtvm_1_1BurnInfo.html#ae1472a67495e09378f7d060243420ba6">notify</a>;     </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">void</span> setFlexWalletCode(cell flex_wallet_code) = 12;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> setAuthIndexCode(cell auth_index_code) = 13;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> setUserIdIndexCode(cell user_id_index_code) = 14;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  address deployPriceXchg(</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span>       sell,                 </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span>       immediate_client,     </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span>       post_order,           </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    uint128    price_num,            </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    uint128    amount,               </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint128    lend_amount,          </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    uint32     lend_finish_time,     </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    uint128    evers,                </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    cell       unsalted_price_code,  </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    cell       price_salt,           </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    address    my_tip3_addr,         </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    uint256    user_id,              </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    uint256    order_id              </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  ) = 15;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> lendOwnershipPubkey(</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    address      my_tip3_addr,    </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    uint256      pubkey,          </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    uint256      user_id,         </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    uint128      evers,           </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    uint32       lend_finish_time </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  ) = 16;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> reLendOwnershipPubkey(</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    address      my_tip3_addr, </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint256      user_id,      </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    opt&lt;uint256&gt; new_key,      </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    uint128      evers         </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  ) = 17;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> cancelXchgOrder(</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span>         sell,              </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    uint128      price_num,         </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint128      value,             </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    cell         salted_price_code, </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    opt&lt;uint256&gt; user_id,           </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    opt&lt;uint256&gt; order_id           </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  ) = 18;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> transfer(</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    address dest,  </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    uint128 value, </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">bool</span>    bounce </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  ) = 19;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">void</span> transferTokens(</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    address src,    </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    address dst,    </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    uint128 tokens, </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    uint128 evers   </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  ) = 20;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span> registerWrapper(</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    uint256    wrapper_pubkey, </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    uint128    value,          </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a> tip3cfg         </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  ) = 21;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">void</span> registerWrapperEver(</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    uint256    wrapper_pubkey, </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    uint128    value           </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  ) = 211;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordtype">void</span> registerXchgPair(</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    uint256 request_pubkey,       </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    uint128 value,                </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    address tip3_major_root,      </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    address tip3_minor_root,      </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a> major_tip3cfg,     </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a> minor_tip3cfg,     </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    uint128 min_amount,           </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    uint128 minmove,              </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    uint128 price_denum,          </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    address notify_addr           </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  ) = 22;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  address deployEmptyFlexWallet(</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    uint256               pubkey,          </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    uint128               evers_to_wallet, </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="structtvm_1_1Tip3Config.html">Tip3Config</a>            tip3cfg,         </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    opt&lt;client_lend_info&gt; lend_info        </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  ) = 23;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structtvm_1_1IFlexClient.html">   45</a></span>&#160;__interface <a class="code" href="structtvm_1_1IFlexClient.html">IFlexClient</a> {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  address deployPriceXchg(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">bool</span>       sell,                 </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span>       immediate_client,     </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span>       post_order,           </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    uint128    price_num,            </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    uint128    amount,               </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    uint128    lend_amount,          </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    uint32     lend_finish_time,     </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    uint128    evers,                </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    cell       unsalted_price_code,  </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    cell       price_salt,           </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    address    my_tip3_addr,         </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint256    user_id,              </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    uint256    order_id              </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  ) = 10;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">void</span> cancelXchgOrder(</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span>         sell,              </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    uint128      price_num,         </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    uint128      value,             </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cell         salted_price_code, </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    opt&lt;uint256&gt; user_id,           </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    opt&lt;uint256&gt; order_id           </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  ) = 11;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> transfer(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    address dest,  </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    uint128 value, </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span>    bounce </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  ) = 12;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> transferTokens(</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    address   src,       </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    Tip3Creds dst,       </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    uint128   tokens,    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    uint128   evers,     </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    uint128   keep_evers </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  ) = 13;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  address deployEmptyFlexWallet(</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    uint256        pubkey,          </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    uint128        evers_to_wallet, </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    Tip3Config     tip3cfg,         </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    uint256        trader,          </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    cell           flex_wallet_code </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  ) = 14;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> deployIndex(</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    uint256 user_id,           </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    uint256 lend_pubkey,       </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">string</span>  name,              </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    uint128 evers_all,         </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    uint128 evers_to_auth_idx, </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    uint128 refill_wallet,     </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    uint128 min_refill         </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  ) = 15;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> reBindWallets(</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    uint256             user_id,                </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">bool</span>                set_binding,            </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    opt&lt;bind_info&gt;      binding,                </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">bool</span>                set_trader,             </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    opt&lt;uint256&gt;        trader,                 </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    dict_array&lt;address&gt; wallets,                </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    uint128             evers_relend_call,      </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    uint128             evers_each_wallet_call, </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    uint128             evers_to_remove,        </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    uint128             evers_to_auth_idx       </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  ) = 16;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> destroyIndex(</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    uint256 user_id, </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    uint128 evers    </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  ) = 17;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordtype">void</span> burnWallet(</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    uint128     evers_value,    </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    uint256     out_pubkey,     </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    address_opt out_owner,      </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    address     my_tip3_addr,   </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    opt&lt;cell&gt;   notify          </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  ) = 18;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordtype">void</span> burnThemAll(</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    uint128              burn_ev, </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    dict_array&lt;BurnInfo&gt; burns    </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  ) = 19;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">void</span> deployIndex(</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    uint256 user_id,          </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    uint256 <a class="code" href="structtvm_1_1lend__pubkey.html">lend_pubkey</a>,      </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordtype">string</span>  name,             </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    uint128 evers_all,        </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    uint128 evers_to_auth_idx </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  ) = 24;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordtype">void</span> reLendIndex(</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    uint256             user_id,                </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    uint256             new_lend_pubkey,        </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    dict_array&lt;address&gt; wallets,                </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    uint128             evers_relend_call,      </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    uint128             evers_each_wallet_call, </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    uint128             evers_to_remove,        </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    uint128             evers_to_auth_idx       </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  ) = 25;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordtype">void</span> destroyIndex(</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    uint256 user_id, </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    uint128 evers    </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  ) = 26;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordtype">void</span> burnWallet(</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    uint128     evers_value,    </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    uint256     out_pubkey,     </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    address_opt out_owner,      </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    address     my_tip3_addr    </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  ) = 27;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  [[external, noaccept]]</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">void</span> setTradeRestriction(</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    uint128 evers,                   </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    address my_tip3_addr,            </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    address flex,                    </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    uint256 unsalted_price_code_hash </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  ) = 28;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  [[<span class="keyword">internal</span>, noaccept, answer_id]]</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordtype">void</span> onTip3Transfer(</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    uint128     balance,       </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    uint128     new_tokens,    </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    uint256     sender_pubkey, </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    address_opt sender_owner,  </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    cell        payload,       </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    address     answer_addr    </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  ) = 202;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  [[<span class="keyword">internal</span>]]</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">void</span> continueBurnThemAll();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">void</span> unwrapWallet(</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    uint128     evers_value,    </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    uint256     out_pubkey,     </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    address_opt out_owner,      </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    address     my_tip3_addr,   </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    uint128     tokens,         </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    opt&lt;cell&gt;   notify          </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  ) = 20;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">void</span> bindWallet(</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    uint128        evers,        </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    address        my_tip3_addr, </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">bool</span>           set_binding,  </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    opt&lt;bind_info&gt; binding,      </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">bool</span>           set_trader,   </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    opt&lt;uint256&gt;   trader        </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  ) = 21;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  [[<span class="keyword">internal</span>, answer_id]]</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  resumable&lt;void&gt; onTip3Transfer(</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    uint128        balance,       </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    uint128        new_tokens,    </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    uint128        evers_balance, </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    Tip3Config     tip3cfg,       </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    opt&lt;Tip3Creds&gt; sender,        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    Tip3Creds      receiver,      </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    cell           payload,       </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    address        answer_addr    </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  ) = 202;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  [[external]]</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  resumable&lt;void&gt; upgrade(</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    uint128 request_evers, </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    address user_data_cfg  </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  ) = 22;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  cell getPayloadForDeployInternalWallet(</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    uint256     owner_pubkey, </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    address_opt owner_addr,   </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    uint128     evers,        </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    uint128     keep_evers    </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  ) = 23;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  uint256 getOwner() = 29;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  address getFlex() = 30;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="keywordtype">bool</span> hasFlexWalletCode() = 31;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">bool</span> hasAuthIndexCode() = 32;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">bool</span> hasUserIdIndexCode() = 33;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  cell getPayloadForEverReTransferArgs(</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    uint128 wallet_deploy_evers, </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    uint128 wallet_keep_evers    </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  ) = 24;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  address getPriceXchgAddress(</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    uint128 price_num,        </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    cell    salted_price_code </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  ) = 25;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  address getUserIdIndex(</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    uint256 user_id </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  ) = 26;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  cell getPayloadForDeployInternalWallet(</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    uint256     owner_pubkey, </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    address_opt owner_addr,   </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    uint128     evers         </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  ) = 34;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  address getPriceXchgAddress(</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    uint128 price_num,        </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    cell    salted_price_code </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  ) = 35;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  [[getter]]</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  address getUserIdIndex(</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    uint256 user_id </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  ) = 36;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;};</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="keyword">using</span> IFlexClientPtr = handle&lt;IFlexClient&gt;;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html">  261</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1DFlexClient.html">DFlexClient</a> {</div>
-<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#a29df690c000b7db791280f38b23c09f2">  262</a></span>&#160;  uint256           <a class="code" href="structtvm_1_1DFlexClient.html#a29df690c000b7db791280f38b23c09f2">owner_</a>;              </div>
-<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#adace34b88f2aa0bf685f076a78b886fd">  263</a></span>&#160;  int8              <a class="code" href="structtvm_1_1DFlexClient.html#adace34b88f2aa0bf685f076a78b886fd">workchain_id_</a>;       </div>
-<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#a50de7bd729c69a5039dc26263a167b99">  264</a></span>&#160;  address           <a class="code" href="structtvm_1_1DFlexClient.html#a50de7bd729c69a5039dc26263a167b99">flex_</a>;               </div>
-<div class="line"><a name="l00265"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#a56779bd50e9c0a91c853fef996f25bda">  265</a></span>&#160;  optcell           <a class="code" href="structtvm_1_1DFlexClient.html#a56779bd50e9c0a91c853fef996f25bda">flex_wallet_code_</a>;   </div>
-<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#a5c3e368af26a5281c687b8fb8ae1cb56">  266</a></span>&#160;  optcell           <a class="code" href="structtvm_1_1DFlexClient.html#a5c3e368af26a5281c687b8fb8ae1cb56">auth_index_code_</a>;    </div>
-<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient.html#abcec347234c3340dfc6791a2be593805">  267</a></span>&#160;  optcell           <a class="code" href="structtvm_1_1DFlexClient.html#abcec347234c3340dfc6791a2be593805">user_id_index_code_</a>; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;};</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="structtvm_1_1EFlexClient.html">  272</a></span>&#160;__interface <a class="code" href="structtvm_1_1EFlexClient.html">EFlexClient</a> {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;};</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;} <span class="comment">// namespace tvm</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  [[getter]]</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <a class="code" href="structtvm_1_1FlexClientDetails.html">FlexClientDetails</a> getDetails() = 27;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;};</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">using</span> IFlexClientPtr = handle&lt;IFlexClient&gt;;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html">  243</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtvm_1_1DFlexClient1.html">DFlexClient1</a> {</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#a29df690c000b7db791280f38b23c09f2">  244</a></span>&#160;  uint256          <a class="code" href="structtvm_1_1DFlexClient1.html#a29df690c000b7db791280f38b23c09f2">owner_</a>;              </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#ad05c7f18f70572e4d2cfbc4221910556">  245</a></span>&#160;  <a class="code" href="structtvm_1_1FlexVersion.html">FlexVersion</a>      <a class="code" href="structtvm_1_1DFlexClient1.html#ad05c7f18f70572e4d2cfbc4221910556">triplet_</a>;            </div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#aa6d79bca54a8928c6790da4d9ec19f28">  246</a></span>&#160;  <a class="code" href="structtvm_1_1FlexVersion.html">FlexVersion</a>      <a class="code" href="structtvm_1_1DFlexClient1.html#aa6d79bca54a8928c6790da4d9ec19f28">ex_triplet_</a>;         </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#a5c3e368af26a5281c687b8fb8ae1cb56">  247</a></span>&#160;  optcell          <a class="code" href="structtvm_1_1DFlexClient1.html#a5c3e368af26a5281c687b8fb8ae1cb56">auth_index_code_</a>;    </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#abcec347234c3340dfc6791a2be593805">  248</a></span>&#160;  optcell          <a class="code" href="structtvm_1_1DFlexClient1.html#abcec347234c3340dfc6791a2be593805">user_id_index_code_</a>; </div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#afdf78ffdd7af2767424dab47f514313e">  249</a></span>&#160;  opt&lt;bind_info&gt;   <a class="code" href="structtvm_1_1DFlexClient1.html#afdf78ffdd7af2767424dab47f514313e">binding_</a>;            </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#af2b1f52f5ad6ca369e47d2abcb12d384">  250</a></span>&#160;  bool_t               <a class="code" href="structtvm_1_1DFlexClient1.html#af2b1f52f5ad6ca369e47d2abcb12d384">packet_burning_</a>; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#a80c326ab4adc157ad517e94037eb7eea">  251</a></span>&#160;  uint128              <a class="code" href="structtvm_1_1DFlexClient1.html#a80c326ab4adc157ad517e94037eb7eea">burn_ev_</a>;        </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="structtvm_1_1DFlexClient1.html#a311dd05ed4a783cf726628059c107ab8">  252</a></span>&#160;  dict_array&lt;BurnInfo&gt; <a class="code" href="structtvm_1_1DFlexClient1.html#a311dd05ed4a783cf726628059c107ab8">burns_</a>;          </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;};</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keyword">using</span> <a class="code" href="structtvm_1_1DFlexClient1.html">DFlexClient</a> = <a class="code" href="structtvm_1_1DFlexClient1.html">DFlexClient1</a>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="structtvm_1_1EFlexClient.html">  259</a></span>&#160;__interface <a class="code" href="structtvm_1_1EFlexClient.html">EFlexClient</a> {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;};</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;} <span class="comment">// namespace tvm</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructtvm_1_1EFlexClient_html"><div class="ttname"><a href="structtvm_1_1EFlexClient.html">tvm::EFlexClient</a></div><div class="ttdoc">FlexClient events interface.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:272</div></div>
-<div class="ttc" id="astructtvm_1_1client__lend__info_html_a873585bb6128ec69e3e0c894fa0a354a"><div class="ttname"><a href="structtvm_1_1client__lend__info.html#a873585bb6128ec69e3e0c894fa0a354a">tvm::client_lend_info::pubkey</a></div><div class="ttdeci">uint256 pubkey</div><div class="ttdoc">User pubkey.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:19</div></div>
-<div class="ttc" id="astructtvm_1_1Tip3Config_html"><div class="ttname"><a href="structtvm_1_1Tip3Config.html">tvm::Tip3Config</a></div><div class="ttdoc">Tip3 token configuration.</div><div class="ttdef"><b>Definition:</b> TONTokenWallet.hpp:52</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_adace34b88f2aa0bf685f076a78b886fd"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#adace34b88f2aa0bf685f076a78b886fd">tvm::DFlexClient::workchain_id_</a></div><div class="ttdeci">int8 workchain_id_</div><div class="ttdoc">Workchain id.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:263</div></div>
-<div class="ttc" id="astructtvm_1_1IFlexClient_html"><div class="ttname"><a href="structtvm_1_1IFlexClient.html">tvm::IFlexClient</a></div><div class="ttdoc">FlexClient is client contract for Flex.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:27</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_afdf78ffdd7af2767424dab47f514313e"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#afdf78ffdd7af2767424dab47f514313e">tvm::DFlexClient1::binding_</a></div><div class="ttdeci">opt&lt; bind_info &gt; binding_</div><div class="ttdoc">Binding info for exchange.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:249</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html_ac116b961808aba57dbcd81764fe9fb77"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html#ac116b961808aba57dbcd81764fe9fb77">tvm::FlexClientDetails::ex_triplet</a></div><div class="ttdeci">opt&lt; FlexVersion &gt; ex_triplet</div><div class="ttdoc">Ex-version triplet (initialized during code upgrade)</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:27</div></div>
+<div class="ttc" id="astructtvm_1_1BurnInfo_html"><div class="ttname"><a href="structtvm_1_1BurnInfo.html">tvm::BurnInfo</a></div><div class="ttdoc">Burn parameters for each wallet in burnThemAll</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:33</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html_a9a6ac767ca6e1d0c44edfcd3e4d0adf4"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html#a9a6ac767ca6e1d0c44edfcd3e4d0adf4">tvm::FlexClientDetails::auth_index_code</a></div><div class="ttdeci">cell auth_index_code</div><div class="ttdoc">AuthIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:28</div></div>
+<div class="ttc" id="astructtvm_1_1EFlexClient_html"><div class="ttname"><a href="structtvm_1_1EFlexClient.html">tvm::EFlexClient</a></div><div class="ttdoc">FlexClient events interface.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:259</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html">tvm::DFlexClient1</a></div><div class="ttdoc">FlexClient persistent data struct.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:243</div></div>
+<div class="ttc" id="astructtvm_1_1BurnInfo_html_ac43473ee5ffb9a645d0f2c277f03b314"><div class="ttname"><a href="structtvm_1_1BurnInfo.html#ac43473ee5ffb9a645d0f2c277f03b314">tvm::BurnInfo::out_owner</a></div><div class="ttdeci">address_opt out_owner</div><div class="ttdoc">Internal (contract) owner for external wallet (out)</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:35</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html_a60e852565a802af309f924c0523fcbf3"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html#a60e852565a802af309f924c0523fcbf3">tvm::FlexClientDetails::user_id_index_code</a></div><div class="ttdeci">cell user_id_index_code</div><div class="ttdoc">UserIdIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:29</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_a311dd05ed4a783cf726628059c107ab8"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#a311dd05ed4a783cf726628059c107ab8">tvm::DFlexClient1::burns_</a></div><div class="ttdeci">dict_array&lt; BurnInfo &gt; burns_</div><div class="ttdoc">Array of burn parameters for each wallet.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:252</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html_aa3d755cb20addd66ddfccb6f52c52788"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html#aa3d755cb20addd66ddfccb6f52c52788">tvm::FlexClientDetails::owner</a></div><div class="ttdeci">uint256 owner</div><div class="ttdoc">Owner's public key.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:25</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_abcec347234c3340dfc6791a2be593805"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#abcec347234c3340dfc6791a2be593805">tvm::DFlexClient1::user_id_index_code_</a></div><div class="ttdeci">optcell user_id_index_code_</div><div class="ttdoc">UserIdIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:248</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_a80c326ab4adc157ad517e94037eb7eea"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#a80c326ab4adc157ad517e94037eb7eea">tvm::DFlexClient1::burn_ev_</a></div><div class="ttdeci">uint128 burn_ev_</div><div class="ttdoc">Processing evers for each wallet burn call.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:251</div></div>
+<div class="ttc" id="astructtvm_1_1BurnInfo_html_a754d2aef463755624a054b4f49c44e1b"><div class="ttname"><a href="structtvm_1_1BurnInfo.html#a754d2aef463755624a054b4f49c44e1b">tvm::BurnInfo::out_pubkey</a></div><div class="ttdeci">uint256 out_pubkey</div><div class="ttdoc">Public key for external wallet (out)</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:34</div></div>
+<div class="ttc" id="astructtvm_1_1IFlexClient_html"><div class="ttname"><a href="structtvm_1_1IFlexClient.html">tvm::IFlexClient</a></div><div class="ttdoc">FlexClient is client contract for Flex.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:45</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_a29df690c000b7db791280f38b23c09f2"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#a29df690c000b7db791280f38b23c09f2">tvm::DFlexClient1::owner_</a></div><div class="ttdeci">uint256 owner_</div><div class="ttdoc">Owner's public key.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:244</div></div>
 <div class="ttc" id="aPriceXchg_8hpp_html"><div class="ttname"><a href="PriceXchg_8hpp.html">PriceXchg.hpp</a></div><div class="ttdoc">PriceXchg contract interfaces and data-structs PriceXchg - contract to enqueue and process tip3-tip3 ...</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html"><div class="ttname"><a href="structtvm_1_1DFlexClient.html">tvm::DFlexClient</a></div><div class="ttdoc">FlexClient persistent data struct.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:261</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_a50de7bd729c69a5039dc26263a167b99"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#a50de7bd729c69a5039dc26263a167b99">tvm::DFlexClient::flex_</a></div><div class="ttdeci">address flex_</div><div class="ttdoc">Address of Flex root.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:264</div></div>
-<div class="ttc" id="astructtvm_1_1client__lend__info_html"><div class="ttname"><a href="structtvm_1_1client__lend__info.html">tvm::client_lend_info</a></div><div class="ttdoc">Lend info about user.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:18</div></div>
-<div class="ttc" id="astructtvm_1_1lend__pubkey_html"><div class="ttname"><a href="structtvm_1_1lend__pubkey.html">tvm::lend_pubkey</a></div><div class="ttdoc">Lend ownership pubkey record.</div><div class="ttdef"><b>Definition:</b> TONTokenWallet.hpp:67</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_a56779bd50e9c0a91c853fef996f25bda"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#a56779bd50e9c0a91c853fef996f25bda">tvm::DFlexClient::flex_wallet_code_</a></div><div class="ttdeci">optcell flex_wallet_code_</div><div class="ttdoc">Flex token wallet code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:265</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_a5c3e368af26a5281c687b8fb8ae1cb56"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#a5c3e368af26a5281c687b8fb8ae1cb56">tvm::DFlexClient::auth_index_code_</a></div><div class="ttdeci">optcell auth_index_code_</div><div class="ttdoc">AuthIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:266</div></div>
-<div class="ttc" id="astructtvm_1_1client__lend__info_html_a27ee3d01058cf1de55c7cac1893796c3"><div class="ttname"><a href="structtvm_1_1client__lend__info.html#a27ee3d01058cf1de55c7cac1893796c3">tvm::client_lend_info::lend_finish_time</a></div><div class="ttdeci">uint32 lend_finish_time</div><div class="ttdoc">Last lend finish time. Will be used for lendOwnershipPubkey for bought tokens.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:20</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_abcec347234c3340dfc6791a2be593805"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#abcec347234c3340dfc6791a2be593805">tvm::DFlexClient::user_id_index_code_</a></div><div class="ttdeci">optcell user_id_index_code_</div><div class="ttdoc">UserIdIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:267</div></div>
-<div class="ttc" id="astructtvm_1_1DFlexClient_html_a29df690c000b7db791280f38b23c09f2"><div class="ttname"><a href="structtvm_1_1DFlexClient.html#a29df690c000b7db791280f38b23c09f2">tvm::DFlexClient::owner_</a></div><div class="ttdeci">uint256 owner_</div><div class="ttdoc">Owner's public key.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:262</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_aa6d79bca54a8928c6790da4d9ec19f28"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#aa6d79bca54a8928c6790da4d9ec19f28">tvm::DFlexClient1::ex_triplet_</a></div><div class="ttdeci">FlexVersion ex_triplet_</div><div class="ttdoc">Ex-version triplet (initialized during code upgrade)</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:246</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html">tvm::FlexClientDetails</a></div><div class="ttdoc">FlexClient details (for getter)</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:24</div></div>
+<div class="ttc" id="astructtvm_1_1FlexVersion_html"><div class="ttname"><a href="structtvm_1_1FlexVersion.html">tvm::FlexVersion</a></div><div class="ttdoc">Flex version triplet.</div><div class="ttdef"><b>Definition:</b> FlexVersion.hpp:14</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_a5c3e368af26a5281c687b8fb8ae1cb56"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#a5c3e368af26a5281c687b8fb8ae1cb56">tvm::DFlexClient1::auth_index_code_</a></div><div class="ttdeci">optcell auth_index_code_</div><div class="ttdoc">AuthIndex code.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:247</div></div>
+<div class="ttc" id="astructtvm_1_1BurnInfo_html_acab45a660bae100fa4212e2b69db53cd"><div class="ttname"><a href="structtvm_1_1BurnInfo.html#acab45a660bae100fa4212e2b69db53cd">tvm::BurnInfo::wallet</a></div><div class="ttdeci">address wallet</div><div class="ttdoc">Wallet address.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:36</div></div>
+<div class="ttc" id="astructtvm_1_1BurnInfo_html_ae1472a67495e09378f7d060243420ba6"><div class="ttname"><a href="structtvm_1_1BurnInfo.html#ae1472a67495e09378f7d060243420ba6">tvm::BurnInfo::notify</a></div><div class="ttdeci">opt&lt; cell &gt; notify</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:37</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_af2b1f52f5ad6ca369e47d2abcb12d384"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#af2b1f52f5ad6ca369e47d2abcb12d384">tvm::DFlexClient1::packet_burning_</a></div><div class="ttdeci">bool_t packet_burning_</div><div class="ttdoc">When burnThemAll was postponed into continueBurnThemAll call.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:250</div></div>
+<div class="ttc" id="aFlexVersion_8hpp_html"><div class="ttname"><a href="FlexVersion_8hpp.html">FlexVersion.hpp</a></div><div class="ttdoc">Flex version structure.</div></div>
+<div class="ttc" id="astructtvm_1_1FlexClientDetails_html_a1ca08fe3ef3e29eeb7514884420ea3b3"><div class="ttname"><a href="structtvm_1_1FlexClientDetails.html#a1ca08fe3ef3e29eeb7514884420ea3b3">tvm::FlexClientDetails::triplet</a></div><div class="ttdeci">FlexVersion triplet</div><div class="ttdoc">Version triplet.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:26</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClient1_html_ad05c7f18f70572e4d2cfbc4221910556"><div class="ttname"><a href="structtvm_1_1DFlexClient1.html#ad05c7f18f70572e4d2cfbc4221910556">tvm::DFlexClient1::triplet_</a></div><div class="ttdeci">FlexVersion triplet_</div><div class="ttdoc">Version triplet.</div><div class="ttdef"><b>Definition:</b> FlexClient.hpp:245</div></div>
+<div class="ttc" id="aFlexClientStub_8hpp_html"><div class="ttname"><a href="FlexClientStub_8hpp.html">FlexClientStub.hpp</a></div><div class="ttdoc">FlexClientStub contract interfaces and data-structs.</div></div>
+<div class="ttc" id="astructtvm_1_1DFlexClientStub_html"><div class="ttname"><a href="structtvm_1_1DFlexClientStub.html">tvm::DFlexClientStub</a></div><div class="ttdoc">FlexClientStub persistent data struct.</div><div class="ttdef"><b>Definition:</b> FlexClientStub.hpp:46</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -60,13 +60,15 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_20221acc3490166a5adbbcc6c35e1911.html">exchange</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">Flex.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -81,23 +83,30 @@ $(function() {
 <code>#include &quot;<a class="el" href="PriceCommon_8hpp_source.html">PriceCommon.hpp</a>&quot;</code><br />
 <code>#include &quot;FlexWallet.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="EversConfig_8hpp_source.html">EversConfig.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ListingConfig_8hpp_source.html">ListingConfig.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="FlexSalt_8hpp_source.html">FlexSalt.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PairCloneEvers_8hpp_source.html">PairCloneEvers.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="XchgPair_8hpp_source.html">XchgPair.hpp</a>&quot;</code><br />
+<code>#include &quot;immutable_ids.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Flex.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Flex_8hpp__incl.png" border="0" usemap="#Flex_8hpp" alt=""/></div>
 <map name="Flex_8hpp" id="Flex_8hpp">
-<area shape="rect" title="Flex root contract interfaces and data&#45;structs." alt="" coords="805,5,883,32"/>
-<area shape="rect" title=" " alt="" coords="5,87,200,114"/>
-<area shape="rect" title=" " alt="" coords="224,87,403,114"/>
-<area shape="rect" title=" " alt="" coords="427,87,611,114"/>
-<area shape="rect" title=" " alt="" coords="635,80,850,121"/>
-<area shape="rect" href="PriceCommon_8hpp.html" title="Price common interfaces and data&#45;structs." alt="" coords="875,87,1016,114"/>
-<area shape="rect" title=" " alt="" coords="1041,87,1159,114"/>
-<area shape="rect" href="EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="1183,87,1310,114"/>
-<area shape="rect" href="ListingConfig_8hpp.html" title="Flex listing configuration (processing costs)" alt="" coords="1334,87,1469,114"/>
-<area shape="rect" title=" " alt="" coords="800,169,931,196"/>
-<area shape="rect" href="RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="955,169,1095,196"/>
+<area shape="rect" title="Flex root contract interfaces and data&#45;structs." alt="" coords="758,5,837,32"/>
+<area shape="rect" title=" " alt="" coords="5,244,200,271"/>
+<area shape="rect" title=" " alt="" coords="224,244,403,271"/>
+<area shape="rect" title=" " alt="" coords="427,244,611,271"/>
+<area shape="rect" title=" " alt="" coords="1043,80,1258,121"/>
+<area shape="rect" href="PriceCommon_8hpp.html" title="Price common interfaces and data&#45;structs." alt="" coords="727,87,868,114"/>
+<area shape="rect" title=" " alt="" coords="799,244,918,271"/>
+<area shape="rect" href="EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="942,244,1069,271"/>
+<area shape="rect" href="FlexSalt_8hpp.html" title="Flex contract configuration structure (stored in code salt)" alt="" coords="251,169,354,196"/>
+<area shape="rect" href="PairCloneEvers_8hpp.html" title="Pair clone evers configuration structure." alt="" coords="1283,87,1429,114"/>
+<area shape="rect" href="XchgPair_8hpp.html" title="Exchange pair (tip3/tip3) contract interfaces and data&#45;structs. XchgPair &#45; contract defining tip3/tip..." alt="" coords="491,87,597,114"/>
+<area shape="rect" href="immutable__ids_8hpp_source.html" title=" " alt="" coords="1453,87,1600,114"/>
+<area shape="rect" title=" " alt="" coords="787,169,917,196"/>
+<area shape="rect" href="RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="635,244,775,271"/>
+<area shape="rect" href="XchgPairSalt_8hpp.html" title="Exchange pair (XchgPair) configuration structure (stored in code salt)" alt="" coords="531,169,661,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -105,15 +114,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Flex_8hpp__dep__incl.png" border="0" usemap="#Flex_8hppdep" alt=""/></div>
 <map name="Flex_8hppdep" id="Flex_8hppdep">
-<area shape="rect" title="Flex root contract interfaces and data&#45;structs." alt="" coords="65,5,143,32"/>
-<area shape="rect" href="Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="5,80,83,107"/>
-<area shape="rect" href="PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="107,80,221,107"/>
-<area shape="rect" href="PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="17,304,130,331"/>
-<area shape="rect" href="dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="73,229,164,256"/>
-<area shape="rect" href="process__queue__state_8hpp.html" title="Class for keeping iteration state for PriceXchg." alt="" coords="71,155,257,181"/>
-<area shape="rect" href="xchg__iterator_8hpp.html" title="Exchange orders iterator for PriceXchg." alt="" coords="282,155,417,181"/>
-<area shape="rect" href="FlexClient_8hpp.html" title="FlexClient contract interfaces and data&#45;structs." alt="" coords="441,155,557,181"/>
-<area shape="rect" href="FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="441,229,556,256"/>
+<area shape="rect" title="Flex root contract interfaces and data&#45;structs." alt="" coords="266,5,345,32"/>
+<area shape="rect" href="SuperRootOwner_8cpp.html" title="SuperRootOwner (single owner) contract implementation." alt="" coords="5,80,163,107"/>
+<area shape="rect" href="SuperRoot_8cpp.html" title="SuperRoot contract implementation." alt="" coords="187,80,303,107"/>
+<area shape="rect" href="Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="328,80,405,107"/>
+<area shape="rect" href="PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="429,80,544,107"/>
+<area shape="rect" href="FlexClient_8hpp.html" title="FlexClient contract interfaces and data&#45;structs." alt="" coords="94,155,210,181"/>
+<area shape="rect" href="FlexClientTestUpdate_8hpp.html" title="FlexClientTestUpdate contract interfaces and data&#45;structs." alt="" coords="235,155,424,181"/>
+<area shape="rect" href="PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="446,304,559,331"/>
+<area shape="rect" href="dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="548,229,639,256"/>
+<area shape="rect" href="process__queue__state_8hpp.html" title="Class for keeping iteration state for PriceXchg." alt="" coords="549,155,736,181"/>
+<area shape="rect" href="xchg__iterator_8hpp.html" title="Exchange orders iterator for PriceXchg." alt="" coords="761,155,895,181"/>
+<area shape="rect" href="FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="95,229,209,256"/>
+<area shape="rect" href="FlexClientTestUpdate_8cpp.html" title="FlexClientTestUpdate contract implementation." alt="" coords="235,229,423,256"/>
 </map>
 </div>
 </div>
@@ -121,29 +134,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IListingAnswer.html">IListingAnswer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Answers to client about approved/rejected listings.  <a href="structtvm_1_1IListingAnswer.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlexNotify.html">IFlexNotify</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notifications to AMM about orders.  <a href="structtvm_1_1IFlexNotify.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1WrapperListingRequest.html">WrapperListingRequest</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to deploy wrapper.  <a href="structtvm_1_1WrapperListingRequest.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1WrapperListingRequestWithPubkey.html">WrapperListingRequestWithPubkey</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to deploy wrapper with public key (for getter)  <a href="structtvm_1_1WrapperListingRequestWithPubkey.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1XchgPairListingRequest.html">XchgPairListingRequest</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to deploy exchange pair (tip3/tip3)  <a href="structtvm_1_1XchgPairListingRequest.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1XchgPairListingRequestWithPubkey.html">XchgPairListingRequestWithPubkey</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request to deploy exchange pair (tip3/tip3) with public key (for getter)  <a href="structtvm_1_1XchgPairListingRequestWithPubkey.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1FlexOwnershipInfo.html">FlexOwnershipInfo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ownership info for <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root.  <a href="structtvm_1_1FlexOwnershipInfo.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1FlexDetails.html">FlexDetails</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root details (for getter)  <a href="structtvm_1_1FlexDetails.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1PairsRange.html">PairsRange</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> pairs list.  <a href="structtvm_1_1PairsRange.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1IFlex.html">IFlex</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root contract interface. <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> is a root contract for exchange system.  <a href="structtvm_1_1IFlex.html#details">More...</a><br /></td></tr>
@@ -154,43 +155,18 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1EFlex.html">EFlex</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> events interface.  <a href="structtvm_1_1EFlex.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1preparer_3_01IFlex_00_01DFlex_01_4.html">preparer&lt; IFlex, DFlex &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> StateInit structure and expected contract address (hash from StateInit)  <a href="structtvm_1_1preparer_3_01IFlex_00_01DFlex_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a66eae0eaed9d66b2b5c07689a622a36c"><td class="memItemLeft" align="right" valign="top"><a id="a66eae0eaed9d66b2b5c07689a622a36c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>flex_replay_protection_t</b> = replay_attack_protection::timestamp&lt; FLEX_TIMESTAMP_DELAY &gt;</td></tr>
-<tr class="separator:a66eae0eaed9d66b2b5c07689a622a36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad914479a469e08f281045186842ec45f"><td class="memItemLeft" align="right" valign="top"><a id="ad914479a469e08f281045186842ec45f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>IListingAnswerPtr</b> = handle&lt; IListingAnswer &gt;</td></tr>
-<tr class="separator:ad914479a469e08f281045186842ec45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a886c893056138a7d2747a1f2b4086192"><td class="memItemLeft" align="right" valign="top"><a id="a886c893056138a7d2747a1f2b4086192"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>IFlexNotifyPtr</b> = handle&lt; IFlexNotify &gt;</td></tr>
 <tr class="separator:a886c893056138a7d2747a1f2b4086192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a771a6c19aeec19a8fb5ac1057137da16"><td class="memItemLeft" align="right" valign="top"><a id="a771a6c19aeec19a8fb5ac1057137da16"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>IFlexPtr</b> = handle&lt; IFlex &gt;</td></tr>
 <tr class="separator:a771a6c19aeec19a8fb5ac1057137da16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a1ebb4f8f4eb29b7573e76ef1cf6c818f"><td class="memItemLeft" align="right" valign="top"><a id="a1ebb4f8f4eb29b7573e76ef1cf6c818f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Flex_8hpp.html#a1ebb4f8f4eb29b7573e76ef1cf6c818f">code_type</a> { <br />
-&#160;&#160;<b>xchg_pair_code</b> = 1, 
-<b>wrapper_code</b> = 2, 
-<b>ext_wallet_code</b> = 3, 
-<b>flex_wallet_code</b> = 4, 
-<br />
-&#160;&#160;<b>xchg_price_code</b> = 5, 
-<b>wrapper_ever_code</b> = 6
-<br />
- }</td></tr>
-<tr class="memdesc:a1ebb4f8f4eb29b7573e76ef1cf6c818f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of code types for <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> initialization. <br /></td></tr>
-<tr class="separator:a1ebb4f8f4eb29b7573e76ef1cf6c818f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a270a04ac140e1c30387ae6d3e680799b"><td class="memItemLeft" align="right" valign="top"><a id="a270a04ac140e1c30387ae6d3e680799b"></a>
-std::pair&lt; StateInit, uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Flex_8hpp.html#a270a04ac140e1c30387ae6d3e680799b">prepare_flex_state_init_and_addr</a> (DFlex flex_data, cell flex_code)</td></tr>
-<tr class="memdesc:a270a04ac140e1c30387ae6d3e680799b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare <a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> StateInit structure and expected contract address (hash from StateInit) <br /></td></tr>
-<tr class="separator:a270a04ac140e1c30387ae6d3e680799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> root contract interfaces and data-structs. </p>

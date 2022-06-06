@@ -81,18 +81,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a343541a0029067533bbac895784c1252"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#a343541a0029067533bbac895784c1252">onTip3LendOwnership</a> (uint128 balance, uint32 lend_finish_time, uint256 pubkey, address_opt owner, cell payload, address answer_addr)</td></tr>
-<tr class="separator:a343541a0029067533bbac895784c1252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6211901b181abad0d3bbe0412293bf31"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint256 sender_pubkey, address_opt sender_owner, cell payload, address answer_addr)</td></tr>
-<tr class="memdesc:a6211901b181abad0d3bbe0412293bf31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification from tip3 wallet to its owner contract about received tokens transfer.  <a href="structtvm_1_1ITONTokenWalletNotify.html#a6211901b181abad0d3bbe0412293bf31">More...</a><br /></td></tr>
-<tr class="separator:a6211901b181abad0d3bbe0412293bf31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63b83b3be2c64bc7502d039b6b69980"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#af63b83b3be2c64bc7502d039b6b69980">onTip3LendOwnership</a> (uint128 balance, uint32 lend_finish_time, Tip3Creds creds, cell payload, address answer_addr)</td></tr>
+<tr class="separator:af63b83b3be2c64bc7502d039b6b69980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad54c44f6e51d1796f30f90af83bc7f4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1ITONTokenWalletNotify.html#ad54c44f6e51d1796f30f90af83bc7f4f">onTip3Transfer</a> (uint128 balance, uint128 new_tokens, uint128 evers_balance, Tip3Config tip3cfg, opt&lt; Tip3Creds &gt; sender, Tip3Creds receiver, cell payload, address answer_addr)</td></tr>
+<tr class="memdesc:ad54c44f6e51d1796f30f90af83bc7f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification from tip3 wallet to its owner contract about received tokens transfer.  <a href="structtvm_1_1ITONTokenWalletNotify.html#ad54c44f6e51d1796f30f90af83bc7f4f">More...</a><br /></td></tr>
+<tr class="separator:ad54c44f6e51d1796f30f90af83bc7f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TON Token wallet notification callback interface. </p>
 <p>Must be implemented in contracts receiving lend ownership or transfer notifications. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a343541a0029067533bbac895784c1252"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a343541a0029067533bbac895784c1252">&#9670;&nbsp;</a></span>onTip3LendOwnership()</h2>
+<a id="af63b83b3be2c64bc7502d039b6b69980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af63b83b3be2c64bc7502d039b6b69980">&#9670;&nbsp;</a></span>onTip3LendOwnership()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,14 +112,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>pubkey</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">address_opt&#160;</td>
-          <td class="paramname"><em>owner</em>, </td>
+          <td class="paramtype">Tip3Creds&#160;</td>
+          <td class="paramname"><em>creds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -151,8 +145,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lend_finish_time</td><td>Lend ownership finish time. </td></tr>
-    <tr><td class="paramname">pubkey</td><td>Pubkey of the wallet owner. </td></tr>
-    <tr><td class="paramname">owner</td><td>Owner contract address of the wallet if internal ownership is enabled. </td></tr>
+    <tr><td class="paramname">creds</td><td>Wallet's credentials (pubkey + owner) </td></tr>
     <tr><td class="paramname">payload</td><td>Payload (arbitrary cell). </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address (to receive answer and the remaining processing evers). </td></tr>
   </table>
@@ -161,8 +154,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6211901b181abad0d3bbe0412293bf31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6211901b181abad0d3bbe0412293bf31">&#9670;&nbsp;</a></span>onTip3Transfer()</h2>
+<a id="ad54c44f6e51d1796f30f90af83bc7f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54c44f6e51d1796f30f90af83bc7f4f">&#9670;&nbsp;</a></span>onTip3Transfer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,14 +175,26 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint256&#160;</td>
-          <td class="paramname"><em>sender_pubkey</em>, </td>
+          <td class="paramtype">uint128&#160;</td>
+          <td class="paramname"><em>evers_balance</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">address_opt&#160;</td>
-          <td class="paramname"><em>sender_owner</em>, </td>
+          <td class="paramtype">Tip3Config&#160;</td>
+          <td class="paramname"><em>tip3cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">opt&lt; Tip3Creds &gt;&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tip3Creds&#160;</td>
+          <td class="paramname"><em>receiver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -216,8 +221,10 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">balance</td><td>New balance of the wallet. </td></tr>
     <tr><td class="paramname">new_tokens</td><td>Amount of tokens received in transfer. </td></tr>
-    <tr><td class="paramname">sender_pubkey</td><td>Sender wallet pubkey. </td></tr>
-    <tr><td class="paramname">sender_owner</td><td>Sender wallet internal owner. </td></tr>
+    <tr><td class="paramname">evers_balance</td><td>Evers balance of the wallet </td></tr>
+    <tr><td class="paramname">tip3cfg</td><td>Tip3 configuration. </td></tr>
+    <tr><td class="paramname">sender</td><td>Sender wallet's credentials (pubkey + owner). Empty if mint received from root/wrapper. </td></tr>
+    <tr><td class="paramname">receiver</td><td>Receiver wallet's credentials (pubkey + owner). </td></tr>
     <tr><td class="paramname">payload</td><td>Payload (arbitrary cell). </td></tr>
     <tr><td class="paramname">answer_addr</td><td>Answer address (to receive answer and the remaining processing evers). </td></tr>
   </table>

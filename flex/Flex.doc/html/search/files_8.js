@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['wrapper_2ecpp_573',['Wrapper.cpp',['../Wrapper_8cpp.html',1,'']]],
-  ['wrapper_2ehpp_574',['Wrapper.hpp',['../Wrapper_8hpp.html',1,'']]]
+  ['superroot_2ecpp_820',['SuperRoot.cpp',['../SuperRoot_8cpp.html',1,'']]],
+  ['superroot_2ehpp_821',['SuperRoot.hpp',['../SuperRoot_8hpp.html',1,'']]],
+  ['superrootowner_2ecpp_822',['SuperRootOwner.cpp',['../SuperRootOwner_8cpp.html',1,'']]],
+  ['superrootowner_2ehpp_823',['SuperRootOwner.hpp',['../SuperRootOwner_8hpp.html',1,'']]]
 ];

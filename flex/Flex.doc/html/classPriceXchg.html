@@ -93,37 +93,40 @@ Collaboration diagram for PriceXchg:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6804f6ba10dc09efb77c1f0b803328a8"><td class="memItemLeft" align="right" valign="top"><a id="a6804f6ba10dc09efb77c1f0b803328a8"></a>
-__always_inline <a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPriceXchg.html#a6804f6ba10dc09efb77c1f0b803328a8">onTip3LendOwnership</a> (uint128 balance, uint32 lend_finish_time, uint256 pubkey, address_opt owner, cell payload, address answer_addr)</td></tr>
-<tr class="memdesc:a6804f6ba10dc09efb77c1f0b803328a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy is only allowed with [[deploy]] function call. <br /></td></tr>
-<tr class="separator:a6804f6ba10dc09efb77c1f0b803328a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1a239ae5201e1f7df01324ea4dc7fbd"><td class="memItemLeft" align="right" valign="top"><a id="ae1a239ae5201e1f7df01324ea4dc7fbd"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>processQueue</b> ()</td></tr>
-<tr class="separator:ae1a239ae5201e1f7df01324ea4dc7fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a582eea80659afd4ee94985213eecba48"><td class="memItemLeft" align="right" valign="top"><a id="a582eea80659afd4ee94985213eecba48"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelOrder</b> (bool sell, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
-<tr class="separator:a582eea80659afd4ee94985213eecba48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2a991166da4b31046f8cb7cba4e1e3c"><td class="memItemLeft" align="right" valign="top"><a id="ad2a991166da4b31046f8cb7cba4e1e3c"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelWalletOrder</b> (bool sell, address owner, uint256 user_id, opt&lt; uint256 &gt; order_id)</td></tr>
-<tr class="separator:ad2a991166da4b31046f8cb7cba4e1e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cc1bfd7fa4a30252876fa658d964c26"><td class="memItemLeft" align="right" valign="top"><a id="a5cc1bfd7fa4a30252876fa658d964c26"></a>
-__always_inline <a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ev_cfg</b> ()</td></tr>
-<tr class="separator:a5cc1bfd7fa4a30252876fa658d964c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4980f1385b9eb68e3645fad2b8d66e53"><td class="memItemLeft" align="right" valign="top"><a id="a4980f1385b9eb68e3645fad2b8d66e53"></a>
-__always_inline dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getSells</b> ()</td></tr>
-<tr class="separator:a4980f1385b9eb68e3645fad2b8d66e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4740645138037829291a09da02b5585"><td class="memItemLeft" align="right" valign="top"><a id="ac4740645138037829291a09da02b5585"></a>
-__always_inline dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getBuys</b> ()</td></tr>
-<tr class="separator:ac4740645138037829291a09da02b5585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a7ee27664d201b63a9fc5c1ca52dd8c"><td class="memItemLeft" align="right" valign="top"><a id="a9a7ee27664d201b63a9fc5c1ca52dd8c"></a>
-__always_inline <a class="el" href="structtvm_1_1PriceXchgSalt.html">PriceXchgSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getConfig</b> ()</td></tr>
-<tr class="separator:a9a7ee27664d201b63a9fc5c1ca52dd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d78fea23556762c4e178c1a1822fdd"><td class="memItemLeft" align="right" valign="top"><a id="a73d78fea23556762c4e178c1a1822fdd"></a>
+<a class="el" href="structtvm_1_1OrderRet.html">OrderRet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPriceXchg.html#a73d78fea23556762c4e178c1a1822fdd">onTip3LendOwnership</a> (uint128 balance, uint32 lend_finish_time, Tip3Creds creds, cell payload, address answer_addr)</td></tr>
+<tr class="memdesc:a73d78fea23556762c4e178c1a1822fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deploy is only allowed with [[deploy]] function call. <br /></td></tr>
+<tr class="separator:a73d78fea23556762c4e178c1a1822fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada45f24892629aae0a9ba941a2de4d03"><td class="memItemLeft" align="right" valign="top"><a id="ada45f24892629aae0a9ba941a2de4d03"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>processQueue</b> ()</td></tr>
+<tr class="separator:ada45f24892629aae0a9ba941a2de4d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f2cf21a19d90f7ead599c5995d1cac"><td class="memItemLeft" align="right" valign="top"><a id="af5f2cf21a19d90f7ead599c5995d1cac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelOrder</b> (bool sell, opt&lt; uint256 &gt; user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="separator:af5f2cf21a19d90f7ead599c5995d1cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88e333c486fbc0bdc3d1b34f5740052"><td class="memItemLeft" align="right" valign="top"><a id="ac88e333c486fbc0bdc3d1b34f5740052"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cancelWalletOrder</b> (bool sell, address owner, uint256 user_id, opt&lt; uint256 &gt; order_id)</td></tr>
+<tr class="separator:ac88e333c486fbc0bdc3d1b34f5740052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9132226c92852a3e612ff97772a111c5"><td class="memItemLeft" align="right" valign="top"><a id="a9132226c92852a3e612ff97772a111c5"></a>
+<a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ev_cfg</b> ()</td></tr>
+<tr class="separator:a9132226c92852a3e612ff97772a111c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ade7b973940aa891576551a7e8421d"><td class="memItemLeft" align="right" valign="top"><a id="a40ade7b973940aa891576551a7e8421d"></a>
+dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getSells</b> ()</td></tr>
+<tr class="separator:a40ade7b973940aa891576551a7e8421d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27e1fef28634a6a613e43d8dd02b01f"><td class="memItemLeft" align="right" valign="top"><a id="ac27e1fef28634a6a613e43d8dd02b01f"></a>
+dict_array&lt; <a class="el" href="structtvm_1_1OrderInfoXchg.html">OrderInfoXchg</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getBuys</b> ()</td></tr>
+<tr class="separator:ac27e1fef28634a6a613e43d8dd02b01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2ef4f28151e1a4a599df1c20ec73a9"><td class="memItemLeft" align="right" valign="top"><a id="afe2ef4f28151e1a4a599df1c20ec73a9"></a>
+<a class="el" href="structtvm_1_1PriceXchgSalt.html">PriceXchgSalt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getConfig</b> ()</td></tr>
+<tr class="separator:afe2ef4f28151e1a4a599df1c20ec73a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9786dc14c3a4acaca840aa4d63d8d4"><td class="memItemLeft" align="right" valign="top"><a id="aef9786dc14c3a4acaca840aa4d63d8d4"></a>
+<a class="el" href="structtvm_1_1PriceXchgDetails.html">PriceXchgDetails</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDetails</b> ()</td></tr>
+<tr class="separator:aef9786dc14c3a4acaca840aa4d63d8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae51aad34310a739602e8970ddd25243f"><td class="memItemLeft" align="right" valign="top"><a id="ae51aad34310a739602e8970ddd25243f"></a>
-static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_fallback</b> (cell, slice)</td></tr>
-<tr class="separator:ae51aad34310a739602e8970ddd25243f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ed479d2aba79730a0edb8b79ad0910"><td class="memItemLeft" align="right" valign="top"><a id="a66ed479d2aba79730a0edb8b79ad0910"></a>
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>_fallback</b> ([[maybe_unused]] cell msg, [[maybe_unused]] slice msg_body)</td></tr>
+<tr class="separator:a66ed479d2aba79730a0edb8b79ad0910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>

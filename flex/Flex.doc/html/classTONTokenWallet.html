@@ -111,63 +111,51 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> = <a class=
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4f03eef80c34c3e0af8f3fb841f5e4dc"><td class="memItemLeft" align="right" valign="top"><a id="a4f03eef80c34c3e0af8f3fb841f5e4dc"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>transfer</b> (address_opt answer_addr, address to, uint128 tokens, uint128 evers, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
-<tr class="separator:a4f03eef80c34c3e0af8f3fb841f5e4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a749b78b9188c6c7aa2a05d5d299234"><td class="memItemLeft" align="right" valign="top"><a id="a1a749b78b9188c6c7aa2a05d5d299234"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>transferToRecipient</b> (address_opt answer_addr, Tip3Creds to, uint128 tokens, uint128 evers, bool deploy, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
-<tr class="separator:a1a749b78b9188c6c7aa2a05d5d299234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac890590ba713ad799a227573eb8c65e4"><td class="memItemLeft" align="right" valign="top"><a id="ac890590ba713ad799a227573eb8c65e4"></a>
-__always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>requestBalance</b> ()</td></tr>
-<tr class="separator:ac890590ba713ad799a227573eb8c65e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeee60c66cffa29a99444e2f88541d4d"><td class="memItemLeft" align="right" valign="top"><a id="abeee60c66cffa29a99444e2f88541d4d"></a>
-__always_inline bool&#160;</td><td class="memItemRight" valign="bottom"><b>acceptMint</b> (uint128 tokens, address answer_addr, uint128 keep_evers)</td></tr>
-<tr class="separator:abeee60c66cffa29a99444e2f88541d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c17f7b694682de35d61a4cd59fdb45"><td class="memItemLeft" align="right" valign="top"><a id="ae7c17f7b694682de35d61a4cd59fdb45"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>acceptTransfer</b> (uint128 tokens, address answer_addr, uint256 sender_pubkey, address_opt sender_owner, opt&lt; cell &gt; notify_payload)</td></tr>
-<tr class="separator:ae7c17f7b694682de35d61a4cd59fdb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2716a12983512e03370a7ada214204df"><td class="memItemLeft" align="right" valign="top"><a id="a2716a12983512e03370a7ada214204df"></a>
-__always_inline void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> (address dest)</td></tr>
-<tr class="separator:a2716a12983512e03370a7ada214204df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe366c2d4eb39d7af6a8a69e56622ee2"><td class="memItemLeft" align="right" valign="top"><a id="abe366c2d4eb39d7af6a8a69e56622ee2"></a>
-__always_inline <a class="el" href="structtvm_1_1details__info.html">details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDetails</b> ()</td></tr>
-<tr class="separator:abe366c2d4eb39d7af6a8a69e56622ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9ae6025ac398d72ae1e2272dd73d6ce"><td class="memItemLeft" align="right" valign="top"><a id="ad9ae6025ac398d72ae1e2272dd73d6ce"></a>
-__always_inline string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
-<tr class="separator:ad9ae6025ac398d72ae1e2272dd73d6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5392dc5049a78d4f70f6e987e38886bf"><td class="memItemLeft" align="right" valign="top"><a id="a5392dc5049a78d4f70f6e987e38886bf"></a>
-__always_inline string&#160;</td><td class="memItemRight" valign="bottom"><b>getSymbol</b> ()</td></tr>
-<tr class="separator:a5392dc5049a78d4f70f6e987e38886bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4c21d3e16dd7377369c69c4ac11bc0f"><td class="memItemLeft" align="right" valign="top"><a id="ab4c21d3e16dd7377369c69c4ac11bc0f"></a>
-__always_inline uint8&#160;</td><td class="memItemRight" valign="bottom"><b>getDecimals</b> ()</td></tr>
-<tr class="separator:ab4c21d3e16dd7377369c69c4ac11bc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c05ab6a2ab7da3cacd56cbd5c2ace84"><td class="memItemLeft" align="right" valign="top"><a id="a4c05ab6a2ab7da3cacd56cbd5c2ace84"></a>
-__always_inline uint128&#160;</td><td class="memItemRight" valign="bottom"><b>getBalance</b> ()</td></tr>
-<tr class="separator:a4c05ab6a2ab7da3cacd56cbd5c2ace84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a555e7b111350e759229c3d2432822f01"><td class="memItemLeft" align="right" valign="top"><a id="a555e7b111350e759229c3d2432822f01"></a>
-__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><b>getRootKey</b> ()</td></tr>
-<tr class="separator:a555e7b111350e759229c3d2432822f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a410dfa1643d66ce9bda0eee49ec76f"><td class="memItemLeft" align="right" valign="top"><a id="a6a410dfa1643d66ce9bda0eee49ec76f"></a>
-__always_inline uint256&#160;</td><td class="memItemRight" valign="bottom"><b>getWalletKey</b> ()</td></tr>
-<tr class="separator:a6a410dfa1643d66ce9bda0eee49ec76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6d3680f9890d1217ddc8cced0a9088a"><td class="memItemLeft" align="right" valign="top"><a id="ac6d3680f9890d1217ddc8cced0a9088a"></a>
-__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getRootAddress</b> ()</td></tr>
-<tr class="separator:ac6d3680f9890d1217ddc8cced0a9088a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaff31b656319f34b8887c76b52f4a51a"><td class="memItemLeft" align="right" valign="top"><a id="aaff31b656319f34b8887c76b52f4a51a"></a>
-__always_inline address&#160;</td><td class="memItemRight" valign="bottom"><b>getOwnerAddress</b> ()</td></tr>
-<tr class="separator:aaff31b656319f34b8887c76b52f4a51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5d89b1a527648aab50037da3af1b7f7"><td class="memItemLeft" align="right" valign="top"><a id="aa5d89b1a527648aab50037da3af1b7f7"></a>
-__always_inline <a class="el" href="structtvm_1_1allowance__info.html">allowance_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>allowance</b> ()</td></tr>
-<tr class="separator:aa5d89b1a527648aab50037da3af1b7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03c53e0f8d48a8cadad6ae2c0a1d86d"><td class="memItemLeft" align="right" valign="top"><a id="ad03c53e0f8d48a8cadad6ae2c0a1d86d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>transfer</b> (address_opt answer_addr, address to, uint128 tokens, uint128 evers, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
+<tr class="separator:ad03c53e0f8d48a8cadad6ae2c0a1d86d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b39638748862279a76a983fd9464a3"><td class="memItemLeft" align="right" valign="top"><a id="ad5b39638748862279a76a983fd9464a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>transferToRecipient</b> (address_opt answer_addr, Tip3Creds to, uint128 tokens, uint128 evers, uint128 keep_evers, bool deploy, uint128 return_ownership, opt&lt; cell &gt; notify_payload)</td></tr>
+<tr class="separator:ad5b39638748862279a76a983fd9464a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab788b6231c71f918f3da22133e90af79"><td class="memItemLeft" align="right" valign="top"><a id="ab788b6231c71f918f3da22133e90af79"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><b>balance</b> ()</td></tr>
+<tr class="separator:ab788b6231c71f918f3da22133e90af79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a7bd42030bd7146f41f87b2fa0274c"><td class="memItemLeft" align="right" valign="top"><a id="a34a7bd42030bd7146f41f87b2fa0274c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>acceptMint</b> (uint128 _value, address answer_addr, uint128 keep_evers, opt&lt; cell &gt; notify_payload)</td></tr>
+<tr class="separator:a34a7bd42030bd7146f41f87b2fa0274c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533c32a140a4ef56de5c7a7bb9ae66ee"><td class="memItemLeft" align="right" valign="top"><a id="a533c32a140a4ef56de5c7a7bb9ae66ee"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>acceptTransfer</b> (uint128 _value, address answer_addr, uint128 keep_evers, uint256 sender_pubkey, address_opt sender_owner, opt&lt; cell &gt; notify_payload)</td></tr>
+<tr class="separator:a533c32a140a4ef56de5c7a7bb9ae66ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310034513b558f4b080bcb676eb313a1"><td class="memItemLeft" align="right" valign="top"><a id="a310034513b558f4b080bcb676eb313a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> (address dest)</td></tr>
+<tr class="separator:a310034513b558f4b080bcb676eb313a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aae760d74ff1765d00088136b1b376e"><td class="memItemLeft" align="right" valign="top"><a id="a6aae760d74ff1765d00088136b1b376e"></a>
+<a class="el" href="structtvm_1_1details__info.html">details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>details</b> ()</td></tr>
+<tr class="separator:a6aae760d74ff1765d00088136b1b376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf43d4b26f055a829fce28dc1e3bf42"><td class="memItemLeft" align="right" valign="top"><a id="abdf43d4b26f055a829fce28dc1e3bf42"></a>
+<a class="el" href="structtvm_1_1details__info.html">details_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDetails</b> ()</td></tr>
+<tr class="separator:abdf43d4b26f055a829fce28dc1e3bf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8106120ed01f0b263c31ed2fc5425879"><td class="memItemLeft" align="right" valign="top"><a id="a8106120ed01f0b263c31ed2fc5425879"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><b>getBalance</b> ()</td></tr>
+<tr class="separator:a8106120ed01f0b263c31ed2fc5425879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9417f99af28715e06b1c80049f7b5dc"><td class="memItemLeft" align="right" valign="top"><a id="ab9417f99af28715e06b1c80049f7b5dc"></a>
+opt&lt; uint256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getLendPubkey</b> ()</td></tr>
+<tr class="separator:ab9417f99af28715e06b1c80049f7b5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41046aae4bdef0a3416cff2da6b2e981"><td class="memItemLeft" align="right" valign="top"><a id="a41046aae4bdef0a3416cff2da6b2e981"></a>
+opt&lt; <a class="el" href="structtvm_1_1bind__info.html">bind_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getBinding</b> ()</td></tr>
+<tr class="separator:a41046aae4bdef0a3416cff2da6b2e981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5abbecd94609554a8bbf4e7c7584c071"><td class="memItemLeft" align="right" valign="top"><a id="a5abbecd94609554a8bbf4e7c7584c071"></a>
 static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_on_bounced</b> (cell msg, slice msg_body)</td></tr>
 <tr class="separator:a5abbecd94609554a8bbf4e7c7584c071"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae14a616a15b7cd32318c4aa1079ffefe"><td class="memItemLeft" align="right" valign="top"><a id="ae14a616a15b7cd32318c4aa1079ffefe"></a>
-static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_receive</b> (cell, slice)</td></tr>
-<tr class="separator:ae14a616a15b7cd32318c4aa1079ffefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a156b93fe4246fcf45c49b902d8d3b58e"><td class="memItemLeft" align="right" valign="top"><a id="a156b93fe4246fcf45c49b902d8d3b58e"></a>
+static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_fallback</b> ([[maybe_unused]] cell msg, [[maybe_unused]] slice msg_body)</td></tr>
+<tr class="separator:a156b93fe4246fcf45c49b902d8d3b58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19e1c6afe155effac8972267e715387"><td class="memItemLeft" align="right" valign="top"><a id="aa19e1c6afe155effac8972267e715387"></a>
+static __always_inline int&#160;</td><td class="memItemRight" valign="bottom"><b>_receive</b> ([[maybe_unused]] cell msg, [[maybe_unused]] slice msg_body)</td></tr>
+<tr class="separator:aa19e1c6afe155effac8972267e715387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>

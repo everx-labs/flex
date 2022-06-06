@@ -67,7 +67,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structtvm_1_1DFlex-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -84,92 +83,77 @@ Inheritance diagram for DFlex:</div>
 <div class="dyncontent">
 <div class="center"><img src="structtvm_1_1DFlex__inherit__graph.png" border="0" usemap="#DFlex_inherit__map" alt="Inheritance graph"/></div>
 <map name="DFlex_inherit__map" id="DFlex_inherit__map">
-<area shape="rect" title="Flex persistent data struct." alt="" coords="41,5,101,32"/>
-<area shape="rect" href="classFlex.html" title="Implements tvm::IFlex interface." alt="" coords="5,80,136,107"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for DFlex:</div>
-<div class="dyncontent">
-<div class="center"><img src="structtvm_1_1DFlex__coll__graph.png" border="0" usemap="#DFlex_coll__map" alt="Collaboration graph"/></div>
-<map name="DFlex_coll__map" id="DFlex_coll__map">
-<area shape="rect" title="Flex persistent data struct." alt="" coords="91,95,151,121"/>
-<area shape="rect" href="structtvm_1_1ListingConfig.html" title="Native funds (evers) configuration for listing procedures." alt="" coords="5,5,112,32"/>
-<area shape="rect" href="structtvm_1_1EversConfig.html" title="Processing native funds value ..." alt="" coords="136,5,235,32"/>
+<area shape="rect" title="Flex persistent data struct." alt="" coords="5,5,65,32"/>
+<area shape="rect" href="classFlex.html" title="Implements tvm::IFlex interface." alt="" coords="10,80,61,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:ab46e6300fe5c5713c2b4def541428190"><td class="memItemLeft" align="right" valign="top"><a id="ab46e6300fe5c5713c2b4def541428190"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#ab46e6300fe5c5713c2b4def541428190">wrappers_map</a> = dict_map&lt; uint256, <a class="el" href="structtvm_1_1WrapperListingRequest.html">WrapperListingRequest</a> &gt;</td></tr>
-<tr class="memdesc:ab46e6300fe5c5713c2b4def541428190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map from wrapper pubkey into listing data. <br /></td></tr>
-<tr class="separator:ab46e6300fe5c5713c2b4def541428190"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1c208a126e7bc6f1992afef3fd81c38"><td class="memItemLeft" align="right" valign="top"><a id="ae1c208a126e7bc6f1992afef3fd81c38"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#ae1c208a126e7bc6f1992afef3fd81c38">xchg_pairs_map</a> = dict_map&lt; uint256, <a class="el" href="structtvm_1_1XchgPairListingRequest.html">XchgPairListingRequest</a> &gt;</td></tr>
-<tr class="memdesc:ae1c208a126e7bc6f1992afef3fd81c38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map from request pubkey into xchg pair listing data. <br /></td></tr>
-<tr class="separator:ae1c208a126e7bc6f1992afef3fd81c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a060134bd0fc04a99f554e8ce1cb857c4"><td class="memItemLeft" align="right" valign="top"><a id="a060134bd0fc04a99f554e8ce1cb857c4"></a>
-uint256&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a060134bd0fc04a99f554e8ce1cb857c4">deployer_pubkey_</a></td></tr>
-<tr class="memdesc:a060134bd0fc04a99f554e8ce1cb857c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deployer's public key. <br /></td></tr>
-<tr class="separator:a060134bd0fc04a99f554e8ce1cb857c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71715a0b0ac63cf3809eb49d8deeff62"><td class="memItemLeft" align="right" valign="top"><a id="a71715a0b0ac63cf3809eb49d8deeff62"></a>
+uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a71715a0b0ac63cf3809eb49d8deeff62">exchange_version_</a></td></tr>
+<tr class="memdesc:a71715a0b0ac63cf3809eb49d8deeff62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exchange update group version. <br /></td></tr>
+<tr class="separator:a71715a0b0ac63cf3809eb49d8deeff62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adace34b88f2aa0bf685f076a78b886fd"><td class="memItemLeft" align="right" valign="top"><a id="adace34b88f2aa0bf685f076a78b886fd"></a>
 int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#adace34b88f2aa0bf685f076a78b886fd">workchain_id_</a></td></tr>
 <tr class="memdesc:adace34b88f2aa0bf685f076a78b886fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Workchain id. <br /></td></tr>
 <tr class="separator:adace34b88f2aa0bf685f076a78b886fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17c40d68fa44de79b6007e34ee12985c"><td class="memItemLeft" align="right" valign="top"><a id="a17c40d68fa44de79b6007e34ee12985c"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a17c40d68fa44de79b6007e34ee12985c">ownership_description_</a></td></tr>
-<tr class="memdesc:a17c40d68fa44de79b6007e34ee12985c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ownership description. <br /></td></tr>
-<tr class="separator:a17c40d68fa44de79b6007e34ee12985c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e03bc8b743a6d663489cceacc1082fc"><td class="memItemLeft" align="right" valign="top"><a id="a1e03bc8b743a6d663489cceacc1082fc"></a>
-address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a1e03bc8b743a6d663489cceacc1082fc">owner_address_</a></td></tr>
-<tr class="memdesc:a1e03bc8b743a6d663489cceacc1082fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owner contract address (optional) <br /></td></tr>
-<tr class="separator:a1e03bc8b743a6d663489cceacc1082fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa99cb959b3a7f6e47d21d223e190930d"><td class="memItemLeft" align="right" valign="top"><a id="aa99cb959b3a7f6e47d21d223e190930d"></a>
-<a class="el" href="structtvm_1_1EversConfig.html">EversConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#aa99cb959b3a7f6e47d21d223e190930d">ev_cfg_</a></td></tr>
-<tr class="memdesc:aa99cb959b3a7f6e47d21d223e190930d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Native funds (processing costs) configuration. <br /></td></tr>
-<tr class="separator:aa99cb959b3a7f6e47d21d223e190930d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a120ac79c1def1302bf2e2d15cea089b3"><td class="memItemLeft" align="right" valign="top"><a id="a120ac79c1def1302bf2e2d15cea089b3"></a>
-<a class="el" href="structtvm_1_1ListingConfig.html">ListingConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a120ac79c1def1302bf2e2d15cea089b3">listing_cfg_</a></td></tr>
-<tr class="memdesc:a120ac79c1def1302bf2e2d15cea089b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listing processing costs configuration. <br /></td></tr>
-<tr class="separator:a120ac79c1def1302bf2e2d15cea089b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1c9d636996f22fadde54c1cdacf8cb6"><td class="memItemLeft" align="right" valign="top"><a id="ad1c9d636996f22fadde54c1cdacf8cb6"></a>
 optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#ad1c9d636996f22fadde54c1cdacf8cb6">xchg_pair_code_</a></td></tr>
 <tr class="memdesc:ad1c9d636996f22fadde54c1cdacf8cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> code (with salt added) <br /></td></tr>
 <tr class="separator:ad1c9d636996f22fadde54c1cdacf8cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda1f92e1ddf444e50aabc2908fff730"><td class="memItemLeft" align="right" valign="top"><a id="acda1f92e1ddf444e50aabc2908fff730"></a>
-optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#acda1f92e1ddf444e50aabc2908fff730">xchg_price_code_</a></td></tr>
-<tr class="memdesc:acda1f92e1ddf444e50aabc2908fff730"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classPriceXchg.html">PriceXchg</a> code. <br /></td></tr>
-<tr class="separator:acda1f92e1ddf444e50aabc2908fff730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64138129d91dd3e2ad5e716fb9f7d918"><td class="memItemLeft" align="right" valign="top"><a id="a64138129d91dd3e2ad5e716fb9f7d918"></a>
-optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a64138129d91dd3e2ad5e716fb9f7d918">ext_wallet_code_</a></td></tr>
-<tr class="memdesc:a64138129d91dd3e2ad5e716fb9f7d918"><td class="mdescLeft">&#160;</td><td class="mdescRight">External wallet code (TONTokenWallet.tvc) <br /></td></tr>
-<tr class="separator:a64138129d91dd3e2ad5e716fb9f7d918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56779bd50e9c0a91c853fef996f25bda"><td class="memItemLeft" align="right" valign="top"><a id="a56779bd50e9c0a91c853fef996f25bda"></a>
-optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a56779bd50e9c0a91c853fef996f25bda">flex_wallet_code_</a></td></tr>
-<tr class="memdesc:a56779bd50e9c0a91c853fef996f25bda"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> wallet code (FlexWallet.tvc) <br /></td></tr>
-<tr class="separator:a56779bd50e9c0a91c853fef996f25bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d411fa84dc05d979cd714a050d5b24b"><td class="memItemLeft" align="right" valign="top"><a id="a9d411fa84dc05d979cd714a050d5b24b"></a>
-optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a9d411fa84dc05d979cd714a050d5b24b">wrapper_code_</a></td></tr>
-<tr class="memdesc:a9d411fa84dc05d979cd714a050d5b24b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classWrapper.html">Wrapper</a> code. <br /></td></tr>
-<tr class="separator:a9d411fa84dc05d979cd714a050d5b24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a496e97122be445943477bd0db0a44be7"><td class="memItemLeft" align="right" valign="top"><a id="a496e97122be445943477bd0db0a44be7"></a>
-optcell&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a496e97122be445943477bd0db0a44be7">wrapper_ever_code_</a></td></tr>
-<tr class="memdesc:a496e97122be445943477bd0db0a44be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">WrapperEver code. <br /></td></tr>
-<tr class="separator:a496e97122be445943477bd0db0a44be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a59ae48166a091894e121adbce8e33c"><td class="memItemLeft" align="right" valign="top"><a id="a8a59ae48166a091894e121adbce8e33c"></a>
-uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a8a59ae48166a091894e121adbce8e33c">deals_limit_</a></td></tr>
-<tr class="memdesc:a8a59ae48166a091894e121adbce8e33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deals limit for one transaction. <br /></td></tr>
-<tr class="separator:a8a59ae48166a091894e121adbce8e33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b19842433f901d7d079131d3521f99b"><td class="memItemLeft" align="right" valign="top"><a id="a7b19842433f901d7d079131d3521f99b"></a>
-<a class="el" href="structtvm_1_1DFlex.html#ab46e6300fe5c5713c2b4def541428190">wrappers_map</a>&#160;</td><td class="memItemRight" valign="bottom"><b>wrapper_listing_requests_</b></td></tr>
-<tr class="separator:a7b19842433f901d7d079131d3521f99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01fbfbfb995137d02cca9fab6590649"><td class="memItemLeft" align="right" valign="top"><a id="ac01fbfbfb995137d02cca9fab6590649"></a>
-<a class="el" href="structtvm_1_1DFlex.html#ae1c208a126e7bc6f1992afef3fd81c38">xchg_pairs_map</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xchg_pair_listing_requests_</b></td></tr>
-<tr class="separator:ac01fbfbfb995137d02cca9fab6590649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5299a4126fe9e7968a6aa2bc2e1592"><td class="memItemLeft" align="right" valign="top"><a id="aca5299a4126fe9e7968a6aa2bc2e1592"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#aca5299a4126fe9e7968a6aa2bc2e1592">first_pair_</a></td></tr>
+<tr class="memdesc:aca5299a4126fe9e7968a6aa2bc2e1592"><td class="mdescLeft">&#160;</td><td class="mdescRight">First <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> in linked list. <br /></td></tr>
+<tr class="separator:aca5299a4126fe9e7968a6aa2bc2e1592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac236312add8b63ca642ccfcd747f1016"><td class="memItemLeft" align="right" valign="top"><a id="ac236312add8b63ca642ccfcd747f1016"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#ac236312add8b63ca642ccfcd747f1016">last_pair_</a></td></tr>
+<tr class="memdesc:ac236312add8b63ca642ccfcd747f1016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> in linked list. <br /></td></tr>
+<tr class="separator:ac236312add8b63ca642ccfcd747f1016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd2f614871d50f4e91af686694024dba"><td class="memItemLeft" align="right" valign="top"><a id="afd2f614871d50f4e91af686694024dba"></a>
+uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#afd2f614871d50f4e91af686694024dba">pairs_count_</a></td></tr>
+<tr class="memdesc:afd2f614871d50f4e91af686694024dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> contracts. <br /></td></tr>
+<tr class="separator:afd2f614871d50f4e91af686694024dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a634c4c08f706798a4e89f7dd72e5c37c"><td class="memItemLeft" align="right" valign="top"><a id="a634c4c08f706798a4e89f7dd72e5c37c"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a634c4c08f706798a4e89f7dd72e5c37c">flex_keep_evers_</a></td></tr>
+<tr class="memdesc:a634c4c08f706798a4e89f7dd72e5c37c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evers to keep in the contract. <br /></td></tr>
+<tr class="separator:a634c4c08f706798a4e89f7dd72e5c37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace7be4b3b035f4d6a290f063fe789143"><td class="memItemLeft" align="right" valign="top"><a id="ace7be4b3b035f4d6a290f063fe789143"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#ace7be4b3b035f4d6a290f063fe789143">it_</a></td></tr>
+<tr class="memdesc:ace7be4b3b035f4d6a290f063fe789143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Old pair iterator (for cloning) <br /></td></tr>
+<tr class="separator:ace7be4b3b035f4d6a290f063fe789143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a512fde3faf5ab744bc6715b5af9de5e6"><td class="memItemLeft" align="right" valign="top"><a id="a512fde3faf5ab744bc6715b5af9de5e6"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a512fde3faf5ab744bc6715b5af9de5e6">prev_clone_</a></td></tr>
+<tr class="memdesc:a512fde3faf5ab744bc6715b5af9de5e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Previous pair clone (for cloning) <br /></td></tr>
+<tr class="separator:a512fde3faf5ab744bc6715b5af9de5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa44905d07dfd68fd29ed6475b26a59a4"><td class="memItemLeft" align="right" valign="top"><a id="aa44905d07dfd68fd29ed6475b26a59a4"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#aa44905d07dfd68fd29ed6475b26a59a4">next_</a></td></tr>
+<tr class="memdesc:aa44905d07dfd68fd29ed6475b26a59a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next <a class="el" href="classXchgPair.html" title="Implements tvm::IXchgPair interface.">XchgPair</a> address (for cloning) <br /></td></tr>
+<tr class="separator:aa44905d07dfd68fd29ed6475b26a59a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e04198f25cae8a6951b4b21ee13e24"><td class="memItemLeft" align="right" valign="top"><a id="a99e04198f25cae8a6951b4b21ee13e24"></a>
+address_opt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a99e04198f25cae8a6951b4b21ee13e24">notify_addr_</a></td></tr>
+<tr class="memdesc:a99e04198f25cae8a6951b4b21ee13e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification address (AMM) (for cloning) <br /></td></tr>
+<tr class="separator:a99e04198f25cae8a6951b4b21ee13e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996c00e2b24a2d5e6f9127f59487f39d"><td class="memItemLeft" align="right" valign="top"><a id="a996c00e2b24a2d5e6f9127f59487f39d"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a996c00e2b24a2d5e6f9127f59487f39d">min_amount_</a></td></tr>
+<tr class="memdesc:a996c00e2b24a2d5e6f9127f59487f39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum amount of major tokens for a deal or an order. <br /></td></tr>
+<tr class="separator:a996c00e2b24a2d5e6f9127f59487f39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd0f426dd4b29ddebd69b7926a833f5"><td class="memItemLeft" align="right" valign="top"><a id="a1cd0f426dd4b29ddebd69b7926a833f5"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a1cd0f426dd4b29ddebd69b7926a833f5">minmove_</a></td></tr>
+<tr class="memdesc:a1cd0f426dd4b29ddebd69b7926a833f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum move for price. <br /></td></tr>
+<tr class="separator:a1cd0f426dd4b29ddebd69b7926a833f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca218b4cf43985fecea6e111a6966295"><td class="memItemLeft" align="right" valign="top"><a id="aca218b4cf43985fecea6e111a6966295"></a>
+uint128&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#aca218b4cf43985fecea6e111a6966295">price_denum_</a></td></tr>
+<tr class="memdesc:aca218b4cf43985fecea6e111a6966295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Price denominator for the pair. <br /></td></tr>
+<tr class="separator:aca218b4cf43985fecea6e111a6966295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f73ed09f79ae5e1d57e42072a26c30"><td class="memItemLeft" align="right" valign="top"><a id="a67f73ed09f79ae5e1d57e42072a26c30"></a>
+opt&lt; Tip3Config &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a67f73ed09f79ae5e1d57e42072a26c30">major_tip3cfg_</a></td></tr>
+<tr class="memdesc:a67f73ed09f79ae5e1d57e42072a26c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration of the major tip3 token for current pair (for cloning) <br /></td></tr>
+<tr class="separator:a67f73ed09f79ae5e1d57e42072a26c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93be3c29fa2df287a8099bf21c60357a"><td class="memItemLeft" align="right" valign="top"><a id="a93be3c29fa2df287a8099bf21c60357a"></a>
+opt&lt; Tip3Config &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtvm_1_1DFlex.html#a93be3c29fa2df287a8099bf21c60357a">minor_tip3cfg_</a></td></tr>
+<tr class="memdesc:a93be3c29fa2df287a8099bf21c60357a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration of the minor tip3 token for current pair (for cloning) <br /></td></tr>
+<tr class="separator:a93be3c29fa2df287a8099bf21c60357a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFlex.html" title="Implements tvm::IFlex interface.">Flex</a> persistent data struct. </p>
