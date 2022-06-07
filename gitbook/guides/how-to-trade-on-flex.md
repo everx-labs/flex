@@ -1,12 +1,4 @@
-# How to trade on Flex
-
-## What is Flex?
-
-Flex (stands for Flash exchange) is a decentralized exchange on Everscale, which allows users to buy and sell TIP3 distributed tokens listed on it.
-
-Flex operates as a system of open sourced smart contracts, optimized for speed and security. All buy and sell actions are performed through a specialized Flex [DeBot](https://help.ton.surf/en/support/solutions/folders/77000278262), which is supported by DeBot browsers such as [Surf](https://ton.surf/main). It helps the user create and manage all contracts required to trade on Flex.
-
-Flex, Flex DeBot and distributed token source code is available [here](https://github.com/tonlabs/flex).
+# Trade on Flex
 
 ## What can I trade?
 
@@ -16,85 +8,41 @@ Use the drop-down Markets to select a token you want to trade:
 
 ![](<../.gitbook/assets/Screenshot from 2022-03-29 12-02-48.png>)
 
-You will be able to deposit your EVERs into Flex to start trading any other tokens listed there.
+You will be able to deposit your funds into Flex to start trading any other tokens listed there.
 
 ## How to get started
 
-To trade on Flex you need to authorize your Flex app in [Surf](https://ever.surf).
+To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Wallets section.
 
-Click **Connect Surf**.
+![](../.gitbook/assets/015.png)
 
-![](../.gitbook/assets/01.png)
+## How to deposit
 
-Create your account - enter a username and password for Flex:
+Usually some funds are deposited during the [initial authorization](connect-your-wallet.md).
 
-![](../.gitbook/assets/02.png)
+If you want to deposit more, or didn't deposit any after authorizing, click on the **Deposit button** next to the Asset you want to deposit, or on the **Surf** button in the upper right corner.
 
-Scan QR code with your Surf or go to Surf web:
+![](../.gitbook/assets/002.png)
 
-![](../.gitbook/assets/03.png)
+Scan QR code or go to desktop Surf app.
 
-Surf will load the **Flex Auth** DeBot. It will help you set up all you need to trade on Flex.
+The Flex Auth DeBot will launch. Select Deposit EVER or Deposit TIP-3.1, depending on the asset you want to deposit.
 
-First, choose how many EVERs you want to deposit to your Client contract for trade operations.
+![](../.gitbook/assets/011.jpg)
 
-![](../.gitbook/assets/04.png)
+Enter amount to be deposited.
 
-**Note**: These are not the tokens you will trade, these will be used to cover various trading expenses. Don’t send all your tokens here.
+![](../.gitbook/assets/008.jpg)
 
-![](../.gitbook/assets/05.png)
+Enter amount to use for transaction fee (everything above the fee will be sent to the asset's Flex internal wallet and will be later used to pay for gas during transactions.
 
-Confirm both suggested transactions, and your Client contract will be deployed.
+![](../.gitbook/assets/009.jpg)
 
-![](../.gitbook/assets/06.png)
+Confirm transaction.
 
-Once it is deployed, your Client contract needs to be configured.
+![](../.gitbook/assets/010.jpg)
 
-
-
-![](<../.gitbook/assets/07 (1).png>)
-
-Review and confirm the transactions the DeBot suggests.
-
-![](../.gitbook/assets/08.png)
-
-There will be a few of them.
-
-![](../.gitbook/assets/09.png)
-
-![](<../.gitbook/assets/10 (1).png>)
-
-Once Client is configured, select what keys to use to encrypt your Flex account credentials.
-
-![](../.gitbook/assets/11.png)
-
-A few more steps to set up contracts required for Flex operations will be deployed. Confirm the required transactions:
-
-![](../.gitbook/assets/12.png)
-
-![](../.gitbook/assets/13.png)
-
-Once all technical transactions are completed, the DeBot will inform you that authorization is done and display your Flex Client address and user ID.
-
-![](../.gitbook/assets/14.png)
-
-Now you can deposit the EVERs you will trade.
-
-Choose the **Deposit EVER** action, and select how many EVERs you will **transfer to the native balance** (to cover transaction fees, not trade) and how many you want to make available to **trade on Flex**:
-
-![](../.gitbook/assets/16.png)
-
-Confirm the transaction for EVERs deposit, and one more transaction for wallet configuration:
-
-![](../.gitbook/assets/17.png)
-
-Once this is done, you are all set to start trading.
-
-![](../.gitbook/assets/18.png)
-
-Return to Flex. Now you can use the EVERs you deposited to trade.
-
-
+Return to Flex. Now you can use the funds you deposited to trade.
 
 ## How to buy/sell
 
@@ -106,15 +54,17 @@ Flex displays all available information about a token which can help you decide 
 
 Your current assets on Flex are always displayed in the Wallets section:
 
-![](../.gitbook/assets/24.png)
+![](../.gitbook/assets/022.png)
 
-**Note:** Native EVER column **** displays the funds allocated for covering trading fees on your wallet. They are never traded, and slowly get spent on trading operations. They should be kept in the range ofafew dosen EVERs.
+{% hint style="info" %}
+**Gas** balance is the native EVERs you use to pay transaction fees. It should be [kept above 50](keep-up-gas-balance.md) to make sure you can perform any actions on Flex.
+{% endhint %}
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-![](../.gitbook/assets/19.png)
+![](../.gitbook/assets/017.png)
 
-You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. Click the **Buy...** or **Sell...** button, once you're ready.&#x20;
+You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. Click the **BUY** or **SELL** button, once you're ready.&#x20;
 
 If you set neither **POST** nor **IOC** flag:
 
@@ -124,3 +74,41 @@ If you set neither **POST** nor **IOC** flag:
 **POST** flag will place your order on the market to wait for someone else to fulfill it. You will become a market maker and benefit from Flex fees.
 
 **IOC** flag creates and immediate-or-cancel order. If there are no orders on the market fitting yours, it will be cancelled. Otherwise, it will be immediately fulfilled.
+
+A notification confirming your order creation will appear in the top right corner.
+
+![](../.gitbook/assets/019.png)
+
+While your order remains opened in the Orderbook, it is listed in your **Open orders** tab at the bottom of the page.
+
+![](../.gitbook/assets/020.png)
+
+Once your order is fulfilled, it appears in your **Trade history** tab at the bottom of the page.
+
+![](../.gitbook/assets/021.png)
+
+## How to withdraw
+
+Go to the **Funds** section at the bottom and click Withdraw next to the asset you wish to withdraw.
+
+![](../.gitbook/assets/023.png)
+
+Scan QR code or go to desktop Surf app.
+
+![](../.gitbook/assets/002.png)
+
+The Flex auth DeBot will launch. Enter amount of tokens to unwrap (withdraw).
+
+![](../.gitbook/assets/024.jpg)
+
+Select the address which is going to be the owner of the tokens you are withdrawing.&#x20;
+
+![](../.gitbook/assets/025.jpg)
+
+Confirm transaction. It takes about 1.5 EVERs to perform.
+
+![](../.gitbook/assets/026.jpg)
+
+You can see your withdrawn tokens in [https://ever.live](https://ever.live) on the page your Surf wallet in the **Token balances** section.
+
+![](../.gitbook/assets/027.png)

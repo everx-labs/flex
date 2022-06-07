@@ -1,10 +1,13 @@
 # Table of contents
 
 * [Flash Exchange (FLEX)](../README.md)
+* [Flex Fees](flex-fees.md)
 
 ## Guides
 
-* [How to trade on Flex](guides/how-to-trade-on-flex.md)
+* [Connect Your Wallet](guides/connect-your-wallet.md)
+* [Trade on Flex](guides/how-to-trade-on-flex.md)
+* [Keep up Gas Balance](guides/keep-up-gas-balance.md)
 
 ## Specifications
 
