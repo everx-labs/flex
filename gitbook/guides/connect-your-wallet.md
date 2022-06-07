@@ -68,4 +68,4 @@ Looking at your Flex interface you will see the deposited trading funds in your 
 
 ![](../.gitbook/assets/013.png)
 
-Currently available Gas balance is displayed in this list to. It will gradually be spent on all your actions on Flex. Make sure to keep it above 50 tokens to be able to trade anything on Flex.
+Currently available Gas balance is displayed in this list toщ. It will gradually be spent on all your actions on Flex. Make sure to [keep it above 50 tokens](keep-up-gas-balance.md) to be able to trade anything on Flex.
