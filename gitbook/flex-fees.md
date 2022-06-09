@@ -39,7 +39,7 @@ Trades, being messages between smart contracts also are subject to blockchain fe
 * If an order is cancelled, process queue (0.4 EVERs) and return ownership (0.1 EVER) fees are paid instead of trade completion. The total fee of a created and then cancelled order is 0.5 EVERs.
 * If an order expires, only return ownership fee of 0.1 EVER is applied. The total fee of an expired order is 0.6 EVERs.
 
-These funds are taken from your [Gas balance](guides/keep-up-gas-balance.md).
+These funds are taken from your [Gas balance](guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
 
 #### Detailed description
 

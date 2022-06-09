@@ -39,6 +39,7 @@
 
 * [Flex Contracts Reference](https://tonlabs.github.io/flex/)
 * [Flex on GitHub](https://github.com/tonlabs/flex)
+* [Flex SDK on GitHub](https://github.com/tonlabs/flex-sdk-js)
 * [TIP3 specifications](https://github.com/everscale-org/docs/blob/main/src/Standard/TIP-3/1.md)
 * [Everscale Developer Tools](https://github.com/tonlabs/everdev)
 * [If you need to write more DeBots](https://github.com/tonlabs/debots)
