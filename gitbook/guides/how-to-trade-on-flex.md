@@ -8,13 +8,15 @@ Use the drop-down Markets to select a token you want to trade:
 
 ![](<../.gitbook/assets/Screenshot from 2022-03-29 12-02-48.png>)
 
-You will be able to deposit your funds into Flex to start trading any other tokens listed there.
+You will be able to deposit your funds into Flex to start trading any tokens listed there.
+
+![](../.gitbook/assets/030.png)
 
 ## How to get started
 
-To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Wallets section.
+To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Assets section.
 
-![](../.gitbook/assets/015.png)
+![](../.gitbook/assets/032.png)
 
 ## How to deposit
 
@@ -52,9 +54,9 @@ Flex displays all available information about a token which can help you decide 
 
 ![](../.gitbook/assets/23.png)
 
-Your current assets on Flex are always displayed in the Wallets section:
+Your current assets on Flex are always displayed in the Assets section:
 
-![](../.gitbook/assets/022.png)
+![](../.gitbook/assets/034.png)
 
 {% hint style="info" %}
 **Gas** balance is the native EVERs you use to pay transaction fees. It should be [kept above 50](keep-up-gas-balance.md) to make sure you can perform any actions on Flex.
@@ -62,9 +64,13 @@ Your current assets on Flex are always displayed in the Wallets section:
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-![](../.gitbook/assets/017.png)
+![](../.gitbook/assets/033.png)
 
-You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. Click the **BUY** or **SELL** button, once you're ready.&#x20;
+You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can use the slider to set a fraction of your funds you want to spend.
+
+**Note**: If you set the slider and want to edit the amount manually, turn the slider back down to zero first.
+
+Click the **BUY** or **SELL** button, once you're ready.&#x20;
 
 If you set neither **POST** nor **IOC** flag:
 
@@ -91,7 +97,7 @@ Once your order is fulfilled, it appears in your **Trade history** tab at the bo
 
 Go to the **Funds** section at the bottom and click Withdraw next to the asset you wish to withdraw.
 
-![](../.gitbook/assets/023.png)
+![](../.gitbook/assets/038.png)
 
 Scan QR code or go to desktop Surf app.
 
@@ -112,3 +118,57 @@ Confirm transaction. It takes about 1.5 EVERs to perform.
 You can see your withdrawn tokens in [https://ever.live](https://ever.live) on the page your Surf wallet in the **Token balances** section.
 
 ![](../.gitbook/assets/027.png)
+
+## How to withdraw Gas (native balances)
+
+If you want to disable the trader account and withdraw the funds on the gas balance of Flex internal wallets, go to Flex Auth DeBot (in Flex, click on **Surf** button in the top right corner, then scan QR or open Desktop App).
+
+All your native balances from your Flex internal wallets will withdrawn, and your assets from these wallets will be transferred to external TIP3 wallets belonging to your Surf account. Flex Client balance can be withdrawn too.
+
+In Flex Auth DeBot Select **Accounts management**.
+
+![](../.gitbook/assets/039.png)
+
+Select the keys you used to encrypt the account credentials when [connecting your wallet](connect-your-wallet.md). Usually it's your Surf keys.
+
+![](../.gitbook/assets/040.png)
+
+The DeBot will display the account you most recently authorized. (Click **Back** and select a different account, if you need to withdraw from an older account).
+
+![](../.gitbook/assets/041.png)
+
+Click **Remove UserId and Wallets**.
+
+![](../.gitbook/assets/043.png)
+
+Confirm the action. Several transactions to cancel all open orders of the account will be generated.
+
+![](../.gitbook/assets/044.png)
+
+Confirm the necessary transactions.
+
+![](../.gitbook/assets/045.png)
+
+Several transactions to withdraw assets and burn internal Flex wallets will be generated. Confirm them.
+
+![](../.gitbook/assets/046.png)
+
+Once all transactions are performed, DeBot will report success and display the userId of all your other accounts and the option to withdraw native EVERs from Flex Client.
+
+To withdraw gas from other accounts, select one of the other accounts.
+
+![](../.gitbook/assets/047.png)
+
+To withdraw EVERs from Flex Client, select the corresponding action.
+
+![](../.gitbook/assets/048.png)
+
+Enter amount to withdraw and select address to withdraw to.
+
+![](../.gitbook/assets/049.png)
+
+Confirm the action.
+
+Once done, DeBot will report success.
+
+You can keep using your Flex Client further to [authorize](connect-your-wallet.md) new trading accounts.

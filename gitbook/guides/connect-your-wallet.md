@@ -4,7 +4,7 @@ To get started trading on Flex you need to have a Surf wallet with your tokens. 
 
 Open Flex and click **Connect Surf**.
 
-![](../.gitbook/assets/000.png)
+![](../.gitbook/assets/031.png)
 
 The authorization prompt will appear. Enter a username and password for your Flex account.
 
@@ -64,8 +64,8 @@ Once done, you can **View user wallets** to see how many tokens (tradeable and n
 
 ![](../.gitbook/assets/012.jpg)
 
-Looking at your Flex interface you will see the deposited trading funds in your Wallets list.
+Looking at your Flex interface you will see the deposited trading funds in your Assets list.
 
-![](../.gitbook/assets/013.png)
+![](../.gitbook/assets/034.png)
 
-Currently available Gas balance is displayed in this list toщ. It will gradually be spent on all your actions on Flex. Make sure to [keep it above 50 tokens](keep-up-gas-balance.md) to be able to trade anything on Flex.
+Currently available Gas balance is displayed in this list too. It will gradually be spent on all your actions on Flex. Make sure to [keep it above 50 tokens](keep-up-gas-balance.md) to be able to trade anything on Flex.
