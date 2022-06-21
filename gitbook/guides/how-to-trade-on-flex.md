@@ -123,7 +123,7 @@ You can see your withdrawn tokens in [https://ever.live](https://ever.live) on t
 
 If the Flex Client owner wants to disable a trader account and to recover gas balances from the Flex token wallets, (s)he can go to the Flex Auth DeBot (in Flex, click on **Surf** button in the top right corner, then scan QR or open Desktop App).
 
-All gas balances from the Flex token wallets will be recovered, and tokens from these wallets will be transferred to external TIP-3 wallets belonging to the Surf account. The Flex Client gas balance can be recovered too.
+All gas balances from the Flex token wallets can be recovered, and tokens from these wallets can be transferred to external TIP-3 wallets belonging to the Surf account. The Flex Client gas balance can be recovered too.
 
 In Flex Auth DeBot Select **Accounts management**.
 
