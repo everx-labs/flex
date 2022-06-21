@@ -119,11 +119,11 @@ You can see your withdrawn tokens in [https://ever.live](https://ever.live) on t
 
 ![](../.gitbook/assets/027.png)
 
-## How to withdraw Gas (native balances)
+## How to recover Gas balances
 
-If you want to disable the trader account and withdraw the funds on the gas balance of Flex internal wallets, go to Flex Auth DeBot (in Flex, click on **Surf** button in the top right corner, then scan QR or open Desktop App).
+If the Flex Client owner wants to disable a trader account and to recover gas balances from the Flex token wallets, (s)he can go to the Flex Auth DeBot (in Flex, click on **Surf** button in the top right corner, then scan QR or open Desktop App).
 
-All your native balances from your Flex internal wallets will withdrawn, and your assets from these wallets will be transferred to external TIP3 wallets belonging to your Surf account. Flex Client balance can be withdrawn too.
+All gas balances from the Flex token wallets will be recovered, and tokens from these wallets will be transferred to external TIP-3 wallets belonging to the Surf account. The Flex Client gas balance can be recovered too.
 
 In Flex Auth DeBot Select **Accounts management**.
 
@@ -149,21 +149,21 @@ Confirm the necessary transactions.
 
 ![](../.gitbook/assets/045.png)
 
-Several transactions to withdraw assets and burn internal Flex wallets will be generated. Confirm them.
+Several transactions to withdraw assets and burn Flex token wallets will be generated. Confirm them.
 
 ![](../.gitbook/assets/046.png)
 
-Once all transactions are performed, DeBot will report success and display the userId of all your other accounts and the option to withdraw native EVERs from Flex Client.
+Once all transactions are performed, DeBot will report success and display the userId of all your other accounts and the option to recover Gas from the Flex Client.
 
-To withdraw gas from other accounts, select one of the other accounts.
+To recover Gas from other accounts, select one of the other accounts.
 
 ![](../.gitbook/assets/047.png)
 
-To withdraw EVERs from Flex Client, select the corresponding action.
+To recover Gas from the Flex Client, select the corresponding action.
 
 ![](../.gitbook/assets/048.png)
 
-Enter amount to withdraw and select address to withdraw to.
+Enter amount to recover and select address to transfer to.
 
 ![](../.gitbook/assets/049.png)
 
