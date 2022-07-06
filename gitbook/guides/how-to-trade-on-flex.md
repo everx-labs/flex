@@ -64,13 +64,9 @@ Your current assets on Flex are always displayed in the Assets section:
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-![](../.gitbook/assets/033.png)
+![](../.gitbook/assets/050.png)
 
-You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can use the slider to set a fraction of your funds you want to spend.
-
-**Note**: If you set the slider and want to edit the amount manually, turn the slider back down to zero first.
-
-Click the **BUY** or **SELL** button, once you're ready.&#x20;
+You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can also use the slider to set a fraction of your funds you want to spend.
 
 If you set neither **POST** nor **IOC** flag:
 
@@ -80,6 +76,8 @@ If you set neither **POST** nor **IOC** flag:
 **POST** flag will place your order on the market to wait for someone else to fulfill it. You will become a market maker and benefit from Flex fees.
 
 **IOC** flag creates and immediate-or-cancel order. If there are no orders on the market fitting yours, it will be cancelled. Otherwise, it will be immediately fulfilled.
+
+Click the **Buy** or **Sell** button, once you're ready.&#x20;
 
 A notification confirming your order creation will appear in the top right corner.
 
