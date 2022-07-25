@@ -16,7 +16,7 @@ You will be able to deposit your funds into Flex to start trading any tokens lis
 
 To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Assets section.
 
-![](../.gitbook/assets/032.png)
+![](../.gitbook/assets/052.png)
 
 ## How to deposit
 
@@ -64,14 +64,18 @@ Your current assets on Flex are always displayed in the Assets section:
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-![](../.gitbook/assets/050.png)
+![](../.gitbook/assets/053.png)
 
 You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can also use the slider to set a fraction of your funds you want to spend.
 
 If you set neither **POST** nor **IOC** flag:
 
-* **When buying**: if the tokens you want to buy are available in the amount you're requesting at a price equal to the one you specified, Flex will facilitate the trade immediately for however many currently available tokens fit your conditions and create a buy order for the rest. If none are available, a buy order will be created for the whole amount.
-* **When selling**: if there is a suitable buy order for the tokens you want to sell, or a part of it, the trade will be executed immediately, otherwise a buy order will be created for part or all of the tokens you are selling.
+* **When buying**: if the tokens you want to buy are available in the amount you're requesting at a price equal to the one you specified or better, Flex will facilitate the trade immediately **for the best available price** for however many currently available tokens fit your conditions and create a buy order for the rest. If no tokens are available for the specified price or better, a buy order will be created for the whole amount.
+* **When selling**: if there is a buy order for all or part of the the tokens you want to sell at the price you specified or better, a trade will be executed immediately **for the best available price** for as many tokens as are available, and if not all tokens are sold, a sell order will be created for the remaining part of the tokens you are selling. If no suitable buy order is available. a sell order for the full amount will be created.
+
+**Example**: Orderbook has two sell orders - 10 tokens for the price of 100 and 40 tokens for the price of 200. You send a buy order for 15 tokens for the price of 120. Flex executes a trade for the best price (100) for all available tokens (10) and creates a buy order for the remaining 5 tokens at the specified price of 120, as no tokens at that price are currently on sale.
+
+
 
 **POST** flag will place your order on the market to wait for someone else to fulfill it. You will become a market maker and benefit from Flex fees.
 

@@ -4,7 +4,7 @@ To get started trading on Flex you need to have a Surf wallet with your tokens. 
 
 Open Flex and click **Connect Surf**.
 
-![](../.gitbook/assets/031.png)
+![](../.gitbook/assets/051.png)
 
 The authorization prompt will appear. Enter a username and password for your Flex account.
 
