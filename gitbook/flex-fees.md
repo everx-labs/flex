@@ -41,6 +41,8 @@ Trades, being messages between smart contracts also are subject to blockchain fe
 
 These funds are taken from your [Gas balance](guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
 
+**Note**: When placing large limit orders, in rare cases (low liquidity in token pair spread over many small orders), blockchain fees may be several times higher, as the total fees will include the fees for each of the existing smallers orders, which are needed to fulfill the large order being executed.
+
 #### Detailed description
 
 When an order is created, an account of the following value is created in the Price smart contract for the user:&#x20;
