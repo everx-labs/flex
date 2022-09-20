@@ -34,13 +34,9 @@ __interface IWrapperDeployerEver {
   [[external]]
   void setWrapperEverCode(cell code) = 11;
 
-  /// Set external wallet code
-  [[external]]
-  void setExtWalletCode(cell code) = 12;
-
   /// Set Flex wallet code
   [[external]]
-  void setFlexWalletCode(cell code) = 13;
+  void setFlexWalletCode(cell code) = 12;
 
   /// Deploy WrapperEver
   [[internal, answer_id]]
@@ -58,7 +54,6 @@ struct DWrapperDeployerEver {
   uint128 reserve_wallet_value_; ///< Evers for reserve token wallet
   address super_root_;           ///< SuperRoot address
   optcell wrapper_code_;         ///< Wrapper code
-  optcell ext_wallet_code_;      ///< External Tip3 wallet code
   optcell flex_wallet_code_;     ///< Internal (Flex) Tip3 wallet code
 };
 

@@ -169,6 +169,12 @@ public:
     return _remaining_ev().with_void();
   }
 
+  void upgradeExternalWallet() {
+    check_owner();
+    require(!!wallet_, error_code::uninitialized);
+    broxus::ITokenWalletPtr(*wallet_)(_remaining_ev()).upgrade(*super_root_);
+  }
+
   // getters
   wrapper_details_info getDetails() {
     require(super_root_ && internal_wallet_code_ && wallet_, error_code::uninitialized);

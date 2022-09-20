@@ -54,13 +54,6 @@ public:
     wrapper_code_ = tvm_add_code_salt<WrapperSalt>({super_root_}, code);
   }
 
-  void setExtWalletCode(cell code) {
-    require(msg_pubkey() == pubkey_, error_code::message_sender_is_not_my_owner);
-    require(!ext_wallet_code_, error_code::code_rewrite_not_allowed);
-    tvm_accept();
-    ext_wallet_code_ = code;
-  }
-
   void setFlexWalletCode(cell code) {
     require(msg_pubkey() == pubkey_, error_code::message_sender_is_not_my_owner);
     require(!flex_wallet_code_, error_code::code_rewrite_not_allowed);

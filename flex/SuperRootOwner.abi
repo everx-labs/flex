@@ -144,6 +144,15 @@
     ]
   },
   {
+    "name": "upgradeBroxusWrapperWallet",
+    "inputs": [
+    { "name":"main_evers", "type":"uint128" },
+    { "name":"wrapper", "type":"address" }
+    ],
+    "outputs": [
+    ]
+  },
+  {
     "name": "deployWrappersConfig",
     "inputs": [
     { "name":"main_evers", "type":"uint128" },
@@ -244,8 +253,7 @@
     { "name":"main_evers", "type":"uint128" },
     { "name":"wrapper", "type":"address" },
     { "name":"tokens", "type":"uint128" },
-    { "name":"to", "type":"address" },
-    { "name":"evers", "type":"uint128" }
+    { "name":"to", "type":"address" }
     ],
     "outputs": [
     ]

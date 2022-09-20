@@ -101,6 +101,10 @@ __interface IWrapperBroxus {
     uint16  wrappers_cfg_code_depth ///< WrappersConfig salted code depth (for recognition of the next WrappersConfig)
   ) = immutable_ids::wrapper_set_cloned_id;
 
+  /// Upgrade external wallet (call wallet_->upgrade())
+  [[internal]]
+  void upgradeExternalWallet();
+
   /// Get info about contract state details.
   [[getter]]
   wrapper_details_info getDetails() = immutable_ids::wrapper_get_details_id;

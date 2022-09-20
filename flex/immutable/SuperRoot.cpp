@@ -239,18 +239,17 @@ public:
     address to,
     uint128 evers
   ) {
-    check_owner({ .allowed_for_update_team = false });
+    check_owner<true>({ .allowed_for_update_team = false });
     tvm_transfer(to, evers.get(), true);
   }
 
   void transferReserveTokens(
     address wrapper,
     uint128 tokens,
-    address to,
-    uint128 evers
+    address to
   ) {
     check_owner({ .allowed_for_update_team = false });
-    IWrapperPtr(wrapper)(Evers(evers.get())).transferFromReserveWallet(int_sender(), to, tokens);
+    IWrapperPtr(wrapper)(0_ev, SEND_ALL_GAS).transferFromReserveWallet(int_sender(), to, tokens);
   }
 
   void setFlags(
@@ -319,12 +318,16 @@ public:
     return 0;
   }
 
+  // `out_transfer = true` allows to transfer stored evers outside
+  template<bool out_transfer = false>
   void check_owner(auth_cfg cfg) {
     bool update_team_auth = cfg.allowed_for_update_team && update_team_ && (int_sender() == *update_team_);
     bool owner_auth = (int_sender() == owner_);
     require(update_team_auth || owner_auth, error_code::message_sender_is_not_my_owner);
-    tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
-    set_int_return_flag(SEND_ALL_GAS);
+    if constexpr (!out_transfer) {
+      tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
+      set_int_return_flag(SEND_ALL_GAS);
+    }
     if (!update_team_auth)
       tvm_accept();
   }

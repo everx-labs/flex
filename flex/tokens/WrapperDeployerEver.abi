@@ -31,22 +31,13 @@
     "id": "0xb"
   },
   {
-    "name": "setExtWalletCode",
-    "inputs": [
-    { "name":"code", "type":"cell" }
-    ],
-    "outputs": [
-    ],
-    "id": "0xc"
-  },
-  {
     "name": "setFlexWalletCode",
     "inputs": [
     { "name":"code", "type":"cell" }
     ],
     "outputs": [
     ],
-    "id": "0xd"
+    "id": "0xc"
   },
   {
     "name": "deploy",
@@ -72,7 +63,6 @@
     { "name":"reserve_wallet_value_", "type":"uint128" },
     { "name":"super_root_", "type":"address" },
     { "name":"wrapper_code_", "type":"optional(cell)" },
-    { "name":"ext_wallet_code_", "type":"optional(cell)" },
     { "name":"flex_wallet_code_", "type":"optional(cell)" }
   ],
   "events": [

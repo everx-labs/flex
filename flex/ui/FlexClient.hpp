@@ -159,6 +159,18 @@ __interface IFlexClient {
   [[internal]]
   void continueBurnThemAll();
 
+  /// To cancel all orders for the provided wallets
+  [[external]]
+  void cancelThemAll(
+    uint128             cancel_ev, ///< Processing evers for each price `cancelOrder` call.
+                                   ///< Two such calls for each price (cancel sells and cancel buys).
+    dict_array<address> prices     ///< Array of PriceXchg addresses
+  ) = 20;
+
+  /// Will send to itself from cancelThemAll if prices are more than 255 / 2 (we need two messages per price)
+  [[internal]]
+  void continueCancelThemAll();
+
   /// To convert some flex tip3 tokens back to external tip3 tokens
   [[external]]
   void unwrapWallet(
@@ -169,7 +181,7 @@ __interface IFlexClient {
     uint128     tokens,         ///< Tokens amount to unwrap (withdraw)
     opt<cell>   notify          ///< Notification payload to the destination wallet's owner
                                 ///<  (or EverReTransferArgs for (old WrapperEver)->(new WrapperEver) transfer)
-  ) = 20;
+  ) = 21;
 
   /// Bind trading wallet to a specific flex and PriceXchg code hash and set trader (lend pubkey)
   [[external]]
@@ -180,7 +192,7 @@ __interface IFlexClient {
     opt<bind_info> binding,      ///< if `set_binding` is true, binding will be set
     bool           set_trader,   ///< Set trader
     opt<uint256>   trader        ///< if `set_trader` is true, trader (lend pubkey) will be set
-  ) = 21;
+  ) = 22;
 
   /// Implementation of ITONTokenWalletNotify::onTip3Transfer.
   /// Notification from tip3 wallet to its owner contract about received tokens transfer.
@@ -201,7 +213,7 @@ __interface IFlexClient {
   resumable<void> upgrade(
     uint128 request_evers, ///< Evers to send in UserDataConfig::requestDetails()
     address user_data_cfg  ///< UserDataConfig address
-  ) = 22;
+  ) = 23;
 
   /// Prepare payload for transferWithNotify call from external wallet to wrapper's wallet
   ///  to deploy flex internal wallet
@@ -211,45 +223,48 @@ __interface IFlexClient {
     address_opt owner_addr,   ///< Owner's internal address (contract)
     uint128     evers,        ///< Processing evers
     uint128     keep_evers    ///< Evers to keep in the wallet
-  ) = 23;
+  ) = 24;
 
   /// Prepare payload for burn for WrapperEver -> WrapperEver transfer (EverReTransferArgs struct)
   [[getter]]
   cell getPayloadForEverReTransferArgs(
     uint128 wallet_deploy_evers, ///< Evers to be sent to the deployable wallet.
     uint128 wallet_keep_evers    ///< Evers to be kept in the deployable wallet.
-  ) = 24;
+  ) = 25;
 
   /// Get PriceXchg address
   [[getter]]
   address getPriceXchgAddress(
     uint128 price_num,        ///< Price numerator for rational price value
     cell    salted_price_code ///< Code of PriceXchg contract (salted!).
-  ) = 25;
+  ) = 26;
 
   /// Return UserIdIndex address
   [[getter]]
   address getUserIdIndex(
     uint256 user_id ///< User id
-  ) = 26;
+  ) = 27;
 
   /// Get contract state details
   [[getter]]
-  FlexClientDetails getDetails() = 27;
+  FlexClientDetails getDetails() = 28;
 };
 using IFlexClientPtr = handle<IFlexClient>;
 
 /// FlexClient persistent data struct
 struct DFlexClient1 {
-  uint256          owner_;              ///< Owner's public key
-  FlexVersion      triplet_;            ///< Version triplet.
-  FlexVersion      ex_triplet_;         ///< Ex-version triplet (initialized during code upgrade)
-  optcell          auth_index_code_;    ///< AuthIndex code
-  optcell          user_id_index_code_; ///< UserIdIndex code
-  opt<bind_info>   binding_;            ///< Binding info for exchange
-  bool_t               packet_burning_; ///< When burnThemAll was postponed into continueBurnThemAll call
-  uint128              burn_ev_;        ///< Processing evers for each wallet `burn` call
-  dict_array<BurnInfo> burns_;          ///< Array of burn parameters for each wallet
+  uint256              owner_;              ///< Owner's public key
+  FlexVersion          triplet_;            ///< Version triplet.
+  FlexVersion          ex_triplet_;         ///< Ex-version triplet (initialized during code upgrade)
+  optcell              auth_index_code_;    ///< AuthIndex code
+  optcell              user_id_index_code_; ///< UserIdIndex code
+  opt<bind_info>       binding_;            ///< Binding info for exchange
+  bool_t               packet_burning_;     ///< When burnThemAll was postponed into continueBurnThemAll call
+  uint128              burn_ev_;            ///< Processing evers for each wallet `burn` call
+  dict_array<BurnInfo> burns_;              ///< Array of burn parameters for each wallet
+  bool_t               packet_canceling_;   ///< When cancelThemAll was postponed into continueCancelThemAll call
+  uint128              cancel_ev_;          ///< Processing evers for each wallet `cancelOrder` call
+  dict_array<address>  prices_;             ///< Array of PriceXchg addresses
 };
 
 using DFlexClient = DFlexClient1;

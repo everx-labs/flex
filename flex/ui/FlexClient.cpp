@@ -38,6 +38,7 @@ public:
     static constexpr unsigned too_many_wallets               = 105; ///< Too many wallets
     static constexpr unsigned not_enough_balance             = 106; ///< Not enough balance
     static constexpr unsigned only_one_packet_burning_may_be_processed_at_a_time = 107; ///< Only one packet burning may be processed at a time
+    static constexpr unsigned only_one_packet_canceling_may_be_processed_at_a_time = 108; ///< Only one packet canceling may be processed at a time
   };
 
   __attribute__((noinline, noreturn))
@@ -301,6 +302,58 @@ public:
     packet_burning_ = packet_burning;
     burn_ev_ = burn_ev;
     burns_ = burns;
+  }
+
+  // Returns updated (packet_burning, burns_ev, burns)
+  static __attribute__((noinline))
+  std::tuple<bool_t, uint128, dict_array<address>>
+  cancel_them_all_impl(uint128             cancel_ev,
+                       dict_array<address> prices
+  ) {
+    auto sz = prices.size();
+    if (!sz) return {};
+    unsigned msgs_sent = 0;
+    do {
+      auto [idx, price, succ] = prices.rem_min();
+      if (!succ) return {};
+      IPriceXchgPtr ptr(price);
+      ptr(Evers(cancel_ev.get())).cancelOrder(true, {}, {});
+      ptr(Evers(cancel_ev.get())).cancelOrder(false, {}, {});
+      msgs_sent += 2;
+    } while (msgs_sent < 253);
+
+    if (msgs_sent < sz * 2) {
+      IFlexClientPtr(tvm_myaddr())(0_ev, SEND_ALL_GAS).continueCancelThemAll();
+      return {bool_t{true}, cancel_ev, prices};
+    } else {
+      return {};
+    }
+  }
+
+  void cancelThemAll(
+    uint128             cancel_ev,
+    dict_array<address> prices
+  ) {
+    require(msg_pubkey() == owner_, error_code::message_sender_is_not_my_owner);
+    tvm_accept();
+    tvm_commit();
+
+    require(cancel_ev * 2 * prices.size() < tvm_balance(), error_code::not_enough_balance);
+    require(!packet_canceling_.get(), error_code::only_one_packet_canceling_may_be_processed_at_a_time);
+
+    auto [packet_canceling, cancel_ev_new, prices_new] = cancel_them_all_impl(cancel_ev, prices);
+    packet_canceling_ = packet_canceling;
+    cancel_ev_ = cancel_ev_new;
+    prices_ = prices_new;
+  }
+
+  void continueCancelThemAll() {
+    require(int_sender() == tvm_myaddr(), error_code::message_sender_is_not_my_owner);
+    tvm_accept();
+    auto [packet_canceling, cancel_ev, prices] = cancel_them_all_impl(cancel_ev_, prices_);
+    packet_canceling_ = packet_canceling;
+    cancel_ev_ = cancel_ev;
+    prices_ = prices;
   }
 
   void unwrapWallet(
