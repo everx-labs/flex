@@ -8,6 +8,7 @@
 #include "SuperRoot.hpp"
 #include "FlexSalt.hpp"
 #include "WrappersConfig.hpp"
+#include "WrapperBroxus.hpp"
 #include "Flex.hpp"
 #include "UserDataConfig.hpp"
 #include <tvm/contract.hpp>
@@ -228,6 +229,16 @@ public:
     sroot.proxy(msg, cant_work_during_update, not_starting_update);
   }
 
+  void upgradeBroxusWrapperWallet(
+    uint128 main_evers,
+    address wrapper
+  ) {
+    auto sroot = impl(main_evers);
+    cell msg = IWrapperBroxusPtr(wrapper).prepare_internal(0_ev).
+      upgradeExternalWallet();
+    sroot.proxy(msg, allowed_during_update, not_starting_update);
+  }
+
   resumable<address> deployWrappersConfig(
     uint128 main_evers,
     uint128 deploy_evers,
@@ -311,10 +322,9 @@ public:
     uint128 main_evers,
     address wrapper,
     uint128 tokens,
-    address to,
-    uint128 evers
+    address to
   ) {
-    impl(main_evers).transferReserveTokens(wrapper, tokens, to, evers);
+    impl(main_evers).transferReserveTokens(wrapper, tokens, to);
   }
 
   void setOwner(

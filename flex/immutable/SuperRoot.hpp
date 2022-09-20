@@ -125,7 +125,7 @@ __interface ISuperRoot {
     cell        user_id_index_code  ///< UserIdIndexCode
   ) = 17;
 
-  /// Clone WrappersConfig to the new version
+  /// Clone WrappersConfig to the new version. Allowed also for the update team if set.
   [[internal, answer_id]]
   void cloneWrappersConfig(
     address             wrappers_cfg,           ///< WrappersConfig address
@@ -148,11 +148,10 @@ __interface ISuperRoot {
   void transferReserveTokens(
     address wrapper, ///< Wrapper address
     uint128 tokens,  ///< Tokens to transfer
-    address to,      ///< Destination address (must be flex tip3 wallet)
-    uint128 evers    ///< Processing evers
+    address to       ///< Destination address (must be flex tip3 wallet)
   ) = 20;
 
-  /// Set flags. If optional is not set, flag will not be changed.
+  /// Set flags. If optional is not set, flag will not be changed. Not allowed for the update team.
   [[internal]]
   void setFlags(
     opt<bool> stop_trade,    ///< Recommendation to stop trading (in case if problem found in trading algorithms)

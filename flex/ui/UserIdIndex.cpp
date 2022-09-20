@@ -60,8 +60,7 @@ public:
   /// Remove AuthIndex with lend_pubkey.
   void remove() {
     require(int_sender() == getConfig().owner, error_code::message_sender_is_not_my_owner);
-    tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
-    getAuthIndex()(0_ev, SEND_ALL_GAS).remove(int_sender());
+    getAuthIndex()(0_ev, SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY).remove(int_sender());
   }
 
   uint256 requestLendPubkey(uint128 evers_balance) {

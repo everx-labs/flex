@@ -69,8 +69,17 @@ public:
     flex_wallet_code_ = code;
   }
 
+  // TODO: fix answer_id automatic store in the execution context
+  static __attribute__((noinline))
+  uint32 save_answer_id(uint32 answer_id) {
+    return answer_id;
+  }
+
   resumable<std::pair<address, uint256>> deploy(cell cl, cell wic_unsalted_code) {
     require(wrapper_code_ && flex_wallet_code_, error_code::uninitialized);
+
+    require(!!return_func_id(), error_code::iterator_overflow);
+    auto answer_id = save_answer_id(*return_func_id());
 
     auto args = parse_chain_static<WrapperDeployerBroxusArgs>(parser(cl.ctos()));
     auto tip3cfg = args.tip3cfg;
@@ -103,6 +112,9 @@ public:
     // ================== Deploying Flex wrapper ================== //
     wrapper_addr.deploy(wrapper_init, Evers(wrapper_deploy_value_.get()))
       .init(wallet_addr, reserve_wallet_value_, flex_wallet_code_.get());
+
+    // TODO: we need to restore answer_id manually here
+    set_return_func_id(answer_id);
 
     co_return _all_except(old_balance) & std::make_pair(wrapper_addr.get(), wrapper_pubkey_);
   }

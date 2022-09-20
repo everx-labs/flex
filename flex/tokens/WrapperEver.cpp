@@ -194,7 +194,8 @@ public:
   }
 
   // received bounced message back
-  __always_inline static int _on_bounced([[maybe_unused]] cell msg, slice msg_body) {
+  __attribute__((noinline))
+  static int _on_bounced([[maybe_unused]] cell msg, slice msg_body) {
     tvm_accept();
 
     using Args = args_struct_t<&ITONTokenWallet::acceptMint>;

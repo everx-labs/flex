@@ -105,6 +105,13 @@
     "id": "0x500"
   },
   {
+    "name": "upgradeExternalWallet",
+    "inputs": [
+    ],
+    "outputs": [
+    ]
+  },
+  {
     "name": "getDetails",
     "inputs": [
     ],

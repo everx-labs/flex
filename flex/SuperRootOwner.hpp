@@ -154,6 +154,13 @@ __interface ISuperRootOwner {
     address pair        ///< XchgPair address
   );
 
+  /// Upgrade WrapperBroxus's wallet
+  [[external]]
+  void upgradeBroxusWrapperWallet(
+    uint128 main_evers,   ///< Main call evers
+    address wrapper       ///< WrapperBroxus address
+  );
+
   /// Deploy WrappersConfig contract.
   [[external]]
   resumable<address> deployWrappersConfig(
@@ -220,8 +227,7 @@ __interface ISuperRootOwner {
     uint128 main_evers, ///< Main call evers
     address wrapper,    ///< Wrapper address
     uint128 tokens,     ///< Tokens to transfer
-    address to,         ///< Destination address (must be flex tip3 wallet)
-    uint128 evers       ///< Processing evers
+    address to          ///< Destination address (must be flex tip3 wallet)
   );
 
   /// Set new owner contract. This owner contract will loose ownership access.

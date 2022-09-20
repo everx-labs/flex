@@ -172,6 +172,23 @@
     ]
   },
   {
+    "name": "cancelThemAll",
+    "inputs": [
+    { "name":"cancel_ev", "type":"uint128" },
+    { "name":"prices", "type":"address[]" }
+    ],
+    "outputs": [
+    ],
+    "id": "0x14"
+  },
+  {
+    "name": "continueCancelThemAll",
+    "inputs": [
+    ],
+    "outputs": [
+    ]
+  },
+  {
     "name": "unwrapWallet",
     "inputs": [
     { "name":"evers_value", "type":"uint128" },
@@ -183,7 +200,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x14"
+    "id": "0x15"
   },
   {
     "name": "bindWallet",
@@ -200,7 +217,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x15"
+    "id": "0x16"
   },
   {
     "name": "onTip3Transfer",
@@ -239,7 +256,7 @@
     ],
     "outputs": [
     ],
-    "id": "0x16"
+    "id": "0x17"
   },
   {
     "name": "getPayloadForDeployInternalWallet",
@@ -252,7 +269,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x17"
+    "id": "0x18"
   },
   {
     "name": "getPayloadForEverReTransferArgs",
@@ -263,7 +280,7 @@
     "outputs": [
     { "name":"value0", "type":"cell" }
     ],
-    "id": "0x18"
+    "id": "0x19"
   },
   {
     "name": "getPriceXchgAddress",
@@ -274,7 +291,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x19"
+    "id": "0x1a"
   },
   {
     "name": "getUserIdIndex",
@@ -284,7 +301,7 @@
     "outputs": [
     { "name":"value0", "type":"address" }
     ],
-    "id": "0x1a"
+    "id": "0x1b"
   },
   {
     "name": "getDetails",
@@ -305,7 +322,7 @@
     { "name":"auth_index_code", "type":"cell" },
     { "name":"user_id_index_code", "type":"cell" }
     ],
-    "id": "0x1b"
+    "id": "0x1c"
   }
   ],
   "fields": [
@@ -337,7 +354,10 @@
       { "name":"out_owner", "type":"optional(address)" },
       { "name":"wallet", "type":"address" },
       { "name":"notify", "type":"optional(cell)" }
-    ], "name":"burns_", "type":"tuple[]" }
+    ], "name":"burns_", "type":"tuple[]" },
+    { "name":"packet_canceling_", "type":"bool" },
+    { "name":"cancel_ev_", "type":"uint128" },
+    { "name":"prices_", "type":"address[]" }
   ],
   "events": [
   ]

@@ -13,12 +13,13 @@ using namespace tvm;
 class UserDataConfig final : public smart_interface<IUserDataConfig>, public DUserDataConfig {
   using data = DUserDataConfig;
 public:
-   DEFAULT_SUPPORT_FUNCTIONS(IUserDataConfig, void)
+  DEFAULT_SUPPORT_FUNCTIONS(IUserDataConfig, void)
 
   static constexpr bool _checked_deploy = true; /// To allow deploy message only with `onDeploy` call
   struct error_code : tvm::error_code {
     static constexpr unsigned message_sender_is_not_my_owner = 100; ///< Authorization error
     static constexpr unsigned uninitialized                  = 101; ///< Uninitialized
+    static constexpr unsigned double_deploy                  = 102; ///< Double deploy
   };
 
   void onDeploy(
@@ -28,6 +29,8 @@ public:
     cell auth_index_code,
     cell user_id_index_code
   ) {
+    require(int_sender() == getConfig().super_root, error_code::message_sender_is_not_my_owner);
+    require(!binding_, error_code::double_deploy);
     binding_            = binding;
     flex_client_stub_   = flex_client_stub;
     flex_client_code_   = flex_client_code;
