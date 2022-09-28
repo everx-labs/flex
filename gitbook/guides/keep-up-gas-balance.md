@@ -12,11 +12,11 @@ It is recommended to keep your Gas balance up above 50 EVERs at all times.
 
 Its currently available value is always displayed in the Assets section.
 
-![](../.gitbook/assets/034.png)
+<figure><img src="../.gitbook/assets/014 (1).png" alt=""><figcaption></figcaption></figure>
 
-The total amount of gas, including gas already sent to wallet native balances (currently listed under **In orders**) is displayed in the Funds tab.
+The total amount of gas, including gas already sent to wallet gas balances (currently listed under **In orders**) is displayed in the **Funds** tab.
 
-![](../.gitbook/assets/038.png)
+<figure><img src="../.gitbook/assets/021 (1).png" alt=""><figcaption></figcaption></figure>
 
 If it turns <mark style="color:red;">red</mark>, it needs to be topped up.
 
@@ -28,4 +28,4 @@ Scan the QR code or go to desktop Surf app.
 
 Enter the amount to send to your Gas balance and confirm:
 
-![](<../.gitbook/assets/028 (1).jpg>)
+<figure><img src="../.gitbook/assets/025.png" alt=""><figcaption></figcaption></figure>

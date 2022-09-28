@@ -11,8 +11,6 @@ Flex consists of the following contracts:
 * Flex Client
 * Flex TIP3 token wallets
 
-and a set of [DeBots](flex-debots/) that serve as user interfaces to them.
-
 View source code [here](https://github.com/tonlabs/flex/tree/main/flex) and documentation [here](https://tonlabs.github.io/flex/).
 
 ## Flex Contracts

@@ -1,14 +1,13 @@
-# Flash Exchange (FLEX)
+# FLEX DEX
 
-![](.gitbook/assets/flexlogo-black\_m.png)
+<figure><img src="gitbook/.gitbook/assets/Flex_v1.svg" alt=""><figcaption></figcaption></figure>
 
-Flex (stands for Flash exchange) is a decentralized exchange on Everscale, which allows users to buy and sell TIP3.1 distributed tokens listed on it, including wrapped tokens ffrom other blockchains that are available on Everscale.
+Flex (stands for Flash exchange) is a decentralized exchange on Everscale, which allows users to buy and sell TIP3.1 distributed tokens listed on it, including wrapped tokens from other blockchains that are available on Everscale.
 
-Flex operates as a decentralized and distributed limit order book (DLOB) with AMM and Liquidity Pools, which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via a distributed smart contract model.
+Flex operates as a decentralized and distributed limit order book (DLOB), which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via a distributed smart contract model.
+
+**Explore Flex at**: [https://flexdex.fi/](https://flexdex.fi/)
 
 **Github:** [github.com/tonlabs/flex](https://github.com/tonlabs/flex)
 
 **Core contract documentation:** [https://tonlabs.github.io/flex/](https://tonlabs.github.io/flex/)
-
-**Decentralized Browser:** [https://trade.flexdex.fi/](https://trade.flexdex.fi/)\
-A standalone decentralized browser uses [DeBot](https://github.com/tonlabs/debots) Bundle to render a user interface locally.

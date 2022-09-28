@@ -1,12 +1,8 @@
 # Time in force
 
-> A **day order** or **good for day order** (GFD) (the most common) is a market or limit order that is in force from the time the order is submitted to the end of the day's trading session.&#x20;
->
 > **Good-til-cancelled** (GTC) orders require a specific cancelling order and can persist indefinitely (or can be limited by say 90 days).&#x20;
 >
 > **Immediate or cancel** (IOC) orders are immediately executed or cancelled by the exchange. Unlike FOK orders, IOC orders allow for partial fills.&#x20;
->
-> **Fill or kill** (FOK) orders are usually limit orders that must be executed or cancelled immediately. Unlike IOC orders, FOK orders require the full quantity to be executed.
 
 #### Limit Order + IOC option
 

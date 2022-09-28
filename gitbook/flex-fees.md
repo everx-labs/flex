@@ -81,11 +81,15 @@ The side paying the `deal_costs` is decided according to the following:
  bool seller_pays_costs = last_tip3_sell;
 ```
 
+or, in short, the seller (the one selling major tokens) pays the deal costs, if this is his latest deal. In all other cases, the buyer (the one buying major tokens) pays it.
+
 The three TIP3 transfers included in the deal\_costs are these:
 
 * Major token wallet of the seller -> major token wallet of the buyer
 * Minor token wallet of the buyer -> minor token wallet of the seller
 * Taker wallet -> exchange's reserve wrapper wallet ([exchange fee](flex-fees.md#exchange-fees))
+
+**Note**: Major token is the token, an amount of which is being bought or sold. Minor token is the token the price is expressed in.
 
 ## Withdraw fees
 
