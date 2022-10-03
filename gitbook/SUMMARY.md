@@ -33,6 +33,6 @@
 * [Flex Contracts Reference](https://tonlabs.github.io/flex/)
 * [Flex on GitHub](https://github.com/tonlabs/flex)
 * [Flex SDK on GitHub](https://github.com/tonlabs/flex-sdk-js)
-* [TIP3 specifications](https://github.com/everscale-org/docs/blob/main/src/Standard/TIP-3/1.md)
+* [TIP3 specifications](https://docs.everscale.network/standard/TIP-3)
 * [Everscale Developer Tools](https://github.com/tonlabs/everdev)
 * [Everscale Dev on Telegram](https://t.me/everdev)

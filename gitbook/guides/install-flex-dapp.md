@@ -2,7 +2,7 @@
 
 Currently Flex is available as a multi-platform desktop DApp.
 
-To install Flex proceed to the Flex [downloads page](https://flexdex.fi/downloads.html) and download the suitable Flex package and install it with the standard method for your platform.
+To install Flex proceed to the Flex downloads page and download the suitable Flex package and install it with the standard method for your platform.
 
 <figure><img src="../.gitbook/assets/001 (1).png" alt=""><figcaption></figcaption></figure>
 
