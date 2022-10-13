@@ -1,8 +1,6 @@
 # FLEX DEX
 
-<figure><img src="gitbook/.gitbook/assets/Flex_v1.svg" alt=""><figcaption></figcaption></figure>
-
-Flex (stands for Flash exchange) is a decentralized exchange on Everscale, which allows users to buy and sell TIP3.1 distributed tokens listed on it, including wrapped tokens from other blockchains that are available on Everscale.
+Flex (stands for Flash exchange) is a decentralized exchange on Everscale, which allows users to buy and sell TIP3.2 distributed tokens listed on it, including wrapped tokens from other blockchains that are available on Everscale.
 
 Flex operates as a decentralized and distributed limit order book (DLOB), which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via a distributed smart contract model.
 

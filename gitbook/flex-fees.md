@@ -22,7 +22,7 @@ On Flex, takers pay the fees, while makers benefit from the fees. Fee configurat
 
 When a deal is fulfilled, taker pays the amount of the deal + `taker_fee`.
 
-`taker_fee` is currently set at 0.1%.
+`taker_fee` is currently set at 0.15%.
 
 Of that amount, the maker gets `maker_vig` amount. The rest (`taker_fee` - `maker_vig`) goes to the exchange.
 
