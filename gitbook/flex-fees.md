@@ -28,7 +28,7 @@ Of that amount, the maker gets `maker_vig` amount. The rest (`taker_fee` - `make
 
 `maker_vig` is currently set at 0.03%.
 
-So the exchange gets 0.15% - 0.03% = 0.012%.
+So the exchange gets 0.15% - 0.03% = 0.12%.
 
 ### Blockchain fees
 
