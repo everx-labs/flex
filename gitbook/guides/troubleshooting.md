@@ -2,6 +2,21 @@
 
 This page lists the common problems a Flex user may encounter and the solutions to them.
 
+## DApp login issues
+
+If you encounter any issues logging into the Flex DApp, try deleting the session and retrying authorization with the same login and password - click **Delete account and start a new session** on the Sign in window:
+
+<figure><img src="../.gitbook/assets/0031.png" alt=""><figcaption></figcaption></figure>
+
+Then reenter the credentials anew.\
+Flex Auth DeBot will launch and update your keys, after which you will be able to use your account as usual.
+
+## Cannot start new session
+
+If the **Delete account and start a new session** button does not seem to work (nothing visible happens upon clicking it), close and restart the DApp.&#x20;
+
+The Sign in window should update and allow you to start a new session.
+
 ## Not enough tokens on Flex Client balance
 
 This is an error most commonly encountered in Auth DeBot when trying to authorize.
