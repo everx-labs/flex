@@ -74,4 +74,4 @@ Redo the order, and try to avoid trading 100% of your funds all at once.
 
 ## Other errors with order processing
 
-Error notifications are usually self explanatory, and for the most part you can retry after adjusting your order accordignly.
+Error notifications are usually self explanatory, and for the most part you can retry after adjusting your order accordingly.
