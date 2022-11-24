@@ -74,4 +74,4 @@ Redo the order, and try to avoid trading 100% of your funds all at once.
 
 ## Other errors with order processing
 
-Error notifications are usually self explanatory, and for the most part you can retry after adjusting your order accordingly.
+Error notifications are usually self explanatory, and for the most part you can retry after adjusting your order accordingly. If you encounter unknown errors, or need any other kind of help, you can ask about it in the [Telegram group](https://t.me/flexdexbeta).

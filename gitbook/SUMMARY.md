@@ -38,3 +38,4 @@
 * [TIP3 specifications](https://docs.everscale.network/standard/TIP-3)
 * [Everscale Developer Tools](https://github.com/tonlabs/everdev)
 * [Everscale Dev on Telegram](https://t.me/everdev)
+* [Flex on Telegram](https://t.me/flexdexbeta)
