@@ -12,7 +12,7 @@ The initial deployment of Flex contracts costs about 50 EVERs.
 
 Each new assets wallet will take about 15 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](../guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
 
-What remains of these funds on the balances of these smart contracts can later be [withdrawn](../guides/how-to-trade-on-flex.md#how-to-withdraw).
+What remains of these funds on the balances of these smart contracts can later be withdrawn.
 
 ## Trading fees
 
@@ -41,7 +41,7 @@ Trades, being messages between smart contracts also are subject to blockchain fe
 
 These funds are taken from your [Gas balance](../guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
 
-**Note**: When placing large limit orders, in rare cases (low liquidity in token pair spread over many small orders), blockchain fees may be several times higher, as the total fees will include the fees for each of the existing smaller orders, which are needed to fulfill the large order being executed.
+**Note**: When placing large limit orders, in rare cases (low liquidity in token pair spread over many small orders), blockchain fees may be several times higher, as the total fees will include the fees for each of the existing smallers orders, which are needed to fulfill the large order being executed.
 
 #### Detailed description
 

@@ -47,4 +47,4 @@ else:
 
 Maker and Taker orders are flags.
 
-Limit order is implemented in Flex DeBot.
+Limit order will be implemented in Flex DeBot.
