@@ -1,7 +1,6 @@
 # Table of contents
 
 * [FLEX DEX](../README.md)
-* [Flex Fees](flex-fees.md)
 
 ## Guides
 
@@ -10,9 +9,11 @@
 * [Connect Your Wallet](guides/connect-your-wallet.md)
 * [Trade on Flex](guides/how-to-trade-on-flex.md)
 * [Keep up Gas Balance](guides/keep-up-gas-balance.md)
+* [Log in with Trader Keys](guides/log-in-with-trader-keys.md)
 
 ## Specifications
 
+* [Flex Fees](specifications/flex-fees.md)
 * [Challenges of DEX](specifications/challenges-of-dex.md)
 * [FLEX General Architecture](specifications/flex-general-architecture/README.md)
   * [Main Functions](specifications/flex-general-architecture/main-functions.md)

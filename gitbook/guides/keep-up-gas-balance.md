@@ -1,6 +1,6 @@
 # Keep up Gas Balance
 
-Flex works entirely on-chain as a set of smart contracts. This means that every action you take requires [blockchain fees](../flex-fees.md) to be paid.
+Flex works entirely on-chain as a set of smart contracts. This means that every action you take requires [blockchain fees](../specifications/flex-fees.md) to be paid.
 
 To cover these fees Flex stores an amount of native EVER tokens as your **Gas balance**.
 

@@ -16,7 +16,7 @@ You will be able to deposit your funds into Flex to start trading any tokens lis
 
 To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Assets section.
 
-<figure><img src="../.gitbook/assets/016 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0015.png" alt=""><figcaption></figcaption></figure>
 
 ## How to deposit
 
@@ -24,25 +24,19 @@ Usually some funds are deposited during the [initial authorization](connect-your
 
 If you want to deposit more, or didn't deposit any after authorizing, click on the **Deposit button** next to the Asset you want to deposit, or on the **Surf** button in the upper right corner.
 
-![](../.gitbook/assets/002.png)
+<figure><img src="../.gitbook/assets/0005.png" alt=""><figcaption></figcaption></figure>
 
 Scan QR code or go to desktop Surf app.
 
-The Flex Auth DeBot will launch. Select Deposit EVER or Deposit TIP-3.1, depending on the asset you want to deposit.
+The Flex Auth DeBot will launch. Select Deposit EVER or Deposit TIP-3.2, depending on the asset you want to deposit.
 
-<figure><img src="../.gitbook/assets/012.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
 
 Enter amount to be deposited.
 
-<figure><img src="../.gitbook/assets/009.png" alt=""><figcaption></figcaption></figure>
-
-Enter amount to use for transaction fee (everything above the fee will be sent to the asset's Flex internal wallet and will be later used to pay for gas during transactions.
-
-<figure><img src="../.gitbook/assets/010.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0021.png" alt=""><figcaption></figcaption></figure>
 
 Confirm transaction.
-
-<figure><img src="../.gitbook/assets/011.png" alt=""><figcaption></figcaption></figure>
 
 Return to Flex. Now you can use the funds you deposited to trade.
 
@@ -62,9 +56,9 @@ Your current assets on Flex are always displayed in the Assets section:
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-<figure><img src="../.gitbook/assets/018.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0022.png" alt=""><figcaption></figcaption></figure>
 
-You can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can also use the slider to set a fraction of your funds you want to spend.
+For Limit orders you can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can also use the slider to set a fraction of your funds you want to spend.
 
 If you set neither **POST** nor **IOC** flag:
 
@@ -84,6 +78,10 @@ Click the **Buy** or **Sell** button, once you're ready.&#x20;
 A notification confirming your order creation will appear in the top right corner.
 
 ![](../.gitbook/assets/019.png)
+
+Market orders simply let you buy or sell a certain amount at the current market price.
+
+<figure><img src="../.gitbook/assets/0023.png" alt=""><figcaption></figcaption></figure>
 
 While your order remains opened in the Orderbook, it is listed in your **Open orders** tab at the bottom of the page.
 
@@ -109,7 +107,7 @@ The Flex auth DeBot will launch. Enter amount of tokens to unwrap (withdraw).
 
 Select the address which is going to be the owner of the tokens you are withdrawing.&#x20;
 
-<figure><img src="../.gitbook/assets/023.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0024.png" alt=""><figcaption></figcaption></figure>
 
 Confirm transaction. It takes about 1.5 EVERs to perform.
 
@@ -117,7 +115,7 @@ Confirm transaction. It takes about 1.5 EVERs to perform.
 
 You can see your withdrawn tokens in [https://ever.live](https://ever.live) on the page your Surf wallet in the **Token balances** section.
 
-![](<../.gitbook/assets/027 (1).png>)
+<figure><img src="../.gitbook/assets/0025.png" alt=""><figcaption></figcaption></figure>
 
 ## How to recover Gas balances
 
@@ -127,7 +125,7 @@ All gas balances from the Flex token wallets can be recovered, and tokens from t
 
 In Flex Auth DeBot Select **Accounts management**.
 
-<figure><img src="../.gitbook/assets/012.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
 
 Select the keys you used to encrypt the account credentials when [connecting your wallet](connect-your-wallet.md). Usually it's your Surf keys.
 

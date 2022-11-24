@@ -12,6 +12,6 @@ Then get some EVERs on your Surf:
 Optionally, you can also accumulate some [TIP3](https://help.ever.surf/en/support/solutions/articles/77000525744-tip3-tokens-in-surf) tokens on your Surf account. If they are listed on Flex, you will be able to deposit and trade them.
 {% endhint %}
 
-Once you have some EVERs (overview of the costs of using FLEX can be found [here](../flex-fees.md)) on your **main Surf balance**, you are ready to [connect your wallet](connect-your-wallet.md):
+Once you have some EVERs (overview of the costs of using FLEX can be found [here](../specifications/flex-fees.md)) on your **main Surf balance**, you are ready to [connect your wallet](connect-your-wallet.md):
 
-<figure><img src="../.gitbook/assets/003.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0002.png" alt=""><figcaption></figcaption></figure>

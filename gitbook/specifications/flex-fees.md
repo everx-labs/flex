@@ -10,7 +10,7 @@ This is done with the help of Flex Auth DeBot when you connect your wallet, depo
 
 The initial deployment of Flex contracts costs about 50 EVERs.
 
-Each new assets wallet will take about 30 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
+Each new assets wallet will take about 15 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](../guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
 
 What remains of these funds on the balances of these smart contracts can later be withdrawn.
 
@@ -39,7 +39,7 @@ Trades, being messages between smart contracts also are subject to blockchain fe
 * If an order is cancelled, process queue (0.4 EVERs) and return ownership (0.1 EVER) fees are paid instead of trade completion. The total fee of a created and then cancelled order is 0.5 EVERs.
 * If an order expires, only return ownership fee of 0.1 EVER is applied. The total fee of an expired order is 0.6 EVERs.
 
-These funds are taken from your [Gas balance](guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
+These funds are taken from your [Gas balance](../guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
 
 **Note**: When placing large limit orders, in rare cases (low liquidity in token pair spread over many small orders), blockchain fees may be several times higher, as the total fees will include the fees for each of the existing smallers orders, which are needed to fulfill the large order being executed.
 
@@ -90,6 +90,10 @@ The three TIP3 transfers included in the deal\_costs are these:
 * Taker wallet -> exchange's reserve wrapper wallet ([exchange fee](flex-fees.md#exchange-fees))
 
 **Note**: Major token is the token, an amount of which is being bought or sold. Minor token is the token the price is expressed in.
+
+## Deposit fees
+
+Depositing tokens costs about <1 EVER. Change is returned.
 
 ## Withdraw fees
 
