@@ -18,7 +18,7 @@ Flex will generate a link to open the **Auth DeBot** in Surf. Scan The **QR code
 
 <figure><img src="../.gitbook/assets/0005.png" alt=""><figcaption></figcaption></figure>
 
-The **Auth DeBot** will launch and check if you already authorized this Flex account. If not, the authorization will start from the very beginning by deploying your Flex Client smart contract. It is going to govern all your assets on Flex and it is in turn controlled  only by your Surf wallet.
+The **Auth DeBot** will launch and check if you have already authorized this Flex account. If not, the authorization will start from the very beginning by deploying your Flex Client smart contract. It is going to govern all your assets on Flex and it is in turn controlled  only by your Surf wallet.
 
 <figure><img src="../.gitbook/assets/0016.png" alt=""><figcaption></figcaption></figure>
 

@@ -26,7 +26,7 @@ Specialized exchange orders allowing for more complex trading strategies will al
 
 ### Composition of the Order Book
 
-Just by retrieving all deployed contracts by a contract code hash, a user can see the whole stack of the order book. Flex Order Books for token pairs are available both in the standalone decentralized interface and in the Flex DeBot in Surf.
+Just by retrieving all deployed contracts by a contract code hash, a user can see the whole stack of the order book. Flex Order Books for token pairs are available in the standalone decentralized interface.
 
 ### Trade history
 
