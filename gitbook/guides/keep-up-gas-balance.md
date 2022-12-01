@@ -24,8 +24,8 @@ To top it up, click **Deposit** next to the **Gas** balance in the Assets sectio
 
 Scan the QR code or go to desktop Surf app.
 
-![](../.gitbook/assets/002.png)
+<figure><img src="../.gitbook/assets/0044.png" alt=""><figcaption></figcaption></figure>
 
 Enter the amount to send to your Gas balance and confirm:
 
-<figure><img src="../.gitbook/assets/025.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0030.png" alt=""><figcaption></figcaption></figure>

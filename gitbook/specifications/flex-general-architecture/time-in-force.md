@@ -2,7 +2,7 @@
 
 > **Good-til-cancelled** (GTC) orders require a specific cancelling order and can persist indefinitely (or can be limited by say 90 days).&#x20;
 >
-> **Immediate or cancel** (IOC) orders are immediately executed or cancelled by the exchange. Unlike FOK orders, IOC orders allow for partial fills.&#x20;
+> **Immediate or cancel** (IOC) orders are immediately executed or cancelled by the exchange. Unlike Fill-or-Kill orders, IOC orders allow for partial fills.&#x20;
 
 #### Limit Order + IOC option
 
