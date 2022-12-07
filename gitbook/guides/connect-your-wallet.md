@@ -10,9 +10,11 @@ Open Flex and click **Connect Surf**.
 
 The authorization prompt will appear. Enter a username and password for your Flex account.
 
+⚠️ Make sure to save your login and password and store it safely. You will be able to recover your funds [if you lose ](troubleshooting.md#lost-login-and-or-password)your credentials so long as you still have access to your Surf account, but it will cost additional fees - the whole authorization process described below will have to be done from scratch.
+
 <figure><img src="../.gitbook/assets/0003.png" alt=""><figcaption></figcaption></figure>
 
-**Note**: The advanced option to [log in with custom keys](log-in-with-trader-keys.md) is only necessary for traders using SDK or third-party software to work with Flex. A regular user has no need of it.
+**Note**: The advanced option to [log in with custom keys](../integration/log-into-dapp-with-trader-keys.md) is only necessary for traders using SDK or third-party software to work with Flex. A regular user has no need of it.
 
 Flex will generate a link to open the **Auth DeBot** in Surf. Scan The **QR code** with Surf on your mobile device or click **Open Surf app** button to work with desktop Surf.
 

@@ -4,7 +4,7 @@ Flex API allows to develop Flex client apps that query Flex contracts directly o
 
 ## Flex API
 
-[Flex Glossary](glossary.md#flex-glossary)
+[Flex Glossary](glossary.md#flex-api-glossary)
 
 Flex API is GraphQL API that is defined by GraphQL schema, described below.
 
@@ -127,6 +127,7 @@ type FlexFeesConfig{
   """
   dest_wallet_keep_evers: Int
 }
+
 ```
 
 ### tokens
@@ -153,7 +154,7 @@ type FlexToken {
     " defines the number of decimal places "
     decimals: Int
     " total_granted in tokens "
-    totalAllocated: Float
+    totalAllocated: String
     " in contract - total_granted field in units "
     totalAllocatedUnits: String
     " flex tip3 wallet code hash "
@@ -169,9 +170,7 @@ type FlexToken {
 }
 ```
 
-Token information is stored in so-called wrapper contracts, that wrap ever/broxus tip3/potentially other tokens and act as a root contract that deploys Flex wallets for those wrapped tokens.
-
-Whenever a new version of Flex is deployed, a new Wrapper Index Contract is deployed for each wrapper. These contracts are used to find wrappers that belong to the specified Flex version.
+Token information is stored in so-called wrapper contracts, that wrap ever/tip3.2/potentially other tokens and act as a root contract that deploys Flex wallets for those wrapped tokens.
 
 ### getToken
 
@@ -211,7 +210,7 @@ type FlexPair {
 		"""
     Min amount of major token required for an order creation in token units.
     """
-    minAmount: Float
+    minAmount: String
 		" minAmount in major token units "
     minAmountUnits: String
     " Code hash of price contracts for the pair "
@@ -266,7 +265,7 @@ type FlexMarketQuery
 	priceHistory(...): FlexPriceHistory!
 	orderBook(...): FlexOrderBook!
 	last24H: FlexPriceSummary!
-	price: Float
+	price: String
 	}
 }
 ```
@@ -290,11 +289,11 @@ type FlexTrade {
     sellToken: FlexToken
     buyToken: FlexToken
     " Major tokens amount "
-    amount: Float
+    amount: String
 		" Major units amount "
     amountUnits: String
     " Price of the major token in tokens "
-    price: Float
+    price: String
 		" Price numenator "
     priceNum: String
     " Token price denomenator  "
@@ -313,6 +312,8 @@ enum FlexTradeSide {
 #### priceHistory
 
 Price and volume history is needed by trading applications to draw so-called bars or candles displaying price history of a trading pair.
+
+<figure><img src="../.gitbook/assets/0056.png" alt=""><figcaption></figcaption></figure>
 
 ```graphql
 type FlexMarketQuery{
@@ -349,15 +350,15 @@ type FlexPriceSummary {
     " Start time of resolution time range. Range end time is time + resolution "
     time: Int
     " The first price in range (opening price) "
-    open: Float
+    open: String
     " The last price in range (closing price) "
-    close: Float
+    close: String
     " Minimal price in range "
-    low: Float
+    low: String
     " Maximal price in range "
-    high: Float
+    high: String
     " Total amount of all trades in range "
-    volume: Float
+    volume: String
 }
 ```
 
@@ -365,13 +366,13 @@ This data is collected from trades. Each dot on the graph should have such data 
 
 We do not show `getEmptyBars` parameter and assume it as false. We do not return empty bars.
 
-> 📚 **Example 1**: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
->
-> **Example 2**: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
+&#x20;📚 Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
+
+Example 2: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request. If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
 
 #### orderbook
 
-Orderbook is a list of available Trading Pair liquidity for buying and selling aggregated by price:
+Orderbook is a list of available Trading Pair liquidity for buying and selling aggregated by price.
 
 Return top 50 bids and asks.
 
@@ -395,7 +396,7 @@ type FlexOrderbookItem {
     """ 
     Price of 1 major token denominated in minor token with precision of Pair's pricescale
     """
-		price : Float
+		price : String
     " Token price numerator "
 		priceNum: String
     " Token price denomerator "
@@ -403,7 +404,7 @@ type FlexOrderbookItem {
     " Unit price denomerator "
 		priceScaleUnits: String
     " Amount of major tokens "
-		amount: Float
+		amount: String
 		" Amount of major units "
 		amountUnits: String
 }
@@ -414,24 +415,25 @@ type FlexOrderbookItem {
 ```graphql
 type Market {
     " Latest trade's price "
-    price: Float
+    price: String
     " Price and volume stats for the last 24 hours "
     last24H: FlexPriceSummary
 }
 
 type FlexPriceSummary {
 	time: Int
-	open: Float
-	close: Float
-	low: Float
-	high: Float
-	volume: Float
+	open: String
+	close: String
+	low: String
+	high: String
+	volume: String
 }
+
 ```
 
-### User data
+### Trader data
 
-[User data glossary](glossary.md#user-data-glossary)
+[Trader data glossary](glossary.md#trader-data-glossary)
 
 #### wallets
 
@@ -464,15 +466,15 @@ type FlexWallet {
     " Token information"
     token: FlexToken
     " balance of native currency of the wallet (in evers) "
-    nativeCurrencyBalance: Float
+    nativeCurrencyBalance: String
     " balance of native currency of the wallet (in nanoevers) "
     nativeCurrencyBalanceUnits: String
     " Tokens balance of the wallet in tokens "
-    totalBalance: Float
+    totalBalance: String
     " Total balance of the wallet in units "
     totalBalanceUnits: String
     " Balance in tokens reduced by amount in orders "
-    availableBalance: Float
+    availableBalance: String
     " Balance in units reduced by amount in orders "
     availableBalanceUnits: String
     " Balance in tokens placed into orders "
@@ -510,15 +512,15 @@ type FlexUserOrder {
     pair: FlexPair
     side: FlexTradeSide
     " Order amount in tokens left "
-	  amountLeft: Float
+	  amountLeft: String
     " Order amount in units left"
 	  amountLeftUnits: String
     " Order amount in tokens that has been processed "
-	  amountProcessed: Float
+	  amountProcessed: String
     " Order amount in units that has been processed "
     amountProcessedUnits: String
 		" Order price in tokens"
-    price: Float
+    price: String
     " Price numerator "
     priceNum: String
     " Token price denomerator "
@@ -552,11 +554,11 @@ type FlexUserTrade {
     pair: FlexPair
     side: FlexTradeSide
 		" Major tokens amount"
-    amount: Float
+    amount: String
 		" Major tokens amount in units"
     amountUnits: String
 		" Order price in tokens"
-    price: Float
+    price: String
     " Price numerator "
     priceNum: String
     " Token price denomerator "
@@ -573,7 +575,7 @@ type FlexUserTrade {
 		
 		If the user is a taker then fees is a value that the user pays to the exchange and maker.
 		"""
-    fees: Float
+    fees: String
     feesUnits: String
     cursor: String
 }
@@ -584,29 +586,6 @@ Determines the users position in trade. Maker or taker. Maker is a trade counter
 enum FlexTradeLiquidity {
     TAKER
     MAKER
-}
-```
-
-#### userEquity (not implemented yet)
-
-Equity - total balance of all tokens converted to EVER or USD currency price
-
-```graphql
-type userEquity(pubkey: string): TUserData {
-		equity: uint  # 
-	}
-```
-
-### Flex statistics (not implemented yet)
-
-We will be able to do it only when we have USD xTip3, we will then calculate all tokens prices denominated in USD and sum them up to get TVL.
-
-```graphql
-type Flex(root: address) {
-		statistics: TMarketStats {
-			TVL: uint # total value locked in Flex denominated in ??? currency or Token
-			volume: uint # 24 hour volume on the Flex for all markets.		
-		}
 }
 ```
 
@@ -700,45 +679,61 @@ subscription {
 }
 ```
 
-#### userOrderUpdates (not implemented yet)
+### Coming soon:
 
-Sends notifications when an order changing its status
-
-Need to add notifications when order is
-
-* created,
-* creation failed,
-* canceled
-* executed successfully
-* closed
-
-All these statuses are returned in `OrderRet` structure via different internal messages.&#x20;
+#### Order status subscription
 
 ```graphql
 subscription {
     """
-			Sends order status updates for user orders. Contains informarion about new order status, and order info about trading pair, side, amount and price in tokens and nanotokens
+			Sends order status updates for user orders. Contains informarion about order status and processed/unprocessed amount, and order info about trading pair, side and price in tokens and nanotokens.
+			Please, note that in case of CANCEL and CLOSED statused order may be partially executed. 
     """
     flexUserOrderUpdates(
         userId: String
     ): FlexUserOrderUpdate[]
 
 type FlexUserOrderUpdate {
+		orderId: string
 		timestamp: uint
+		status: enum {CANCELED, EXECUTED, CREATED, CREATION_FAILED, CLOSED}, 
+		"""
+	From here: [<https://github.com/tonlabs/ton-contracts/blob/21d08e8f85c122693e6f0bbc22f23c467c8e3920/cpp/freetrade/exchange/xchg/error_code.hpp#L13>](<https://github.com/tonlabs/ton-contracts/blob/21d08e8f85c122693e6f0bbc22f23c467c8e3920/cpp/freetrade/exchange/xchg/error_code.hpp#L13>)
+		"""
+		error_code: enum {out_of_tons, deals_limit, etc} 
 		majorToken: FlexToken, 
 		minorToken: FlexToken,
-		# from orderRet errorCode , depends on the message, see here <https://www.notion.so/tonlabs/Tasks-47e704afcc9f41a8810450ccef98fbfa#4da3118d03ba4538812e2de8a8096524> 
-		status: enum {CANCELED, EXECUTED, CREATED, CREATION_FAILED, CLOSED}, 
-		amountEnqueued: Float # enqueued/major_decimals
+		amountEnqueued: String # enqueued/major_decimals
 		amountEnqueuedUnits: String # enqueued
-		amountProcessed: Float # processed/major_decimals
+		amountProcessed: String # processed/major_decimals
 		amountProcessedUnits: String # processed
-		price: Float # price_num/priceScale
+		price: String # price_num/priceScale
 		priceNum: String #price_num
 		priceScale: String # price_denum * 10^(minor_decimals - major_decimals)
 		priceScaleUnits: String # price_denum 
 		side: enum {BUY, SELL} 
 		userId: string
-		orderId: string
 }
+
+```
+
+#### Flex statistics
+
+```graphql
+type Flex(root: address) {
+		statistics: TMarketStats {
+			TVL: uint # total value locked in Flex denominated in USD
+			volume: uint # 24 hour volume on the Flex for all markets.		
+		}
+}
+```
+
+#### userEquity (not implemented yet)
+
+Equity - total balance of all tokens converted to EVER or USD currency price
+
+```graphql
+type userEquity(pubkey: string): TUserData {
+		equity: uint  # 
+	}
 ```

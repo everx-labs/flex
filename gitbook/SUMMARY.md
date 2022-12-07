@@ -9,8 +9,13 @@
 * [Connect Your Wallet](guides/connect-your-wallet.md)
 * [Trade on Flex](guides/how-to-trade-on-flex.md)
 * [Keep up Gas Balance](guides/keep-up-gas-balance.md)
-* [Log in with Trader Keys](guides/log-in-with-trader-keys.md)
 * [Troubleshooting](guides/troubleshooting.md)
+
+## Integration
+
+* [Quick Integration Guide](integration/quick-integration-guide.md)
+* [Flex SDK reference](https://tonlabs.github.io/flex-sdk-js/)
+* [Log into DApp with Trader Keys](integration/log-into-dapp-with-trader-keys.md)
 
 ## Specifications
 

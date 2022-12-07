@@ -34,16 +34,20 @@ So the exchange gets 0.15% - 0.03% = 0.12%.
 
 Trades, being messages between smart contracts also are subject to blockchain fees in native EVER tokens.
 
-* Order creation fee is 0.5 EVERs. It applies to every order.
-* Trade completion fee is another 1 EVER. Trade completion fee is payed for by the seller of the major token in the pair if their order is completed with this trade. Otherwise the buyer pays this fee. Thus the maximum blockchain fee for a successful trade is 1.5 EVERs.
-* If an order is cancelled, process queue (0.4 EVERs) and return ownership (0.1 EVER) fees are paid instead of trade completion. The total fee of a created and then cancelled order is 1 EVERs.
-* If an order expires, only return ownership fee of 0.1 EVER is applied. The total fee of an expired order is 0.6 EVERs.
+**Note**: All values are average and can vary by a few fractions of an EVER depending on the situation in the orderbook.
+
+* Order creation fee is about 0.6 EVERs. It applies to every order.
+* Trade completion fee is about 1.1 EVER. Trade completion fee is payed for by the seller of the major token in the pair if their order is completed with this trade. Otherwise the buyer pays this fee. Thus the maximum blockchain fee for a successful trade is about 1.7 EVERs.
+* If an order is cancelled, process queue and return ownership fees are paid instead of trade completion. The total fee of a created and then cancelled order is about 1.2 EVERs.
+* If an order expires, only return ownership fee of 0.1 EVER is applied. The total fee of an expired order is about 0.7 EVERs.
 
 These funds are taken from your [Gas balance](../guides/keep-up-gas-balance.md). Currently 3 EVERs  from the Gas balance are attached to order creation and cancellation. Change is returned.
 
 **Note**: When placing large limit orders, in rare cases (low liquidity in token pair spread over many small orders), blockchain fees may be several times higher, as the total fees will include the fees for each of the existing smaller orders, which are needed to fulfill the large order being executed.
 
 #### Detailed description
+
+Flex uses [TIP3](../technical-description/glossary.md) tokens internally.
 
 When an order is created, an account of the following value is created in the Price smart contract for the user:&#x20;
 
