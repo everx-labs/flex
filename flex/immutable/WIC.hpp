@@ -1,7 +1,7 @@
 /** \file
  *  \brief Wrapper Index Contract interfaces and data-structs.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

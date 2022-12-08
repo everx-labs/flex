@@ -32,6 +32,10 @@ __interface ITokenWallet {
     bool    notify,            ///< Notify receiver on incoming transfer
     cell    payload            ///< Notification payload
   );
+
+  /// Upgrade token wallet
+  [[internal]]
+  void upgrade(address remainingGasTo);
 };
 
 using ITokenWalletPtr = handle<ITokenWallet>;

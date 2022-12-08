@@ -1,7 +1,7 @@
 /** \file
  *  \brief UserDataConfig contract implementation
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "UserDataConfig.hpp"
@@ -38,8 +38,9 @@ public:
     user_id_index_code_ = user_id_index_code;
   }
 
-  address deployFlexClient(uint256 pubkey, uint128 deploy_evers) {
+  address deployFlexClient(uint256 pubkey, uint128 deploy_evers, bytes signature) {
     require(initialized(), error_code::uninitialized);
+
     auto workchain_id = std::get<addr_std>(tvm_myaddr().val()).workchain_id;
     DFlexClientStub data {.owner_ = pubkey};
     auto [init, hash] = prepare<IFlexClientStub>(data, flex_client_stub_.get());
@@ -47,7 +48,7 @@ public:
 
     tvm_rawreserve(tvm_balance() - int_value().get(), rawreserve_flag::up_to);
     ptr.deploy(init, Evers(deploy_evers.get())).onDeploy(
-      triplet_, *binding_, flex_client_code_.get(), auth_index_code_.get(), user_id_index_code_.get()
+      triplet_, *binding_, flex_client_code_.get(), auth_index_code_.get(), user_id_index_code_.get(), signature
       );
 
     set_int_return_flag(SEND_ALL_GAS);

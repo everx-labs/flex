@@ -1,7 +1,7 @@
 /** \file
  *  \brief WrapperBroxus contract implementation
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "WrapperBroxus.hpp"

@@ -1,7 +1,7 @@
 /** \file
  *  \brief FlexClientStub contract interfaces and data-structs
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once
@@ -28,11 +28,12 @@ __interface IFlexClientStub {
   /// Deploy notification
   [[internal, deploy]]
   void onDeploy(
-    FlexVersion triplet,           ///< Flex version
-    bind_info   binding,           ///< Exchange binding info (Flex address and PriceXchg code hash (unsalted))
-    cell        flex_client_code,  ///< FlexClient code (actual version, no salt)
-    cell        auth_index_code,   ///< AuthIndex code (no salt)
-    cell        user_id_index_code ///< UserIdIndex code (unsalted)
+    FlexVersion triplet,            ///< Flex version
+    bind_info   binding,            ///< Exchange binding info (Flex address and PriceXchg code hash (unsalted))
+    cell        flex_client_code,   ///< FlexClient code (actual version, no salt)
+    cell        auth_index_code,    ///< AuthIndex code (no salt)
+    cell        user_id_index_code, ///< UserIdIndex code (unsalted)
+    bytes       signature           ///< Signature to verify user pubkey ownership
   ) = 10;
 
   /// We need this unused resumable method to reserve awaits map in persistent data header,

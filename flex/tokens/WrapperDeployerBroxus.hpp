@@ -2,7 +2,7 @@
  *  \brief WrapperDeployerBroxus interfaces and data-structs for Broxus tip3 tokens.
  *  WrapperDeployerBroxus deploys Wrapper contracts for Broxus Tip3 tokens
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

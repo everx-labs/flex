@@ -2,7 +2,7 @@
  *  \brief WrapperDeployerTip3 interfaces and data-structs for TON Labs tip3 tokens.
  *  WrapperDeployerTip3 deploys Wrapper contracts for TON Labs Tip3 tokens
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

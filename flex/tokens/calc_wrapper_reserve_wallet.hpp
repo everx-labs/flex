@@ -1,7 +1,7 @@
 /** \file
  *  \brief Calculate Wrapper's reserve wallet address.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  *  Macroses TIP3_WRAPPER_WALLET_CODE_HASH / TIP3_WRAPPER_WALLET_CODE_DEPTH
  *   must be defined in compilation (code hash and code depth of FlexWallet).
  */

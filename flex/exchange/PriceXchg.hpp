@@ -2,7 +2,7 @@
  *  \brief PriceXchg contract interfaces and data-structs
  *  PriceXchg - contract to enqueue and process tip3-tip3 exchange orders at a specific price
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

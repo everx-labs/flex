@@ -2,7 +2,7 @@
  *  \brief WrapperDeployerEver interfaces and data-structs for WrapperEver deployment
  *  WrapperDeployerEver deploys WrapperEver contracts for native Evers wrapping into tip3 tokens
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

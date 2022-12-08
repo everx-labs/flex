@@ -1,7 +1,7 @@
 /** \file
  *  \brief WrappersConfig contract interfaces and data-structs.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  *
  *  WrappersConfig keeps Wrappers configuration: first / last WIC addresses, wrapper deployers.
  *  \section upgrade Upgrade cloning procedure

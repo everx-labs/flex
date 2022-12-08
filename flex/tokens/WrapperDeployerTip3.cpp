@@ -1,7 +1,7 @@
 /** \file
  *  \brief WrapperDeployerTip3 contract implementation for TON Labs tip3 tokens
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "WrapperDeployerTip3.hpp"

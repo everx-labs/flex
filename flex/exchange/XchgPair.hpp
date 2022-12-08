@@ -2,7 +2,7 @@
  *  \brief Exchange pair (tip3/tip3) contract interfaces and data-structs.
  *  XchgPair - contract defining tip3/tip3 exchange pair. May only be deployed by Flex root contract.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

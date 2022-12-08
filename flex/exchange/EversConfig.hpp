@@ -1,7 +1,7 @@
 /** \file
  *  \brief Flex evers configuration (processing costs)
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once
