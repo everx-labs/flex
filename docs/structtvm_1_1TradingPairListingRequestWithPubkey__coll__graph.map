@@ -1,4 +1,0 @@
-<map id="tvm::TradingPairListingRequestWithPubkey" name="tvm::TradingPairListingRequestWithPubkey">
-<area shape="rect" id="node1" title="Request to deploy trading pair (tip3/crystals) with public key (for getter)" alt="" coords="5,95,228,136"/>
-<area shape="rect" id="node2" href="$structtvm_1_1TradingPairListingRequest.html" title="Request to deploy trading pair (tip3/crystals)" alt="" coords="5,5,228,32"/>
-</map>

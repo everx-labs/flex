@@ -1,13 +1,23 @@
 var searchData=
 [
-  ['major_5ftip3cfg_5f_141',['major_tip3cfg_',['../structtvm_1_1DPriceXchg.html#aba8f60a1f472381f7ec5f5f7fb01592e',1,'tvm::DPriceXchg']]],
-  ['make_5fdeal_142',['make_deal',['../classdealer.html#aa525965b6340edc1dba2524576032917',1,'dealer']]],
-  ['message_5fsender_5fis_5fnot_5fgood_5fwallet_143',['message_sender_is_not_good_wallet',['../structTONTokenWallet_1_1error__code.html#ae9a99611045f1d69decef7dc48ec2124',1,'TONTokenWallet::error_code::message_sender_is_not_good_wallet()'],['../structWrapper_1_1error__code.html#a07b1499c2e3becf1b21807468ab5fdfb',1,'Wrapper::error_code::message_sender_is_not_good_wallet()']]],
-  ['message_5fsender_5fis_5fnot_5fmy_5fowner_144',['message_sender_is_not_my_owner',['../structTONTokenWallet_1_1error__code.html#ad565d005394ff99bcfd17cbdc85378f2',1,'TONTokenWallet::error_code::message_sender_is_not_my_owner()'],['../structWrapper_1_1error__code.html#a0fd2cebcf8f79769e4e6a4643c7dbc0f',1,'Wrapper::error_code::message_sender_is_not_my_owner()']]],
-  ['message_5fsender_5fis_5fnot_5fmy_5froot_145',['message_sender_is_not_my_root',['../structTONTokenWallet_1_1error__code.html#af9ea8d4e67bdbf04f76d6b955b879c9c',1,'TONTokenWallet::error_code']]],
-  ['min_5famount_146',['min_amount',['../structtvm_1_1TradingPairListingRequest.html#aeedf28be849146928b02a119f0fc666f',1,'tvm::TradingPairListingRequest::min_amount()'],['../structtvm_1_1XchgPairListingRequest.html#a024112e1d88da6d19825835da1497efa',1,'tvm::XchgPairListingRequest::min_amount()']]],
-  ['min_5famount_5f_147',['min_amount_',['../structtvm_1_1DTradingPair.html#a4ee5cd23bdfb2254a56f415c61f3f6cf',1,'tvm::DTradingPair::min_amount_()'],['../structtvm_1_1DXchgPair.html#aef9d5faf368c0a6d4c7feda057b0be49',1,'tvm::DXchgPair::min_amount_()'],['../structtvm_1_1DPrice.html#a4dd514272b17eee997d904296f48493f',1,'tvm::DPrice::min_amount_()'],['../structtvm_1_1DPriceXchg.html#a2916387e4aecbeda7988a81e3e68141f',1,'tvm::DPriceXchg::min_amount_()']]],
-  ['minor_5fcost_148',['minor_cost',['../PriceXchg_8cpp.html#ac27baec00ec82fe96dc555e1458c442a',1,'PriceXchg.cpp']]],
-  ['minor_5ftip3cfg_5f_149',['minor_tip3cfg_',['../structtvm_1_1DPriceXchg.html#acb92d3e0e6bdad9bfebcac57b3056878',1,'tvm::DPriceXchg']]],
-  ['mint_150',['mint',['../structtvm_1_1IRootTokenContract.html#ac81ad906acffff4cdc2939f3c0061266',1,'tvm::IRootTokenContract']]]
+  ['last_5fpair_278',['last_pair',['../structtvm_1_1FlexDetails.html#a74ad94d7331142cc8604c214ba34afaf',1,'tvm::FlexDetails::last_pair()'],['../structtvm_1_1PairsRange.html#a74ad94d7331142cc8604c214ba34afaf',1,'tvm::PairsRange::last_pair()']]],
+  ['last_5fpair_5f_279',['last_pair_',['../structtvm_1_1DFlex.html#ac236312add8b63ca642ccfcd747f1016',1,'tvm::DFlex']]],
+  ['last_5fwic_280',['last_wic',['../structtvm_1_1WrappersConfigDetails.html#a121c1b8311b4e1c16d4142260838a873',1,'tvm::WrappersConfigDetails']]],
+  ['last_5fwic_5f_281',['last_wic_',['../structtvm_1_1DWrappersConfig.html#a0b60c288eb50dd921e36af897d9dbfe8',1,'tvm::DWrappersConfig']]],
+  ['lend_5famount_282',['lend_amount',['../structtvm_1_1OrderInfoXchg.html#ae3af1e55ab822c9ce42a34456259d1a8',1,'tvm::OrderInfoXchg']]],
+  ['lend_5fbalance_283',['lend_balance',['../structtvm_1_1lend__owner.html#ab322d8a0dcb1dca538deede7fe05a102',1,'tvm::lend_owner::lend_balance()'],['../structtvm_1_1lend__owner__array__record.html#ab322d8a0dcb1dca538deede7fe05a102',1,'tvm::lend_owner_array_record::lend_balance()'],['../structtvm_1_1details__info.html#ab322d8a0dcb1dca538deede7fe05a102',1,'tvm::details_info::lend_balance()']]],
+  ['lend_5ffinish_5ftime_284',['lend_finish_time',['../structtvm_1_1lend__owner.html#a27ee3d01058cf1de55c7cac1893796c3',1,'tvm::lend_owner::lend_finish_time()'],['../structtvm_1_1lend__owner__array__record.html#a27ee3d01058cf1de55c7cac1893796c3',1,'tvm::lend_owner_array_record::lend_finish_time()']]],
+  ['lend_5fkey_285',['lend_key',['../structtvm_1_1lend__owner__array__record.html#a6cf224ee36f799019642fd5372e096c0',1,'tvm::lend_owner_array_record']]],
+  ['lend_5fowner_286',['lend_owner',['../structtvm_1_1lend__owner.html',1,'tvm']]],
+  ['lend_5fowner_5farray_5frecord_287',['lend_owner_array_record',['../structtvm_1_1lend__owner__array__record.html',1,'tvm']]],
+  ['lend_5fowner_5fkey_288',['lend_owner_key',['../structtvm_1_1lend__owner__key.html',1,'tvm']]],
+  ['lend_5fowner_5fnot_5ffound_289',['lend_owner_not_found',['../structTONTokenWallet_1_1error__code.html#aea80e6f023dec8afea4981b8bc412b64',1,'TONTokenWallet::error_code']]],
+  ['lend_5fowners_290',['lend_owners',['../structtvm_1_1details__info.html#a4798114d4fe85804986fc2336e7f300b',1,'tvm::details_info']]],
+  ['lend_5fowners_5f_291',['lend_owners_',['../structtvm_1_1DTONTokenWalletInternal.html#acd47133b52d4eb6dbc10070dd894e197',1,'tvm::DTONTokenWalletInternal']]],
+  ['lend_5fowners_5farray_292',['lend_owners_array',['../TONTokenWallet_8hpp.html#a7e751cd8fce4bed835f302f7c12ff0a3',1,'tvm']]],
+  ['lend_5fowners_5fmap_293',['lend_owners_map',['../TONTokenWallet_8hpp.html#a1ccb01a36d8017533525f3fb2b222e2d',1,'tvm']]],
+  ['lend_5fowners_5foverlimit_294',['lend_owners_overlimit',['../structTONTokenWallet_1_1error__code.html#a87d8294cf0b71c3691f0f0019afedb07',1,'TONTokenWallet::error_code']]],
+  ['lend_5fpubkey_295',['lend_pubkey',['../structtvm_1_1details__info.html#abeb23cd2b50a8b5ffd81dfd0c300d653',1,'tvm::details_info']]],
+  ['lend_5fpubkey_5f_296',['lend_pubkey_',['../structtvm_1_1DUserIdIndex.html#ab2accd1de94cf541d336bdfc9af17a85',1,'tvm::DUserIdIndex::lend_pubkey_()'],['../structtvm_1_1DTONTokenWalletInternal.html#a58cc80078194c69ba032ac9868d8d2d5',1,'tvm::DTONTokenWalletInternal::lend_pubkey_()']]],
+  ['ltime_297',['ltime',['../structtvm_1_1OrderInfoXchg.html#a9971fc3fac0829a86da623e31fc116e5',1,'tvm::OrderInfoXchg']]]
 ];

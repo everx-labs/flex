@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['wrapper_2ecpp_414',['Wrapper.cpp',['../Wrapper_8cpp.html',1,'']]],
-  ['wrapper_2ehpp_415',['Wrapper.hpp',['../Wrapper_8hpp.html',1,'']]]
+  ['globalconfig_2ecpp_820',['GlobalConfig.cpp',['../GlobalConfig_8cpp.html',1,'']]],
+  ['globalconfig_2ehpp_821',['GlobalConfig.hpp',['../GlobalConfig_8hpp.html',1,'']]]
 ];

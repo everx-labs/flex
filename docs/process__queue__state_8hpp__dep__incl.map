@@ -1,0 +1,5 @@
+<map id="process_queue_state.hpp" name="process_queue_state.hpp">
+<area shape="rect" id="node1" title="Class for keeping iteration state for PriceXchg." alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node2" href="$dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="53,80,144,107"/>
+<area shape="rect" id="node3" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="42,155,155,181"/>
+</map>

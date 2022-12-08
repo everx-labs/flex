@@ -1,0 +1,9 @@
+<map id="XchgPairSalt.hpp" name="XchgPairSalt.hpp">
+<area shape="rect" id="node1" title="Exchange pair (XchgPair) configuration structure (stored in code salt)" alt="" coords="399,5,530,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="148,80,275,107"/>
+<area shape="rect" id="node4" href="$RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="299,80,439,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="463,80,658,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="682,80,861,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="885,80,1069,107"/>
+</map>

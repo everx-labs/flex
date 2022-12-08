@@ -1,13 +1,23 @@
 var searchData=
 [
-  ['ec_349',['ec',['../structec.html',1,'']]],
-  ['eflex_350',['EFlex',['../structtvm_1_1EFlex.html',1,'tvm']]],
-  ['eprice_351',['EPrice',['../structtvm_1_1EPrice.html',1,'tvm']]],
-  ['epricexchg_352',['EPriceXchg',['../structtvm_1_1EPriceXchg.html',1,'tvm']]],
-  ['eroottokencontract_353',['ERootTokenContract',['../structtvm_1_1ERootTokenContract.html',1,'tvm']]],
-  ['error_5fcode_354',['error_code',['../structFlex_1_1error__code.html',1,'Flex&lt; Internal &gt;::error_code'],['../structWrapper_1_1error__code.html',1,'Wrapper&lt; Internal &gt;::error_code'],['../structTradingPair_1_1error__code.html',1,'TradingPair::error_code'],['../structRootTokenContract_1_1error__code.html',1,'RootTokenContract&lt; Internal &gt;::error_code'],['../structXchgPair_1_1error__code.html',1,'XchgPair::error_code'],['../structTONTokenWallet_1_1error__code.html',1,'TONTokenWallet&lt; Internal &gt;::error_code']]],
-  ['etontokenwallet_355',['ETONTokenWallet',['../structtvm_1_1ETONTokenWallet.html',1,'tvm']]],
-  ['etradingpair_356',['ETradingPair',['../structtvm_1_1ETradingPair.html',1,'tvm']]],
-  ['ewrapper_357',['EWrapper',['../structtvm_1_1EWrapper.html',1,'tvm']]],
-  ['exchgpair_358',['EXchgPair',['../structtvm_1_1EXchgPair.html',1,'tvm']]]
+  ['dauthindex_678',['DAuthIndex',['../structtvm_1_1DAuthIndex.html',1,'tvm']]],
+  ['deal_5fresult_679',['deal_result',['../classtvm_1_1xchg_1_1dealer.html#structtvm_1_1xchg_1_1dealer_1_1deal__result',1,'tvm::xchg::dealer']]],
+  ['dealer_680',['dealer',['../classtvm_1_1xchg_1_1dealer.html',1,'tvm::xchg']]],
+  ['details_5finfo_681',['details_info',['../structtvm_1_1details__info.html',1,'tvm']]],
+  ['dflex_682',['DFlex',['../structtvm_1_1DFlex.html',1,'tvm']]],
+  ['dflexclient1_683',['DFlexClient1',['../structtvm_1_1DFlexClient1.html',1,'tvm']]],
+  ['dflexclientstub_684',['DFlexClientStub',['../structtvm_1_1DFlexClientStub.html',1,'tvm']]],
+  ['dglobalconfig_685',['DGlobalConfig',['../structtvm_1_1DGlobalConfig.html',1,'tvm']]],
+  ['dpricexchg_686',['DPriceXchg',['../structtvm_1_1DPriceXchg.html',1,'tvm']]],
+  ['droottokencontract_687',['DRootTokenContract',['../structtvm_1_1DRootTokenContract.html',1,'tvm']]],
+  ['dsuperroot_688',['DSuperRoot',['../structtvm_1_1DSuperRoot.html',1,'tvm']]],
+  ['dsuperrootowner_689',['DSuperRootOwner',['../structtvm_1_1DSuperRootOwner.html',1,'tvm']]],
+  ['dtontokenwallet_690',['DTONTokenWallet',['../structtvm_1_1DTONTokenWallet.html',1,'tvm']]],
+  ['dtontokenwalletexternal_691',['DTONTokenWalletExternal',['../structtvm_1_1DTONTokenWalletExternal.html',1,'tvm']]],
+  ['dtontokenwalletinternal_692',['DTONTokenWalletInternal',['../structtvm_1_1DTONTokenWalletInternal.html',1,'tvm']]],
+  ['duserdataconfig_693',['DUserDataConfig',['../structtvm_1_1DUserDataConfig.html',1,'tvm']]],
+  ['duseridindex_694',['DUserIdIndex',['../structtvm_1_1DUserIdIndex.html',1,'tvm']]],
+  ['dwic_695',['DWIC',['../structtvm_1_1DWIC.html',1,'tvm']]],
+  ['dwrappersconfig_696',['DWrappersConfig',['../structtvm_1_1DWrappersConfig.html',1,'tvm']]],
+  ['dxchgpair_697',['DXchgPair',['../structtvm_1_1DXchgPair.html',1,'tvm']]]
 ];

@@ -1,5 +1,0 @@
-<map id="TradingPair" name="TradingPair">
-<area shape="rect" id="node1" title="Implements tvm::ITradingPair interface." alt="" coords="147,95,241,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,196,47"/>
-<area shape="rect" id="node3" href="$structtvm_1_1DTradingPair.html" title="TradingPair persistent data struct." alt="" coords="220,13,357,39"/>
-</map>

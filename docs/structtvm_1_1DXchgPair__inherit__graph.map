@@ -1,4 +1,4 @@
-<map id="tvm::DXchgPair" name="tvm::DXchgPair">
-<area shape="rect" id="node1" title="XchgPair persistent data struct." alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node2" href="$classXchgPair.html" title="Implements tvm::IXchgPair interface." alt="" coords="27,80,106,107"/>
+<map id="DXchgPair" name="DXchgPair">
+<area shape="rect" id="node1" title="XchgPair persistent data struct." alt="" coords="5,5,93,32"/>
+<area shape="rect" id="node2" href="$classXchgPair.html" title="Implements tvm::IXchgPair interface." alt="" coords="10,80,89,107"/>
 </map>

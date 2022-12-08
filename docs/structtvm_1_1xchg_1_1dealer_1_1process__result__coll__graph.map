@@ -1,0 +1,4 @@
+<map id="dealer::process_result" name="dealer::process_result">
+<area shape="rect" id="node1" title="Result of process() call." alt="" coords="5,109,171,136"/>
+<area shape="rect" id="node2" href="$classtvm_1_1xchg_1_1orders__queue.html" title="Orders queue to keep orders and common state (tokens amount)." alt="" coords="33,5,143,32"/>
+</map>

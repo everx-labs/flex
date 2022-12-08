@@ -1,6 +1,0 @@
-<map id="tvm::DPriceXchg" name="tvm::DPriceXchg">
-<area shape="rect" id="node1" title="PriceXchg persistent data struct." alt="" coords="162,109,293,136"/>
-<area shape="rect" id="node2" href="$structtvm_1_1TonsConfig.html" title="Processing native funds value ..." alt="" coords="5,5,132,32"/>
-<area shape="rect" id="node3" href="$structtvm_1_1RationalPrice.html" title="Rational price &#45; numerator/denominator." alt="" coords="156,5,299,32"/>
-<area shape="rect" id="node4" href="$structtvm_1_1Tip3Config.html" title=" " alt="" coords="323,5,449,32"/>
-</map>

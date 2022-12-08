@@ -1,5 +1,0 @@
-<map id="tvm::WrapperListingRequestWithPubkey" name="tvm::WrapperListingRequestWithPubkey">
-<area shape="rect" id="node1" title="Request to deploy wrapper with public key (for getter)" alt="" coords="5,184,212,225"/>
-<area shape="rect" id="node2" href="$structtvm_1_1WrapperListingRequest.html" title="Request to deploy wrapper." alt="" coords="5,95,212,121"/>
-<area shape="rect" id="node3" href="$structtvm_1_1Tip3Config.html" title=" " alt="" coords="46,5,171,32"/>
-</map>

@@ -1,0 +1,5 @@
+<map id="xchg_iterator.hpp" name="xchg_iterator.hpp">
+<area shape="rect" id="node1" title="Exchange orders iterator for PriceXchg." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node2" href="$dealer_8hpp.html" title="Class for iterating sell &amp; buy queues and processing tip3/tip3 deals for PriceXchg." alt="" coords="27,80,118,107"/>
+<area shape="rect" id="node3" href="$PriceXchg_8cpp.html" title="PriceXchg contract implementation. Contract for trading price for tip3/tip3 exchange...." alt="" coords="16,155,129,181"/>
+</map>

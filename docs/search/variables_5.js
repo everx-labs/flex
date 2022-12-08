@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['finish_5ftime_5fmust_5fbe_5fgreater_5fthan_5fnow_535',['finish_time_must_be_greater_than_now',['../structTONTokenWallet_1_1error__code.html#af15e504e42c87a9078740174354ff9f7',1,'TONTokenWallet::error_code']]],
-  ['flex_5f_536',['flex_',['../structtvm_1_1DPrice.html#a5c752c273e64f85f034b947dc783919e',1,'tvm::DPrice::flex_()'],['../structtvm_1_1DPriceXchg.html#a6be14255ae41e44ec3471444de13421d',1,'tvm::DPriceXchg::flex_()']]],
-  ['flex_5faddr_5f_537',['flex_addr_',['../structtvm_1_1DTradingPair.html#acd97d43e4de6536a607070130685c544',1,'tvm::DTradingPair::flex_addr_()'],['../structtvm_1_1DXchgPair.html#a3527220740f2d50abad433e0ab67a116',1,'tvm::DXchgPair::flex_addr_()']]],
-  ['flex_5fwallet_538',['flex_wallet',['../structtvm_1_1WrapperRet.html#a502eb13110ae1da4bc4099f44d7ee39f',1,'tvm::WrapperRet']]],
-  ['flex_5fwallet_5fcode_5f_539',['flex_wallet_code_',['../structtvm_1_1DFlex.html#a23c5ba834e830aef30cfc94230897356',1,'tvm::DFlex']]]
+  ['finish_5ftime_5fis_5fout_5fof_5flend_5ftime_1068',['finish_time_is_out_of_lend_time',['../structTONTokenWallet_1_1error__code.html#a046a3e8639f5768f36683cac2d73f61f',1,'TONTokenWallet::error_code']]],
+  ['finish_5ftime_5fmust_5fbe_5fgreater_5fthan_5fnow_1069',['finish_time_must_be_greater_than_now',['../structTONTokenWallet_1_1error__code.html#a2c0acbe1f4b1551234b2d1d568b2174b',1,'TONTokenWallet::error_code']]],
+  ['first_5fpair_1070',['first_pair',['../structtvm_1_1FlexDetails.html#a1601388a35edee0294cf3b78ca5b5ead',1,'tvm::FlexDetails::first_pair()'],['../structtvm_1_1PairsRange.html#a1601388a35edee0294cf3b78ca5b5ead',1,'tvm::PairsRange::first_pair()']]],
+  ['first_5fpair_5f_1071',['first_pair_',['../structtvm_1_1DFlex.html#aca5299a4126fe9e7968a6aa2bc2e1592',1,'tvm::DFlex']]],
+  ['first_5fwic_1072',['first_wic',['../structtvm_1_1WrappersConfigDetails.html#ac89c44885e6067878c4716357e3ba069',1,'tvm::WrappersConfigDetails']]],
+  ['first_5fwic_5f_1073',['first_wic_',['../structtvm_1_1DWrappersConfig.html#a9500fec57d47f61690e3e1a0838ee55a',1,'tvm::DWrappersConfig']]],
+  ['flex_1074',['flex',['../structtvm_1_1bind__info.html#afdb53a6785727c76d2bc343130c52006',1,'tvm::bind_info::flex()'],['../structtvm_1_1GlobalConfigDetails.html#afdb53a6785727c76d2bc343130c52006',1,'tvm::GlobalConfigDetails::flex()'],['../structtvm_1_1PriceXchgSalt.html#afdb53a6785727c76d2bc343130c52006',1,'tvm::PriceXchgSalt::flex()'],['../structtvm_1_1XchgPairSalt.html#afdb53a6785727c76d2bc343130c52006',1,'tvm::XchgPairSalt::flex()']]],
+  ['flex_5f_1075',['flex_',['../structtvm_1_1DGlobalConfig.html#a90dca4dd05d7d744420e9fd2fa6c4efd',1,'tvm::DGlobalConfig']]],
+  ['flex_5fclient_5fcode_1076',['flex_client_code',['../structtvm_1_1SuperRootOwnerDetails.html#af208501b04ac9da2571e82aef4aa8d21',1,'tvm::SuperRootOwnerDetails::flex_client_code()'],['../structtvm_1_1UserDataConfigDetails.html#af4109fb40646c3dff8d5054fa1656cb9',1,'tvm::UserDataConfigDetails::flex_client_code()']]],
+  ['flex_5fclient_5fcode_5f_1077',['flex_client_code_',['../structtvm_1_1DSuperRootOwner.html#a553f96921fb541e14382b87cf42d5119',1,'tvm::DSuperRootOwner::flex_client_code_()'],['../structtvm_1_1DUserDataConfig.html#a553f96921fb541e14382b87cf42d5119',1,'tvm::DUserDataConfig::flex_client_code_()']]],
+  ['flex_5fclient_5fstub_1078',['flex_client_stub',['../structtvm_1_1SuperRootOwnerDetails.html#ab04b6b8418b3be64dc65ccd2bd9501b7',1,'tvm::SuperRootOwnerDetails::flex_client_stub()'],['../structtvm_1_1UserDataConfigDetails.html#ac96208b3656a50cd031dfc5682a6c7da',1,'tvm::UserDataConfigDetails::flex_client_stub()']]],
+  ['flex_5fclient_5fstub_5f_1079',['flex_client_stub_',['../structtvm_1_1DSuperRootOwner.html#ac884a05644a9f20a968ed7c93c0d5951',1,'tvm::DSuperRootOwner::flex_client_stub_()'],['../structtvm_1_1DSuperRoot.html#ac884a05644a9f20a968ed7c93c0d5951',1,'tvm::DSuperRoot::flex_client_stub_()'],['../structtvm_1_1DUserDataConfig.html#ac884a05644a9f20a968ed7c93c0d5951',1,'tvm::DUserDataConfig::flex_client_stub_()']]],
+  ['flex_5fcode_1080',['flex_code',['../structtvm_1_1SuperRootOwnerDetails.html#a264b9c9ec0111038a72d9241dbe6f38e',1,'tvm::SuperRootOwnerDetails']]],
+  ['flex_5fcode_5f_1081',['flex_code_',['../structtvm_1_1DSuperRootOwner.html#a443d96e287430b38dc2acacdf95a24dd',1,'tvm::DSuperRootOwner']]],
+  ['flex_5fkeep_5fevers_5f_1082',['flex_keep_evers_',['../structtvm_1_1DFlex.html#a634c4c08f706798a4e89f7dd72e5c37c',1,'tvm::DFlex']]],
+  ['funds_5fmismatched_1083',['funds_mismatched',['../structWrapperEver_1_1error__code.html#a99b19f7b2aa0edefafdc613234e4964c',1,'WrapperEver::error_code']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['allowance_5finfo_336',['allowance_info',['../structtvm_1_1allowance__info.html',1,'tvm']]]
+  ['auth_5fcfg_674',['auth_cfg',['../TONTokenWallet_8cpp.html#structauth__cfg',1,'']]],
+  ['authindex_675',['AuthIndex',['../classAuthIndex.html',1,'']]]
 ];
