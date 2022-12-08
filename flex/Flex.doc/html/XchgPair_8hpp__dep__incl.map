@@ -1,12 +1,12 @@
 <map id="XchgPair.hpp" name="XchgPair.hpp">
-<area shape="rect" id="node1" title="Exchange pair (tip3/tip3) contract interfaces and data&#45;structs. XchgPair &#45; contract defining tip3/tip..." alt="" coords="563,5,668,32"/>
+<area shape="rect" id="node1" title="Exchange pair (tip3/tip3) contract interfaces and data&#45;structs. XchgPair &#45; contract defining tip3/tip..." alt="" coords="283,5,388,32"/>
 <area shape="rect" id="node2" href="$FlexClient_8cpp.html" title="FlexClient contract implementation." alt="" coords="265,304,379,331"/>
 <area shape="rect" id="node3" href="$FlexClientTestUpdate_8cpp.html" title="FlexClientTestUpdate contract implementation." alt="" coords="5,304,193,331"/>
-<area shape="rect" id="node4" href="$Flex_8hpp.html" title="Flex root contract interfaces and data&#45;structs." alt="" coords="576,80,655,107"/>
-<area shape="rect" id="node7" href="$Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="859,155,937,181"/>
-<area shape="rect" id="node15" href="$XchgPair_8cpp.html" title="Exchange pair contract implementation." alt="" coords="730,80,834,107"/>
-<area shape="rect" id="node5" href="$SuperRootOwner_8cpp.html" title="SuperRootOwner (single owner) contract implementation." alt="" coords="537,155,694,181"/>
-<area shape="rect" id="node6" href="$SuperRoot_8cpp.html" title="SuperRoot contract implementation." alt="" coords="719,155,835,181"/>
+<area shape="rect" id="node4" href="$Flex_8cpp.html" title="Flex root contract implementation." alt="" coords="297,155,374,181"/>
+<area shape="rect" id="node5" href="$Flex_8hpp.html" title="Flex root contract interfaces and data&#45;structs." alt="" coords="395,80,473,107"/>
+<area shape="rect" id="node15" href="$XchgPair_8cpp.html" title="Exchange pair contract implementation." alt="" coords="498,80,602,107"/>
+<area shape="rect" id="node6" href="$SuperRootOwner_8cpp.html" title="SuperRootOwner (single owner) contract implementation." alt="" coords="537,155,694,181"/>
+<area shape="rect" id="node7" href="$SuperRoot_8cpp.html" title="SuperRoot contract implementation." alt="" coords="719,155,835,181"/>
 <area shape="rect" id="node8" href="$PriceXchg_8hpp.html" title="PriceXchg contract interfaces and data&#45;structs PriceXchg &#45; contract to enqueue and process tip3&#45;tip3 ..." alt="" coords="398,155,513,181"/>
 <area shape="rect" id="node9" href="$FlexClient_8hpp.html" title="FlexClient contract interfaces and data&#45;structs." alt="" coords="309,229,425,256"/>
 <area shape="rect" id="node10" href="$FlexClientTestUpdate_8hpp.html" title="FlexClientTestUpdate contract interfaces and data&#45;structs." alt="" coords="95,229,285,256"/>

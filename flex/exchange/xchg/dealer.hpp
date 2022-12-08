@@ -3,7 +3,7 @@
  *
  *  dealer works with two xchg_iterator 's and common process_queue_state.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

@@ -1,7 +1,7 @@
 /** \file
  *  \brief Exchange pair (XchgPair) configuration structure (stored in code salt)
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

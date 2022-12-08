@@ -1,7 +1,7 @@
 /** \file
  *  \brief Flex lend payload args structure (for onTip3LendOwnership payload)
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

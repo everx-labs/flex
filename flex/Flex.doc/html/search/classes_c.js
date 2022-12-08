@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tontokenwallet_772',['TONTokenWallet',['../classTONTokenWallet.html',1,'']]]
+  ['tontokenwallet_784',['TONTokenWallet',['../classTONTokenWallet.html',1,'']]]
 ];

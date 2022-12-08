@@ -4,7 +4,7 @@
  *  First tip3 in a pair is major and terms "sell", "buy", "amount" are related to the first tip3 in pair.
  *  Second tip3 is called "minor".
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "PriceXchg.hpp"

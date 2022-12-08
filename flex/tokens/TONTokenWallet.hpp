@@ -8,7 +8,7 @@
  *  TIP3_ENABLE_BURN - enable burn functionality, to transfer tokens back through Wrapper.
  *  TIP3_ENABLE_DESTROY - enable destroy method to self-destruct empty wallet.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

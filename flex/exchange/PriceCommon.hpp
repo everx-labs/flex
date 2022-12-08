@@ -1,7 +1,7 @@
 /** \file
  *  \brief Price common interfaces and data-structs
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once
@@ -38,7 +38,7 @@ __interface IPriceCallback {
 };
 using IPriceCallbackPtr = handle<IPriceCallback>;
 
-static constexpr price_t taker_fee = { 10u128, 10000u128 }; ///< Taker fee: 10/10000 = 0.1%
+static constexpr price_t taker_fee = { 15u128, 10000u128 }; ///< Taker fee: 15/10000 = 0.15%
 static constexpr price_t maker_vig = {  3u128, 10000u128 }; ///< Maker vig:  3/10000 = 0.03%
 
 static_assert(taker_fee.denum == maker_vig.denum, "Inconsistent taker fee / maker vig denominators");

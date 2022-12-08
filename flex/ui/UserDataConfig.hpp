@@ -3,7 +3,7 @@
  *
  *  UserDataConfig keeps FlexClient/debots/UI configuration for specific `user` version
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once
@@ -48,9 +48,9 @@ __interface IUserDataConfig {
     cell user_id_index_code ///< UserIdIndex code
   );
 
-  /// Deploy FlexClient
+  /// Deploy FlexClient, \p signature - FlexClientStub address.val (without workchain id), signed by owner of the \p pubkey
   [[internal, answer_id]]
-  address deployFlexClient(uint256 pubkey, uint128 deploy_evers);
+  address deployFlexClient(uint256 pubkey, uint128 deploy_evers, bytes signature);
 
   /// Request info about contract state details (internal call)
   [[internal, answer_id]]

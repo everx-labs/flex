@@ -1,7 +1,7 @@
 /** \file
  *  \brief FlexClientStub contract implementation
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "FlexClientStub.hpp"
@@ -17,6 +17,7 @@ using namespace tvm;
 /// FlexClientStub contract. Implements IFlexClientStub.
 class FlexClientStub final : public smart_interface<IFlexClientStub>, public DFlexClientStub {
   using data = DFlexClientStub;
+  static constexpr bool _checked_deploy = true; /// Deploy is only allowed with [[deploy]] function call
 public:
   struct error_code : tvm::error_code {
     static constexpr unsigned unsalted_flex_client_stub = 101; ///< Unsalted FlexClientStub code
@@ -29,10 +30,18 @@ public:
     bind_info   binding,
     cell        flex_client_code,
     cell        auth_index_code,
-    cell        user_id_index_code
+    cell        user_id_index_code,
+    bytes       signature
   ) {
     require(tvm_mycode().ctos().srefs() == 3, error_code::unsalted_flex_client_stub);
     require(!auth_index_code_, error_code::double_initialization);
+
+    // self-destruct if signature is incorrect
+    if (!__builtin_tvm_chksignu(std::get<addr_std>(tvm_myaddr().val()).address.get(), signature.get().ctos(), owner_.get())) {
+      tvm_transfer(int_sender(), 0, false,
+        SEND_ALL_GAS | DELETE_ME_IF_I_AM_EMPTY | IGNORE_ACTION_ERRORS | SENDER_WANTS_TO_PAY_FEES_SEPARATELY);
+      return;
+    }
 
     triplet_            = triplet;
     binding_            = binding;

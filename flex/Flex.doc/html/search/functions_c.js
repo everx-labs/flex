@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['rebindwallets_945',['reBindWallets',['../structtvm_1_1IFlexClient.html#a250cb9a22611bd1003c7601c18577774',1,'tvm::IFlexClient::reBindWallets(uint256 user_id, bool set_binding, opt&lt; bind_info &gt; binding, bool set_trader, opt&lt; uint256 &gt; trader, dict_array&lt; address &gt; wallets, uint128 evers_relend_call, uint128 evers_each_wallet_call, uint128 evers_to_remove, uint128 evers_to_auth_idx)'],['../structtvm_1_1IFlexClient.html#a250cb9a22611bd1003c7601c18577774',1,'tvm::IFlexClient::reBindWallets(uint256 user_id, bool set_binding, opt&lt; bind_info &gt; binding, bool set_trader, opt&lt; uint256 &gt; trader, dict_array&lt; address &gt; wallets, uint128 evers_relend_call, uint128 evers_each_wallet_call, uint128 evers_to_remove, uint128 evers_to_auth_idx)']]],
-  ['release_946',['release',['../structtvm_1_1ISuperRootOwner.html#a1c10f94b0c99dcbc122e4856400b3b62',1,'tvm::ISuperRootOwner::release()'],['../structtvm_1_1ISuperRoot.html#a23b477d0e2d399f75d585d154c346591',1,'tvm::ISuperRoot::release()']]],
-  ['relendpubkey_947',['reLendPubkey',['../classUserIdIndex.html#ad85dc6b4f9a5195aa4febc1d7ddd7127',1,'UserIdIndex::reLendPubkey()'],['../structtvm_1_1IUserIdIndex.html#ab8a9349f1c36c882c33e7f4bb661396c',1,'tvm::IUserIdIndex::reLendPubkey()']]],
-  ['remove_948',['remove',['../structtvm_1_1IAuthIndex.html#af314f2f6b2d114f9bb473115a357bc3a',1,'tvm::IAuthIndex::remove()'],['../classUserIdIndex.html#a1fcb45e5d2428352eb36b487d1d4eea3',1,'UserIdIndex::remove()'],['../structtvm_1_1IUserIdIndex.html#a1fcb45e5d2428352eb36b487d1d4eea3',1,'tvm::IUserIdIndex::remove()']]],
-  ['requestdetails_949',['requestDetails',['../structtvm_1_1IUserDataConfig.html#a788a97973b5c81c0b9d56e5953cd37a5',1,'tvm::IUserDataConfig::requestDetails()'],['../structtvm_1_1IXchgPair.html#ace398374e107eca9e3ed3b96acfb6622',1,'tvm::IXchgPair::requestDetails()']]],
-  ['requestlendpubkey_950',['requestLendPubkey',['../structtvm_1_1IUserIdIndex.html#a95a760a18ad357da213a02efbb1e9069',1,'tvm::IUserIdIndex']]],
-  ['requestpairs_951',['requestPairs',['../structtvm_1_1IFlex.html#a9c866d62a6a72728598c2b6f0a9619d6',1,'tvm::IFlex']]],
-  ['requesttotalgranted_952',['requestTotalGranted',['../structtvm_1_1IRootTokenContract.html#a07b9992e7029c3d6330f8bf5f7749ed7',1,'tvm::IRootTokenContract::requestTotalGranted()'],['../structtvm_1_1IWrapper.html#a07b9992e7029c3d6330f8bf5f7749ed7',1,'tvm::IWrapper::requestTotalGranted()'],['../structtvm_1_1IWrapperEver.html#a07b9992e7029c3d6330f8bf5f7749ed7',1,'tvm::IWrapperEver::requestTotalGranted()']]],
-  ['resalt_953',['resalt',['../classWIC.html#ab1d42e9f2e8dec7df18b1293df0eb54c',1,'WIC']]]
+  ['pop_952',['pop',['../classtvm_1_1xchg_1_1orders__queue__cached.html#a312e7f6c761a199c1369fbe651e084f0',1,'tvm::xchg::orders_queue_cached']]],
+  ['prepare_5fexternal_5fwallet_5fstate_5finit_5fand_5faddr_953',['prepare_external_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#a6f70ed2f85266d0cf7f22c048fdfc633',1,'tvm']]],
+  ['prepare_5finternal_5fwallet_5fstate_5finit_5fand_5faddr_954',['prepare_internal_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#a7ce4112a7c6d474be7389c379c3c7e83',1,'tvm']]],
+  ['prepare_5fwallet_5fdata_955',['prepare_wallet_data',['../TONTokenWallet_8hpp.html#aa40f05632a1da45e6aaaf2ca6cbe2f25',1,'tvm']]],
+  ['prepare_5fwallet_5fstate_5finit_5fand_5faddr_956',['prepare_wallet_state_init_and_addr',['../TONTokenWallet_8hpp.html#aa0f8f155455bebd6b09be21fbcac83d1',1,'tvm']]],
+  ['process_957',['process',['../classtvm_1_1xchg_1_1dealer.html#a5e04ea542a14b55b71d3208872283e17',1,'tvm::xchg::dealer']]],
+  ['process_5fqueue_5fstate_958',['process_queue_state',['../classtvm_1_1xchg_1_1process__queue__state.html#af1109ec0f3b4eda7221f46d1c3b51ebe',1,'tvm::xchg::process_queue_state']]],
+  ['processqueue_959',['processQueue',['../structtvm_1_1IPriceXchg.html#ada45f24892629aae0a9ba941a2de4d03',1,'tvm::IPriceXchg']]],
+  ['proxy_960',['proxy',['../structtvm_1_1ISuperRoot.html#ae3f63e43622590b72d3d0d5a70e4af3f',1,'tvm::ISuperRoot']]]
 ];

@@ -1,6 +1,6 @@
 {
   "ABI version": 2,
-  "version": "2.2.0",
+  "version": "2.3.0",
   "header": [
     "pubkey",
     "time",
@@ -21,7 +21,8 @@
     ], "name":"binding", "type":"tuple" },
     { "name":"flex_client_code", "type":"cell" },
     { "name":"auth_index_code", "type":"cell" },
-    { "name":"user_id_index_code", "type":"cell" }
+    { "name":"user_id_index_code", "type":"cell" },
+    { "name":"signature", "type":"bytes" }
     ],
     "outputs": [
     ],

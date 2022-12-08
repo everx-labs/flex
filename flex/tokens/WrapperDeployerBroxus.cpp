@@ -1,7 +1,7 @@
 /** \file
  *  \brief WrapperDeployerBroxus contract implementation for Broxus tip3 tokens
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "WrapperDeployerBroxus.hpp"

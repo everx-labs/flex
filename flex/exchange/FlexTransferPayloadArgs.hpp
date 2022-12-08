@@ -1,7 +1,7 @@
 /** \file
  *  \brief Flex transfer payload args structure
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

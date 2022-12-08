@@ -2,7 +2,7 @@
  *  \brief Tip3Creds - tip3 wallet credentials (pubkey + wallet)
  *
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

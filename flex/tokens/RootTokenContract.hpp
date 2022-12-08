@@ -6,7 +6,7 @@
  *  With different macroses.
  *  Also, Wrapper contract may be internal wallets root and perform conversion external->internal and back.
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "TONTokenWallet.hpp"

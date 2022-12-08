@@ -2,7 +2,7 @@
  *  \brief WrapperCommon data-structs.
  *  ...
  *  \author Andrew Zhogin, Vasily Selivanov
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #pragma once

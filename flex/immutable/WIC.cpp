@@ -1,7 +1,7 @@
 /** \file
  *  \brief Wrapper Index Contract implementation
  *  \author Andrew Zhogin
- *  \copyright 2019-2022 (c) TON LABS
+ *  \copyright 2019-2022 (c) EverFlex Inc
  */
 
 #include "WIC.hpp"
