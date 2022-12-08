@@ -1,6 +1,10 @@
 <map id="XchgPair.hpp" name="XchgPair.hpp">
-<area shape="rect" id="node1" title="Exchange pair (tip3/tip3) contract interfaces and data&#45;structs. XchgPair &#45; contract defining tip3/tip..." alt="" coords="261,5,366,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,200,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="224,80,403,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="427,80,611,107"/>
+<area shape="rect" id="node1" title="Exchange pair (tip3/tip3) contract interfaces and data&#45;structs. XchgPair &#45; contract defining tip3/tip..." alt="" coords="548,5,653,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,124,181"/>
+<area shape="rect" id="node3" href="$XchgPairSalt_8hpp.html" title="Exchange pair (XchgPair) configuration structure (stored in code salt)" alt="" coords="433,80,563,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="463,155,658,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="682,155,861,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="885,155,1069,181"/>
+<area shape="rect" id="node4" href="$EversConfig_8hpp.html" title="Flex evers configuration (processing costs)" alt="" coords="148,155,275,181"/>
+<area shape="rect" id="node5" href="$RationalValue_8hpp.html" title="Flex rational price (numerator / denominator)" alt="" coords="299,155,439,181"/>
 </map>

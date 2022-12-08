@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['make_5fdeal_458',['make_deal',['../classdealer.html#aa525965b6340edc1dba2524576032917',1,'dealer']]],
-  ['minor_5fcost_459',['minor_cost',['../PriceXchg_8cpp.html#ac27baec00ec82fe96dc555e1458c442a',1,'PriceXchg.cpp']]],
-  ['mint_460',['mint',['../structtvm_1_1IRootTokenContract.html#ac81ad906acffff4cdc2939f3c0061266',1,'tvm::IRootTokenContract']]]
+  ['hasinternalwalletcode_927',['hasInternalWalletCode',['../structtvm_1_1IWrapper.html#afc83610853a9a7d193127e5980892ba1',1,'tvm::IWrapper::hasInternalWalletCode()'],['../structtvm_1_1IWrapperEver.html#afc83610853a9a7d193127e5980892ba1',1,'tvm::IWrapperEver::hasInternalWalletCode()']]],
+  ['haswalletcode_928',['hasWalletCode',['../structtvm_1_1IRootTokenContract.html#a0b257aff061f20b5e2b1bef241abb39a',1,'tvm::IRootTokenContract']]]
 ];

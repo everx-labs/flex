@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['hasinternalwalletcode_453',['hasInternalWalletCode',['../structtvm_1_1IWrapper.html#a914472b4604a0aa2e34891e19674d4cf',1,'tvm::IWrapper']]],
-  ['haswalletcode_454',['hasWalletCode',['../structtvm_1_1IRootTokenContract.html#ad18ff08c22de17402565ec83671ad2b6',1,'tvm::IRootTokenContract']]]
+  ['finalize_898',['finalize',['../classtvm_1_1xchg_1_1process__queue__state.html#a701080d138ef2e1f97b909b88126a0f8',1,'tvm::xchg::process_queue_state']]],
+  ['first_5factive_899',['first_active',['../classtvm_1_1xchg_1_1xchg__iterator.html#aac62b5c7781f2db081babc52259efb2b',1,'tvm::xchg::xchg_iterator']]],
+  ['front_5fwith_5fidx_900',['front_with_idx',['../classtvm_1_1xchg_1_1orders__queue__cached.html#a7e2e8843bd9f0c2d8d2cec34d3f43b59',1,'tvm::xchg::orders_queue_cached']]]
 ];

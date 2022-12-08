@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['major_5ftip3cfg_5f_553',['major_tip3cfg_',['../structtvm_1_1DPriceXchg.html#aba8f60a1f472381f7ec5f5f7fb01592e',1,'tvm::DPriceXchg']]],
-  ['message_5fsender_5fis_5fnot_5fgood_5fwallet_554',['message_sender_is_not_good_wallet',['../structTONTokenWallet_1_1error__code.html#ae9a99611045f1d69decef7dc48ec2124',1,'TONTokenWallet::error_code::message_sender_is_not_good_wallet()'],['../structWrapper_1_1error__code.html#a07b1499c2e3becf1b21807468ab5fdfb',1,'Wrapper::error_code::message_sender_is_not_good_wallet()']]],
-  ['message_5fsender_5fis_5fnot_5fmy_5fowner_555',['message_sender_is_not_my_owner',['../structTONTokenWallet_1_1error__code.html#ad565d005394ff99bcfd17cbdc85378f2',1,'TONTokenWallet::error_code::message_sender_is_not_my_owner()'],['../structWrapper_1_1error__code.html#a0fd2cebcf8f79769e4e6a4643c7dbc0f',1,'Wrapper::error_code::message_sender_is_not_my_owner()']]],
-  ['message_5fsender_5fis_5fnot_5fmy_5froot_556',['message_sender_is_not_my_root',['../structTONTokenWallet_1_1error__code.html#af9ea8d4e67bdbf04f76d6b955b879c9c',1,'TONTokenWallet::error_code']]],
-  ['min_5famount_557',['min_amount',['../structtvm_1_1TradingPairListingRequest.html#aeedf28be849146928b02a119f0fc666f',1,'tvm::TradingPairListingRequest::min_amount()'],['../structtvm_1_1XchgPairListingRequest.html#a024112e1d88da6d19825835da1497efa',1,'tvm::XchgPairListingRequest::min_amount()']]],
-  ['min_5famount_5f_558',['min_amount_',['../structtvm_1_1DTradingPair.html#a4ee5cd23bdfb2254a56f415c61f3f6cf',1,'tvm::DTradingPair::min_amount_()'],['../structtvm_1_1DXchgPair.html#aef9d5faf368c0a6d4c7feda057b0be49',1,'tvm::DXchgPair::min_amount_()'],['../structtvm_1_1DPrice.html#a4dd514272b17eee997d904296f48493f',1,'tvm::DPrice::min_amount_()'],['../structtvm_1_1DPriceXchg.html#a2916387e4aecbeda7988a81e3e68141f',1,'tvm::DPriceXchg::min_amount_()']]],
-  ['minor_5ftip3cfg_5f_559',['minor_tip3cfg_',['../structtvm_1_1DPriceXchg.html#acb92d3e0e6bdad9bfebcac57b3056878',1,'tvm::DPriceXchg']]]
+  ['immediate_5fclient_1091',['immediate_client',['../structtvm_1_1OrderInfoXchg.html#a7b90a263db158bb208f0ddab9b13865a',1,'tvm::OrderInfoXchg']]],
+  ['incorrect_5fconfig_1092',['incorrect_config',['../structFlex_1_1error__code.html#adedbf574d58e4f851eddb465a23e2d89',1,'Flex::error_code']]],
+  ['incorrect_5fprice_1093',['incorrect_price',['../structtvm_1_1xchg_1_1ec.html#a10b38d0a0df2c62b2afb7f0a37bb704a',1,'tvm::xchg::ec']]],
+  ['incorrect_5fset_5fnext_5fsender_5fclone_1094',['incorrect_set_next_sender_clone',['../structWIC_1_1error__code.html#a33a3d32ca3d82ee91237370facfebae3',1,'WIC::error_code']]],
+  ['init_5fargs_1095',['init_args',['../structtvm_1_1WICDetails.html#a60324a4cbaa27d00ba7ccc1ac66fe9bb',1,'tvm::WICDetails']]],
+  ['init_5fargs_5f_1096',['init_args_',['../structtvm_1_1DWIC.html#a8af2e6461ecdee864bf3dda8a81a23cc',1,'tvm::DWIC']]],
+  ['initialized_1097',['initialized',['../structtvm_1_1SuperRootOwnerDetails.html#aedeffc7d23da25d52b9a50045189fe2b',1,'tvm::SuperRootOwnerDetails']]],
+  ['internal_5fowner_5funset_1098',['internal_owner_unset',['../structTONTokenWallet_1_1error__code.html#a8a7c9d1072f0225ff6794f2da04ccf6d',1,'TONTokenWallet::error_code']]],
+  ['internal_5fwallet_5fhash_1099',['internal_wallet_hash',['../classWrapper.html#a8e64e79176a8b2737c51945f4893dfff',1,'Wrapper::internal_wallet_hash()'],['../classWrapperEver.html#a8e64e79176a8b2737c51945f4893dfff',1,'WrapperEver::internal_wallet_hash()']]],
+  ['it_5f_1100',['it_',['../structtvm_1_1DFlex.html#ace7be4b3b035f4d6a290f063fe789143',1,'tvm::DFlex']]]
 ];

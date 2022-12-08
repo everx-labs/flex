@@ -1,0 +1,6 @@
+<map id="GlobalConfig" name="GlobalConfig">
+<area shape="rect" id="node1" title="GlobalConfig contract implementation." alt="" coords="98,185,203,212"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,192,136"/>
+<area shape="rect" id="node3" href="$structtvm_1_1DGlobalConfig.html" title="GlobalConfig persistent data struct." alt="" coords="216,102,331,129"/>
+<area shape="rect" id="node4" href="$structtvm_1_1FlexVersion.html" title="Flex version triplet." alt="" coords="224,5,323,32"/>
+</map>
