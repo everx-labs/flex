@@ -14,9 +14,9 @@ Its currently available value is always displayed in the Assets section.
 
 <figure><img src="../.gitbook/assets/014 (1).png" alt=""><figcaption></figcaption></figure>
 
-The total amount of gas, including gas already sent to wallet gas balances (currently listed under **In orders**) is displayed in the **Funds** tab.
+The total amount of gas, including gas already sent to wallet gas balances (currently listed under **Reserved**) is displayed in the **Funds** tab.
 
-<figure><img src="../.gitbook/assets/021 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0057.png" alt=""><figcaption></figcaption></figure>
 
 If it turns <mark style="color:red;">red</mark>, it needs to be topped up.
 

@@ -95,7 +95,7 @@ Once your order is fulfilled, it appears in your **Trade history** tab at the bo
 
 Go to the **Funds** section at the bottom and click Withdraw next to the asset you wish to withdraw.
 
-<figure><img src="../.gitbook/assets/021 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0057.png" alt=""><figcaption></figcaption></figure>
 
 Scan QR code or go to desktop Surf app via link.
 
