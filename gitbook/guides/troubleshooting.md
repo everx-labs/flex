@@ -21,7 +21,7 @@ The Sign in window should update and allow you to start a new session.
 
 This is an error most commonly encountered in Auth DeBot when trying to authorize.
 
-It means that Flex Client contract associated with your Surf account does not have enough tokens to perform wjatever action you are currently trying to do. Usually this happens, when you create more than one Flex account from a single Surf account.
+It means that Flex Client contract associated with your Surf account does not have enough tokens to perform whatever action you are currently trying to do. Usually this happens, when you create more than one Flex account from a single Surf account.
 
 <figure><img src="../.gitbook/assets/0026.png" alt=""><figcaption></figcaption></figure>
 
@@ -63,7 +63,7 @@ Enter encryption keys (usually it's Surf keys).
 
 <figure><img src="../.gitbook/assets/0034.png" alt=""><figcaption></figcaption></figure>
 
-The first account that will be displayed is your newly created account. You dno't need to remove it.
+The first account that will be displayed is your newly created account. You don't need to remove it.
 
 <figure><img src="../.gitbook/assets/0035.png" alt=""><figcaption></figcaption></figure>
 
