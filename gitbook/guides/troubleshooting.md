@@ -17,6 +17,12 @@ If the **Delete account and start a new session** button does not seem to work (
 
 The Sign in window should update and allow you to start a new session.
 
+## Cannot place orders
+
+You may be too low on Gas - check, how much gas you have in your **Assets** section. If it is below 50, [top it up](keep-up-gas-balance.md).
+
+Alternatively, Flex may have undergone a contract update. Restart the DApp and Flex Auth DeBot will help you [sync your account with the updated exchange](update-flex.md). You will be able to continue trading afterwards.
+
 ## Not enough tokens on Flex Client balance
 
 This is an error most commonly encountered in Auth DeBot when trying to authorize.

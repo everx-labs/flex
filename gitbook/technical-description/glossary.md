@@ -11,6 +11,7 @@
     user_id = hash(surf_private_key, hash(DApp_pincode, DApp_login)).  
     ```
 * **DApp pubkey update** - temporary pubkey that is generated in DApp’s background for the user upon DApp installation, so it changes with each re-install, and when it is removed from application storage (by cleaning cache or after its lifetime has ended). Meanwhile user\_id stays constant, provided that user uses the same login+pincode. Every time the dapp is installed Authorization is performed and if user\_id already exists and pubkey was changed - Flex Debot updates pubkey in all wallets with lent tokens for this Trader.
+* **Gas** - native EVER tokens on the balance of Flex smart contracts used to cover various [blockchain fees](../specifications/flex-fees.md) that need to be paid in order for Flex exchange and Flex user accounts to function.
 * **Order** - request for sell or buy, created by user. Orders can be in one of the following states: not executed, partially executed, fully executed.
 * **DeBot** - a simple hat-based interface for interacing with smart contracts. DeBots data and logic is stored in smart contracts on-chain which makes them decentralized.
 * **DeBot browser** - an app that can access DeBots and render the chat-based DeBot interface. Currently Ever Surf is used at the defaulr DeBot browser for Flex.

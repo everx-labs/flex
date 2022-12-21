@@ -9,6 +9,7 @@
 * [Connect Your Wallet](guides/connect-your-wallet.md)
 * [Trade on Flex](guides/how-to-trade-on-flex.md)
 * [Keep up Gas Balance](guides/keep-up-gas-balance.md)
+* [Update Flex](guides/update-flex.md)
 * [Troubleshooting](guides/troubleshooting.md)
 
 ## Integration

@@ -8,4 +8,4 @@ On the DApp login screen click **Set custom keys for trader (advanced)** and ent
 
 **Note**: Only the keys are preset in your trading software. Username and password are newly set at this point and only used to work with the DApp.
 
-**Note 2**: Currently you will not be able to launch DeBots for this account in Surf. On the other hand, trading within Flex DApp will be functional.
+**Note 2**: Currently you will not be able to launch Flex Auth DeBot for this account in Surf. On the other hand, trading within Flex DApp will be functional.

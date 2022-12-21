@@ -8,7 +8,7 @@ Each of these contracts (Flex Client contract which governs all trader's funds o
 
 This is done with the help of Flex Auth DeBot when you connect your wallet, deposit or buy a new asset on the exchange.
 
-The initial deployment of Flex contracts costs about 50 EVERs.
+The initial deployment of Flex contracts costs about 150 EVERs.
 
 Each new assets wallet will take about 15 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](../guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
 
@@ -106,3 +106,9 @@ Unwrapping and withdrawing Flex tokens costs 1.5 EVERs.
 ## Re-login fees
 
 If you log out of your current instance of Flex, you may need to update your authorization on the next login. This will cost < 1 EVER. You will see the exact amount in the Auth DeBot dialogue.
+
+## Update fees
+
+Flex contract updates are also on-chain actions that cost some gas.
+
+For each user account the update will cost `1 EVER + number_of_price_contracts*2*3 EVER + number_of_user_wallets*0.1 EVER`
