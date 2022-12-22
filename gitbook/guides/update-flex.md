@@ -18,15 +18,15 @@ Scan the QR code or click **Open Surf app** and proceed to the Flex DeBot in Sur
 This will cancel all your open orders and return the funds reserved in them to your Flex balances.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/0059.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0066.png" alt=""><figcaption></figcaption></figure>
 
-Depending on whether you have any open orders, and on how extensive the required update is, the DeBot will perform one or more update steps and ask you to confirm a few transactions. The fees for all update actions will be paid from your Gas balance.
+Depending on how many trader accounts and open orders you have, and on how extensive the required update is, the DeBot will perform one or more update steps and ask you to confirm a few transactions. The [fees](../specifications/flex-fees.md#update-fees) for all update actions will be paid from your Gas balance.
 
-<figure><img src="../.gitbook/assets/0060.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0067.png" alt=""><figcaption></figcaption></figure>
 
 Once done, it will report success and display the usual Flex DeBot menu.
 
-<figure><img src="../.gitbook/assets/0061.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/0065.png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/0062.png" alt=""><figcaption></figcaption></figure>
 

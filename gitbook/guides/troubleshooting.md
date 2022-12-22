@@ -11,12 +11,6 @@ If you encounter any issues logging into the Flex DApp, try deleting the session
 Then reenter the credentials anew.\
 Flex Auth DeBot will launch and update your keys, after which you will be able to use your account as usual.
 
-## Cannot start new session
-
-If the **Delete account and start a new session** button does not seem to work (nothing visible happens upon clicking it), close and restart the DApp.&#x20;
-
-The Sign in window should update and allow you to start a new session.
-
 ## Cannot place orders
 
 You may be too low on Gas - check, how much gas you have in your **Assets** section. If it is below 50, [top it up](keep-up-gas-balance.md).
@@ -29,27 +23,47 @@ This is an error most commonly encountered in Auth DeBot when trying to authoriz
 
 It means that Flex Client contract associated with your Surf account does not have enough tokens to perform whatever action you are currently trying to do. Usually this happens, when you create more than one Flex account from a single Surf account.
 
-<figure><img src="../.gitbook/assets/0026.png" alt=""><figcaption></figcaption></figure>
-
 To fix this problem, you need to top up the balance of your Flex Client.
 
-Tap (in the mobile app) or click and hold (in the desktop app) the Flex Client address. It is usually located at the top of your dialogue with the DeBot:
+<figure><img src="../.gitbook/assets/0068.png" alt=""><figcaption></figcaption></figure>
+
+You can do it using your Surf wallet's funds right here in the DeBot.
+
+Just click **Transfer from my wallet**, and confirm the resulting transaction:
+
+<figure><img src="../.gitbook/assets/0069.png" alt=""><figcaption></figcaption></figure>
+
+Once the DeBot confirms successful transfer, it will return you to whatever you were doing, that caused this error, and you will be able to continue.
+
+**Manual option**
+
+If you want to top up your Flex Client  manually from some other account, or by another amount, you'll need your Flex Client address. It is usually located at the top of your dialogue with the DeBot.
+
+Tap (in the mobile app) or click and hold (in the desktop app) the Flex Client address.&#x20;
 
 <figure><img src="../.gitbook/assets/0027.png" alt=""><figcaption></figcaption></figure>
 
-To check the current Flex client balance go to [ever.live](https://ever.live/) and paste this address in the search string.
+To check the current Flex Client balance go to [ever.live](https://ever.live/) and paste this address in the search string.
 
 The account page will display the current balance.
 
 <figure><img src="../.gitbook/assets/0028.png" alt=""><figcaption></figcaption></figure>
 
-To top it up, go to the main Surf screen and click **Send**.
+Now you can top it up with your preferred method.
+
+For example, in Surf, go to the main Surf screen and click **Send**.
 
 <figure><img src="../.gitbook/assets/0029.png" alt=""><figcaption></figcaption></figure>
 
 Fill in the Flex Client address and amount and send the necessary tokens.
 
 <figure><img src="../.gitbook/assets/0030.png" alt=""><figcaption></figcaption></figure>
+
+Once you have topped up the Flex Client, go back to the DeBot dialogue and choose **I did it myself**.
+
+<figure><img src="../.gitbook/assets/0068.png" alt=""><figcaption></figcaption></figure>
+
+The DeBot will return you to whatever you were doing.
 
 ## Lost login and/or password
 
