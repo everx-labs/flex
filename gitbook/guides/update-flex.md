@@ -2,7 +2,11 @@
 
 There are two types of updates in Flex.
 
-DApp updates are frequent and straightforward. The DApp will display a notification about the available update in the top right corner of the main screen. Download the suggested package and install it as usual.
+DApp updates are frequent and straightforward. The DApp will display a notification about the available update in the top right corner of the main screen.&#x20;
+
+<figure><img src="../.gitbook/assets/upd.png" alt=""><figcaption></figcaption></figure>
+
+Download the suggested package and install it as usual.
 
 On the other hand, occasionally the on-chain contracts of the Flex exchange itself will be updated. To continue trading, you will have to sync your account with the updated Flex contracts. Follow the guide below to complete this update.
 
