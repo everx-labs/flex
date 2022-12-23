@@ -20,6 +20,8 @@ The total amount of gas, including gas already sent to wallet gas balances (curr
 
 If it turns <mark style="color:red;">red</mark>, it needs to be topped up.
 
+<figure><img src="../.gitbook/assets/071.png" alt=""><figcaption></figcaption></figure>
+
 To top it up, click **Deposit** next to the **Gas** balance in the Assets section.
 
 Scan the QR code or go to desktop Surf app.

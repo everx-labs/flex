@@ -5,7 +5,7 @@
 ## Guides
 
 * [Install Flex DApp](guides/install-flex-dapp.md)
-* [Get EVERs](guides/get-evers.md)
+* [Get EVERs and Prepare Wallet](guides/get-evers.md)
 * [Connect Your Wallet](guides/connect-your-wallet.md)
 * [Trade on Flex](guides/how-to-trade-on-flex.md)
 * [Keep up Gas Balance](guides/keep-up-gas-balance.md)
