@@ -8,7 +8,7 @@ Each of these contracts (Flex Client contract which governs all trader's funds o
 
 This is done with the help of Flex Auth DeBot when you connect your wallet, deposit or buy a new asset on the exchange.
 
-The initial deployment of Flex contracts costs about 150 EVERs.
+The initial deployment of Flex contracts requires about 150 EVERs. Most of this amount will become the initial deposit to your [Gas balance](../guides/keep-up-gas-balance.md), will be used to cover subsequent fees, and any unspent remainder may be later [recovered](../guides/how-to-trade-on-flex.md#how-to-recover-gas-balances).
 
 Each new assets wallet will take about 15 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](../guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
 
