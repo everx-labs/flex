@@ -1,6 +1,8 @@
 # Update Flex
 
-There are two types of updates in Flex.
+There are two types of updates in Flex: DApp updates and Flex smart contract updates.
+
+## Update DApp
 
 DApp updates are frequent and straightforward. The DApp will display a notification about the available update in the top right corner of the main screen.&#x20;
 
@@ -8,9 +10,11 @@ DApp updates are frequent and straightforward. The DApp will display a notificat
 
 Download the suggested package and install it as usual.
 
-On the other hand, occasionally the on-chain contracts of the Flex exchange itself will be updated. To continue trading, you will have to sync your account with the updated Flex contracts. Follow the guide below to complete this update.
-
 ## Update Flex account
+
+Occasionally the on-chain contracts of the Flex exchange itself will be updated. However, to ensure security of user funds, no contracts belonging to the user (wallets, Flex Client, etc.) can be updated without user authorization.
+
+Follow the guide below to authorize your user contract update and sync your account with the updated core Flex contracts.
 
 When Flex has undergone a contract update, you will see the following screen once you log into your Flex account:
 
