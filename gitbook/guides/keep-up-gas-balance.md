@@ -10,19 +10,13 @@ This balance will gradually be spent on deploying new internal wallets (\~10 EVE
 
 It is recommended to keep your Gas balance up above 50 EVERs at all times.
 
-Its currently available value is always displayed in the Assets section.
+Its currently available value is always displayed in the top right corner of te Flex window.
 
-<figure><img src="../.gitbook/assets/014 (1).png" alt=""><figcaption></figcaption></figure>
-
-The total amount of gas, including gas already sent to wallet gas balances (currently listed under **Reserved**) is displayed in the **Funds** tab.
-
-<figure><img src="../.gitbook/assets/0057.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/074.png" alt=""><figcaption></figcaption></figure>
 
 If it turns <mark style="color:red;">red</mark>, it needs to be topped up.
 
-<figure><img src="../.gitbook/assets/071.png" alt=""><figcaption></figcaption></figure>
-
-To top it up, click **Deposit** next to the **Gas** balance in the Assets section.
+To top it up, click on the displayed **Gas** balance.
 
 Scan the QR code or go to desktop Surf app.
 

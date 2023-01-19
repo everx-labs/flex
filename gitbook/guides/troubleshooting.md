@@ -95,9 +95,7 @@ Review the funds on the selected account, and if it's the lost one, click **Remo
 
 <figure><img src="../.gitbook/assets/0038.png" alt=""><figcaption></figcaption></figure>
 
-Then follow DeBot instructions, until the account is removed. All tokens, in orders or otherwise and everything remaining on the gas balance will be returned to you.
-
-To continue using the new Flex account, [deposit](how-to-trade-on-flex.md#how-to-deposit) the recovered funds into it.
+Then follow DeBot instructions, until the account is removed. All tokens, in orders or otherwise and will be returned to you. Gas balance will be sent to Flex Client and can also be [recovered](how-to-trade-on-flex.md#how-to-recover-gas-balances).
 
 ## Market order fails due to insufficient funds
 

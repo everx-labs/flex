@@ -16,7 +16,7 @@ You will be able to deposit your funds into Flex to start trading any tokens lis
 
 To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Assets section.
 
-<figure><img src="../.gitbook/assets/0015.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/075.png" alt=""><figcaption></figcaption></figure>
 
 ## How to deposit
 
@@ -46,13 +46,9 @@ Flex displays all available information about a token which can help you decide 
 
 <figure><img src="../.gitbook/assets/017 (1).png" alt=""><figcaption></figcaption></figure>
 
-Your current assets on Flex are always displayed in the Assets section:
+Your current assets in the current pair are always displayed in the Assets section:
 
-<figure><img src="../.gitbook/assets/014 (1).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-**Gas** balance is the native EVERs you use to pay transaction fees. It should be [kept above 50](keep-up-gas-balance.md) to make sure you can perform any actions on Flex.
-{% endhint %}
+<figure><img src="../.gitbook/assets/073.png" alt=""><figcaption></figcaption></figure>
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
@@ -95,7 +91,7 @@ Once your order is fulfilled, it appears in your **Trade history** tab at the bo
 
 Go to the **Funds** section at the bottom and click Withdraw next to the asset you wish to withdraw.
 
-<figure><img src="../.gitbook/assets/0057.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/076.png" alt=""><figcaption></figcaption></figure>
 
 Scan QR code or go to desktop Surf app via link.
 
@@ -142,6 +138,8 @@ Click **Remove UserId and Wallets**.
 Confirm the action. Several transactions to cancel all open orders of the account, withdraw assets and burn Flex token wallets will be generated.
 
 Confirm the necessary transactions.
+
+The withdrawn gas balance will be transfered to Flex Client and can be recovered from it. The trading funds will be sent to your Surf account.
 
 Once all transactions are performed, DeBot will report success and display the userId of all your other accounts and the option to recover Gas from the Flex Client. To recover Gas from other accounts, select one of the other accounts.
 

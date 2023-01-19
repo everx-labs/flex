@@ -2,11 +2,13 @@
 
 <figure><img src="gitbook/.gitbook/assets/android-chrome-192x192.png" alt=""><figcaption></figcaption></figure>
 
-FLEX is a fast decentralized exchange with a limit order book built on Everscale.
+FLEX is a fast and secure decentralized exchange with a limit order book built on Everscale.
 
 There are no intermediate layers between the trader and the blockchain here - everything works on native Everscale smart contracts communicating with each other. Namely, FLEX operates as a decentralized and distributed limit order book (DLOB), which takes a most common centralized exchange model: central limit order book (CLOB) and implements it on-chain via a distributed smart contract model.
 
 FLEX allows to trade in a variety of tokens - from native EVERs to common and popular assets from other blockchains wrapped to Everscale-standard distributed tokens.
+
+Funds security is achieved by ensuring all smart contracts containing trader funds are governed by the trader's keys and may not undergo any updates without the the trader's authorization.
 
 **Explore Flex at**: [https://flexdex.fi/](https://flexdex.fi/)****
 

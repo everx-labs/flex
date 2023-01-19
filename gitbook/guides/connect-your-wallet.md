@@ -64,6 +64,8 @@ Once done, you can **View user wallets** to see how many tokens (tradable and ga
 
 Looking at your Flex interface you will see the deposited trading funds in your Assets list.
 
-<figure><img src="../.gitbook/assets/0040.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/073.png" alt=""><figcaption></figcaption></figure>
 
-Currently available Gas balance is displayed in this list too. It will gradually be spent on all your actions on Flex. Make sure to [keep it above 50 tokens](keep-up-gas-balance.md) to be able to trade anything on Flex.
+Currently available Gas balance is displayed in the top right corner. It will gradually be spent on all your actions on Flex. Make sure to [keep it above 50 tokens](keep-up-gas-balance.md) to be able to trade anything on Flex.
+
+<figure><img src="../.gitbook/assets/074.png" alt=""><figcaption></figcaption></figure>

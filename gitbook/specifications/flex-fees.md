@@ -8,7 +8,13 @@ Each of these contracts (Flex Client contract which governs all trader's funds o
 
 This is done with the help of Flex Auth DeBot when you connect your wallet, deposit or buy a new asset on the exchange.
 
-The initial deployment of Flex contracts requires about 150 EVERs. Most of this amount will become the initial deposit to your [Gas balance](../guides/keep-up-gas-balance.md), will be used to cover subsequent fees, and any unspent remainder may be later [recovered](../guides/how-to-trade-on-flex.md#how-to-recover-gas-balances).
+The initial deployment of Flex contracts requires a minimum of 150 EVERs. This will become the initial deposit to your [Gas balance](../guides/keep-up-gas-balance.md) and will be used to cover subsequent fees. Most of this amount, about 130 EVERs, will be sent to your userID balance. 20 EVERs will remain on your Flex Client balance.
+
+{% hint style="info" %}
+If you deposit more than 150 EVERs to gas, 20 will remain on Flex Client and all the rest will be sent to your userID.
+{% endhint %}
+
+All unspent gas amounts may be later [recovered](../guides/how-to-trade-on-flex.md#how-to-recover-gas-balances).
 
 Each new assets wallet will take about 15 EVERs. When you buy or deposit an asset you don't have on Flex yet, this amount will be taken from your [Gas balance](../guides/keep-up-gas-balance.md) and allocated to your new asset wallet automatically.
 
