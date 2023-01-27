@@ -4,17 +4,17 @@ Flex works entirely on-chain as a set of smart contracts. This means that every 
 
 To cover these fees Flex stores an amount of native EVER tokens as your **Gas balance**.
 
-You allocate the initial amount to your Gas balance when connecting your wallet. After deployment it will be at a minimum of about 130 EVERs.
+You allocate the initial amount to your Gas balance when [connecting](connect-your-wallet.md) your wallet.&#x20;
 
-This balance will gradually be spent on deploying new internal wallets (\~10 EVERs per wallet) and topping them up as necessary, as they spend their balances on trades.
+This balance will gradually be spent on trading and deploying new internal wallets whenever you acquire an asset you did not previously own (\~10 EVERs per new asset wallet).
 
-It is recommended to keep your Gas balance up above 50 EVERs at all times.
-
-Its currently available value is always displayed in the top right corner of te Flex window.
+Its currently available value is always displayed in the top right corner of the Flex window.
 
 <figure><img src="../.gitbook/assets/074.png" alt=""><figcaption></figcaption></figure>
 
-If it turns <mark style="color:red;">red</mark>, it needs to be topped up.
+**Note**: The balance displays your total gas on Flex. Of this amount 20 EVERs are reserved on your Flex Client contract for various system actions. The rest is used to pay for gas on the exchange.&#x20;
+
+If the balance turns <mark style="color:red;">red</mark>, it needs to be topped up.
 
 To top it up, click on the displayed **Gas** balance.
 
