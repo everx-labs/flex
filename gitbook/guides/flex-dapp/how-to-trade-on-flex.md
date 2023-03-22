@@ -6,17 +6,17 @@ You can buy any listed tokens, or sell any listed tokens you own.
 
 Use the drop-down Markets to select a token you want to trade:
 
-![](<../.gitbook/assets/Screenshot from 2022-03-29 12-02-48.png>)
+![](<../../.gitbook/assets/Screenshot from 2022-03-29 12-02-48.png>)
 
 You will be able to deposit your funds into Flex to start trading any tokens listed there.
 
-<figure><img src="../.gitbook/assets/015 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/015 (1).png" alt=""><figcaption></figcaption></figure>
 
 ## How to get started
 
 To trade on Flex you need to [Connect your Surf wallet](connect-your-wallet.md) and deposit some funds. Once this is done, all your funds on Flex will be shown in the Assets section.
 
-<figure><img src="../.gitbook/assets/075.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/075.png" alt=""><figcaption></figcaption></figure>
 
 ## How to deposit
 
@@ -24,17 +24,17 @@ Usually some funds are deposited during the [initial authorization](connect-your
 
 If you want to deposit more, or didn't deposit any after authorizing, click on the **Deposit button** next to the Asset you want to deposit, or on the **Surf** button in the upper right corner.
 
-<figure><img src="../.gitbook/assets/0005.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0005.png" alt=""><figcaption></figcaption></figure>
 
 Scan QR code or go to desktop Surf app.
 
 The Flex Auth DeBot will launch. Select Deposit EVER or Deposit TIP-3.2, depending on the asset you want to deposit.
 
-<figure><img src="../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
 
 Enter amount to be deposited.
 
-<figure><img src="../.gitbook/assets/0021.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0021.png" alt=""><figcaption></figcaption></figure>
 
 Confirm transaction.
 
@@ -44,15 +44,15 @@ Return to Flex. Now you can use the funds you deposited to trade.
 
 Flex displays all available information about a token which can help you decide on a trade. Graphs visualize token status and history, while the **Orderbook** and **Trades** tabs list the currently available orders and accumulated trade statistics.
 
-<figure><img src="../.gitbook/assets/017 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/017 (1).png" alt=""><figcaption></figcaption></figure>
 
 Your current assets in the current pair are always displayed in the Assets section:
 
-<figure><img src="../.gitbook/assets/073.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/073.png" alt=""><figcaption></figcaption></figure>
 
 Decide on a trade, and fill in your order in the leftmost section of the page:
 
-<figure><img src="../.gitbook/assets/0022.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0022.png" alt=""><figcaption></figcaption></figure>
 
 For Limit orders you can set your own price and amount, or click on an order in the **Orderbook** to fulfill it. You can also use the slider to set a fraction of your funds you want to spend.
 
@@ -73,45 +73,45 @@ Click the **Buy** or **Sell** button, once you're ready.&#x20;
 
 A notification confirming your order creation will appear in the top right corner.
 
-![](../.gitbook/assets/019.png)
+![](../../.gitbook/assets/019.png)
 
 Market orders simply let you buy or sell a certain amount at the current market price.
 
-<figure><img src="../.gitbook/assets/0023.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0023.png" alt=""><figcaption></figcaption></figure>
 
 While your order remains opened in the Orderbook, it is listed in your **Open orders** tab at the bottom of the page.
 
-<figure><img src="../.gitbook/assets/019 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/019 (1).png" alt=""><figcaption></figcaption></figure>
 
 Once your order is fulfilled, it appears in your **Trade history** tab at the bottom of the page.
 
-<figure><img src="../.gitbook/assets/020 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/020 (1).png" alt=""><figcaption></figcaption></figure>
 
 ## How to withdraw
 
 Go to the **Funds** section at the bottom and click Withdraw next to the asset you wish to withdraw.
 
-<figure><img src="../.gitbook/assets/076.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/076.png" alt=""><figcaption></figcaption></figure>
 
 Scan QR code or go to desktop Surf app via link.
 
-<figure><img src="../.gitbook/assets/0044.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0044.png" alt=""><figcaption></figcaption></figure>
 
 The Flex auth DeBot will launch. Enter amount of tokens to unwrap (withdraw).
 
-<figure><img src="../.gitbook/assets/0041.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0041.png" alt=""><figcaption></figcaption></figure>
 
 Select the address which is going to be the owner of the tokens you are withdrawing.&#x20;
 
-<figure><img src="../.gitbook/assets/0042.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0042.png" alt=""><figcaption></figcaption></figure>
 
 Confirm transaction. It takes about 1.5 EVERs to perform.
 
-<figure><img src="../.gitbook/assets/0043.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0043.png" alt=""><figcaption></figcaption></figure>
 
 You can see your withdrawn tokens in [https://ever.live](https://ever.live) on the page of your Surf wallet in the **Token balances** section.
 
-<figure><img src="../.gitbook/assets/0025.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0025.png" alt=""><figcaption></figcaption></figure>
 
 ## How to recover Gas balances
 
@@ -121,41 +121,41 @@ All gas balances from the Flex token wallets can be recovered, and tokens from t
 
 In Flex Auth DeBot Select **Accounts management**.
 
-<figure><img src="../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0009.png" alt=""><figcaption></figcaption></figure>
 
 Select the keys you used to encrypt the account credentials when [connecting your wallet](connect-your-wallet.md). Usually it's your Surf keys.
 
-<figure><img src="../.gitbook/assets/0045.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0045.png" alt=""><figcaption></figcaption></figure>
 
 The DeBot will display the account you most recently authorized. (Click **Back** and select a different account, if you need to withdraw from an older account).
 
-<figure><img src="../.gitbook/assets/0046.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0046.png" alt=""><figcaption></figcaption></figure>
 
 Click **Remove UserId and Wallets**.
 
-<figure><img src="../.gitbook/assets/0047.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0047.png" alt=""><figcaption></figcaption></figure>
 
 Confirm the action. Several transactions to cancel all open orders of the account, withdraw assets and burn Flex token wallets will be generated.
 
 Confirm the necessary transactions.
 
-The withdrawn gas balance will be transfered to Flex Client and can be recovered from it. The trading funds will be sent to your Surf account.
+The withdrawn gas balance will be transferred to Flex Client and can be recovered from it. The trading funds will be sent to your Surf account.
 
 Once all transactions are performed, DeBot will report success and display the userId of all your other accounts and the option to recover Gas from the Flex Client. To recover Gas from other accounts, select one of the other accounts.
 
 To recover Gas from the Flex Client, select the corresponding action.
 
-<figure><img src="../.gitbook/assets/0050.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0050.png" alt=""><figcaption></figcaption></figure>
 
 Enter amount to recover and select address to transfer to.
 
-<figure><img src="../.gitbook/assets/0051.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0051.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/0052.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0052.png" alt=""><figcaption></figcaption></figure>
 
 Confirm the action.
 
-<figure><img src="../.gitbook/assets/0053.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/0053.png" alt=""><figcaption></figcaption></figure>
 
 Once done, DeBot will report success.
 
