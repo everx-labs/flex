@@ -10,7 +10,7 @@ Open Flex and click **Connect Surf**.
 
 The authorization prompt will appear. Enter a username and password for your Flex account.
 
-⚠️ Make sure to save your login and password and store it safely. You will be able to recover your funds [if you lose ](../troubleshooting.md#lost-login-and-or-password)your credentials so long as you still have access to your Surf account, but it will cost additional fees - the whole authorization process described below will have to be done from scratch.
+⚠️ Make sure to save your login and password and store it safely. You will be able to recover your funds [if you lose](../troubleshooting.md#lost-desktop-dapp-login-and-or-password) your credentials so long as you still have access to your Surf account, but it will cost additional fees - the whole authorization process described below will have to be done from scratch.
 
 <figure><img src="../../.gitbook/assets/0003.png" alt=""><figcaption></figcaption></figure>
 

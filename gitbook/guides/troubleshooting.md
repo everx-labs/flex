@@ -24,9 +24,9 @@ It means that Flex Client contract associated with your Surf account does not ha
 
 To fix this problem, you need to top up the balance of your Flex Client.
 
-#### Web version
+#### Web DApp
 
-When this error appears in the web version, it will display your Flex client address.
+When this error appears in the web dApp, it will display your Flex client address.
 
 Copy it, open our Ever Surf keeper and click **Send.**
 
@@ -38,7 +38,7 @@ Paste your Flex Client address, enter the amount of tokens to be sent (unspent a
 
 #### Desktop DApp
 
-In the DApp, this error usually appears in the Auth DeBot during authorization.
+In the Desktop DApp, this error usually appears in the Auth DeBot during authorization.
 
 <figure><img src="../.gitbook/assets/0068.png" alt=""><figcaption></figcaption></figure>
 
@@ -80,7 +80,7 @@ Once you have topped up the Flex Client, go back to the DeBot dialogue and choos
 
 The DeBot will return you to whatever you were doing.
 
-## DApp login issues
+## Desktop DApp login issues
 
 If you encounter any issues logging into the Flex DApp, try deleting the session and retrying authorization with the same login and password - click **Delete account and start a new session** on the Sign in window:
 
@@ -89,7 +89,7 @@ If you encounter any issues logging into the Flex DApp, try deleting the session
 Then reenter the credentials anew.\
 Flex Auth DeBot will launch and update your keys, after which you will be able to use your account as usual.
 
-## Lost DApp login and/or password
+## Lost Desktop DApp login and/or password
 
 Flex has no built-in way to recover an account if you forgot its credentials. You can however use Surf to make a new account, and then recover all your funds from the old one.
 
@@ -97,7 +97,7 @@ To create a new account click **Delete account and start a new session** on the 
 
 <figure><img src="../.gitbook/assets/0031.png" alt=""><figcaption></figcaption></figure>
 
-Then [authorize a new Flex account](flex-dapp/connect-your-wallet.md) using the same Surf. You may need to [top up your Flex Client ](troubleshooting.md#not-enough-tokens-on-flex-client-balance)for that.
+Then [authorize a new Flex account](desktop-dapp/connect-your-wallet.md) using the same Surf. You may need to [top up your Flex Client ](troubleshooting.md#not-enough-tokens-on-flex-client-balance)for that.
 
 Once authorization is complete, click **Accounts management** in the DeBot menu.
 
@@ -119,7 +119,7 @@ Review the funds on the selected account, and if it's the lost one, click **Remo
 
 <figure><img src="../.gitbook/assets/0038.png" alt=""><figcaption></figcaption></figure>
 
-Then follow DeBot instructions, until the account is removed. All tokens, in orders or otherwise and will be returned to you. Gas balance will be sent to Flex Client and can also be [recovered](flex-dapp/how-to-trade-on-flex.md#how-to-recover-gas-balances).
+Then follow DeBot instructions, until the account is removed. All tokens, in orders or otherwise and will be returned to you. Gas balance will be sent to Flex Client and can also be [recovered](desktop-dapp/how-to-trade-on-flex.md#how-to-recover-gas-balances).
 
 ## Other errors with order processing
 

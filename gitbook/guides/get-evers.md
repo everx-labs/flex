@@ -19,7 +19,7 @@ With bridge, you can also get other tokens (WBTC, WETH, USDT, etc.) to your Surf
 
 Once you have all the tokens you need (overview of the costs of using FLEX can be found [here](../specifications/flex-fees.md)) on your **Surf balance**, you are ready to connect your wallet.
 
-* To use the **web version**, install [Surf Keeper browser extension](https://chrome.google.com/webstore/detail/ever-surf-keeper/dfldeefnhahdhaolbkhehhlcgagefgff). It is currently available for Chrome and Chromium browsers. Then proceed to [connect your wallet ](web-version/connect-your-wallet.md)to Web Flex.
-* To use the **DApp version**, get ready your desktop or mobile Surf and follow the guide to [connect your wallet](flex-dapp/connect-your-wallet.md) to the Flex DApp.
+* To use the **Web DApp**, install [Surf Keeper browser extension](https://chrome.google.com/webstore/detail/ever-surf-keeper/dfldeefnhahdhaolbkhehhlcgagefgff). It is currently available for Chrome and Chromium browsers. Then proceed to [connect your wallet ](web-dapp/connect-your-wallet.md)to Web Flex.
+* To use the **Desktop DApp,** get ready your desktop or mobile Surf and follow the guide to [connect your wallet](desktop-dapp/connect-your-wallet.md) to the Flex DApp.
 
 <figure><img src="../.gitbook/assets/0002.png" alt=""><figcaption></figcaption></figure>

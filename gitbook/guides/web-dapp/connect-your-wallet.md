@@ -1,6 +1,6 @@
 # Connect Your Wallet
 
-Currently you can use the Flex web version in Chrome and Chromium browsers.
+Currently you can use the Flex Web DApp in Chrome and Chromium browsers.
 
 To get started trading in the web version of Flex you need to have a [Surf wallet](../get-evers.md) with your tokens [opened](connect-your-wallet.md#install-surf-keeper-extension-if-you-dont-have-it) (not tracked) in the [Ever Surf Keeper extension](https://chrome.google.com/webstore/detail/ever-surf-keeper/dfldeefnhahdhaolbkhehhlcgagefgff).
 

@@ -23,5 +23,5 @@ Enter the amount to send to your Gas balance and confirm any generated transacti
 <figure><img src="../../.gitbook/assets/027w.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-In the Web version of Flex, when gas falls below 10 Ever, it will be topped up by a small amount automatically. If you trade actively or in large amounts, it is recommended not to rely on auto top up, as in certain conditions this amount may not be enough to complete particularly large orders, or a large amount of sequentially placed orders.
+In the Flex Web DApp, when gas falls below 10 Ever, it will be topped up by a small amount automatically. If you trade actively or in large amounts, it is recommended not to rely on auto top up, as in certain conditions this amount may not be enough to complete particularly large orders, or a large amount of sequentially placed orders.
 {% endhint %}

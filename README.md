@@ -10,7 +10,7 @@ FLEX allows to trade in a variety of tokens - from native EVERs to common and po
 
 Funds security is achieved by ensuring all smart contracts containing trader funds are governed by the trader's keys and may not undergo any updates without the the trader's authorization.
 
-Flex is available as a Web version and Desktop DApp.
+FLEX is available as Web and Desktop DApps.
 
 **Explore Flex at**: [https://flexdex.fi/](https://flexdex.fi/)****
 
